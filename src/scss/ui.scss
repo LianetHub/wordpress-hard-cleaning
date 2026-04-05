@@ -8,12 +8,51 @@
 //============ МОДУЛИ ====================
 @use "modules/breadcrumbs";
 @use "modules/popup";
+
 // @use "modules/preloader";
 // @use "modules/tooltip";
 // @use "modules/marguee";
 // @use "modules/pagination";
 // @use "modules/animation";
 //============ МОДУЛИ ====================
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-unbounded;
+	font-weight: 700;
+}
+
+
+p {
+	font-weight: 500;
+	font-size: var(--text-m-base);
+	color: var(--color-slate-dark);
+	margin-bottom: 20px;
+}
+
+.title {
+	font-size: clamp(1.25rem, 0.85rem + 1.85vw, rem(40));
+}
+
+.hint {
+	display: inline-block;
+	font-family: 'Manrope', sans-serif;
+	font-weight: 700;
+	font-size: var(--fs-kicker);
+	line-height: 1.2;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--color-blue-primary);
+	margin-bottom: clamp(0.625rem, 1.6vw, 1.125rem);
+
+	@media (max-width: 700px) {
+		margin: 0 0 0.1875rem;
+		font-size: 0.3125rem;
+	}
+}
 
 .text-center {
 	text-align: center;

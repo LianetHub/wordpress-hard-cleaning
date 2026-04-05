@@ -158,14 +158,6 @@ Author: Antigravity
     padding: 0;
 }
 
-body {
-    font-family: 'Manrope', sans-serif;
-    color: var(--color-slate-dark);
-    background: var(--white);
-    line-height: normal;
-    overflow-x: hidden;
-}
-
 
 /* Планшет: вертикальные отступы (кегли — var(--fs-section-h2) в SHARED) */
 @media (max-width: 1024px) and (min-width: 769px) {
@@ -195,25 +187,7 @@ body {
 }
 
 /* Typography */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Unbounded', sans-serif;
-    color: var(--color-dark);
-    font-weight: 700;
-}
 
-
-p {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 500;
-    font-size: var(--text-m-base);
-    color: var(--color-slate-dark);
-    margin-bottom: 20px;
-}
 
 /* Figma specific gradients */
 .bg-grad-main {
@@ -6144,7 +6118,6 @@ body.nav-drawer-open {
 
 
 
-.faq-question:focus-visible,
 .nav-list a:focus-visible,
 .header-burger:focus-visible,
 .main-nav .nav-drawer-close:focus-visible {
@@ -6156,9 +6129,6 @@ body.nav-drawer-open {
 
 /* Mobile consistency layer: common interaction + text floors */
 @media (max-width: 768px) {
-    .faq-question {
-        min-height: var(--mobile-tap-min);
-    }
 
     .g-nav-link {
         font-size: max(11px, 0.6875rem);
@@ -6200,194 +6170,16 @@ body.nav-drawer-open {
     }
 }
 
-/* =========================================
-   FAQ SECTION
-   ========================================= */
-.faq-section {
-    background: #F7F9FB;
-    padding: 40px;
-}
-
-.faq-grid {
-    display: grid;
-    grid-template-columns: 0.8fr 1.2fr;
-    /* Левая колонка чуть уже правой */
-    gap: 60px;
-    align-items: start;
-    /* Важно для работы sticky */
-}
-
-/* --- Левая часть --- */
-.faq-sticky-wrapper {
-    position: sticky;
-    top: 120px;
-}
-
-.faq-header {
-    margin-bottom: 40px;
-}
-
-.faq-kicker {
-    display: block;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-    letter-spacing: 0.07em;
-    color: #31708E;
-    margin-bottom: 15px;
-}
-
-.faq-title {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: clamp(32px, 4vw, 40px);
-    line-height: 1.25;
-    color: var(--color-dark);
-    margin-bottom: 20px;
-}
-
-.faq-title .text-blue {
-    color: #467E9E;
-}
-
-.faq-desc {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.4;
-    color: #4B5D68;
-    max-width: 400px;
-}
-
-/* Карточка CTA */
-.faq-cta-card {
-    background: linear-gradient(145.13deg, #306E8C 18.76%, #1F4B62 104.43%);
-    border-radius: 20px;
-    padding: 40px;
-    box-shadow: 0 15px 30px rgba(31, 75, 98, 0.15);
-}
-
-.faq-cta-card h3 {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 100%;
-    letter-spacing: 0.02em;
-    color: #FFFFFF;
-    font-variant-numeric: lining-nums proportional-nums;
-    font-feature-settings: 'lnum' on, 'pnum' on;
-    margin: 0 0 10px 0;
-}
-
-.faq-cta-card p {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.4;
-    color: #D7D7D7;
-    margin-bottom: 25px;
-}
-
-
-
-/* --- Правая часть (Аккордеон) --- */
-.faq-right {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    /* Расстояние между вопросами */
-}
-
-/* Общий прозрачный контейнер вопроса */
-.faq-item {
-    background: transparent;
-    display: flex;
-    flex-direction: column;
-}
-
-/* Белая плашка-кнопка */
-.faq-question {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 17px 20px 17px 32px;
-    background: #FFFFFF;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
-    border-radius: 20px;
-    border: none;
-    cursor: pointer;
-    text-align: left;
-    gap: 20px;
-
-    font-family: 'Manrope', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 27px;
-    color: var(--color-dark);
-
-    transition: color 0.3s ease, box-shadow 0.3s ease;
-
-    /* Делаем кнопку поверх ответа, чтобы её тень падала вниз */
-    position: relative;
-    z-index: 2;
-}
-
-.faq-question:hover {
-    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.08);
-}
-
-.faq-arrow {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--color-dark);
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Выезжающий ответ на прозрачном/сером фоне */
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.faq-answer-inner {
-    padding: 15px 32px 15px 32px;
-    /* Отступы текста */
-}
-
-.faq-answer-inner p {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.03em;
-    color: #4B5D68;
-    margin: 0;
-}
-
-/* --- Состояния активного (открытого) вопроса --- */
-.faq-item.active .faq-question {
-    color: #467E9E;
-}
-
-.faq-item.active .faq-arrow {
-    transform: rotate(-180deg);
-    color: #467E9E;
-}
 
 /* =========================================
    SHARED SECTION HEADING SYSTEM
-   scenarios/process/pricing/cases/guarantees/reviews/equipment/coverage/faq
+   scenarios/process/pricing/cases/guarantees/reviews/equipment/coverage
    ========================================= */
 .subtitle-primary,
 .price-kicker,
 .cases-kicker,
 .g-kicker,
-.coverage-kicker,
-.faq-kicker {
+.coverage-kicker {
     display: inline-block;
     margin: 0 0 clamp(10px, 1.6vw, 18px);
     font-family: 'Manrope', sans-serif;
@@ -6406,7 +6198,6 @@ body.nav-drawer-open {
 .reviews-title,
 .equipment-title,
 .coverage-title,
-.faq-title,
 .trust-header h2 {
     margin: 0;
     font-family: 'Unbounded', sans-serif;
@@ -6421,15 +6212,13 @@ body.nav-drawer-open {
 .g-title .text-blue,
 .equipment-title .text-blue,
 .coverage-title .text-blue,
-.faq-title .text-blue,
 .reviews-title span,
 .cases-title span {
     color: var(--color-blue-primary);
 }
 
 .pricing-subtitle,
-.coverage-desc,
-.faq-desc {
+.coverage-desc {
     margin: 0;
     font-family: 'Manrope', sans-serif;
     font-weight: 500;
@@ -6449,7 +6238,7 @@ body.nav-drawer-open {
     gap: clamp(12px, 1.8vw, 20px);
 }
 
-/* Coverage/FAQ headers keep block flow to avoid flex spacing jumps */
+/* Coverage headers keep block flow to avoid flex spacing jumps */
 /* Do not force shared layout model (flex/grid) on section headers */
 
 /* Unified heading rhythm for key sections */
@@ -6458,8 +6247,7 @@ body.nav-drawer-open {
 .cases-section .cases-header,
 .reviews-section-new .reviews-header,
 .equipment-section .equipment-header,
-.coverage-section .coverage-header,
-.faq-section .faq-header {
+.coverage-section .coverage-header {
     margin-bottom: clamp(24px, 4vw, 40px);
 }
 
@@ -6476,16 +6264,12 @@ body.nav-drawer-open {
 .guarantees-section .g-title,
 .coverage-section .coverage-kicker,
 .coverage-section .coverage-title,
-.coverage-section .coverage-desc,
-.faq-section .faq-kicker,
-.faq-section .faq-title,
-.faq-section .faq-desc {
+.coverage-section .coverage-desc {
     margin: 0;
 }
 
 /* Explicit vertical rhythm without flex for these two */
 .coverage-section .coverage-kicker,
-.faq-section .faq-kicker,
 .scenarios-section .subtitle-primary,
 .pricing-section-new .price-kicker,
 .cases-section .cases-kicker,
@@ -6500,194 +6284,10 @@ body.nav-drawer-open {
     margin: 0 0 clamp(8px, 1.8vw, 14px);
 }
 
-.coverage-section .coverage-title,
-.faq-section .faq-title {
+.coverage-section .coverage-title {
     margin: 0 0 clamp(8px, 1.8vw, 14px);
 }
 
-/* --- Адаптивность --- */
-@media (max-width: 992px) {
-    .faq-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .faq-sticky-wrapper {
-        position: static;
-    }
-
-    .faq-cta-card {
-        padding: 30px;
-    }
-}
-
-@media (max-width: 576px) {
-    .faq-section {
-        padding: 20px 12px;
-    }
-
-    .faq-cta-card {
-        width: 100%;
-        max-width: 100%;
-        padding: 18px 14px;
-    }
-
-    .btn-faq-white {
-        width: 100%;
-        max-width: 100%;
-        min-width: 0;
-        box-sizing: border-box;
-    }
-
-    .faq-question {
-        padding: 15px 20px;
-        font-size: 16px;
-        line-height: 1.3;
-    }
-
-    .faq-answer-inner {
-        padding: 15px 20px;
-    }
-}
-
-/* FAQ mobile architecture pass: header -> questions -> CTA */
-@media (max-width: 700px) {
-    .faq-section {
-        background: #F7F9FB;
-        padding: 16px 0;
-    }
-
-    .faq-section>.container {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    .faq-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 10px;
-    }
-
-    /* Flatten wrappers so we can place CTA below questions */
-    .faq-left,
-    .faq-sticky-wrapper {
-        display: contents;
-    }
-
-    .faq-header {
-        order: 1;
-        margin: 0 0 8px;
-    }
-
-    .faq-kicker {
-        margin: 0 0 3px;
-        font-size: 5px;
-        line-height: 1.3;
-        letter-spacing: 0.07em;
-    }
-
-    .faq-title {
-        margin: 0 0 5px;
-        font-size: 18px;
-        line-height: 1.25;
-        font-weight: 700;
-        text-transform: none;
-    }
-
-    .faq-desc {
-        font-size: 8px;
-        line-height: 1.4;
-        letter-spacing: 0.03em;
-        color: #4B5D68;
-    }
-
-    .faq-right {
-        order: 2;
-        gap: 10px;
-    }
-
-    .faq-question {
-        padding: 10px 20px;
-        border-radius: 10px;
-        font-size: 10px;
-        line-height: 1.45;
-        color: #272727;
-        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
-        gap: 10px;
-    }
-
-    .faq-item.active .faq-question {
-        color: #467E9E;
-    }
-
-    .faq-arrow svg {
-        width: 9px;
-        height: 12px;
-    }
-
-    .faq-answer-inner {
-        padding: 10px 10px 0;
-    }
-
-    .faq-answer-inner p {
-        font-size: 8px;
-        line-height: 1.45;
-        letter-spacing: 0.03em;
-        color: #4B5D68;
-    }
-
-    .faq-cta-card {
-        order: 3;
-        width: 100%;
-        border-radius: 10px;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        box-sizing: border-box;
-        margin-top: 8px;
-    }
-
-    .faq-cta-card h3 {
-        margin: 0;
-        font-size: var(--fs-card-heading);
-        line-height: 1.3;
-        text-align: center;
-        color: #FFFFFF;
-    }
-
-    .faq-cta-card p {
-        margin: 0;
-        font-size: var(--fs-body-sm);
-        line-height: 1.45;
-        letter-spacing: 0.03em;
-        text-align: center;
-        color: #D7D7D7;
-    }
-
-    .btn-faq-white {
-        width: 100%;
-        min-height: 30px;
-        height: auto;
-        border-radius: 100px;
-        padding: 9px 16px;
-        font-size: var(--fs-button);
-        line-height: 1.35;
-        letter-spacing: 0.03em;
-        color: #4A81A0;
-    }
-}
-
-@media (max-width: 360px) {
-    .faq-section {
-        padding: 16px 10px;
-    }
-
-    .faq-cta-card {
-        padding: 14px 10px;
-        border-radius: 16px;
-    }
-}
 
 /* Узже 360px: убрать жёсткие поля и нижние пороги ширины, не ломать сетки */
 @media (max-width: 359px) {
@@ -6737,8 +6337,7 @@ body.nav-drawer-open {
     .reviews-section-new,
     .equipment-section,
     .guarantees-section,
-    .coverage-section,
-    .faq-section {
+    .coverage-section {
         overflow-x: clip;
     }
 
@@ -6751,7 +6350,6 @@ body.nav-drawer-open {
     .equipment-section>.container,
     .guarantees-section>.container,
     .coverage-section>.container,
-    .faq-section>.container,
     .process-section-new .container.process-container-inner {
         padding-left: var(--m-side);
         padding-right: var(--m-side);
@@ -7230,19 +6828,11 @@ body.nav-drawer-open {
     .cases-section .info-card ul li,
     .reviews-section-new .review-text,
     .equipment-section .equip-card p,
-    .coverage-section .district-card p,
-    .faq-section .faq-desc,
-    .faq-section .faq-question span,
-    .faq-section .faq-answer-inner p {
+    .coverage-section .district-card p {
         font-size: var(--fs-body);
         line-height: 1.5;
     }
 
-    .faq-section .faq-desc,
-    .faq-section .faq-question span,
-    .faq-section .faq-answer-inner p {
-        line-height: 1.45;
-    }
 
     .top-bar .tb-email {
         font-size: var(--fs-topbar);
@@ -7324,24 +6914,6 @@ body.nav-drawer-open {
     }
 
     .coverage-section .btn-check-region {
-        font-size: var(--fs-button);
-        line-height: 1.3;
-        font-weight: 600;
-    }
-
-    .faq-section .faq-cta-card h3 {
-        font-family: 'Unbounded', sans-serif;
-        font-weight: 700;
-        font-size: var(--fs-card-heading);
-        line-height: 1.2;
-    }
-
-    .faq-section .faq-cta-card p {
-        font-size: var(--fs-body-sm);
-        line-height: 1.45;
-    }
-
-    .faq-section .btn-faq-white {
         font-size: var(--fs-button);
         line-height: 1.3;
         font-weight: 600;

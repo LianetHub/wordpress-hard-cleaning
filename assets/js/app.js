@@ -6,14 +6,6 @@ $(function () {
     if (typeof Fancybox !== "undefined" && Fancybox !== null) {
         Fancybox.bind("[data-fancybox]", {
             dragToClose: false,
-            on: {
-                "Carousel.ready": (fancyboxRef) => {
-                    const slide = fancyboxRef.getSlide();
-                    if (slide && (slide.triggerEl.classList.contains('case-card') || slide.triggerEl.classList.contains('clients__item')) && slide.triggerEl.dataset.type === "ajax") {
-                        slide.el.classList.add("is-case-popup-slide");
-                    }
-                },
-            },
         });
     }
 
@@ -71,8 +63,31 @@ $(function () {
             $menu.removeClass("menu--open");
             $('body').removeClass('menu-lock');
         }
+
+        // faq accordion
+
+        if ($target.closest('.faq__question').length) {
+            const $faqQuestion = $target.closest('.faq__question');
+            const $item = $faqQuestion.closest('.faq__item');
+            const $answer = $item.find('.faq__answer');
+
+            $('.faq__answer').not($answer).slideUp().closest('.faq__item').removeClass('active');
+
+            $item.toggleClass('active');
+            $answer.slideToggle();
+        }
     });
 
+
+    // init faq accordion
+    const $faqItems = $('.faq__item');
+    if ($faqItems.length) {
+        $('.faq__item.active').find('.faq__answer').show();
+
+        $(window).on('resize', () => {
+            $('.faq__item.active').find('.faq__answer').slideDown()
+        });
+    }
 
     // sliders
     class MobileSwiper {
@@ -110,29 +125,6 @@ $(function () {
             pagination: {
                 el: '.team__slider-pagination',
                 clickable: true
-            }
-        })
-    }
-
-    if ($('.tour__gallery').length) {
-        new MobileSwiper('.tour__gallery', {
-            slidesPerView: 1.5,
-            spaceBetween: 8,
-            pagination: {
-                el: '.tour__gallery-pagination',
-                clickable: true
-            }
-        })
-    }
-
-
-    if ($('.directions__slider').length) {
-        new Swiper('.directions__slider', {
-            slidesPerView: 1,
-            autoHeight: true,
-            navigation: {
-                prevEl: '.directions__prev',
-                nextEl: '.directions__next'
             }
         })
     }
@@ -356,331 +348,6 @@ $(function () {
         new CustomSelect(element);
     });
 
-    // Calendar 
-    if ($('.selection__form').length > 0) {
-        if (typeof window.VanillaCalendarPro === 'undefined') return;
-
-        const { Calendar } = window.VanillaCalendarPro;
-        const $form = $('.selection__form');
-        const $dateFrom = $form.find('input[name="date_from"]');
-        const $dateTo = $form.find('input[name="date_to"]');
-        const $noDateCheckbox = $form.find('input[name="no_date"]');
-
-        const calendars = {
-            from: null,
-            to: null
-        };
-
-        function parseDate(dateStr) {
-            if (!dateStr) return null;
-            const parts = dateStr.split('.');
-            if (parts.length !== 3) return null;
-            return `${parts[2]}-${parts[1]}-${parts[0]}`;
-        }
-
-        const calendarOptions = {
-            inputMode: true,
-            positionToInput: 'auto',
-            parentMode: document.body,
-            selectedTheme: 'light',
-            locale: "ru-RU",
-            dateMin: new Date().toISOString().split('T')[0],
-            dateDisplay: 'DD.MM.YYYY',
-            onChangeToInput(self) {
-                const input = self.context.inputElement;
-                if (!input) return;
-
-                const $input = $(input);
-                const isFrom = $input.attr('name') === 'date_from';
-                const $parent = $input.closest('.form__field');
-                const $clearBtn = $parent.find('.form__field-clear');
-
-                if (self.context.selectedDates.length > 0) {
-                    const selectedDate = self.context.selectedDates[0];
-                    const dateParts = selectedDate.split('-');
-                    const formattedDate = `${dateParts[2]}.${dateParts[1]}.${dateParts[0]}`;
-
-                    $input.val(formattedDate);
-                    $clearBtn.removeClass('hidden');
-
-                    if (isFrom && calendars.to) {
-                        calendars.to.dateMin = selectedDate;
-                        calendars.to.update();
-                    } else if (!isFrom && calendars.from) {
-                        calendars.from.dateMax = selectedDate;
-                        calendars.from.update();
-                    }
-
-                    self.hide();
-                } else {
-                    $input.val('');
-                    $clearBtn.addClass('hidden');
-
-                    if (isFrom && calendars.to) {
-                        calendars.to.dateMin = new Date().toISOString().split('T')[0];
-                        calendars.to.update();
-                    } else if (!isFrom && calendars.from) {
-                        calendars.from.dateMax = '2470-12-31';
-                        calendars.from.update();
-                    }
-                }
-            },
-        };
-
-        const valFrom = parseDate($dateFrom.val());
-        const valTo = parseDate($dateTo.val());
-
-        calendars.from = new Calendar($dateFrom[0], {
-            ...calendarOptions,
-            selectedDates: valFrom ? [valFrom] : [],
-            dateMax: valTo ? valTo : '2470-12-31'
-        });
-
-        calendars.to = new Calendar($dateTo[0], {
-            ...calendarOptions,
-            selectedDates: valTo ? [valTo] : [],
-            dateMin: valFrom ? valFrom : new Date().toISOString().split('T')[0]
-        });
-
-        calendars.from.init();
-        calendars.to.init();
-
-
-        $form.on('click', '.form__field-clear', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            const $btn = $(this);
-            const $parent = $btn.closest('.form__field');
-            const $input = $parent.find('input');
-            const inputName = $input.attr('name');
-
-            $input.val('');
-            if ($input[0]) {
-                $input[0].value = '';
-            }
-
-            $btn.addClass('hidden');
-
-            if (inputName === 'date_from' && calendars.from) {
-                calendars.from.context.selectedDates = [];
-                calendars.from.update();
-
-                if (calendars.to) {
-                    calendars.to.dateMin = new Date().toISOString().split('T')[0];
-                    calendars.to.update();
-                }
-            } else if (inputName === 'date_to' && calendars.to) {
-                calendars.to.context.selectedDates = [];
-                calendars.to.update();
-
-                if (calendars.from) {
-                    calendars.from.dateMax = '2470-12-31';
-                    calendars.from.update();
-                }
-            }
-
-            return false;
-        });
-
-        function toggleDateInputs() {
-            const isNoDate = $noDateCheckbox.is(':checked');
-            const $dateFields = $dateFrom.add($dateTo).closest('.form__field');
-
-            if (isNoDate) {
-                $dateFields.addClass('disabled');
-                $dateFrom.add($dateTo).val('').prop('disabled', true);
-                $form.find('.form__field-clear').addClass('hidden');
-
-                if (calendars.from && calendars.to) {
-                    calendars.from.context.selectedDates = [];
-                    calendars.to.context.selectedDates = [];
-                    calendars.from.dateMax = '2470-12-31';
-                    calendars.to.dateMin = new Date().toISOString().split('T')[0];
-
-                    calendars.from.update();
-                    calendars.to.update();
-                    calendars.from.hide();
-                    calendars.to.hide();
-                }
-            } else {
-                $dateFields.removeClass('disabled');
-                $dateFrom.add($dateTo).prop('disabled', false);
-                $dateFrom.add($dateTo).each(function () {
-                    if ($(this).val()) {
-                        $(this).closest('.form__field').find('.form__field-clear').removeClass('hidden');
-                    }
-                });
-            }
-        }
-
-        $noDateCheckbox.on('change', toggleDateInputs);
-        toggleDateInputs();
-    }
-
-    // Booking Form
-    if ($('.tour__booking-form').length > 0) {
-        const $form = $('.tour__booking-form');
-        const $passengersContainer = $('.booking-form__passengers');
-
-        function initPassengerCalendar(input) {
-            if (typeof window.VanillaCalendarPro === 'undefined' || !input) return;
-            if (input.dataset.calendarInitialized) return;
-
-            const { Calendar } = window.VanillaCalendarPro;
-
-            const cal = new Calendar(input, {
-                inputMode: true,
-                positionToInput: 'auto',
-                parentMode: document.body,
-                selectedTheme: 'light',
-                locale: "ru-RU",
-                dateMin: '1920-01-01',
-                dateMax: new Date().toISOString().split('T')[0],
-                dateDisplay: 'DD.MM.YYYY',
-                onChangeToInput(self) {
-                    if (self.context.selectedDates.length > 0) {
-                        const selectedDate = self.context.selectedDates[0];
-                        const [year, month, day] = selectedDate.split('-');
-                        input.value = `${day}.${month}.${year}`;
-
-                        $(input).closest('.form__field').removeClass('has-error').find('.form__field-error').remove();
-                        self.hide();
-                    }
-                },
-            });
-
-            cal.init();
-            input.dataset.calendarInitialized = 'true';
-        }
-
-        function updatePassengerIndices() {
-            $passengersContainer.find('.booking-form__block').each(function (index) {
-                const passengerNumber = index + 1;
-                const $block = $(this);
-
-                $block.find('.booking-form__caption').text('Пассажир ' + passengerNumber);
-
-                $block.find('input').each(function () {
-                    const $input = $(this);
-                    const placeholder = ($input.attr('placeholder') || '').toLowerCase();
-
-                    let fieldName = '';
-                    if (placeholder.includes('фамилия')) fieldName = 'last_name';
-                    else if (placeholder.includes('имя')) fieldName = 'first_name';
-                    else if (placeholder.includes('отчество')) fieldName = 'middle_name';
-                    else if (placeholder.includes('рождения')) fieldName = 'birth_date';
-
-                    if (fieldName) {
-                        $input.attr('name', `passengers[${index}][${fieldName}]`);
-                        if (fieldName === 'birth_date') {
-                            initPassengerCalendar($input[0]);
-                        }
-                    }
-                });
-            });
-        }
-
-        $('.tour__booking-btn').on('click', function (e) {
-            e.preventDefault();
-            $form.stop().slideToggle(400);
-        });
-
-        $passengersContainer.on('click', '.booking-form__add', function () {
-            const $currentBlock = $(this).closest('.booking-form__block');
-            const $newBlock = $currentBlock.clone();
-
-            $newBlock.find('input').val('').removeAttr('data-calendar-initialized');
-            $newBlock.find('.form__field').removeClass('has-error');
-            $newBlock.find('.form__field-error').remove();
-
-            $newBlock.appendTo($passengersContainer);
-            updatePassengerIndices();
-        });
-
-        $passengersContainer.on('click', '.booking-form__remove', function () {
-            if ($('.booking-form__block').length > 1) {
-                $(this).closest('.booking-form__block').remove();
-                updatePassengerIndices();
-            }
-        });
-
-        $form.on('input change', '.has-error input, .has-error textarea', function () {
-            const $parent = $(this).closest('.form__field, .checkbox');
-            $parent.removeClass('has-error');
-            $parent.find('.form__field-error').remove();
-        });
-
-        $form.on('submit', function (e) {
-            e.preventDefault();
-            let isValid = true;
-            const $requiredFields = $form.find('[data-required]');
-
-            $form.find('.form__field, .checkbox').removeClass('has-error');
-            $form.find('.form__field-error').remove();
-
-            $requiredFields.each(function () {
-                const $input = $(this);
-                const $parent = $input.closest('.form__field');
-                if (!($input.val() || '').trim()) {
-                    isValid = false;
-                    $parent.addClass('has-error').append('<div class="form__field-error">Заполните это поле</div>');
-                }
-            });
-
-            if (!$form.find('.checkbox__input').is(':checked')) {
-                isValid = false;
-                $form.find('.checkbox').addClass('has-error');
-            }
-
-            if (!isValid) {
-                const $firstError = $('.has-error').first();
-                if ($firstError.length) {
-                    $('html, body').animate({ scrollTop: $firstError.offset().top - 100 }, 500);
-                }
-                return false;
-            }
-
-            const $submitBtn = $form.find('.booking-form__submit');
-            const formUrl = $form.attr('action');
-
-            $submitBtn.addClass('_loading');
-
-            $.ajax({
-                url: formUrl,
-                type: 'POST',
-                dataType: 'json',
-                data: $form.serialize() + '&action=send_booking_form',
-                success: function (response) {
-                    $submitBtn.removeClass('_loading');
-
-                    if (response.success) {
-                        getSuccessSubmitting();
-
-                        $form[0].reset();
-                        $passengersContainer.find('.booking-form__block:not(:first)').remove();
-                        updatePassengerIndices();
-
-                        $form.slideUp(400);
-                    } else {
-                        getErrorSubmitting();
-                    }
-                },
-                error: function () {
-                    $submitBtn.removeClass('_loading');
-                    getErrorSubmitting();
-                }
-            });
-        });
-
-        $('.js-anchor-booking').on('click', function (e) {
-            if ($form.is(':hidden')) {
-                $form.stop().slideDown(400);
-            }
-        });
-
-        updatePassengerIndices();
-    }
 
     function getSuccessSubmitting() {
         Fancybox.close();
@@ -699,7 +366,6 @@ $(function () {
     }
 
     document.addEventListener('wpcf7mailsent', function () {
-
         getSuccessSubmitting()
     }, false);
 
