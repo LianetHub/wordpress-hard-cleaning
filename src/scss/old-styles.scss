@@ -98,32 +98,6 @@ Author: Antigravity
     --shadow-card: 0px 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-@font-face {
-    font-family: 'DAMN';
-    src: url('./assets/fonts/damn.ttf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-}
-
-@font-face {
-    font-family: 'Manrope';
-    src: url('./assets/fonts/Manrope.ttf') format('truetype');
-    font-weight: 100 900;
-    font-style: normal;
-    font-display: swap;
-}
-
-/* 3. Inter — у вас указано расширение .otf, а на скриншоте файл .ttf */
-@font-face {
-    font-family: 'Inter';
-    src: url('./assets/fonts/Inter-V.ttf') format('truetype');
-    font-weight: 100 900;
-    /* Так как это Inter-V (Variable), лучше указать диапазон */
-    font-style: normal;
-    font-display: swap;
-}
-
 /* Animations */
 @keyframes fadeInUp {
     from {
@@ -192,28 +166,6 @@ body {
     overflow-x: hidden;
 }
 
-.container {
-    max-width: 1670px;
-    margin: 0 auto;
-    padding: 0 15px;
-    /* Mobile padding as requested */
-}
-
-@media (min-width: 1200px) {
-    .container {
-        /* Было 135px фикс — на 1200–~1700px съедало место у хедера; плавно от ~40px (стык с планшетом) до 135px */
-        padding-left: clamp(40px, calc(40px + (100vw - 1200px) * 0.132), var(--desktop-margin));
-        padding-right: clamp(40px, calc(40px + (100vw - 1200px) * 0.132), var(--desktop-margin));
-    }
-}
-
-/* Планшет / узкий десктоп: воздух по краям без мобильных 15px */
-@media (max-width: 1199px) and (min-width: 769px) {
-    .container {
-        padding-left: clamp(24px, 4.2vw, 40px);
-        padding-right: clamp(24px, 4.2vw, 40px);
-    }
-}
 
 /* Планшет: вертикальные отступы (кегли — var(--fs-section-h2) в SHARED) */
 @media (max-width: 1024px) and (min-width: 769px) {
@@ -914,7 +866,7 @@ body.nav-drawer-open {
     }
 
     /* Hard guard: mobile blocks must not exceed viewport width */
-    .container,
+
     .top-bar-content,
     .header-content,
     .hero-special-container,
@@ -1378,12 +1330,7 @@ body.nav-drawer-open {
     }
 }
 
-@media (max-width: 430px) {
-    .container {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-}
+
 
 /* Узкий планшет 641–768: только кнопки hero (композиция — общий блок ≤1024) */
 @media (min-width: 641px) and (max-width: 768px) {
@@ -1585,10 +1532,7 @@ body.nav-drawer-open {
 }
 
 @media (max-width: 340px) {
-    .container {
-        padding-left: 8px;
-        padding-right: 8px;
-    }
+
 
     .top-bar {
         padding: 8px 0;

@@ -62,30 +62,60 @@ body {
 
 //=============== ОСНОВНАЯ СЕТКА===============================
 
+// .container {
+// 	margin: 0 auto;
+// 	max-width: 100%;
+// 	padding: 0 1rem;
+
+
+// 	@media (min-width: $md4) {
+// 		box-sizing: content-box;
+// 		max-width: rem(540);
+// 		padding: 0 1.25rem;
+// 	}
+
+// 	@media (min-width: $md3) {
+// 		max-width: rem(720);
+// 	}
+
+// 	@media (min-width: $md2) {
+// 		max-width: rem(960);
+// 	}
+
+// 	@media (min-width: $md1) {
+// 		max-width: rem(1180);
+// 	}
+
+// }
+
+
 .container {
+	max-width: 104.375rem;
 	margin: 0 auto;
-	max-width: 100%;
-	padding: 0 1rem;
+	min-width: 0;
+	box-sizing: border-box;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 
-
-	@media (min-width: $md4) {
-		box-sizing: content-box;
-		max-width: rem(540);
-		padding: 0 1.25rem;
+	@media (min-width: 340px) {
+		padding-left: 1rem;
+		padding-right: 1rem;
 	}
 
-	@media (min-width: $md3) {
-		max-width: rem(720);
+	@media (min-width: 430px) {
+		padding-left: 0.9375rem;
+		padding-right: 0.9375rem;
 	}
 
-	@media (min-width: $md2) {
-		max-width: rem(960);
+	@media (min-width: 769px) {
+		padding-left: clamp(1.5rem, 4.2vw, 2.5rem);
+		padding-right: clamp(1.5rem, 4.2vw, 2.5rem);
 	}
 
-	@media (min-width: $md1) {
-		max-width: rem(1180);
+	@media (min-width: 1200px) {
+		padding-left: clamp(2.5rem, calc(2.5rem + (100vw - 1200px) * 0.132), var(--desktop-margin));
+		padding-right: clamp(2.5rem, calc(2.5rem + (100vw - 1200px) * 0.132), var(--desktop-margin));
 	}
-
 }
 
 //=============== ОСНОВНАЯ СЕТКА===============================
@@ -113,6 +143,7 @@ body {
 }
 
 // ========================================================
+
 
 .typography-block {
 	letter-spacing: -0.04213rem;

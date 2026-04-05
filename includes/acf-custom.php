@@ -17,20 +17,6 @@ function my_acf_admin_head()
 {
 ?>
 	<style type="text/css">
-		h2.hndle.ui-sortable-handle {
-			background: #467E9E !important;
-			color: #fff !important;
-			-webkit-transition: all 0.25s;
-			-o-transition: all 0.25s;
-			transition: all 0.25s;
-		}
-
-		.acf-field.acf-accordion .acf-label.acf-accordion-title {
-			background: #467E9E !important;
-			color: #fff !important;
-			transition: all 0.25s;
-		}
-
 		.acf-accordion .acf-accordion-title label {
 			text-transform: uppercase;
 			color: #000;

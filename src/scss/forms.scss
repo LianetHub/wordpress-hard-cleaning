@@ -590,22 +590,22 @@
 // }
 
 .btn {
+	position: relative;
+	z-index: 1;
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
+	gap: 0.625rem;
 	padding: 0.875rem 3.4375rem;
 	border-radius: 8.875rem;
-	text-decoration: none;
-	font-family: 'Manrope', sans-serif;
 	font-weight: 500;
 	font-size: 1rem;
 	line-height: 1.375;
 	letter-spacing: 0.03em;
-	transition: all 0.3s ease;
 	cursor: pointer;
 	border: none;
-	gap: 0.625rem;
 	white-space: nowrap;
+	transition: all 0.3s ease;
 
 
 	&.btn-white-solid {

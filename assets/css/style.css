@@ -75,9 +75,13 @@ body {
 }
 
 .container {
+  max-width: 104.375rem;
   margin: 0 auto;
-  max-width: 100%;
-  padding: 0 1rem;
+  min-width: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
 
 .main {
@@ -310,6 +314,107 @@ body.error404 .main {
 .typography-block .wp-block-image img {
   width: 100% !important;
   height: 100% !important;
+}
+
+.cta {
+  position: relative;
+  overflow: hidden;
+  background: #2b637f;
+  padding: 0.875rem 0 1rem;
+}
+
+.cta__container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.cta__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  max-width: none;
+  gap: 0.5rem;
+}
+
+.cta__title {
+  color: #ffffff;
+  font-family: "Unbounded", sans-serif;
+  font-size: var(--fs-section-h2);
+  line-height: 1.2;
+  font-weight: 700;
+  font-variant: normal;
+  margin: 0;
+  text-align: center;
+}
+
+.cta__description {
+  color: #d7d7d7;
+  font-family: "Manrope", sans-serif;
+  font-size: var(--fs-body);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0.03em;
+  text-align: center;
+  margin: 0 0 0.25rem;
+}
+
+.cta__btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  gap: 0.5rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.cta__btn {
+  width: auto;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 0px;
+          flex: 1 1 0;
+  max-width: clamp(8.75rem, 44vw, 13.75rem);
+  min-height: 1.8125rem;
+  height: auto;
+  padding: 0.5625rem 0.75rem;
+  border-radius: 8.875rem;
+  font-size: var(--fs-button);
+  line-height: 1.3;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.cta__btn.btn-white-solid {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.cta__btn.btn-outline-white {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  border-color: #6796ac;
 }
 
 .breadcrumbs {
@@ -1422,6 +1527,8 @@ select.select {
 }
 
 .btn {
+  position: relative;
+  z-index: 1;
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -1431,20 +1538,18 @@ select.select {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  gap: 0.625rem;
   padding: 0.875rem 3.4375rem;
   border-radius: 8.875rem;
-  text-decoration: none;
-  font-family: "Manrope", sans-serif;
   font-weight: 500;
   font-size: 1rem;
   line-height: 1.375;
   letter-spacing: 0.03em;
-  -webkit-transition: all 0.3s ease;
-  transition: all 0.3s ease;
   cursor: pointer;
   border: none;
-  gap: 0.625rem;
   white-space: nowrap;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .btn.btn-white-solid {
@@ -2156,33 +2261,6 @@ Author: Antigravity
   --shadow-card: 0px 8px 30px rgba(0, 0, 0, 0.08);
 }
 
-@font-face {
-  font-family: "DAMN";
-  src: url("./assets/fonts/damn.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Manrope";
-  src: url("./assets/fonts/Manrope.ttf") format("truetype");
-  font-weight: 100 900;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* 3. Inter — у вас указано расширение .otf, а на скриншоте файл .ttf */
-
-@font-face {
-  font-family: "Inter";
-  src: url("./assets/fonts/Inter-V.ttf") format("truetype");
-  font-weight: 100 900;
-  /* Так как это Inter-V (Variable), лучше указать диапазон */
-  font-style: normal;
-  font-display: swap;
-}
-
 /* Animations */
 
 @-webkit-keyframes fadeInUp {
@@ -2262,15 +2340,6 @@ body {
   line-height: normal;
   overflow-x: hidden;
 }
-
-.container {
-  max-width: 1670px;
-  margin: 0 auto;
-  padding: 0 15px;
-  /* Mobile padding as requested */
-}
-
-/* Планшет / узкий десктоп: воздух по краям без мобильных 15px */
 
 /* Планшет: вертикальные отступы (кегли — var(--fs-section-h2) в SHARED) */
 
@@ -6655,6 +6724,20 @@ body.nav-drawer-open {
    GLOBAL MOBILE FONT SIZES (<=768) — uses --fs-* tokens
    ========================================= */
 
+@media (min-width: 340px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 430px) {
+  .container {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+  }
+}
+
 @media (min-width: 449.98px) {
   .typography-block {
     font-size: 1.20313rem;
@@ -6738,13 +6821,6 @@ body.nav-drawer-open {
     --header-height: 5.625rem;
   }
 
-  .container {
-    -webkit-box-sizing: content-box;
-            box-sizing: content-box;
-    max-width: 33.75rem;
-    padding: 0 1.25rem;
-  }
-
   .fancybox__slide {
     padding: 1.25rem;
   }
@@ -6793,17 +6869,75 @@ body.nav-drawer-open {
   }
 }
 
+@media (min-width: 701px) {
+  .cta {
+    background: #31708e;
+    padding: 3.75rem 0;
+  }
+
+  .cta__container {
+    padding-left: 0.9375rem;
+    padding-right: 0.9375rem;
+  }
+
+  .cta__content {
+    max-width: 50rem;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  .cta__title {
+    margin-bottom: 0.9375rem;
+  }
+
+  .cta__description {
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 2.5rem;
+    letter-spacing: normal;
+  }
+
+  .cta__btn {
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    padding: 0.875rem 3.4375rem;
+    font-size: 1rem;
+    letter-spacing: 0.03em;
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+  }
+
+  .cta__btn.btn-outline-white {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
 @media (min-width: 767.98px) {
   :root {
     --header-height: 7.25rem;
   }
-
-  .container {
-    max-width: 45rem;
-  }
 }
 
 @media (min-width: 769px) {
+  .container {
+    padding-left: clamp(1.5rem, 4.2vw, 2.5rem);
+    padding-right: clamp(1.5rem, 4.2vw, 2.5rem);
+  }
+
+  .cta__btns {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: auto;
+    gap: 1.25rem;
+  }
+
+  .cta__btn {
+    width: auto;
+  }
+
   .main-header--nav-collapsed .main-nav {
     position: fixed;
     top: 0;
@@ -6910,12 +7044,6 @@ body.nav-drawer-open {
   }
 }
 
-@media (min-width: 991.98px) {
-  .container {
-    max-width: 60rem;
-  }
-}
-
 @media (min-width: 1025px) {
   .process-header-row {
     margin: 80px 0 36px;
@@ -6932,19 +7060,14 @@ body.nav-drawer-open {
 
 @media (min-width: 1200px) {
   .container {
-    /* Было 135px фикс — на 1200–~1700px съедало место у хедера; плавно от ~40px (стык с планшетом) до 135px */
-    padding-left: clamp(40px, 40px + (100vw - 1200px) * 0.132, var(--desktop-margin));
-    padding-right: clamp(40px, 40px + (100vw - 1200px) * 0.132, var(--desktop-margin));
+    padding-left: clamp(2.5rem, 2.5rem + (100vw - 1200px) * 0.132, var(--desktop-margin));
+    padding-right: clamp(2.5rem, 2.5rem + (100vw - 1200px) * 0.132, var(--desktop-margin));
   }
 }
 
 @media (min-width: 1219.98px) {
   :root {
     --header-height: 9.375rem;
-  }
-
-  .container {
-    max-width: 73.75rem;
   }
 
   .dropdown__button {
@@ -10571,7 +10694,6 @@ body.nav-drawer-open {
 
   /* Hard guard: mobile blocks must not exceed viewport width */
 
-  .container,
   .top-bar-content,
   .header-content,
   .hero-special-container,
@@ -10703,13 +10825,6 @@ body.nav-drawer-open {
 @media (max-width: 449.98px) {
   .mobile-hidden {
     display: none !important;
-  }
-}
-
-@media (max-width: 430px) {
-  .container {
-    padding-left: 16px;
-    padding-right: 16px;
   }
 }
 
@@ -11008,11 +11123,6 @@ body.nav-drawer-open {
 }
 
 @media (max-width: 340px) {
-  .container {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
   .top-bar {
     padding: 8px 0;
   }
@@ -11049,6 +11159,33 @@ body.nav-drawer-open {
   .hero-special .hs-btns .btn {
     min-width: 0;
     max-width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .cta {
+    padding: 3rem 0;
+  }
+}
+
+@media (min-width: 701px) and (max-width: 768px) {
+  .cta__btns {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 0.9375rem;
+  }
+
+  /* Cases: keep visual and info blocks same full width */
+
+  .cases-section .comparison-container,
+  .cases-section .cases-text-block,
+  .cases-section .cases-cards-grid {
+    width: 100%;
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
   }
 }
 
@@ -11217,13 +11354,6 @@ body.nav-drawer-open {
     min-width: min(280px, 100vw - 40px);
     max-width: min(420px, 100vw - 40px);
     padding: 20px 22px;
-  }
-}
-
-@media (max-width: 1199px) and (min-width: 769px) {
-  .container {
-    padding-left: clamp(24px, 4.2vw, 40px);
-    padding-right: clamp(24px, 4.2vw, 40px);
   }
 }
 
@@ -11504,19 +11634,6 @@ body.nav-drawer-open {
     -ms-flex-item-align: center;
         -ms-grid-row-align: center;
         align-self: center;
-  }
-}
-
-@media (min-width: 701px) and (max-width: 768px) {
-  /* Cases: keep visual and info blocks same full width */
-
-  .cases-section .comparison-container,
-  .cases-section .cases-text-block,
-  .cases-section .cases-cards-grid {
-    width: 100%;
-    max-width: none;
-    margin-left: 0;
-    margin-right: 0;
   }
 }
 
