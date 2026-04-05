@@ -540,79 +540,42 @@
 		font-size: 1.125rem;
 	}
 
-	&::before {
-		width: 1.125rem;
-		height: 1.125rem;
-		flex-shrink: 0;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		order: 1;
-		transition: transform 0.3s ease;
+
+
+
+	&.btn-white-solid {
+		background: #ffffff;
+		color: #31708e;
+		border: none;
+		box-shadow: 0 0.625rem 1.5625rem rgba(0, 0, 0, 0.1);
+		transition: all 0.3s ease;
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: #f4f6f8;
+				color: #1f4b62;
+				transform: translateY(-0.125rem);
+				box-shadow: 0 0.9375rem 1.875rem rgba(0, 0, 0, 0.15);
+			}
+		}
 	}
 
-
-
-	&.btn-primary {
-		border-color: #B1DF1D;
-		background: #B1DF1D;
-		color: #262624;
-
-		&:hover {
-			background: color.adjust($color: #B1DF1D, $lightness: -10%);
-			border-color: color.adjust($color: #B1DF1D, $lightness: -10%);
-		}
-
-		&:active {
-			background: color.adjust($color: #B1DF1D, $lightness: -20%);
-			border-color: color.adjust($color: #B1DF1D, $lightness: -20%);
-		}
-
-	}
-
-	&.btn-primary-outline {
-		border-color: #B1DF1D;
-		background: rgba($color: #222222, $alpha: 0.50);
-		color: #fff;
-
-		&:hover {
-			border-color: #B1DF1D;
-			background: #B1DF1D;
-			color: #262624;
-		}
-
-		&:active {
-			background: color.adjust($color: #B1DF1D, $lightness: -10%);
-			border-color: color.adjust($color: #B1DF1D, $lightness: -10%);
-			color: #262624;
-		}
-
-	}
-
-	&.btn-secondary {
-		border-color: #B1DF1D;
+	&.btn-outline-white {
 		background: transparent;
-		color: #262624;
+		border: 0.0625rem solid rgba(255, 255, 255, 0.4);
+		color: #ffffff;
+		transition: all 0.3s ease;
 
-		&:hover {
-			border-color: #B1DF1D;
-			background: #B1DF1D;
-			color: #262624;
-		}
-
-		&:active {
-			background: color.adjust($color: #B1DF1D, $lightness: -10%);
-			border-color: color.adjust($color: #B1DF1D, $lightness: -10%);
-			color: #262624;
-		}
-
-	}
-
-	&.btn-sm {
-		@media (min-width: $md4) {
-			padding: rem(15) rem(22);
+		@media (any-hover: hover) {
+			&:hover {
+				background: rgba(255, 255, 255, 0.1);
+				border-color: #ffffff;
+				color: #ffffff;
+				transform: translateY(-0.125rem);
+			}
 		}
 	}
+
 
 	&:disabled,
 	&[aria-disabled="true"] {

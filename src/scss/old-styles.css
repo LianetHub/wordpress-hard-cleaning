@@ -221,10 +221,6 @@ body {
         line-height: 1.25;
     }
 
-    .final-cta-new {
-        padding: 48px 0;
-    }
-
     .reviews-header {
         margin-bottom: clamp(40px, 6vw, 56px);
     }
@@ -317,9 +313,7 @@ p {
     background: var(--grad-main);
 }
 
-.bg-grad-soft {
-    background: var(--grad-soft);
-}
+
 
 .btn-sm {
     padding: 10px 20px;
@@ -2749,168 +2743,8 @@ body.nav-drawer-open {
 /* =========================================
    FINAL CTA SECTION (CENTERED)
    ========================================= */
-.final-cta-new {
-    padding: 60px 0;
-    position: relative;
-    overflow: hidden;
-    /* Фон берется из твоего класса bg-grad-soft или переменной --color-blue-primary */
-    background: #31708E;
-    /* Укажи точный цвет из макета, если он отличается */
-}
 
-.cta-centered-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    max-width: 800px;
-    margin: 0 auto;
-}
 
-.cta-centered-content h2 {
-    color: #ffffff;
-    font-family: 'Unbounded', sans-serif;
-    /* Или Manrope, в зависимости от UI-кита */
-    font-size: var(--fs-section-h2);
-    line-height: 1.2;
-    font-weight: 700;
-    margin-bottom: 15px;
-    font-variant: normal;
-}
-
-.cta-centered-content p {
-    color: rgba(255, 255, 255, 0.7);
-    /* Полупрозрачный белый как в макете */
-    font-family: 'Manrope', sans-serif;
-    font-size: var(--fs-body);
-    font-weight: 400;
-    margin-bottom: 40px;
-}
-
-/* Контейнер для кнопок */
-.cta-btns-centered {
-    display: flex;
-    gap: 20px;
-    justify-content: center;
-    align-items: center;
-}
-
-/* Белая кнопка с синим текстом */
-.btn-white-solid {
-    background: #ffffff;
-    color: #31708E;
-    /* Используем цвет фона для текста */
-    border: none;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-}
-
-.btn-white-solid:hover {
-    background: #f4f6f8;
-    color: #1F4B62;
-    /* Твой градиентный темный цвет */
-    transform: translateY(-2px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-}
-
-/* Прозрачная кнопка с белой обводкой */
-.btn-outline-white {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.4);
-    color: #ffffff;
-}
-
-.btn-outline-white:hover {
-    background: rgba(255, 255, 255, 0.1);
-    border-color: #ffffff;
-    color: #ffffff;
-    transform: translateY(-2px);
-}
-
-/* Адаптивность для мобильных */
-@media (max-width: 768px) {
-    .final-cta-new {
-        padding: 60px 0;
-    }
-
-    .cta-btns-centered {
-        flex-direction: column;
-        width: 100%;
-        gap: 15px;
-    }
-
-    .cta-btns-centered .btn {
-        width: 100%;
-        justify-content: center;
-    }
-}
-
-@media (max-width: 700px) {
-    .final-cta-new {
-        background: #2B637F;
-        padding: 14px 0 16px;
-    }
-
-    .final-cta-new>.container {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    .cta-centered-content {
-        max-width: none;
-        gap: 8px;
-    }
-
-    .final-cta-new .cta-centered-content h2 {
-        margin: 0;
-        font-size: var(--fs-section-h2);
-        line-height: 1.2;
-        font-weight: 700;
-        text-align: center;
-    }
-
-    .final-cta-new .cta-centered-content p {
-        margin: 0 0 4px;
-        font-size: var(--fs-body);
-        line-height: 1.45;
-        letter-spacing: 0.03em;
-        text-align: center;
-        color: #D7D7D7;
-    }
-
-    .cta-btns-centered {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-    }
-
-    .cta-btns-centered .btn {
-        width: auto;
-        flex: 1 1 0;
-        max-width: clamp(140px, 44vw, 220px);
-        min-height: 29px;
-        height: auto;
-        padding: 9px 12px;
-        border-radius: 142px;
-        font-size: var(--fs-button);
-        line-height: 1.3;
-        letter-spacing: 0.03em;
-        white-space: nowrap;
-        justify-content: center;
-        text-align: center;
-    }
-
-    .cta-btns-centered .btn-white-solid {
-        flex-grow: 1;
-    }
-
-    .cta-btns-centered .btn-outline-white {
-        flex-grow: 1;
-        border-color: #6796AC;
-    }
-}
 
 
 /* =========================================

@@ -4,10 +4,40 @@
  * Theme functions and definitions
  */
 
+require_once('includes/admin-custom.php');
+require_once('includes/acf-custom.php');
+
+// =========================================================================
+// 1. CONSTANTS & ENV CONFIG
+// =========================================================================
+
 define('TEMPLATE_PATH', dirname(__FILE__) . '/templates/');
 
 
+// =========================================================================
+// 2. THEME SETUP & SUPPORT
+// =========================================================================
 
+add_theme_support('title-tag');
+
+add_action('after_setup_theme', function () {
+    add_theme_support('post-thumbnails');
+});
+
+add_theme_support('custom-logo', [
+    'height'      => 81,
+    'width'       => 168,
+    'flex-width'  => true,
+    'flex-height' => true,
+]);
+
+function together_theme_setup()
+{
+    register_nav_menus([
+        'header_menu'   => 'Меню в шапке',
+    ]);
+}
+add_action('after_setup_theme', 'together_theme_setup');
 
 
 

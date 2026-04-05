@@ -40,15 +40,15 @@ class Wptuts_Simple_Admin
 		echo "
         <style>
             #toplevel_page_theme-general-settings .wp-menu-name { 
-                background: #B1DF1D !important; 
-                color: #272727 !important; 
+                background: #467E9E !important; 
+                color: #ffffff !important; 
                 font-weight: 600;
             }
 			#toplevel_page_theme-general-settings .wp-menu-image::before {
-				color: #272727 !important; 
+				color: #ffffff !important; 
 			}
             #toplevel_page_theme-general-settings:hover .wp-menu-name { 
-                background: #99c218 !important; 
+                background: #1F4B62 !important; 
             }
            
         </style>";
@@ -59,17 +59,17 @@ class Wptuts_Simple_Admin
 		echo '
         <style type="text/css">
             body.login {
-                background-color: #272727 !important;
+                background-color: #fff !important;
             }
             .login h1 a {
-                background: url(' . get_template_directory_uri() . '/assets/img/logo.svg) transparent center no-repeat !important;
+                background: url(' . get_template_directory_uri() . '/assets/img/logo.svg) #ffffff center no-repeat !important;
                 background-size: contain !important;
                 width: 100% !important;
-                height: 100px !important;
+                height: 320px !important;
                 margin-bottom: 20px !important;
             }
             .login #loginform {
-                background: #333333 !important;
+                background: linear-gradient(150deg, #306E8C 3.77%, #1F4B62 153.22%) !important;
                 border: none !important;
                 color: #ffffff !important;
             }
@@ -77,16 +77,18 @@ class Wptuts_Simple_Admin
                 color: #ffffff !important;
             }
             .wp-core-ui .button-primary {
-                background: #B1DF1D !important;
-                border-color: #B1DF1D !important;
-                color: #272727 !important;
+                background: #FFF !important;
+                border-color: #FFF !important;
+                color: #4A81A0 !important;
                 text-shadow: none !important;
                 box-shadow: none !important;
                 font-weight: 700 !important;
+				box-shadow: 0 6px 10px 0 rgba(255, 255, 255, 0.10) !important;
             }
             .wp-core-ui .button-primary:hover {
-                background: #99c218 !important;
-                border-color: #99c218 !important;
+                background: #f0f0f0 !important;
+                border-color: #f0f0f0 !important;
+                box-shadow: 0 8px 15px 0 rgba(255, 255, 255, 0.20) !important;
             }
         </style>';
 	}
