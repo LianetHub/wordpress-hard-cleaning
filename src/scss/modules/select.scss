@@ -175,7 +175,7 @@ select.select {
 
 			&::before {
 				order: 1;
-				@extend %ic, .icon-check;
+				// @extend %ic, .icon-check;
 				width: 1.125rem;
 				height: 1.125rem;
 				flex-shrink: 0;

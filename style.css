@@ -57,7 +57,8 @@ Author: Antigravity
     --bp-tablet: 1024px;
     --bp-mobile: 640px;
     --container-max: 1440px;
-    --desktop-margin: 135px; /* верхняя граница боковых полей на широком десктопе */
+    --desktop-margin: 135px;
+    /* верхняя граница боковых полей на широком десктопе */
     --desktop-gap: 30px;
     --mobile-margin: 16px;
     --mobile-gap: 16px;
@@ -137,6 +138,7 @@ Author: Antigravity
 }
 
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -693,6 +695,7 @@ body.nav-drawer-open {
 
 /* До 768px: читаемые размеры; микро-типографика только ≤480px (узкие телефоны) */
 @media (max-width: 768px) {
+
     /* Страховка от горизонтального скролла на мобильных */
     html,
     body {
@@ -760,7 +763,7 @@ body.nav-drawer-open {
         line-height: 1.2;
         letter-spacing: 0.02em;
         font-variant: normal;
-        font-feature-settings: 'pnum' on, 'lnum' on;
+        font-feature-settings: 'pnum'on, 'lnum'on;
         white-space: nowrap;
     }
 
@@ -1303,7 +1306,7 @@ body.nav-drawer-open {
 
 /* Hero «мобильный» макет и композиция: один диапазон с сеткой ≤1024px (без скачка на 769px) */
 @media (max-width: 1024px) {
-    .hero-special > .container.hero-special-container {
+    .hero-special>.container.hero-special-container {
         padding-left: max(16px, env(safe-area-inset-left, 0px));
         padding-right: max(16px, env(safe-area-inset-right, 0px));
     }
@@ -1444,7 +1447,7 @@ body.nav-drawer-open {
 
 /* Узкий планшет 641–768: только кнопки hero (композиция — общий блок ≤1024) */
 @media (min-width: 641px) and (max-width: 768px) {
-    .hero-special > .container.hero-special-container {
+    .hero-special>.container.hero-special-container {
         padding-left: 20px;
         padding-right: 20px;
     }
@@ -1579,7 +1582,7 @@ body.nav-drawer-open {
         border-radius: 142px;
     }
 
-    .hero-special > .container.hero-special-container {
+    .hero-special>.container.hero-special-container {
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -1664,7 +1667,7 @@ body.nav-drawer-open {
         padding: 2px 0;
     }
 
-    .hero-special > .container.hero-special-container {
+    .hero-special>.container.hero-special-container {
         padding-left: 10px;
         padding-right: 10px;
     }
@@ -1721,7 +1724,7 @@ body.nav-drawer-open {
     font-size: var(--fs-section-h2);
     font-weight: 700;
     line-height: 1.25;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    font-feature-settings: 'pnum'on, 'lnum'on;
     color: var(--color-dark);
 }
 
@@ -1804,7 +1807,7 @@ body.nav-drawer-open {
     font-size: clamp(20px, 2.1vw, 26px);
     line-height: 1.4;
     color: #272727;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    font-feature-settings: 'pnum'on, 'lnum'on;
 }
 
 .scenario-card__rule {
@@ -2049,7 +2052,7 @@ body.nav-drawer-open {
 
 /* Телефон: одна колонка сетки, компактная горизонтальная карточка (макет ~360px) */
 @media (max-width: 640px) {
-    .scenarios-section > .container {
+    .scenarios-section>.container {
         /* Меньше боковые отступы — карточка визуально шире */
         padding-left: clamp(10px, 3vw, 14px);
         padding-right: clamp(10px, 3vw, 14px);
@@ -2847,7 +2850,7 @@ body.nav-drawer-open {
         padding: 14px 0 16px;
     }
 
-    .final-cta-new > .container {
+    .final-cta-new>.container {
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -3201,6 +3204,7 @@ body.nav-drawer-open {
 
 /* Одна колонка футера только на узком экране (2 колонки 641–768 сохраняем) */
 @media (max-width: 640px) {
+
     .f-top-grid,
     .f-mid-grid {
         grid-template-columns: 1fr;
@@ -3286,7 +3290,7 @@ body.nav-drawer-open {
         gap: 30px 14px;
     }
 
-    .f-mid-grid > .f-col:first-child {
+    .f-mid-grid>.f-col:first-child {
         grid-column: 1 / -1;
     }
 
@@ -3328,23 +3332,34 @@ body.nav-drawer-open {
         min-height: 22px;
     }
 
-    .f-mid-grid > .f-col:nth-child(2),
-    .f-mid-grid > .f-col:nth-child(3) {
+    .f-mid-grid>.f-col:nth-child(2),
+    .f-mid-grid>.f-col:nth-child(3) {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         justify-content: flex-start;
     }
 
-    .f-payments > svg:nth-child(1) { width: 27px; height: 8px; }
-    .f-payments > svg:nth-child(2) { width: 27px; height: 20px; }
-    .f-payments > svg:nth-child(3) { width: 22px; height: 22px; }
+    .f-payments>svg:nth-child(1) {
+        width: 27px;
+        height: 8px;
+    }
 
-    .f-mid-grid > .f-col:nth-child(2) .mt-40 {
+    .f-payments>svg:nth-child(2) {
+        width: 27px;
+        height: 20px;
+    }
+
+    .f-payments>svg:nth-child(3) {
+        width: 22px;
+        height: 22px;
+    }
+
+    .f-mid-grid>.f-col:nth-child(2) .mt-40 {
         margin-top: 10px;
     }
 
-    .f-mid-grid > .f-col:nth-child(3) .mt-40 {
+    .f-mid-grid>.f-col:nth-child(3) .mt-40 {
         margin-top: 4px;
     }
 
@@ -3354,15 +3369,15 @@ body.nav-drawer-open {
         gap: 30px 10px;
     }
 
-    .f-top-grid > .f-col:nth-child(1) {
+    .f-top-grid>.f-col:nth-child(1) {
         order: 3;
     }
 
-    .f-top-grid > .f-col:nth-child(2) {
+    .f-top-grid>.f-col:nth-child(2) {
         order: 4;
     }
 
-    .f-top-grid > .f-col:nth-child(3) {
+    .f-top-grid>.f-col:nth-child(3) {
         order: 2;
         grid-column: 2 / 3;
         align-self: start;
@@ -3371,7 +3386,7 @@ body.nav-drawer-open {
         padding-left: 0;
     }
 
-    .f-top-grid > .f-col:nth-child(4) {
+    .f-top-grid>.f-col:nth-child(4) {
         order: 1;
         grid-column: 1 / 2;
         align-self: start;
@@ -3654,10 +3669,8 @@ body.nav-drawer-open {
         /* Точную высоту выставляет trust-slider.js; до загрузки скрипта — запас по контенту */
         min-height: 220px;
         width: 100%;
-        max-width: min(
-            100%,
-            max(0px, calc(0.757 * (min(734px, 100%) - 2 * clamp(6px, 2.5vw, 14px))))
-        );
+        max-width: min(100%,
+                max(0px, calc(0.757 * (min(734px, 100%) - 2 * clamp(6px, 2.5vw, 14px)))));
     }
 
     .trust-grid.js-trust-slider .trust-card {
@@ -3750,7 +3763,7 @@ body.nav-drawer-open {
         font-size: clamp(12px, 1.65vw, 14px);
         line-height: 1.18;
         letter-spacing: 0.02em;
-        font-feature-settings: 'pnum' on, 'lnum' on;
+        font-feature-settings: 'pnum'on, 'lnum'on;
         max-width: 100%;
     }
 
@@ -3868,7 +3881,7 @@ body.nav-drawer-open {
     line-height: 1.22;
     color: #F8FAFB;
     margin: 0;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    font-feature-settings: 'pnum'on, 'lnum'on;
 }
 
 .text-light-blue {
@@ -3999,13 +4012,9 @@ body.nav-drawer-open {
 /* Десктоп: 4 слайда + 3 gap помещаются в ширину трека (100cqi) */
 @media (min-width: 1025px) {
     .process-carousel-track .p-step-slide {
-        width: min(
-            300px,
-            max(
-                210px,
-                calc((100cqi - 3 * var(--process-carousel-gap, clamp(20px, calc(100vw * 60 / 1920), 60px))) / 4)
-            )
-        );
+        width: min(300px,
+                max(210px,
+                    calc((100cqi - 3 * var(--process-carousel-gap, clamp(20px, calc(100vw * 60 / 1920), 60px))) / 4)));
     }
 }
 
@@ -4016,18 +4025,9 @@ body.nav-drawer-open {
 
     @media (min-width: 1025px) {
         .process-carousel-track .p-step-slide {
-            width: min(
-                300px,
-                max(
-                    210px,
-                    calc(
-                        (
-                            100vw - 2 * max(20px, calc((100vw - min(100vw, var(--container-max))) / 2)) -
-                                3 * var(--process-carousel-gap, clamp(20px, calc(100vw * 60 / 1920), 60px))
-                        ) / 4
-                    )
-                )
-            );
+            width: min(300px,
+                    max(210px,
+                        calc((100vw - 2 * max(20px, calc((100vw - min(100vw, var(--container-max))) / 2)) - 3 * var(--process-carousel-gap, clamp(20px, calc(100vw * 60 / 1920), 60px))) / 4)));
         }
     }
 }
@@ -4075,7 +4075,7 @@ body.nav-drawer-open {
     letter-spacing: 0.02em;
     color: #f8fafb;
     margin: 0 0 10px;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    font-feature-settings: 'pnum'on, 'lnum'on;
 }
 
 .p-step-desc {
@@ -4339,7 +4339,7 @@ body.nav-drawer-open {
 }
 
 /* Акцентная карточка должна сжиматься в пределах колонки */
-.pricing-grid-new > .price-card-special {
+.pricing-grid-new>.price-card-special {
     min-width: 0;
     width: 100%;
 }
@@ -4488,7 +4488,7 @@ body.nav-drawer-open {
     line-height: var(--stat-num-line);
     color: #fff;
     font-variant-numeric: lining-nums proportional-nums;
-    font-feature-settings: "lnum" on, "pnum" on;
+    font-feature-settings: "lnum"on, "pnum"on;
 }
 
 .price-card-special .title-big__num {
@@ -4523,10 +4523,10 @@ body.nav-drawer-open {
     line-height: var(--stat-num-line);
     color: #fff;
     font-variant-numeric: lining-nums proportional-nums;
-    font-feature-settings: "lnum" on, "pnum" on, "tnum" on;
+    font-feature-settings: "lnum"on, "pnum"on, "tnum"on;
 }
 
-.price-card-special .title-small > * {
+.price-card-special .title-small>* {
     flex-shrink: 0;
 }
 
@@ -4545,7 +4545,7 @@ body.nav-drawer-open {
     font-size: 1em;
     line-height: var(--stat-num-line);
     font-variant-numeric: lining-nums tabular-nums;
-    font-feature-settings: "lnum" on, "tnum" on;
+    font-feature-settings: "lnum"on, "tnum"on;
 }
 
 .price-card-special .title-small__currency {
@@ -4616,11 +4616,11 @@ body.nav-drawer-open {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .pricing-grid-new > * {
+    .pricing-grid-new>* {
         min-width: 0;
     }
 
-    .pricing-grid-new > .price-card-special {
+    .pricing-grid-new>.price-card-special {
         min-width: 0;
     }
 
@@ -4634,15 +4634,15 @@ body.nav-drawer-open {
         align-items: stretch;
     }
 
-    .pricing-grid-new > * {
+    .pricing-grid-new>* {
         min-width: 0;
     }
 
-    .pricing-grid-new > .price-card-regular {
+    .pricing-grid-new>.price-card-regular {
         display: flex;
     }
 
-    .pricing-grid-new > .price-card-special {
+    .pricing-grid-new>.price-card-special {
         min-width: 0;
         width: 100%;
         max-width: none;
@@ -4763,29 +4763,29 @@ body.nav-drawer-open {
         align-items: stretch;
     }
 
-    .pricing-grid-new > .price-card-regular {
+    .pricing-grid-new>.price-card-regular {
         display: none;
     }
 
-    .pricing-grid-new > .price-card-regular:nth-of-type(4),
-    .pricing-grid-new > .price-card-regular:nth-of-type(5),
-    .pricing-grid-new > .price-card-regular:nth-of-type(3) {
+    .pricing-grid-new>.price-card-regular:nth-of-type(4),
+    .pricing-grid-new>.price-card-regular:nth-of-type(5),
+    .pricing-grid-new>.price-card-regular:nth-of-type(3) {
         display: flex;
     }
 
-    .pricing-grid-new > .price-card-regular:nth-of-type(4) {
+    .pricing-grid-new>.price-card-regular:nth-of-type(4) {
         order: 1;
     }
 
-    .pricing-grid-new > .price-card-regular:nth-of-type(5) {
+    .pricing-grid-new>.price-card-regular:nth-of-type(5) {
         order: 2;
     }
 
-    .pricing-grid-new > .price-card-regular:nth-of-type(3) {
+    .pricing-grid-new>.price-card-regular:nth-of-type(3) {
         order: 3;
     }
 
-    .pricing-grid-new > .price-card-special {
+    .pricing-grid-new>.price-card-special {
         order: 4;
     }
 
@@ -6123,7 +6123,7 @@ body.nav-drawer-open {
     line-height: 1.25;
     color: var(--color-dark);
     margin: 0;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    font-feature-settings: 'pnum'on, 'lnum'on;
 }
 
 .equipment-title .text-blue {
@@ -6233,7 +6233,7 @@ body.nav-drawer-open {
     line-height: 1.35;
     color: var(--color-dark);
     margin: 0;
-    font-feature-settings: 'pnum' on, 'lnum' on;
+    font-feature-settings: 'pnum'on, 'lnum'on;
 }
 
 .equip-card-content p {
@@ -6289,7 +6289,7 @@ body.nav-drawer-open {
         padding: 0;
     }
 
-    .equipment-section > .container {
+    .equipment-section>.container {
         display: flex;
         flex-direction: column;
         padding: 16px clamp(16px, 4.4vw, 32px);
@@ -6695,7 +6695,7 @@ body.nav-drawer-open {
         padding: 16px 0;
     }
 
-    .coverage-section > .container {
+    .coverage-section>.container {
         display: flex;
         flex-direction: column;
         gap: 12px;
@@ -7193,7 +7193,7 @@ body.nav-drawer-open {
     letter-spacing: 0.02em;
     color: #FFFFFF;
     font-variant-numeric: lining-nums proportional-nums;
-    font-feature-settings: 'lnum' on, 'pnum' on;
+    font-feature-settings: 'lnum'on, 'pnum'on;
     margin: 0 0 10px 0;
 }
 
@@ -7496,7 +7496,7 @@ body.nav-drawer-open {
         padding: 16px 0;
     }
 
-    .faq-section > .container {
+    .faq-section>.container {
         padding-left: 16px;
         padding-right: 16px;
     }
@@ -7635,12 +7635,12 @@ body.nav-drawer-open {
         padding-right: max(8px, 2.5vw);
     }
 
-    .scenarios-section > .container {
+    .scenarios-section>.container {
         padding-left: max(8px, 2.5vw);
         padding-right: max(8px, 2.5vw);
     }
 
-    .hero-special > .container.hero-special-container {
+    .hero-special>.container.hero-special-container {
         padding-left: max(8px, 2.5vw);
         padding-right: max(8px, 2.5vw);
     }
@@ -7681,16 +7681,16 @@ body.nav-drawer-open {
         overflow-x: clip;
     }
 
-    .hero-special > .container.hero-special-container,
-    .trust-features-section > .container,
-    .scenarios-section > .container,
-    .pricing-section-new > .container,
-    .cases-section > .container,
-    .reviews-section-new > .container,
-    .equipment-section > .container,
-    .guarantees-section > .container,
-    .coverage-section > .container,
-    .faq-section > .container,
+    .hero-special>.container.hero-special-container,
+    .trust-features-section>.container,
+    .scenarios-section>.container,
+    .pricing-section-new>.container,
+    .cases-section>.container,
+    .reviews-section-new>.container,
+    .equipment-section>.container,
+    .guarantees-section>.container,
+    .coverage-section>.container,
+    .faq-section>.container,
     .process-section-new .container.process-container-inner {
         padding-left: var(--m-side);
         padding-right: var(--m-side);
@@ -7954,6 +7954,7 @@ body.nav-drawer-open {
 }
 
 @media (min-width: 701px) and (max-width: 768px) {
+
     /* Cases: keep visual and info blocks same full width */
     .cases-section .comparison-container,
     .cases-section .cases-text-block,
@@ -7972,7 +7973,7 @@ body.nav-drawer-open {
         overflow: hidden;
     }
 
-    .reviews-section-new > .container {
+    .reviews-section-new>.container {
         display: flex;
         flex-direction: column;
         padding-left: clamp(16px, 4.4vw, 32px);
@@ -8157,6 +8158,7 @@ body.nav-drawer-open {
    GLOBAL MOBILE FONT SIZES (<=768) — uses --fs-* tokens
    ========================================= */
 @media (max-width: 768px) {
+
     .trust-header .trust-subtitle,
     .process-section-new .p-subtitle,
     .process-section-new .p-step-desc,
@@ -8327,6 +8329,7 @@ body.nav-drawer-open {
 }
 
 @media (max-width: 480px) {
+
     .price-card-special .btn-price-solid,
     .btn-price-outline,
     .btn-footer {

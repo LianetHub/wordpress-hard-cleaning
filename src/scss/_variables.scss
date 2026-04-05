@@ -4,7 +4,8 @@
 
 // Шрифты
 
-$fontfamily: "Roboto" !default;
+$fontfamily: "Manrope" !default;
+$font-unbounded: "Unbounded" !default;
 
 // Шрифты
 
@@ -22,8 +23,9 @@ $maxWidthContainer: rem(1680); // Максимальная ширина огра
 $containerPadding: 30;
 
 $white: #ffffff;
-$dark: #272727;
-$accent: #B1DF1D;
+$bg: #F8FAFB;
+$dark: #000;
+$accent: #467E9E;
 
 // Z-Index
 $ui-index-1: 1; // Для наполняющих элементов в общем потоке
