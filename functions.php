@@ -1,7 +1,15 @@
 <?php
+
 /**
  * Theme functions and definitions
  */
+
+define('TEMPLATE_PATH', dirname(__FILE__) . '/templates/');
+
+
+
+
+
 
 /**
  * Подключение SVG из assets/svg/{name}.svg с уникализацией id/url(#…)/href="#…" на каждый вывод (без конфликтов на странице).
@@ -10,54 +18,56 @@
  * @param array  $attr Атрибуты корневого тега <svg>, нап. array( 'class' => 'x', 'aria-hidden' => 'true' )
  * @return string
  */
-function cleaning_inline_svg( $name, $attr = array() ) {
-    $base = basename( (string) $name, '.svg' );
+function cleaning_inline_svg($name, $attr = array())
+{
+    $base = basename((string) $name, '.svg');
     $path = get_template_directory() . '/assets/svg/' . $base . '.svg';
-    if ( ! is_readable( $path ) ) {
+    if (! is_readable($path)) {
         return '';
     }
-    $svg = file_get_contents( $path );
-    if ( false === $svg ) {
+    $svg = file_get_contents($path);
+    if (false === $svg) {
         return '';
     }
-    $svg = preg_replace( "/\r\n|\r/", "\n", $svg );
-    $svg = trim( $svg );
+    $svg = preg_replace("/\r\n|\r/", "\n", $svg);
+    $svg = trim($svg);
 
-    $sid = wp_unique_id( 'i' );
+    $sid = wp_unique_id('i');
     $svg = preg_replace_callback(
         '/\bid="([^"]+)"/',
-        static function ( $m ) use ( $sid ) {
-            return 'id="' . esc_attr( $m[1] . '-' . $sid ) . '"';
+        static function ($m) use ($sid) {
+            return 'id="' . esc_attr($m[1] . '-' . $sid) . '"';
         },
         $svg
     );
     $svg = preg_replace_callback(
         '/url\(\s*#([^)]+)\s*\)/',
-        static function ( $m ) use ( $sid ) {
+        static function ($m) use ($sid) {
             return 'url(#' . $m[1] . '-' . $sid . ')';
         },
         $svg
     );
     $svg = preg_replace_callback(
         '/href="#([^"]+)"/',
-        static function ( $m ) use ( $sid ) {
+        static function ($m) use ($sid) {
             return 'href="#' . $m[1] . '-' . $sid . '"';
         },
         $svg
     );
 
-    if ( ! empty( $attr ) && is_array( $attr ) ) {
+    if (! empty($attr) && is_array($attr)) {
         $inject = '';
-        foreach ( $attr as $k => $v ) {
-            $inject .= ' ' . esc_attr( $k ) . '="' . esc_attr( is_bool( $v ) ? ( $v ? 'true' : 'false' ) : (string) $v ) . '"';
+        foreach ($attr as $k => $v) {
+            $inject .= ' ' . esc_attr($k) . '="' . esc_attr(is_bool($v) ? ($v ? 'true' : 'false') : (string) $v) . '"';
         }
-        $svg = preg_replace( '/<svg\s/i', '<svg' . $inject . ' ', $svg, 1 );
+        $svg = preg_replace('/<svg\s/i', '<svg' . $inject . ' ', $svg, 1);
     }
 
     return $svg;
 }
 
-function cleaning_theme_setup() {
+function cleaning_theme_setup()
+{
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
     register_nav_menus(array(
@@ -66,7 +76,8 @@ function cleaning_theme_setup() {
 }
 add_action('after_setup_theme', 'cleaning_theme_setup');
 
-function cleaning_theme_scripts() {
+function cleaning_theme_scripts()
+{
     $style_path = get_template_directory() . '/style.css';
     wp_enqueue_style(
         'cleaning-style',

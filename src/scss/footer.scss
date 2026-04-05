@@ -5,350 +5,562 @@
 @use "fonts";
 @use "icons";
 
-.footer {
-	background: #0C0C0C;
-	color: #E0E0E0;
-	padding: 1.88rem 0 .875rem;
+.site-footer {
+	/* Цвет фона из макета (темно-серый) */
+	background: #393A3E;
+	color: #fff;
+	font-family: 'Manrope', sans-serif;
+}
 
-	@media (min-width:$md4) {
-		padding: 2.19rem 0;
-
-	}
-
-	// .footer__header
-	&__header {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		gap: 1.5rem;
-
-		@media (min-width:$md2) {
-			display: flex;
-			justify-content: space-between;
-
-		}
-	}
-
-	// .footer__column
-	&__column {
+@media (max-width: 700px) {
+	.site-footer {
 		display: flex;
 		flex-direction: column;
-		grid-column: span 2;
+		background: #3F3F3F;
+	}
+}
 
-		@media (min-width:$md3) {
-			grid-column: auto;
-		}
+@media (max-width: 768px) {
 
-		&.footer__column--main {
-			align-items: center;
+	.site-footer .f-list a,
+	.site-footer .f-text-block p,
+	.site-footer .f-cta-col p,
+	.site-footer .f-contacts-list a,
+	.site-footer .f-contacts-list span,
+	.site-footer .f-bot-flex p {
+		font-size: var(--fs-body);
+		line-height: 1.5;
+	}
+}
 
-			@media (min-width:$md3) {
-				align-items: flex-start;
-			}
-		}
+@media (max-width: 768px) {
+	.site-footer .f-col h4 {
+		font-size: var(--fs-ui);
+		line-height: 1.25;
+	}
+}
 
-		&.footer__column--menu {
-			order: 1;
-			grid-column: auto;
 
-			@media (min-width:$md2) {
-				order: 0;
-			}
-		}
+/* 1. ВЕРХНИЙ БЛОК */
+.footer-top {
+	padding: 70px 0;
+	border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+	/* Тонкая линия разделитель */
+}
 
-		&.footer__column--contacts {
-			flex-direction: row-reverse;
-			justify-content: space-between;
-			gap: rem(10);
 
-			@media (min-width:$md5) {
-				gap: rem(40);
 
-			}
+/* Общие стили для колонок (Заголовки из Figma) */
+.f-col h4 {
+	font-family: 'Manrope', sans-serif;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 1;
+	/* 100% из макета */
+	color: #FFFFFF;
+	margin-bottom: 25px;
+	letter-spacing: 0;
+	font-variant-numeric: lining-nums;
+}
 
-			@media (min-width:$md3) {
-				flex-direction: column;
-			}
+/* Текст под заголовками (из Figma) */
+.f-list a,
+.f-text-block p,
+.f-contacts-list span,
+.f-contacts-list a,
+.f-cta-col p {
+	font-family: 'Manrope', sans-serif;
+	font-weight: 300;
+	font-size: 16px;
+	line-height: 1.4;
+	/* Оставил 1.4, чтобы многострочные тексты не слипались */
+	letter-spacing: 0.03em;
+	/* 3% из макета */
+	font-variant-numeric: proportional-nums;
+	color: #8C8D91;
+	/* Серый цвет текста из макета */
+	text-decoration: none;
+	transition: color 0.3s ease;
+}
 
-		}
+/* Ховер для ссылок */
+.f-list a:hover,
+.f-contacts-list a:hover {
+	color: #FFFFFF;
+	/* При наведении делаем белым */
+}
+
+/* Списки ссылок */
+.f-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.f-list li {
+	margin-bottom: 16px;
+	/* Чуть увеличил отступ под новый размер текста */
+}
+
+.f-top-grid {
+	display: grid;
+	/* 4 колонки: первые три одинаковые, четвертая чуть шире под текст и кнопки */
+	grid-template-columns: 1fr 1fr 1fr 1.3fr;
+	gap: 40px;
+}
+
+.f-cta-col p {
+	margin-bottom: 25px;
+}
+
+.f-btns {
+	display: flex;
+	gap: 15px;
+	flex-wrap: wrap;
+}
+
+/* Кастомные размеры кнопок для футера (чтобы не были огромными) */
+.btn-footer {
+	padding: 12px 24px;
+	font-size: 14px;
+}
+
+/* Белая контурная кнопка */
+.btn-outline-white {
+	background: transparent;
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	color: #FFFFFF;
+	border-radius: var(--radius-pill);
+}
+
+.btn-outline-white:hover {
+	background: rgba(255, 255, 255, 0.1);
+	border-color: #FFFFFF;
+	color: #FFFFFF;
+}
+
+/* 2. СРЕДНИЙ БЛОК */
+.footer-middle {
+	padding: 60px 0;
+	background: #393A3E;
+	/* Тот же фон */
+}
+
+.f-mid-grid {
+	display: grid;
+	grid-template-columns: 1.2fr 1fr 1fr;
+	gap: 60px;
+}
+
+.f-text-block p {
+	margin-bottom: 20px;
+}
+
+.f-requisites {
+	margin-top: 20px;
+}
+
+/* Социальные кружки */
+.f-socials-circles {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+
+@media (max-width: 1200px) {
+	.f-top-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 50px;
 	}
 
-	// .footer__contacts
-	&__contacts {
+	.f-mid-grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 50px;
+	}
+}
 
+/* Планшет: навигация и CTA на всю ширину под двумя колонками услуг */
+@media (max-width: 1024px) and (min-width: 769px) {
+	.f-top-grid {
+		gap: 40px;
+	}
+
+	.f-top-grid .f-col:nth-child(3) {
+		grid-column: 1 / -1;
+	}
+
+	.f-top-grid .f-cta-col {
+		grid-column: 1 / -1;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.footer-top,
+	.footer-middle {
+		padding: 40px 0;
+	}
+
+	.f-bot-flex {
+		flex-direction: column;
+		text-align: center;
+		gap: 20px;
+	}
+
+	.f-bot-flex p br,
+	.f-cta-col p br {
+		display: none;
+		/* Убираем переносы строк на мобилках */
+	}
+}
+
+/* Одна колонка футера только на узком экране (2 колонки 641–768 сохраняем) */
+@media (max-width: 640px) {
+
+	.f-top-grid,
+	.f-mid-grid {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+}
+
+@media (max-width: 700px) {
+
+
+	.footer-middle {
+		order: 1;
+		background: #3F3F3F;
+		padding: 20px 0 24px;
+	}
+
+	.footer-top {
+		order: 2;
+		background: #363636;
+		padding: 30px 0;
+		border-bottom: 0;
+	}
+
+	.footer-bottom {
+		order: 3;
+		background: #3F3F3F;
+		padding: 22px 0;
+	}
+
+	.footer-top .container,
+	.footer-middle .container,
+	.footer-bottom .container {
+		padding-left: 16px;
+		padding-right: 16px;
+	}
+
+	.f-col h4 {
+		margin: 0 0 10px;
+		font-size: 12px;
+		line-height: 16px;
+	}
+
+	.f-list a,
+	.f-text-block p,
+	.f-contacts-list span,
+	.f-contacts-list a,
+	.f-cta-col p {
+		font-size: 8px;
+		line-height: 11px;
+		letter-spacing: 0.03em;
+		color: #898989;
+	}
+
+	.f-list li {
+		margin-bottom: 5px;
+	}
+
+	.f-list {
 		display: flex;
-		justify-content: space-between;
-		margin-top: 0.875rem;
-		gap: 1rem;
-
-		@media (min-width:$md3) {
-			gap: 1.87rem;
-			margin-top: 0;
-			flex-direction: column;
-		}
+		flex-direction: column;
+		gap: 5px;
 	}
 
-	// .footer__contacts-block
-	&__contacts-block {
-		flex: 0 1 50%;
-
-		@media (min-width:$md3) {
-			flex: 0 1 auto;
-		}
+	.f-list li {
+		margin-bottom: 0;
 	}
 
-	// .footer__phone
-	&__phone {
-		color: #FFF;
-		font-weight: 600;
-		line-height: 112%;
-		white-space: nowrap;
-		letter-spacing: -0.01563rem;
-		transition: color 0.3s ease;
-
-		@media (min-width:$md6) {
-			font-size: 1.125rem;
-		}
-
-		@media (min-width:$md5) {
-			font-size: 1.5625rem;
-		}
-
-		@media (any-hover: hover) {
-			&:hover {
-				color: $accent;
-			}
-		}
+	.f-list a {
+		display: block;
 	}
 
-	// .footer__desc
-	&__desc {
-		color: #8E8E8E;
-
-		font-weight: 500;
-		line-height: math.div(1.125, 0.9375);
-		text-transform: lowercase;
-		margin-top: 0.25rem;
-		font-size: 0.75rem;
-
-		@media (min-width:$md5) {
-			margin-top: 0.875rem;
-			font-size: 0.9375rem;
-
-		}
+	.mt-40 {
+		margin-top: 16px;
 	}
 
-	// .footer__email
-	&__email {
-		color: #FFF;
-		font-weight: 600;
-		line-height: 112%;
-		letter-spacing: -0.01563rem;
-		transition: color 0.3s ease;
-		white-space: nowrap;
-
-		@media (min-width:$md6) {
-			font-size: 1.125rem;
-
-		}
-
-		@media (min-width:$md5) {
-			font-size: 1.5625rem;
-		}
-
-		@media (any-hover: hover) {
-			&:hover {
-				color: $accent;
-			}
-		}
+	/* Top visual block: company + useful/contact columns */
+	.f-mid-grid {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 30px 14px;
 	}
 
-	// .footer__menu
-	&__menu {}
+	.f-mid-grid>.f-col:first-child {
+		grid-column: 1 / -1;
+	}
 
-	// .footer__menu-list
-	&__menu-list {
+	.f-text-block p {
+		margin-bottom: 10px;
+	}
+
+	.f-requisites {
+		margin-top: 0;
+	}
+
+	.f-socials-circles {
+		gap: 20px;
+		align-items: center;
+		width: 115px;
+		min-height: 25px;
+	}
+
+	.soc-circle svg {
+		width: 25px;
+		height: 25px;
+	}
+
+	.f-contacts-list li {
+		gap: 8px;
+		margin-bottom: 5px;
+	}
+
+	.f-contacts-list li svg {
+		width: 8px;
+		height: 12px;
+		margin-top: 0;
+	}
+
+	.f-payments {
+		gap: 15px;
+		align-items: center;
+		width: 106px;
+		min-height: 22px;
+	}
+
+	.f-mid-grid>.f-col:nth-child(2),
+	.f-mid-grid>.f-col:nth-child(3) {
 		display: flex;
 		flex-direction: column;
 		align-items: flex-start;
-		gap: 0.125rem;
-		color: #E0E0E0;
-		font-weight: 600;
-		line-height: 155.556%;
-		font-size: 0.75rem;
-
-		@media (min-width:$md5) {
-			gap: 0.5rem;
-			font-size: 1rem;
-		}
-
-		@media (min-width:$md4) {
-			font-size: 1.125rem;
-
-		}
-
-		& a {
-			transition: color 0.3s ease;
-
-			@media (any-hover: hover) {
-				&:hover {
-					color: $accent;
-				}
-			}
-		}
+		justify-content: flex-start;
 	}
 
-	// .footer__reqs
-	&__reqs {
-		background: #4C4C4C;
+	.f-payments>svg:nth-child(1) {
+		width: 27px;
+		height: 8px;
+	}
+
+	.f-payments>svg:nth-child(2) {
+		width: 27px;
+		height: 20px;
+	}
+
+	.f-payments>svg:nth-child(3) {
+		width: 22px;
+		height: 22px;
+	}
+
+	.f-mid-grid>.f-col:nth-child(2) .mt-40 {
+		margin-top: 10px;
+	}
+
+	.f-mid-grid>.f-col:nth-child(3) .mt-40 {
+		margin-top: 4px;
+	}
+
+	/* Mid visual block: CTA + nav + service columns */
+	.f-top-grid {
+		grid-template-columns: minmax(0, 1fr) max-content;
+		gap: 30px 10px;
+	}
+
+	.f-top-grid>.f-col:nth-child(1) {
+		order: 3;
+	}
+
+	.f-top-grid>.f-col:nth-child(2) {
+		order: 4;
+	}
+
+	.f-top-grid>.f-col:nth-child(3) {
+		order: 2;
+		grid-column: 2 / 3;
+		align-self: start;
+		justify-self: start;
+		text-align: left;
+		padding-left: 0;
+	}
+
+	.f-top-grid>.f-col:nth-child(4) {
+		order: 1;
+		grid-column: 1 / 2;
+		align-self: start;
+		min-width: 0;
+	}
+
+	.f-cta-col p {
+		margin-bottom: 10px;
+		max-width: 196px;
+	}
+
+	.f-btns {
 		display: flex;
-		align-items: center;
-
-		padding: rem(3) rem(3) rem(3) rem(8);
-		border-radius: 0.9375rem;
-		max-width: 11.925rem;
-		gap: 0.25rem;
-
-		@media (min-width:$md5) {
-			gap: 2rem;
-			max-width: 21.125rem;
-		}
-
-		@media (min-width:$md1) {
-			max-width: 24.125rem;
-
-		}
+		flex-wrap: wrap;
+		gap: 10px;
+		width: 100%;
 	}
 
-	// .footer__reqs-icon
-	&__reqs-icon {
-		flex-shrink: 0;
-		width: rem(36);
-
-		@media (min-width:$md5) {
-			width: rem(50);
-
-		}
+	.btn-footer {
+		min-height: 29px;
+		width: auto;
+		padding: 9px 20px;
+		font-size: 8px;
+		line-height: 11px;
+		letter-spacing: 0.03em;
+		border-radius: 142px;
+		justify-content: center;
+		text-align: center;
+		white-space: nowrap;
 	}
 
-	// .footer__reqs-content
-	&__reqs-content {
-		color: #FFF;
-		font-weight: 600;
-		line-height: 112%;
-		font-size: 0.75rem;
-		letter-spacing: 0.03rem;
-
-		@media (min-width:$md5) {
-			font-size: 1.5625rem;
-			letter-spacing: 0.0625rem;
-
-		}
-
+	.btn-footer.btn-primary {
+		box-shadow: 0px 4px 10px rgba(49, 112, 142, 0.4);
 	}
 
-	// .footer__reqs-title
-	&__reqs-title {}
-
-	// .footer__reqs-text
-	&__reqs-text {
-		line-height: 1.5;
-		color: #C0C0C0;
-		text-transform: uppercase;
-		font-size: 0.75rem;
-		letter-spacing: -0.0225rem;
-
-		@media (min-width:$md5) {
-			letter-spacing: -0.0375rem;
-			font-size: 1.25rem;
-
-		}
+	.btn-footer.btn-outline-white {
+		border-color: #5085A5;
+		color: #F8FAFB;
+		padding: 7px 32px;
 	}
 
-	// .footer__socials
-	&__socials {
-		flex-shrink: 0;
+	.f-bot-flex {
+		display: flex;
+		flex-direction: column;
+		text-align: left;
+		gap: 12px;
 	}
 
-	// .footer__socials-title
-	&__socials-title {
-		color: #E0E0E0;
-		font-weight: 600;
-
-		letter-spacing: 0.0425rem;
-		font-size: 0.75rem;
-		letter-spacing: 0.03rem;
-
-		@media (min-width:$md5) {
-			line-height: 1.75rem;
-			font-size: 1.0625rem;
-			letter-spacing: 0.0425rem;
-
-		}
+	.f-bot-flex p {
+		font-size: 8px;
+		line-height: 11px;
+		letter-spacing: 0.03em;
+		color: #898989;
 	}
 
-	// .footer__socials-items
-	&__socials-items {
-		margin-top: 0.625rem;
-		gap: rem(11);
-
-		@media (min-width:$md5) {
-			gap: rem(15);
-			margin-top: 1.19rem;
-
-		}
-
-		@media (min-width:$md3) {
-			.socials__item {
-				width: rem(40);
-				height: rem(40);
-			}
-		}
+	.f-bot-flex p br {
+		display: none;
 	}
-
-	// .footer__policies
-	&__policies {
-		margin-top: rem(60);
-	}
-
-	// .footer__policies-list
-	&__policies-list {
-		display: grid;
-		gap: rem(20);
-
-		@media (min-width:$md3) {
-			grid-template-columns: repeat(2, 1fr);
-		}
-
-		@media (min-width:$md2) {
-			gap: rem(26);
-			grid-template-columns: repeat(3, 1fr);
-
-		}
-
-		& a {
-			text-align: center;
-			border-radius: 3.125rem;
-			background: #2F2F2F;
-			color: #7D7D7D;
-			font-weight: 600;
-			line-height: math.div(1.75, 1.0625);
-			letter-spacing: 0.0425rem;
-			display: block;
-			font-size: 0.75rem;
-			padding: 0.25rem;
-
-			@media (min-width:$md5) {
-				padding: 0.5rem;
-				font-size: 0.9rem;
-			}
-
-			@media (min-width:$md1) {
-				font-size: 1.0625rem;
-
-			}
-		}
-	}
+}
 
 
+/* Отступ для заголовков вторым рядом (соцсети, оплата) */
+.mt-40 {
+	margin-top: 45px;
+}
 
+.soc-circle {
+	display: inline-flex;
+	background: none !important;
+	/* Убираем фоновый круг из CSS */
+	border: none !important;
+	/* Убираем рамки */
+	width: auto !important;
+	/* Ширину диктует сам SVG */
+	height: auto !important;
+	padding: 0;
+	transition: transform 0.3s ease;
+
+	/* ФИКС ЛЮФТА (ДРОЖАНИЯ) */
+	will-change: transform;
+	transform: translateZ(0);
+	backface-visibility: hidden;
+}
+
+.soc-circle:hover {
+	transform: translateY(-3px);
+	/* Плавный подъем */
+}
+
+.soc-circle svg {
+	display: block;
+	/* Убедись, что размер совпадает с макетом */
+	width: 35px;
+	height: 35px;
+}
+
+/* Контакты с цветными иконками */
+.f-contacts-list {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+.f-contacts-list li {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	margin-bottom: 16px;
+}
+
+.f-contacts-list li svg {
+	margin-top: 3px;
+	/* Выравнивание по первой строке текста */
+	flex-shrink: 0;
+}
+
+
+.icon-phone {
+	color: #4CAF50;
+}
+
+/* Зеленый */
+.icon-mail {
+	color: #FFB300;
+}
+
+/* Желтый */
+.icon-pin {
+	color: #E53935;
+}
+
+
+/* Красный */
+
+/* Способы оплаты */
+.f-payments {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+
+/* 3. НИЖНИЙ БЛОК (ДИСКЛЕЙМЕРЫ) */
+.footer-bottom {
+	background: #313236;
+	/* Цвет фона темнее, как в макете */
+	padding: 25px 0;
+	border-top: none;
+}
+
+.f-bot-flex {
+	display: flex;
+	justify-content: space-between;
+	gap: 40px;
+}
+
+/* Текст блоков в самом низу (дисклеймеры) */
+.f-bot-flex p {
+	font-family: 'Manrope', sans-serif;
+	font-weight: 300;
+	letter-spacing: 0.03em;
+	font-variant-numeric: proportional-nums;
+	color: #6C6D70;
+	font-size: 13px;
+	/* Оставил чуть мельче, чем основной текст (как в макете) */
+	line-height: 1.4;
+	margin: 0;
 }
