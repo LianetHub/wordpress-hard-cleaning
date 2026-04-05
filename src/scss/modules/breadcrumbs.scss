@@ -1,0 +1,84 @@
+@use "sass:color";
+@use "sass:math";
+@use "mixins" as *;
+@use "variables" as *;
+@use "fonts";
+@use "icons";
+
+.breadcrumbs {
+	position: relative;
+	z-index: 3;
+	padding: 1.5rem 0 1rem;
+
+	// .breadcrumbs__list
+	&__list {
+		display: flex;
+		align-items: center;
+		flex-wrap: nowrap;
+		overflow: hidden;
+		white-space: nowrap;
+		gap: 0.25rem;
+	}
+
+	// .breadcrumbs__item
+	&__item {
+		display: inline-flex;
+		align-items: center;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		min-width: 0;
+		gap: 0.25rem;
+		text-transform: uppercase;
+		font-size: 0.78125rem;
+		letter-spacing: -0.02344rem;
+
+		&:not(:last-child) {
+			flex-shrink: 1;
+
+			&::before {
+				content: "";
+				order: 1;
+				width: 1rem;
+				height: rem(1);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background: #7C981E;
+			}
+		}
+
+		&:not(:last-child) {
+			flex-shrink: 0;
+			overflow: visible;
+			text-overflow: clip;
+		}
+	}
+
+	// .breadcrumbs__link
+	&__link {
+		@extend .breadcrumbs__current;
+		color: #7C981E;
+
+		&:is(a) {
+			transition: color 0.3s ease;
+
+			@media (any-hover: hover) {
+				&:hover {
+					color: $accent;
+				}
+			}
+		}
+	}
+
+	// .breadcrumbs__current
+	&__current {
+		word-break: break-all;
+		overflow: hidden;
+		text-overflow: ellipsis;
+
+		&[aria-current="page"] {
+			color: #717680;
+		}
+	}
+}
