@@ -17,37 +17,4 @@
 <?php require_once(TEMPLATE_PATH . '_cta.php'); ?>
 
 
-
-<!-- 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // BA Slider logic
-        const baSliders = document.querySelectorAll('.ba-container');
-
-        console.log(baSliders);
-
-
-        baSliders.forEach(slider => {
-            const overImg = slider.querySelector('.ba-img.over');
-            const handle = slider.querySelector('.ba-handle-new');
-
-            if (overImg && handle) {
-                const move = (e) => {
-                    const rect = slider.getBoundingClientRect();
-                    let x = (e.pageX || e.touches[0].pageX) - rect.left - window.scrollX;
-                    if (x < 0) x = 0;
-                    if (x > rect.width) x = rect.width;
-                    const percent = (x / rect.width) * 100;
-                    overImg.style.clipPath = `inset(0 ${100 - percent}% 0 0)`;
-                    handle.style.left = `${percent}%`;
-                };
-
-                slider.addEventListener('mousemove', move);
-                slider.addEventListener('touchmove', move);
-            }
-        });
-    });
-</script>
- -->
-
 <?php get_footer(); ?>
