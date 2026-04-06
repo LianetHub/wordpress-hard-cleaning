@@ -35,9 +35,6 @@
         align-items: center;
         flex-wrap: nowrap;
         gap: 0.625rem;
-        min-width: 0;
-        max-width: 100%;
-        box-sizing: border-box;
 
         @media (min-width: 769px) {
             gap: 0.75rem;
@@ -150,8 +147,6 @@
         position: relative;
         min-width: 0;
         gap: 0.5rem;
-        max-width: 100%;
-        box-sizing: border-box;
 
         @media (max-width: 360px) {
             min-height: 3.25rem;
@@ -335,17 +330,14 @@
         }
 
         a {
-            text-decoration: none;
-            color: var(--color-dark);
-            font-family: 'Manrope', sans-serif;
             font-weight: 500;
-            font-size: 1rem;
+            font-size: 1.125rem;
             line-height: 1.375;
             letter-spacing: 0.03em;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            transition: 0.3s;
+
 
             @media (max-width: 768px) {
                 display: block;
@@ -358,14 +350,16 @@
                 font-size: 0.9375rem;
             }
 
+            transition: color 0.3s ease;
+
             @media (any-hover: hover) {
                 &:hover {
-                    color: var(--color-blue-primary);
+                    color: $accent
                 }
             }
 
             &:focus-visible {
-                outline: 0.125rem solid var(--color-blue-primary);
+                outline: 0.125rem solid $accent;
                 outline-offset: 0.125rem;
             }
         }

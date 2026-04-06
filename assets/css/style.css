@@ -9,8 +9,8 @@
 }
 
 @font-face {
-  font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff") format("woff");
+  font-family: "Manrope";
+  src: url("../fonts/Manrope-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -18,8 +18,8 @@
 }
 
 @font-face {
-  font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff") format("woff");
+  font-family: "Unbounded";
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -2016,10 +2016,6 @@ select.select {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   gap: 0.625rem;
-  min-width: 0;
-  max-width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .header__address {
@@ -2082,9 +2078,6 @@ select.select {
   position: relative;
   min-width: 0;
   gap: 0.5rem;
-  max-width: 100%;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
 }
 
 .header__logo {
@@ -2172,11 +2165,8 @@ select.select {
 }
 
 .menu__list a {
-  text-decoration: none;
-  color: var(--color-dark);
-  font-family: "Manrope", sans-serif;
   font-weight: 500;
-  font-size: 1rem;
+  font-size: 1.125rem;
   line-height: 1.375;
   letter-spacing: 0.03em;
   display: -webkit-box;
@@ -2186,12 +2176,15 @@ select.select {
       -ms-flex-align: center;
           align-items: center;
   gap: 0.5rem;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
+}
+
+.menu__list a {
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .menu__list a:focus-visible {
-  outline: 0.125rem solid var(--color-blue-primary);
+  outline: 0.125rem solid #467E9E;
   outline-offset: 0.125rem;
 }
 
@@ -10929,7 +10922,7 @@ Author: Antigravity
   }
 
   .menu__list a:hover {
-    color: var(--color-blue-primary);
+    color: #467E9E;
   }
 
   .nav-arrow:hover {
