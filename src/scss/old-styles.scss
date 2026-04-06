@@ -246,12 +246,6 @@ Author: Antigravity
 
 
 
-/* Scenarios Section */
-.scenarios-section {
-    padding: 50px 0;
-    background: var(--section-bg-muted);
-}
-
 .subtitle-primary {
     display: block;
     font-family: 'Manrope', sans-serif;
@@ -271,574 +265,6 @@ Author: Antigravity
     /* Отступ вниз до большого заголовка H2 */
 }
 
-.scenarios-header {
-    margin-bottom: 40px;
-    text-align: left;
-}
-
-.scenarios-header h2 {
-    max-width: 62rem;
-    font-family: 'Unbounded', sans-serif;
-    font-size: var(--fs-section-h2);
-    font-weight: 700;
-    line-height: 1.25;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-    color: var(--color-dark);
-}
-
-/* Красим слово "ситуациями" в синий */
-.scenarios-header .text-blue {
-    color: var(--color-blue-primary);
-}
-
-.scenarios-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(22px, 2.8vw, 36px);
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    align-items: stretch;
-}
-
-.scenario-card {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 0;
-    height: 100%;
-}
-
-.scenario-card__inner {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(150px, 35.5%, 260px);
-    align-items: stretch;
-    flex: 1 1 auto;
-    width: 100%;
-    min-height: clamp(320px, 34vw, 420px);
-    background: #ffffff;
-    border-radius: 20px;
-    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.scenario-card__body {
-    display: flex;
-    flex-direction: column;
-    padding: clamp(20px, 2.2vw, 30px) clamp(16px, 2vw, 28px) clamp(20px, 2.2vw, 30px);
-    min-width: 0;
-    min-height: 0;
-    height: 100%;
-}
-
-.scenario-card__head {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 15px;
-}
-
-.scenario-card__icon {
-    flex-shrink: 0;
-    width: 61px;
-    height: 61px;
-    border-radius: 10px;
-    background: #31708e;
-    border: 1px solid #e6eef1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-}
-
-.scenario-card__icon svg {
-    width: 27px;
-    height: auto;
-    max-height: 30px;
-    display: block;
-}
-
-.scenario-card__title {
-    margin: 0;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 700;
-    font-size: clamp(20px, 2.1vw, 26px);
-    line-height: 1.4;
-    color: #272727;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-}
-
-.scenario-card__rule {
-    margin: 16px 0 14px;
-    border: 0;
-    border-top: 1px solid #c4d6df;
-}
-
-.scenario-card__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 18px;
-}
-
-.scenario-card__tag {
-    box-sizing: border-box;
-    display: inline-flex;
-    align-items: center;
-    padding: 8px 16px;
-    background: #eaf3f8;
-    border-radius: 12px;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 500;
-    font-size: 13px;
-    line-height: 1.35;
-    letter-spacing: 0.02em;
-    color: #3a6d8a;
-    text-decoration: none;
-    border: 1px solid transparent;
-    cursor: pointer;
-    box-shadow: none;
-    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-/* Как .btn-outline:hover: заливка брендом + лёгкая синяя тень */
-.scenario-card__tag:hover {
-    background: var(--color-blue-primary);
-    color: var(--white);
-    border-color: var(--color-blue-primary);
-    box-shadow: 0px 4px 10px 0px rgba(49, 112, 142, 0.4);
-    transform: translateY(-1px);
-}
-
-.scenario-card__tag:visited {
-    color: #467e9e;
-}
-
-.scenario-card__tag:visited:hover {
-    color: var(--white);
-}
-
-.scenario-card__tag:focus-visible {
-    outline: 2px solid #8fc1e3;
-    outline-offset: 2px;
-}
-
-.scenario-card__cta {
-    margin-top: auto;
-    align-self: flex-start;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    white-space: nowrap;
-    box-sizing: border-box;
-    width: 100%;
-    max-width: 372px;
-    height: 50px;
-    min-height: 50px;
-    padding: 14px clamp(24px, 11vw, 100px);
-    background: #31708e;
-    color: #ffffff;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.03em;
-    text-decoration: none;
-    border-radius: 60px;
-    box-shadow: 0 6px 10px rgba(255, 255, 255, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.scenario-card__cta:hover {
-    transform: translateY(-1px);
-    box-shadow: 0 8px 18px rgba(49, 112, 142, 0.28);
-}
-
-.scenario-card__cta:focus-visible {
-    outline: 2px solid #8fc1e3;
-    outline-offset: 2px;
-}
-
-.scenario-card__cta .scenario-card__cta-phone {
-    flex-shrink: 0;
-    width: 18px;
-    height: 18px;
-    color: #ffffff;
-}
-
-.scenario-card__media {
-    position: relative;
-    overflow: hidden;
-    align-self: stretch;
-    min-height: 240px;
-    height: 100%;
-    border-radius: 0 20px 20px 0;
-}
-
-/* Заполняем всю высоту правой колонки: кроп по краям, без растягивания */
-.scenario-card__media img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    display: block;
-}
-
-.scenario-card--gradient-media .scenario-card__media::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    background: linear-gradient(180deg, rgba(102, 102, 102, 0) 54.69%, rgba(0, 0, 0, 0.83) 100%);
-}
-
-.scenarios-footer-cta {
-    display: flex;
-    justify-content: center;
-    margin-top: clamp(32px, 4vw, 48px);
-}
-
-.scenarios-all-services {
-    box-sizing: border-box;
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 50px;
-    padding: 14px clamp(32px, 10vw, 180px);
-    border: 1px solid #5085a5;
-    border-radius: 142px;
-    background: transparent;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.03em;
-    color: #467e9e;
-    text-decoration: none;
-    transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-.scenarios-all-services:hover {
-    background: rgba(80, 133, 165, 0.08);
-}
-
-.scenarios-all-services:focus-visible {
-    outline: 2px solid #467e9e;
-    outline-offset: 2px;
-}
-
-/* Узкий десктоп: две колонки сетки, чуть уже колонка фото */
-@media (max-width: 1199px) and (min-width: 1025px) {
-    .scenario-card__inner {
-        grid-template-columns: minmax(0, 1fr) clamp(130px, 34%, 220px);
-    }
-}
-
-/* Планшет до ~1024: одна карточка ситуации в строку (не две узкие колонки) + крупнее типографика */
-@media (max-width: 1024px) {
-    .scenarios-section {
-        padding: 44px 0 52px;
-    }
-
-    .scenarios-header {
-        margin-bottom: clamp(24px, 4vw, 32px);
-    }
-
-    .scenarios-header h2 {
-        font-size: clamp(22px, 4.2vw, 34px);
-    }
-
-    .scenarios-cards-grid {
-        grid-template-columns: 1fr;
-        gap: clamp(22px, 3.5vw, 32px);
-    }
-
-    .scenario-card__inner {
-        grid-template-columns: minmax(0, 1fr) clamp(160px, 30vw, 280px);
-        min-height: clamp(280px, 38vw, 400px);
-    }
-
-    .scenario-card__media {
-        min-height: 0;
-        height: 100%;
-    }
-}
-
-/* Планшет 641-1024: плавная типографика без скачка на 900/901 */
-@media (max-width: 1024px) and (min-width: 641px) {
-    .scenario-card__body {
-        padding: clamp(16px, 1.9vw, 24px) clamp(14px, 1.8vw, 24px) clamp(14px, 1.8vw, 22px);
-    }
-
-    .scenario-card__head {
-        gap: 14px;
-    }
-
-    .scenario-card__icon {
-        width: clamp(48px, 5vw, 56px);
-        height: clamp(48px, 5vw, 56px);
-    }
-
-    .scenario-card__icon svg {
-        width: clamp(22px, 2.4vw, 26px);
-        max-height: clamp(24px, 2.6vw, 28px);
-    }
-
-    .scenario-card__title {
-        font-size: clamp(18px, 2.2vw, 26px);
-        line-height: 1.38;
-    }
-
-    .scenario-card__tag {
-        padding: clamp(7px, 0.75vw, 9px) clamp(12px, 1.4vw, 16px);
-        font-size: clamp(12px, 1.35vw, 14px);
-        line-height: 1.4;
-    }
-
-    .scenario-card__cta {
-        font-size: clamp(15px, 1.7vw, 17px);
-        height: 50px;
-        min-height: 50px;
-        padding: 14px clamp(24px, 8.8vw, 100px);
-        gap: 10px;
-    }
-}
-
-/* Телефон: одна колонка сетки, компактная горизонтальная карточка (макет ~360px) */
-@media (max-width: 640px) {
-    .scenarios-section>.container {
-        /* Меньше боковые отступы — карточка визуально шире */
-        padding-left: clamp(10px, 3vw, 14px);
-        padding-right: clamp(10px, 3vw, 14px);
-    }
-
-    .scenarios-cards-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .scenarios-section {
-        padding: 40px 0 48px;
-    }
-
-    .scenarios-header {
-        margin-bottom: 22px;
-    }
-
-    .scenarios-header h2 {
-        font-size: clamp(16px, 4.4vw, 18px);
-        line-height: clamp(20px, 5vw, 22px);
-    }
-
-    .scenarios-cards-grid {
-        gap: clamp(12px, 3.8vw, 16px);
-    }
-
-    .scenario-card__inner {
-        grid-template-columns: minmax(0, 1fr) clamp(106px, 29vw, 112px);
-        min-height: clamp(200px, 44vw, 220px);
-        min-width: 0;
-    }
-
-    .scenario-card__body {
-        padding: clamp(11px, 2.8vw, 14px) clamp(10px, 2.6vw, 12px) clamp(11px, 2.8vw, 14px);
-    }
-
-    .scenario-card__head {
-        gap: clamp(10px, 2.5vw, 15px);
-    }
-
-    .scenario-card__icon {
-        width: clamp(30px, 8.8vw, 34px);
-        height: clamp(30px, 8.8vw, 34px);
-        border-radius: 10px;
-    }
-
-    .scenario-card__icon svg {
-        width: clamp(11px, 3vw, 12px);
-        max-height: clamp(11px, 3.2vw, 13px);
-    }
-
-    .scenario-card__title {
-        font-size: clamp(16px, 3.8vw, 18px);
-        line-height: 1.3;
-        font-variant: normal;
-        text-transform: none;
-    }
-
-    .scenario-card__rule {
-        margin: clamp(8px, 2.2vw, 10px) 0 clamp(8px, 2.2vw, 10px);
-    }
-
-    .scenario-card__tags {
-        gap: 6px;
-        margin-bottom: clamp(10px, 2.6vw, 12px);
-    }
-
-    .scenario-card__tag {
-        padding: 6px 10px;
-        font-weight: 500;
-        font-size: clamp(11px, 2.6vw, 12px);
-        line-height: 1.35;
-        letter-spacing: 0.02em;
-        white-space: normal;
-        overflow-wrap: anywhere;
-    }
-
-    .scenario-card__cta {
-        margin-top: auto;
-        width: clamp(116px, 34vw, 130px);
-        max-width: clamp(116px, 34vw, 130px);
-        min-height: clamp(27px, 7.8vw, 30px);
-        height: clamp(27px, 7.8vw, 30px);
-        padding: clamp(7px, 2vw, 9px) clamp(14px, 4.2vw, 20px);
-        gap: 8px;
-        white-space: nowrap;
-        font-size: clamp(8px, 2.4vw, 9px);
-        line-height: clamp(10px, 3.1vw, 12px);
-    }
-
-    .scenario-card__media {
-        min-height: 0;
-        height: 100%;
-        max-height: none;
-        border-radius: 0 20px 20px 0;
-    }
-
-    .scenario-card__media img {
-        border-radius: 0;
-        object-fit: cover;
-        object-position: center;
-    }
-
-    .scenarios-footer-cta {
-        margin-top: 28px;
-        padding-inline: 0;
-    }
-
-    .scenarios-all-services {
-        width: 100%;
-        max-width: min(100%, clamp(328px, 84vw, 420px));
-        min-height: clamp(27px, 7.6vw, 29px);
-        height: clamp(27px, 7.6vw, 29px);
-        padding: clamp(7px, 2vw, 9px) clamp(16px, 5vw, 20px);
-        font-size: clamp(7px, 2.2vw, 8px);
-        line-height: clamp(10px, 2.8vw, 11px);
-    }
-}
-
-/* Точная мобильная версия карточек "Ситуации" под 360px */
-@media (max-width: 360px) {
-    .scenarios-section {
-        padding: 25px 0 41px;
-    }
-
-    .scenarios-header {
-        margin-bottom: 16px;
-    }
-
-    .scenarios-header h2 {
-        max-width: 262px;
-        font-size: var(--fs-section-h2);
-        line-height: 1.22;
-    }
-
-    .scenarios-cards-grid {
-        gap: 16px;
-    }
-
-    .scenario-card__inner {
-        grid-template-columns: minmax(0, 1fr) 112px;
-        min-height: 200px;
-        max-height: none;
-        border-radius: 20px;
-        box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
-    }
-
-    .scenario-card__body {
-        padding: 12px 10px 12px;
-    }
-
-    .scenario-card__head {
-        gap: 15px;
-    }
-
-    .scenario-card__icon {
-        width: 34px;
-        height: 34px;
-        border-radius: 10px;
-    }
-
-    .scenario-card__icon svg {
-        width: 12px;
-        max-height: 13px;
-    }
-
-    .scenario-card__title {
-        font-size: 14px;
-        line-height: 1.35;
-        font-variant: normal;
-        text-transform: none;
-    }
-
-    .scenario-card__rule {
-        margin: 8px 0 8px;
-    }
-
-    .scenario-card__tags {
-        gap: 6px;
-        margin-bottom: 10px;
-    }
-
-    .scenario-card__tag {
-        padding: 5px 10px;
-        font-weight: 500;
-        font-size: 11px;
-        line-height: 1.35;
-        letter-spacing: 0.02em;
-        white-space: normal;
-        overflow-wrap: anywhere;
-    }
-
-    .scenario-card__cta {
-        width: 130px;
-        max-width: 130px;
-        min-height: 30px;
-        height: 30px;
-        padding: 9px 20px;
-        font-size: 9px;
-        line-height: 12px;
-    }
-
-    .scenario-card__media {
-        min-height: 0;
-        height: 100%;
-        max-height: none;
-        border-radius: 0 20px 20px 0;
-    }
-
-    .scenario-card__media img {
-        object-fit: cover;
-        object-position: center;
-    }
-
-    .scenarios-footer-cta {
-        margin-top: 16px;
-    }
-
-    .scenarios-all-services {
-        width: 100%;
-        max-width: 328px;
-        min-height: 29px;
-        height: 29px;
-        padding: 9px 20px;
-        font-size: 8px;
-        line-height: 11px;
-    }
-}
 
 /* Cases Section (Before/After) */
 .cases-section {
@@ -1310,25 +736,6 @@ Author: Antigravity
 
 
 
-
-@media (max-width: 768px) {
-
-    /* Блок «Ситуации» под слайдером — белый, как карточки; кривая процесса сверху совпадает по цвету */
-    .scenarios-section {
-        background: var(--white);
-    }
-
-    /* Верхняя кривая процесса (rect+ellipse) отключена в front-page — правила не нужны
-    .process-section-new .curve-top > svg rect,
-    .process-section-new .curve-top > svg ellipse,
-    .process-section-new .curve-top .process-curve-mobile-placeholder--top svg rect,
-    .process-section-new .curve-top .process-curve-mobile-placeholder--top svg ellipse {
-        fill: var(--white);
-    }
-    */
-
-
-}
 
 /* =========================================
    PROCESS SECTION — «Что мы делаем под ключ»
@@ -4392,7 +3799,7 @@ Author: Antigravity
 
 /* =========================================
    SHARED SECTION HEADING SYSTEM
-   scenarios/process/pricing/cases/guarantees/reviews/equipment/coverage
+   process/pricing/cases/guarantees/reviews/equipment/coverage
    ========================================= */
 .subtitle-primary,
 .price-kicker,
@@ -4410,7 +3817,7 @@ Author: Antigravity
     color: var(--color-blue-primary);
 }
 
-.scenarios-header h2,
+
 .pricing-header h2,
 .cases-title,
 .g-title,
@@ -4425,7 +3832,7 @@ Author: Antigravity
     color: var(--color-dark);
 }
 
-.scenarios-header h2 .text-blue,
+
 .pricing-header h2 .text-blue,
 .g-title .text-blue,
 .equipment-title .text-blue,
@@ -4460,7 +3867,7 @@ Author: Antigravity
 /* Do not force shared layout model (flex/grid) on section headers */
 
 /* Unified heading rhythm for key sections */
-.scenarios-section .scenarios-header,
+
 .pricing-section-new .pricing-header,
 .cases-section .cases-header,
 .reviews-section-new .reviews-header,
@@ -4472,8 +3879,6 @@ Author: Antigravity
 .pricing-section-new .price-kicker,
 .pricing-section-new .pricing-header h2,
 .pricing-section-new .pricing-subtitle,
-.scenarios-section .subtitle-primary,
-.scenarios-section .scenarios-header h2,
 .cases-section .cases-kicker,
 .cases-section .cases-title,
 .reviews-section-new .reviews-title,
@@ -4488,14 +3893,13 @@ Author: Antigravity
 
 /* Explicit vertical rhythm without flex for these two */
 .coverage-section .coverage-kicker,
-.scenarios-section .subtitle-primary,
 .pricing-section-new .price-kicker,
 .cases-section .cases-kicker,
 .guarantees-section .g-kicker {
     margin-bottom: 0;
 }
 
-.scenarios-section .scenarios-header h2,
+
 .pricing-section-new .pricing-header h2,
 .cases-section .cases-title,
 .guarantees-section .g-title {
@@ -4514,19 +3918,11 @@ Author: Antigravity
         padding-right: max(8px, 2.5vw);
     }
 
-    .scenarios-section>.container {
-        padding-left: max(8px, 2.5vw);
-        padding-right: max(8px, 2.5vw);
-    }
-
     .comparison-container {
         max-width: 100%;
         height: min(190px, 52vw);
     }
 
-    .scenario-card__body {
-        min-width: 0;
-    }
 
     .cases-cards-grid .info-card {
         min-width: 0;
@@ -4542,7 +3938,6 @@ Author: Antigravity
     }
 
 
-    .scenarios-section,
     .process-section-new,
     .pricing-section-new,
     .cases-section,
@@ -4553,7 +3948,6 @@ Author: Antigravity
         overflow-x: clip;
     }
 
-    .scenarios-section>.container,
     .pricing-section-new>.container,
     .cases-section>.container,
     .reviews-section-new>.container,

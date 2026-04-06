@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icons';
-  src:  url('fonts/icons.eot?10kfzi');
-  src:  url('fonts/icons.eot?10kfzi#iefix') format('embedded-opentype'),
-    url('fonts/icons.ttf?10kfzi') format('truetype'),
-    url('fonts/icons.woff?10kfzi') format('woff'),
-    url('fonts/icons.svg?10kfzi#icons') format('svg');
+  src:  url('fonts/icons.eot?1arvey');
+  src:  url('fonts/icons.eot?1arvey#iefix') format('embedded-opentype'),
+    url('fonts/icons.ttf?1arvey') format('truetype'),
+    url('fonts/icons.woff?1arvey') format('woff'),
+    url('fonts/icons.svg?1arvey#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -27,4 +27,7 @@
 
 .icon-chevron-down:before {
   content: "\e900";
+}
+.icon-phone:before {
+  content: "\e901";
 }
