@@ -32,6 +32,10 @@ p {
 	margin-bottom: 20px;
 }
 
+.title-lg {
+	font-size: clamp(1.375rem, 4.8vw + 0.65rem, 3rem);
+}
+
 .title {
 	font-size: clamp(1.25rem, 0.85rem + 1.85vw, rem(40));
 }
