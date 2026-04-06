@@ -1,5 +1,6 @@
 "use strict";
 
+
 $(function () {
 
     //  init Fancybox
@@ -91,7 +92,7 @@ $(function () {
 
     // sliders
     class MobileSwiper {
-        constructor(sliderName, options, condition = 767.98) {
+        constructor(sliderName, options, condition = 991.98) {
             this.$slider = $(sliderName);
             this.options = options;
             this.init = false;
@@ -125,6 +126,28 @@ $(function () {
             pagination: {
                 el: '.team__slider-pagination',
                 clickable: true
+            }
+        })
+    }
+
+    if ($('.trust__slider').length) {
+        new MobileSwiper('.trust__slider', {
+            slidesPerView: 'auto',
+            spaceBetween: 30,
+            watchOverflow: true,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                stopOnLastSlide: false
+            },
+            pagination: {
+                el: '.trust__slider-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                1200: {
+                    slidesPerView: 3,
+                }
             }
         })
     }
