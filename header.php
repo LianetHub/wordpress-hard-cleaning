@@ -18,4 +18,4 @@
         <?php require_once(TEMPLATE_PATH . '_header-main.php'); ?>
         <!-- </div>
         </header> -->
-        <main id="primary" class="site-main">
+        <main id="primary" class="main">
