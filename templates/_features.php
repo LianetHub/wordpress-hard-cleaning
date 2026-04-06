@@ -115,19 +115,9 @@
         </div>
     </div>
 
-    <?php /*
-        <!-- НИЖНИЙ ЭЛЛИПС (Прямоугольник от центра вниз + Эллипс) — отключено -->
-        <div class="process-curve curve-bottom">
-            <svg width="100%" height="127" viewBox="0 0 1670 127" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0" y="63.5" width="1670" height="63.5" fill="#F7F9FB"/>
-                <ellipse cx="835" cy="63.5" rx="835" ry="63.5" fill="#F7F9FB"/>
-            </svg>
-            <div class="process-curve-mobile-placeholder process-curve-mobile-placeholder--bottom" aria-hidden="true">
-                <svg width="360" height="34" viewBox="0 0 360 34" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect x="0" y="17" width="360" height="17" fill="#F7F9FB"/>
-                <ellipse cx="180" cy="17" rx="180" ry="17" fill="#F7F9FB"/>
-                </svg>
-            </div>
-        </div>
-        */ ?>
+</section>
+<section class="process">
+    <div class="container">
+
+    </div>
 </section>

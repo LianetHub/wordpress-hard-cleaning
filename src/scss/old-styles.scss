@@ -156,22 +156,14 @@ Author: Antigravity
 
 /* Планшет: вертикальные отступы (кегли — var(--fs-section-h2) в SHARED) */
 @media (max-width: 1024px) and (min-width: 769px) {
-    .process-header-row h2 {
-        line-height: 1.25;
-    }
+
 
     .reviews-header {
         margin-bottom: clamp(40px, 6vw, 56px);
     }
 
-    .pricing-header {
-        margin-bottom: 48px;
-    }
 
 
-    .process-header-row {
-        margin: 32px 0 28px;
-    }
 
 }
 
@@ -265,16 +257,6 @@ Author: Antigravity
     /* Отступ вниз до большого заголовка H2 */
 }
 
-
-/* Cases Section (Before/After) */
-.cases-section {
-    padding: 30px 0;
-    background: var(--white);
-}
-
-.cases-header {
-    margin-bottom: 50px;
-}
 
 .ba-slider-new {
     display: flex;
@@ -450,60 +432,6 @@ Author: Antigravity
     font-weight: 700;
     font-size: 13px;
     letter-spacing: 0.1em;
-}
-
-/* Pricing Section */
-.pricing-section {
-    padding: 100px 0;
-}
-
-.pricing-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 50px;
-}
-
-.price-pkg {
-    background: #fff;
-    padding: 50px 40px;
-    border-radius: 24px;
-    border: 1px solid var(--color-gray-border);
-    text-align: center;
-    transition: 0.3s;
-    position: relative;
-}
-
-.price-pkg.popular {
-    border-color: var(--color-blue-primary);
-}
-
-.pkg-badge {
-    position: absolute;
-    top: -15px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: var(--color-blue-primary);
-    color: #fff;
-    padding: 6px 20px;
-    border-radius: 100px;
-    font-family: 'Unbounded';
-    font-size: 11px;
-    font-weight: 700;
-}
-
-.price-val {
-    font-size: 36px;
-    font-weight: 800;
-    color: var(--color-dark);
-    margin: 25px 0;
-    font-family: 'Unbounded';
-}
-
-.price-pkg p {
-    color: var(--color-slate-dark);
-    margin-bottom: 35px;
-    min-height: 44px;
 }
 
 /* Reviews Section */
@@ -737,1174 +665,12 @@ Author: Antigravity
 
 
 
-/* =========================================
-   PROCESS SECTION — «Что мы делаем под ключ»
-   ========================================= */
-.process-section-new {
-    position: relative;
-    width: 100%;
-    color: #fff;
-    background: linear-gradient(149.52deg, #306E8C 3.77%, #1F4B62 153.22%);
-    /* padding: 120px 0; */
-    overflow: hidden;
-}
 
-/* Верхний/нижний переход «под ключ» (rect+ellipse) — разметка закомментирована в front-page.php
-.process-curve {
-    position: absolute;
-    left: 0;
-    width: 100%;
-    height: 127px;
-    z-index: 10;
-    line-height: 0;
-    pointer-events: none;
-}
-
-.curve-top {
-    top: -1px;
-}
-
-.curve-bottom {
-    bottom: -1px;
-}
-
-.process-curve svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-}
-
-.process-curve-mobile-placeholder {
-    display: none;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    overflow: hidden;
-}
-
-.process-curve-mobile-placeholder svg {
-    display: block;
-    width: 100%;
-    height: 100%;
-    right: 0;
-}
-
-.process-curve-mobile-placeholder--top svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-.process-curve-mobile-placeholder--bottom svg {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-}
-*/
-
-.process-container-inner {
-    position: relative;
-    z-index: 5;
-    padding-top: 16px;
-    padding-bottom: 28px;
-}
-
-.process-header-row {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) auto;
-    gap: 24px 40px;
-    align-items: flex-start;
-    margin: 40px 0 36px;
-}
-
-.process-header-text {
-    min-width: 0;
-}
-
-.p-kicker {
-    display: block;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 500;
-    font-size: 15px;
-    line-height: 20px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: #8FC1E3;
-    margin-bottom: 15px;
-}
-
-.process-header-row h2 {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: var(--fs-section-h2);
-    line-height: 1.22;
-    color: #F8FAFB;
-    margin: 0;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-}
-
-.text-light-blue {
-    color: #8FC1E3;
-}
-
-.p-subtitle {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.03em;
-    color: #D7D7D7;
-    max-width: 421px;
-    margin: 10px 0 0;
-}
-
-.process-carousel-nav {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding-top: 4px;
-}
-
-@media (min-width: 1025px) {
-    .process-header-row {
-        margin: 80px 0 36px;
-    }
-
-    .process-carousel-nav {
-        padding-top: 85px;
-    }
-}
-
-.process-nav-btn {
-    width: 49px;
-    height: 49px;
-    border-radius: 50%;
-    border: none;
-    background: #ffffff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    flex-shrink: 0;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-}
-
-.process-nav-btn:hover {
-    transform: scale(1.05);
-}
-
-.process-nav-btn:focus-visible {
-    outline: 2px solid #8FC1E3;
-    outline-offset: 2px;
-}
-
-/* На всю ширину секции */
-.process-glass-breakout {
-    position: relative;
-    width: 100%;
-    z-index: 5;
-    box-sizing: border-box;
-    padding-bottom: 24px;
-}
-
-/* Стеклянная панель на всю ширину секции */
-.process-glass-panel {
-    box-sizing: border-box;
-    width: 100%;
-    background: rgba(57, 108, 134, 0.5);
-    border: 1px solid #6f9bb2;
-    border-left: none;
-    border-right: none;
-    backdrop-filter: blur(3.5px);
-    -webkit-backdrop-filter: blur(3.5px);
-    border-radius: 0;
-    overflow: hidden;
-    margin-bottom: 100px;
-    min-height: 260px;
-}
-
-.process-carousel-track {
-    position: relative;
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    overflow-x: auto;
-    overflow-y: hidden;
-    -webkit-overflow-scrolling: touch;
-    touch-action: pan-x pinch-zoom;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-    scroll-behavior: auto;
-    overscroll-behavior-x: contain;
-    container-type: inline-size;
-    container-name: process-carousel;
-    /* Горизонталь: как у контейнерной сетки; 100% вместо 100vw — симметричнее при полосе прокрутки */
-    padding: 48px max(20px, calc((100% - min(100%, var(--container-max))) / 2)) 52px;
-}
-
-.process-carousel-track::-webkit-scrollbar {
-    display: none;
-}
-
-.process-carousel-inner {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: flex-start;
-    /* JS: --process-carousel-gap, --process-peek ≈ половина ширины карточки — одинаковый обрез слева и справа */
-    gap: var(--process-carousel-gap, clamp(20px, calc(100vw * 60 / 1920), 60px));
-    width: max-content;
-    min-height: 0;
-    margin-left: calc(-1 * var(--process-peek, 0px));
-    margin-right: calc(-1 * var(--process-peek, 0px));
-}
-
-.process-carousel-track .p-step-slide {
-    flex: 0 0 auto;
-    width: clamp(210px, 27cqi, 300px);
-    height: auto;
-    box-sizing: border-box;
-}
-
-/* Десктоп: 4 слайда + 3 gap помещаются в ширину трека (100cqi) */
-@media (min-width: 1025px) {
-    .process-carousel-track .p-step-slide {
-        width: min(300px,
-                max(210px,
-                    calc((100cqi - 3 * var(--process-carousel-gap, clamp(20px, calc(100vw * 60 / 1920), 60px))) / 4)));
-    }
-}
-
-@supports not (width: 1cqi) {
-    .process-carousel-track .p-step-slide {
-        width: clamp(220px, calc(100vw * 280 / 1920), 300px);
-    }
-
-    @media (min-width: 1025px) {
-        .process-carousel-track .p-step-slide {
-            width: min(300px,
-                    max(210px,
-                        calc((100vw - 2 * max(20px, calc((100vw - min(100vw, var(--container-max))) / 2)) - 3 * var(--process-carousel-gap, clamp(20px, calc(100vw * 60 / 1920), 60px))) / 4)));
-        }
-    }
-}
-
-.p-step {
-    width: 100%;
-    max-width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 0;
-}
-
-.process-carousel-track .p-step {
-    padding: 0 4px;
-    box-sizing: border-box;
-}
-
-.process-section-new .p-icon-box {
-    width: 58px;
-    height: 58px;
-    margin-bottom: 14px;
-    background: #f5f8fa;
-    border: 1px solid #d6e4ec;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.process-section-new .p-icon-box svg {
-    width: auto;
-    height: auto;
-    max-width: 33px;
-    max-height: 33px;
-}
-
-.p-step-title {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 25px;
-    letter-spacing: 0.02em;
-    color: #f8fafb;
-    margin: 0 0 10px;
-    font-feature-settings: 'pnum' on, 'lnum' on;
-}
-
-.p-step-desc {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 22px;
-    letter-spacing: 0.03em;
-    color: #d7d7d7;
-    margin: 0;
-    max-width: min(100%, 248px);
-}
-
-@media (max-width: 1024px) {
-    .process-header-row {
-        grid-template-columns: 1fr;
-    }
-
-    .process-carousel-nav {
-        justify-content: flex-end;
-        padding-top: 85px;
-    }
-
-    .process-carousel-track {
-        padding: 36px 16px 40px;
-    }
-
-    .process-glass-panel {
-        min-height: 0;
-    }
-}
-
-@media (max-width: 768px) {
-    /* Мобильные стили кривых процесса (rect+ellipse) — отключены вместе с разметкой
-    .process-curve > svg {
-        display: none;
-    }
-
-    .process-curve-mobile-placeholder {
-        display: block;
-    }
-
-    .process-curve-mobile-placeholder--top {
-        display: block;
-    }
-
-    .process-curve-mobile-placeholder--bottom {
-        display: block;
-    }
-
-    .process-curve {
-        height: clamp(26px, 9.45vw, 34px);
-    }
-    */
-
-    .process-section-new {
-        padding: 0;
-        min-height: 363px;
-        background: linear-gradient(132.44deg, #306E8C -16.39%, #1F4B62 86.78%);
-    }
-
-    .process-container-inner {
-        padding-top: 12px;
-        padding-bottom: 12px;
-    }
-
-    .process-header-row {
-        grid-template-columns: 1fr;
-        gap: 0;
-        margin: 41px 0 14px;
-    }
-
-    .p-kicker {
-        margin-bottom: 3px;
-        font-size: 5px;
-        line-height: 7px;
-        letter-spacing: 0.07em;
-        color: #8FC1E3;
-    }
-
-    .process-header-row h2 {
-        font-size: 18px;
-        line-height: 22px;
-        margin: 0;
-        max-width: min(100%, clamp(297px, 70vw, 340px));
-        font-variant: normal;
-        text-transform: none;
-    }
-
-    .p-subtitle {
-        margin-top: 5px;
-        max-width: min(100%, clamp(221px, 56vw, 272px));
-        font-size: clamp(11px, 1.85vw, 13px);
-        line-height: 11px;
-        letter-spacing: 0.03em;
-        color: #D7D7D7;
-    }
-
-    .process-carousel-nav {
-        display: none;
-    }
-
-    .process-glass-panel {
-        position: relative;
-        width: min(328px, calc(100% - 32px));
-        margin: 0 auto 35px;
-        min-height: 150px;
-        border: 1px solid #6F9BB2;
-        border-radius: 20px;
-        background: rgba(57, 108, 134, 0.5);
-        backdrop-filter: blur(3.5px);
-        -webkit-backdrop-filter: blur(3.5px);
-        overflow: hidden;
-    }
-
-    .process-glass-breakout {
-        padding-bottom: 24px;
-    }
-
-    .process-carousel-track {
-        position: relative;
-        padding: 19px 0 0;
-        overflow: visible;
-    }
-
-    .process-carousel-inner {
-        position: relative;
-        width: 100%;
-        min-height: 124px;
-        margin: 0;
-    }
-
-    .process-carousel-track .p-step-slide {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        opacity: 0;
-        pointer-events: none;
-        transform: translateX(24px);
-        transition: opacity 0.25s ease, transform 0.25s ease;
-    }
-
-    .process-carousel-track .p-step-slide.is-active {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateX(0);
-    }
-
-    .process-section-new .p-icon-box {
-        width: 40.56px;
-        height: 38.98px;
-        margin-bottom: 12px;
-        border-radius: 10px;
-    }
-
-    .process-section-new .p-icon-box svg {
-        max-width: 19px;
-        max-height: 19px;
-    }
-
-    .p-step-title {
-        margin: 0 0 5px;
-        width: min(100%, clamp(159px, 44vw, 190px));
-        font-size: 14px;
-        line-height: 17px;
-        letter-spacing: 0.02em;
-        color: #F8FAFB;
-        font-variant: normal;
-        text-transform: none;
-    }
-
-    .p-step-desc {
-        max-width: min(100%, clamp(169px, 47vw, 205px));
-        font-size: 8px;
-        line-height: 11px;
-        letter-spacing: 0.03em;
-        color: #D7D7D7;
-    }
-
-    .process-mobile-indicator {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 95px;
-        margin: 6px auto 0;
-        gap: 7px;
-        padding: 4px 0 14px;
-    }
-
-    .process-mobile-indicator__dot {
-        width: 8px;
-        height: 8px;
-        border-radius: 999px;
-        background: #D7D7D7;
-        transition: width 0.2s ease, background-color 0.2s ease;
-    }
-
-    .process-mobile-indicator__dot.is-active {
-        width: 20px;
-        background: #FFFFFF;
-    }
-}
 
 /* =========================================
    PRICING SECTION (ПОЛНЫЙ БЛОК)
    ========================================= */
-/* ОБЩИЕ ПАРАМЕТРЫ СЕКЦИИ */
-.pricing-section-new {
-    background: #F7F9FB;
-    padding: 30px 0 30px;
-}
 
-.pricing-header {
-    margin-bottom: 60px;
-}
-
-.price-kicker {
-    display: block;
-    font-family: 'Inter', sans-serif;
-    font-size: 15px;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    color: #31708E;
-    margin-bottom: 12px;
-}
-
-.pricing-header h2 {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: 40px;
-    line-height: 1.2;
-    color: #272727;
-    margin: 0;
-}
-
-.pricing-header h2 .text-blue {
-    color: #467E9E;
-}
-
-.pricing-header p {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.4;
-    color: #4B5D68;
-    margin-top: 15px;
-    max-width: 300px;
-}
-
-.pricing-subtitle--mobile {
-    display: none;
-}
-
-/* СЕТКА */
-.pricing-grid-new {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    align-items: stretch;
-    /* Обычные карточки растягиваются */
-}
-
-/* Акцентная карточка должна сжиматься в пределах колонки */
-.pricing-grid-new>.price-card-special {
-    min-width: 0;
-    width: 100%;
-}
-
-/* ОБЫЧНАЯ КАРТОЧКА (Высота из Figma 289px) */
-.price-card-regular {
-    box-sizing: border-box;
-    height: 289px;
-    background: #FAFBFC;
-    border: 1px solid #E3EBF0;
-    box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.1);
-    border-radius: 20px;
-    padding: 40px;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-}
-
-.price-card-regular:hover {
-    transform: translateY(-10px);
-    border-color: var(--color-blue-primary);
-    box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.12);
-}
-
-.price-val {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    margin-bottom: 20px;
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 1;
-    color: #272727;
-}
-
-.price-info {
-    flex-grow: 1;
-}
-
-.price-info h4 {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 27px;
-    color: #272727;
-    margin-bottom: 8px;
-}
-
-.price-info p {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.3;
-    color: #4B5D68;
-    margin-bottom: 20px;
-}
-
-
-
-
-/* Карточка «Показать все цены»: колонка flex; ряд статистики — grid (2 колонки) */
-.price-card-special {
-    --stat-num-size: clamp(28px, 7vw, 50px);
-    --stat-num-line: 62px;
-
-    box-sizing: border-box;
-    align-self: start;
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: clamp(20px, 5vw, 30px);
-    padding: clamp(28px, 6vw, 52px) clamp(20px, 5vw, 40px);
-    width: 100%;
-    max-width: 447px;
-    background: linear-gradient(149.52deg, #306E8C 3.77%, #1F4B62 153.22%);
-    box-shadow: 0px 10px 29px #215068;
-    border-radius: 20px;
-    color: #FFFFFF;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow-x: visible;
-    overflow-y: visible;
-}
-
-.price-card-special:hover {
-    transform: translateY(-10px);
-    box-shadow: 0px 20px 45px rgba(33, 80, 104, 0.5);
-}
-
-/* Два ряда: цифры | подписи — подписи всегда на одной горизонтали */
-.price-card-special__stats {
-    display: grid;
-    grid-template-columns: minmax(min-content, 1fr) minmax(min-content, 1fr);
-    grid-template-rows: auto auto;
-    justify-items: center;
-    align-items: start;
-    column-gap: 30px;
-    row-gap: 20px;
-    width: 100%;
-    overflow: visible;
-}
-
-/* Общая «полоса» для верхней строки: 20 и 2000 — один кегль (--stat-num-size) */
-.price-card-special__figure {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    min-width: min-content;
-    min-height: var(--stat-num-line);
-    box-sizing: border-box;
-    overflow: visible;
-}
-
-.price-card-special .title-big {
-    margin: 0;
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: var(--stat-num-size);
-    line-height: var(--stat-num-line);
-    color: #fff;
-    font-variant-numeric: lining-nums proportional-nums;
-    font-feature-settings: "lnum" on, "pnum" on;
-}
-
-.price-card-special .title-big__num {
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: 1em;
-    line-height: var(--stat-num-line);
-}
-
-.price-card-special .title-big__plus {
-    font-family: inherit;
-    font-weight: inherit;
-    font-size: 0.55em;
-    line-height: 1;
-    align-self: center;
-}
-
-/* 2000 — тот же кегль, что и 20; «от» и ₽ — доля от --stat-num-size */
-.price-card-special .title-small {
-    margin: 0;
-    display: inline-flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.12em;
-    width: max-content;
-    box-sizing: border-box;
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: var(--stat-num-size);
-    line-height: var(--stat-num-line);
-    color: #fff;
-    font-variant-numeric: lining-nums proportional-nums;
-    font-feature-settings: "lnum" on, "pnum" on, "tnum" on;
-}
-
-.price-card-special .title-small>* {
-    flex-shrink: 0;
-}
-
-.price-card-special .title-small__prefix {
-    font-family: inherit;
-    font-weight: 600;
-    font-size: 0.4em;
-    line-height: 1;
-    letter-spacing: 0.02em;
-    align-self: center;
-}
-
-.price-card-special .title-small__amount {
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 1em;
-    line-height: var(--stat-num-line);
-    font-variant-numeric: lining-nums tabular-nums;
-    font-feature-settings: "lnum" on, "tnum" on;
-}
-
-.price-card-special .title-small__currency {
-    font-family: inherit;
-    font-weight: 700;
-    font-size: 0.55em;
-    line-height: 1;
-    align-self: center;
-    margin-left: 0.04em;
-}
-
-.price-card-special .text-muted {
-    margin: 0;
-    text-align: center;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
-    font-size: clamp(14px, 2.5vw, 16px);
-    line-height: 22px;
-    color: #D7D7D7;
-    letter-spacing: 0.03em;
-    max-width: 100%;
-    font-variant-numeric: lining-nums proportional-nums;
-}
-
-.price-card-special .button,
-.price-card-special .btn-price-solid {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    align-self: stretch;
-    width: 100%;
-    min-height: 48px;
-    max-height: 48px;
-    height: 48px;
-    padding: 12px clamp(14px, 4.2vw, 42px);
-    box-sizing: border-box;
-    background: #fff;
-    border-radius: 70px;
-    border: none;
-    cursor: pointer;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 600;
-    font-size: clamp(10px, 1.1vw, 14px);
-    line-height: 1.2;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
-    text-align: center;
-    color: #467E9E;
-    text-decoration: none;
-    margin-top: auto;
-    box-shadow: 0px 6px 10px rgba(255, 255, 255, 0.1);
-    transition: box-shadow 0.25s ease, transform 0.2s ease;
-}
-
-.price-card-special .btn-price-solid:hover {
-    box-shadow: 0 8px 22px rgba(255, 255, 255, 0.28), 0 0 24px rgba(143, 193, 227, 0.45);
-    transform: translateY(-1px);
-}
-
-.price-card-special .btn-price-solid:focus-visible {
-    outline: 2px solid #8fc1e3;
-    outline-offset: 2px;
-}
-
-/* АДАПТИВ */
-@media (max-width: 1200px) {
-    .pricing-grid-new {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .pricing-grid-new>* {
-        min-width: 0;
-    }
-
-    .pricing-grid-new>.price-card-special {
-        min-width: 0;
-    }
-
-}
-
-/* Mid range (small tablet / large mobile landscape): prevent text extremes */
-@media (min-width: 701px) and (max-width: 1024px) {
-    .pricing-grid-new {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 20px;
-        align-items: stretch;
-    }
-
-    .pricing-grid-new>* {
-        min-width: 0;
-    }
-
-    .pricing-grid-new>.price-card-regular {
-        display: flex;
-    }
-
-    .pricing-grid-new>.price-card-special {
-        min-width: 0;
-        width: 100%;
-        max-width: none;
-    }
-
-    .price-card-regular,
-    .price-card-special {
-        width: 100%;
-        min-height: 228px;
-        height: auto;
-        padding: 24px;
-    }
-
-    .price-card-special {
-        --stat-num-size: clamp(24px, 3vw, 32px);
-        --stat-num-line: 40px;
-        padding-top: 26px;
-    }
-
-    /* Keep big numbers visually consistent between regular and special cards */
-    .pricing-grid-new .price-val {
-        font-size: clamp(24px, 3vw, 32px);
-        line-height: 1;
-    }
-
-    .price-card-special__stats {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        column-gap: 14px;
-        row-gap: 10px;
-        margin-top: 8px;
-    }
-
-    .price-card-special .text-muted {
-        font-size: clamp(9px, 1vw, 11px);
-        line-height: 1.25;
-    }
-
-    .price-card-special .btn-price-solid {
-        font-size: clamp(10px, 1.05vw, 12px);
-        line-height: 1.2;
-    }
-
-    .price-info h4 {
-        font-size: clamp(12px, 1.4vw, 16px);
-        line-height: 1.25;
-    }
-
-    .price-info p {
-        font-size: clamp(9px, 1.05vw, 12px);
-        line-height: 1.3;
-    }
-}
-
-/* Keep special card text inside on mid-desktop widths */
-@media (min-width: 1201px) and (max-width: 1440px) {
-    .price-card-special {
-        --stat-num-size: 36px;
-        --stat-num-line: 44px;
-        max-width: 420px;
-    }
-
-    .price-card-special__stats {
-        column-gap: 22px;
-    }
-}
-
-@media (max-width: 700px) {
-    .price-pkg .price-val {
-        margin: 0;
-    }
-
-    .pricing-section-new {
-        padding: 60px 0 20px;
-    }
-
-    .pricing-header {
-        margin-bottom: 38px;
-    }
-
-    .price-kicker {
-        margin-bottom: 3px;
-        font-family: 'Manrope', sans-serif;
-        font-weight: 500;
-        font-size: clamp(11px, 1.8vw, 13px);
-        line-height: 7px;
-        letter-spacing: 0.07em;
-        text-transform: uppercase;
-        color: #467E9E;
-    }
-
-    .pricing-header h2 {
-        font-size: clamp(24px, 4vw, 28px);
-        line-height: 22px;
-        margin: 0;
-    }
-
-    .pricing-header p {
-        margin-top: 5px;
-        max-width: min(100%, clamp(221px, 56vw, 272px));
-        font-size: clamp(11px, 2.2vw, 13px);
-        line-height: 11px;
-        letter-spacing: 0.03em;
-        color: #4B5D68;
-    }
-
-    .pricing-subtitle--desktop {
-        display: none;
-    }
-
-    .pricing-subtitle--mobile {
-        display: block;
-    }
-
-    .pricing-grid-new {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: clamp(10px, 2vw, 14px);
-        justify-items: stretch;
-        align-items: stretch;
-    }
-
-    .pricing-grid-new>.price-card-regular {
-        display: none;
-    }
-
-    .pricing-grid-new>.price-card-regular:nth-of-type(4),
-    .pricing-grid-new>.price-card-regular:nth-of-type(5),
-    .pricing-grid-new>.price-card-regular:nth-of-type(3) {
-        display: flex;
-    }
-
-    .pricing-grid-new>.price-card-regular:nth-of-type(4) {
-        order: 1;
-    }
-
-    .pricing-grid-new>.price-card-regular:nth-of-type(5) {
-        order: 2;
-    }
-
-    .pricing-grid-new>.price-card-regular:nth-of-type(3) {
-        order: 3;
-    }
-
-    .pricing-grid-new>.price-card-special {
-        order: 4;
-    }
-
-    .price-card-special {
-        --stat-num-line: 19px;
-        width: 100%;
-        max-width: none;
-        min-height: clamp(127px, calc(127px + (100vw - 360px) * 0.2), 195px);
-        padding-top: clamp(30px, calc(30px + (100vw - 360px) * 0.03), 40px);
-        padding-right: clamp(15px, calc(15px + (100vw - 360px) * 0.02), 22px);
-        padding-bottom: clamp(15px, calc(15px + (100vw - 360px) * 0.006), 17px);
-        padding-left: clamp(15px, calc(15px + (100vw - 360px) * 0.02), 22px);
-        gap: clamp(8px, calc(8px + (100vw - 360px) * 0.012), 12px);
-        justify-content: flex-start;
-        box-shadow: 0px 10px 20px rgba(33, 80, 104, 0.31);
-    }
-
-    .price-card-special__stats {
-        grid-template-columns: 40px 77px;
-        grid-template-rows: auto auto;
-        column-gap: 9px;
-        row-gap: clamp(8px, calc(8px + (100vw - 360px) * 0.02), 15px);
-        justify-content: center;
-        align-items: center;
-        margin-top: clamp(15px, calc(15px + (100vw - 360px) * 0.02), 22px);
-        margin-bottom: auto;
-    }
-
-    .price-card-special__figure {
-        min-height: 0;
-    }
-
-    .price-card-special .title-big {
-        font-size: clamp(20px, 3.6vw, 28px);
-        line-height: 1.2;
-    }
-
-    .price-card-special .title-small {
-        font-size: clamp(20px, 3.6vw, 28px);
-        line-height: 1.2;
-        gap: 0.08em;
-    }
-
-    .price-card-special .title-small__prefix {
-        font-size: 0.45em;
-    }
-
-    .price-card-special .title-small__amount {
-        font-size: 1em;
-        line-height: 19px;
-    }
-
-    .price-card-special .title-small__currency {
-        font-size: 0.55em;
-    }
-
-    .price-card-special .text-muted {
-        font-size: clamp(11px, 1.8vw, 13px);
-        line-height: clamp(8px, 2vw, 12px);
-    }
-
-    .price-card-special .btn-price-solid {
-        width: clamp(126px, calc(126px + (100vw - 360px) * 0.08), 153px);
-        min-height: clamp(29px, calc(29px + (100vw - 360px) * 0.018), 35px);
-        max-height: clamp(29px, calc(29px + (100vw - 360px) * 0.018), 35px);
-        height: clamp(29px, calc(29px + (100vw - 360px) * 0.018), 35px);
-        align-self: center;
-        margin-top: auto;
-        padding: clamp(9px, calc(9px + (100vw - 360px) * 0.004), 10px) clamp(20px, calc(20px + (100vw - 360px) * 0.012), 24px);
-        font-size: clamp(10px, 1.8vw, 12px);
-        line-height: clamp(10px, 2.3vw, 13px);
-        box-shadow: none;
-    }
-
-    .price-card-regular {
-        width: 100%;
-        height: auto;
-        max-width: none;
-        min-height: clamp(127px, calc(127px + (100vw - 360px) * 0.2), 195px);
-        padding-top: clamp(15px, calc(15px + (100vw - 360px) * 0.006), 17px);
-        padding-right: clamp(15px, calc(15px + (100vw - 360px) * 0.02), 22px);
-        padding-bottom: clamp(15px, calc(15px + (100vw - 360px) * 0.006), 17px);
-        padding-left: clamp(15px, calc(15px + (100vw - 360px) * 0.02), 22px);
-        box-shadow: 0px 6px 24px rgba(0, 0, 0, 0.25);
-        border-radius: 20px;
-    }
-
-    .pricing-grid-new .price-val {
-        margin: 0 0 5px;
-        justify-content: center;
-        gap: 3px;
-        font-size: clamp(9px, 1.55vw, 12px);
-        line-height: clamp(10px, 2.4vw, 14px);
-    }
-
-    .price-from {
-        font-size: clamp(8px, 1.25vw, 10px);
-        line-height: clamp(10px, 2vw, 13px);
-    }
-
-    .price-amount {
-        font-size: clamp(16px, 3vw, 22px);
-        line-height: clamp(18px, 4.2vw, 28px);
-    }
-
-    .price-currency {
-        font-size: clamp(8px, 1.25vw, 10px);
-        line-height: clamp(10px, 2vw, 13px);
-    }
-
-    .price-info h4 {
-        margin-bottom: 5px;
-        font-size: clamp(12px, 1.85vw, 15px);
-        line-height: clamp(13px, 2.8vw, 18px);
-        text-align: center;
-    }
-
-    .price-info p {
-        margin-bottom: 0;
-        font-size: clamp(9px, 1.4vw, 11px);
-        line-height: clamp(8px, 1.9vw, 12px);
-        text-align: center;
-        letter-spacing: 0.03em;
-    }
-
-
-}
-
-@media (max-width: 360px) {
-    .pricing-grid-new .price-val {
-        margin: 0 0 5px !important;
-    }
-}
-
-/* --- СЕКЦИЯ CASES --- */
-/* --- CASES SECTION --- */
-.cases-section {
-    background: #FFFFFF;
-    padding: 30px 0;
-    font-family: 'Manrope', sans-serif;
-    overflow: hidden;
-}
-
-/* Шапка */
-.cases-kicker {
-    display: block;
-    font-size: 15px;
-    font-weight: 500;
-    color: #467E9E;
-    letter-spacing: 0.07em;
-    text-transform: uppercase;
-    margin-bottom: 12px;
-}
-
-.cases-title {
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 700;
-    font-size: clamp(32px, 5vw, 40px);
-    color: #272727;
-    margin-bottom: clamp(40px, 8vw, 60px);
-}
-
-.cases-title span {
-    color: #467E9E;
-}
-
-/* ГЛАВНЫЙ ФЛЕКС */
-.cases-main-flex {
-    display: flex;
-    flex-wrap: wrap;
-    /* Для адаптивности */
-    gap: 40px 60px;
-}
-
-/* ЛЕВАЯ ЧАСТЬ (Визуал) */
-.cases-visual-side {
-    flex: 1 1 600px;
-    /* Тянется до 600px, потом падает вниз */
-    max-width: 685px;
-}
 
 .comparison-container {
     position: relative;
@@ -1964,37 +730,6 @@ Author: Antigravity
     }
 }
 
-@media (max-width: 1024px) {
-    .cases-main-flex {
-        justify-content: flex-start;
-        gap: 32px 40px;
-    }
-
-    /* Центрируем только слайдер до/после и кнопку; текст и карточки — слева */
-    .cases-visual-side {
-        flex: 1 1 100%;
-        max-width: 100%;
-        width: 100%;
-        margin-inline: 0;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .cases-visual-side .comparison-container {
-        margin-left: auto;
-        margin-right: auto;
-        width: 100%;
-        max-width: min(685px, 100%);
-    }
-
-    .cases-info-side {
-        flex: 1 1 100%;
-        max-width: none;
-        width: 100%;
-        margin-inline: 0;
-    }
-}
 
 .comparison-divider {
     position: absolute;
@@ -2067,42 +802,6 @@ Author: Antigravity
     filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
 }
 
-
-
-/* ПРАВАЯ ЧАСТЬ (Текст и Карточки) */
-.cases-info-side {
-    flex: 1 1 400px;
-}
-
-.cases-text-block h3 {
-    font-family: 'Unbounded', sans-serif;
-    font-size: clamp(24px, 4vw, 30px);
-    font-weight: 600;
-    line-height: 1.2;
-    color: #272727;
-    margin-bottom: 20px;
-}
-
-.text-blue {
-    color: #467E9E;
-}
-
-.cases-text-block p {
-    font-weight: 300;
-    font-size: 16px;
-    line-height: 1.4;
-    color: #4B5D68;
-    max-width: 460px;
-    margin-bottom: 40px;
-}
-
-/* СЕТКА КАРТОЧЕК */
-.cases-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    /* Жестко задаем 2 одинаковые колонки */
-    gap: 25px;
-}
 
 .info-card {
     padding: 30px 25px;
@@ -2182,48 +881,6 @@ Author: Antigravity
 
 /* --- АДАПТИВ --- */
 @media (max-width: 768px) {
-    .cases-section {
-        padding: 25px 0;
-    }
-
-    .cases-section .container {
-        padding-left: 16px;
-        padding-right: 16px;
-    }
-
-    .cases-header {
-        margin-bottom: 18px;
-    }
-
-    .cases-kicker {
-        margin-bottom: 3px;
-        font-size: 5px;
-        line-height: 7px;
-        letter-spacing: 0.07em;
-    }
-
-    .cases-title {
-        margin-bottom: 0;
-        font-size: 18px;
-        line-height: 22px;
-    }
-
-    .cases-main-flex {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-    }
-
-    .cases-visual-side {
-        max-width: 100%;
-        flex: 1 1 100%;
-        margin-bottom: 0;
-    }
-
-    .cases-info-side {
-        flex: 1 1 auto;
-        max-width: 100%;
-    }
 
     .btn-all-cases {
         display: none;
@@ -2258,42 +915,6 @@ Author: Antigravity
 
     .comparison-divider {
         width: 1px;
-    }
-
-    .cases-text-block {
-        width: 100%;
-        max-width: min(420px, 100%);
-        margin: 0 auto;
-        background: #FFFFFF;
-        box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
-        padding: 16px 20px 12px;
-        text-align: left;
-    }
-
-    .cases-text-block h3 {
-        margin-bottom: 0;
-        font-family: 'Unbounded', sans-serif;
-        font-size: 14px;
-        line-height: 1;
-        font-weight: 600;
-        letter-spacing: 0;
-        font-variant-numeric: lining-nums proportional-nums;
-    }
-
-    .cases-text-block p {
-        margin: 10px 0 0;
-        max-width: 100%;
-        font-size: 8px;
-        line-height: 11px;
-        letter-spacing: 0.03em;
-    }
-
-    .cases-cards-grid {
-        width: 100%;
-        max-width: min(420px, 100%);
-        margin: 0 auto;
-        gap: 0;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .info-card {
@@ -3801,9 +2422,10 @@ Author: Antigravity
    SHARED SECTION HEADING SYSTEM
    process/pricing/cases/guarantees/reviews/equipment/coverage
    ========================================= */
+
 .subtitle-primary,
 .price-kicker,
-.cases-kicker,
+
 .g-kicker,
 .coverage-kicker {
     display: inline-block;
@@ -3818,8 +2440,7 @@ Author: Antigravity
 }
 
 
-.pricing-header h2,
-.cases-title,
+
 .g-title,
 .reviews-title,
 .equipment-title,
@@ -3833,16 +2454,14 @@ Author: Antigravity
 }
 
 
-.pricing-header h2 .text-blue,
 .g-title .text-blue,
 .equipment-title .text-blue,
 .coverage-title .text-blue,
-.reviews-title span,
-.cases-title span {
+.reviews-title span {
     color: var(--color-blue-primary);
 }
 
-.pricing-subtitle,
+
 .coverage-desc {
     margin: 0;
     font-family: 'Manrope', sans-serif;
@@ -3852,8 +2471,7 @@ Author: Antigravity
     color: var(--color-slate-dark);
 }
 
-.pricing-header,
-.cases-header,
+
 .guarantees-header,
 .reviews-header,
 .equipment-header,
@@ -3868,19 +2486,13 @@ Author: Antigravity
 
 /* Unified heading rhythm for key sections */
 
-.pricing-section-new .pricing-header,
-.cases-section .cases-header,
 .reviews-section-new .reviews-header,
 .equipment-section .equipment-header,
 .coverage-section .coverage-header {
     margin-bottom: clamp(24px, 4vw, 40px);
 }
 
-.pricing-section-new .price-kicker,
-.pricing-section-new .pricing-header h2,
-.pricing-section-new .pricing-subtitle,
-.cases-section .cases-kicker,
-.cases-section .cases-title,
+
 .reviews-section-new .reviews-title,
 .equipment-section .equipment-title,
 .guarantees-section .g-kicker,
@@ -3893,15 +2505,10 @@ Author: Antigravity
 
 /* Explicit vertical rhythm without flex for these two */
 .coverage-section .coverage-kicker,
-.pricing-section-new .price-kicker,
-.cases-section .cases-kicker,
 .guarantees-section .g-kicker {
     margin-bottom: 0;
 }
 
-
-.pricing-section-new .pricing-header h2,
-.cases-section .cases-title,
 .guarantees-section .g-title {
     margin: 0 0 clamp(8px, 1.8vw, 14px);
 }
@@ -3913,10 +2520,6 @@ Author: Antigravity
 
 /* Узже 360px: убрать жёсткие поля и нижние пороги ширины, не ломать сетки */
 @media (max-width: 359px) {
-    .cases-section .container {
-        padding-left: max(8px, 2.5vw);
-        padding-right: max(8px, 2.5vw);
-    }
 
     .comparison-container {
         max-width: 100%;
@@ -3924,9 +2527,6 @@ Author: Antigravity
     }
 
 
-    .cases-cards-grid .info-card {
-        min-width: 0;
-    }
 }
 
 /* ===== Mobile system pass (up to 700, header -> cases) ===== */
@@ -3937,10 +2537,6 @@ Author: Antigravity
         --m-grid-gap: clamp(10px, 2.2vw, 12px);
     }
 
-
-    .process-section-new,
-    .pricing-section-new,
-    .cases-section,
     .reviews-section-new,
     .equipment-section,
     .guarantees-section,
@@ -3948,29 +2544,19 @@ Author: Antigravity
         overflow-x: clip;
     }
 
-    .pricing-section-new>.container,
-    .cases-section>.container,
     .reviews-section-new>.container,
     .equipment-section>.container,
     .guarantees-section>.container,
-    .coverage-section>.container,
-    .process-section-new .container.process-container-inner {
+    .coverage-section>.container {
         padding-left: var(--m-side);
         padding-right: var(--m-side);
     }
 
-    .process-glass-panel,
-    .comparison-container,
-    .cases-text-block,
-    .cases-cards-grid {
+    .comparison-container {
         width: var(--m-main-card);
         max-width: var(--m-main-card);
     }
 
-    .cases-cards-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 0;
-    }
 
     .info-card {
         min-height: clamp(102px, 23vw, 120px);
@@ -4216,19 +2802,6 @@ Author: Antigravity
     }
 }
 
-@media (min-width: 701px) and (max-width: 768px) {
-
-    /* Cases: keep visual and info blocks same full width */
-    .cases-section .comparison-container,
-    .cases-section .cases-text-block,
-    .cases-section .cases-cards-grid {
-        width: 100%;
-        max-width: none;
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-
 @media (max-width: 700px) {
     .reviews-section-new {
         background: #F7F9FB;
@@ -4422,13 +2995,8 @@ Author: Antigravity
    ========================================= */
 @media (max-width: 768px) {
 
-    .process-section-new .p-subtitle,
-    .process-section-new .p-step-desc,
-    .pricing-section-new .pricing-header p,
     .coverage-section .coverage-desc,
     .price-card-special .text-muted,
-    .cases-section .comparison-text,
-    .cases-section .info-card ul li,
     .reviews-section-new .review-text,
     .equipment-section .equip-card p,
     .coverage-section .district-card p {
@@ -4436,7 +3004,7 @@ Author: Antigravity
         line-height: 1.5;
     }
 
-    .process-section-new .p-step-title,
+
     .guarantees-section .g-tab-content h3 {
         font-size: var(--fs-card-heading);
     }
@@ -4485,36 +3053,6 @@ Author: Antigravity
         font-size: var(--fs-button);
         line-height: 1.3;
         font-weight: 600;
-    }
-
-    .process-section-new .p-kicker {
-        font-size: var(--fs-kicker);
-        line-height: 1.3;
-    }
-
-    .cases-section .img-label {
-        font-size: var(--fs-label);
-        line-height: 1.35;
-    }
-
-    .cases-section .cases-text-block h3 {
-        font-size: var(--fs-card-heading);
-        line-height: 1.3;
-    }
-
-    .cases-section .cases-text-block p {
-        font-size: var(--fs-body);
-        line-height: 1.45;
-    }
-
-    .cases-section .info-card h4 {
-        font-family: 'Unbounded', sans-serif;
-        font-weight: 600;
-        font-size: var(--fs-label);
-        line-height: 1;
-        letter-spacing: 0;
-        font-variant: small-caps;
-        font-variant-numeric: lining-nums proportional-nums;
     }
 }
 
