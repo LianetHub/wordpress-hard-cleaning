@@ -1,24 +1,65 @@
+<?php
+
+/**
+ * Данные для отзывов (имитация ACF)
+ */
+$yandex_rating = '4.7'; // Общий рейтинг
+$yandex_link = get_field('yandex_maps_link', 'option') ?: '#'; // Ссылка на карты
+
+$reviews = [
+    [
+        'text'   => 'Большое спасибо за качественно выполненную работу. Уборка проведена со знанием дела. Все поверхности посто блестят! На мой взгляд оптимальное сочетание цены и качества. Буду обращаться еще.',
+        'author' => 'Гудкова Оля',
+        'avatar' => get_template_directory_uri() . '/assets/review_avatar_1.jpg',
+        'link'   => 'https://yandex.by/maps/user/ezdtrbwkhj1tgqfm8xa8xuuqh8'
+    ],
+    [
+        'text'   => 'Сделали ремонт и случайно наткнулись на эту компанию. Нашему счастью нет предела. Во первых клиентоориентированность на высшем уровне, договорились о дате и времени без проблем. Во вторых никаких изъян после уборки мы не обнаружили.',
+        'author' => 'Ксения Малинина',
+        'avatar' => get_template_directory_uri() . '/assets/review_avatar_2.webp',
+        'link'   => 'https://yandex.by/maps/user/g70x1e32czmjfarc3vhwqe1c98'
+    ],
+    [
+        'text'   => 'Персонал отлично справился со своим делом. После ремонта не успела убрать всё, решила вызвать клиннинг. В выборе вашей компании я не ошиблась! Убрали все отлично, даже стало легче дышать.',
+        'author' => 'Лина Артамонова',
+        'avatar' => get_template_directory_uri() . '/assets/review_avatar_3.webp',
+        'link'   => 'https://yandex.by/maps/user/ev6c5e9wjypppwruju1a31mmjr'
+    ],
+    [
+        'text'   => 'Очень довольна работой этой клининговой компании! Они сделали уборку быстро и качественно, оставив квартиру идеально чистой. Обязательно обращусь к ним снова и рекомендую всем.',
+        'author' => 'Элна X.',
+        'avatar' => get_template_directory_uri() . '/assets/review_avatar_4.webp',
+        'link'   => '#'
+    ],
+    [
+        'text'   => 'Обратилась в клининговую компанию для проведения уборки после сдачи квартиры. Работу выполнили качественно и в оговорённые сроки. Ни каких следов прежнего проживания не осталось.',
+        'author' => 'Ирина Бу',
+        'avatar' => get_template_directory_uri() . '/assets/review_avatar_5.webp',
+        'link'   => '#'
+    ]
+];
+?>
+
 <section class="reviews-section-new">
     <div class="container">
 
-        <!-- Шапка блока -->
         <div class="reviews-header">
             <div class="reviews-header-left">
                 <h2 class="reviews-title">Отзывы из <br><span>Яндекс Карт</span></h2>
 
-                <!-- Плашка рейтинга -->
                 <div class="yandex-rating-card">
-                    <div class="rating-circle">4,7</div>
+                    <div class="rating-circle"><?php echo $yandex_rating; ?></div>
                     <div class="rating-info">
                         <div class="rating-stars">
-                            <?php for ($i = 0; $i < 4; $i++): ?>
-                                <svg width="11" height="11" viewBox="0 0 11 11" fill="#F4B942">
+                            <?php
+                            $full_stars = floor((float)$yandex_rating);
+                            for ($i = 1; $i <= 5; $i++):
+                                $star_color = ($i <= $full_stars) ? '#F4B942' : '#FBE7BD';
+                            ?>
+                                <svg width="11" height="11" viewBox="0 0 11 11" fill="<?php echo $star_color; ?>">
                                     <path d="M5.5 0L6.73482 3.79321H10.7246L7.4949 6.13858L8.72972 9.93179L5.5 7.58642L2.27028 9.93179L3.5051 6.13858L0.275386 3.79321H4.26518L5.5 0Z" />
                                 </svg>
                             <?php endfor; ?>
-                            <svg width="11" height="11" viewBox="0 0 11 11" fill="#FBE7BD">
-                                <path d="M5.5 0L6.73482 3.79321H10.7246L7.4949 6.13858L8.72972 9.93179L5.5 7.58642L2.27028 9.93179L3.5051 6.13858L0.275386 3.79321H4.26518L5.5 0Z" />
-                            </svg>
                         </div>
                         <span class="rating-text">Рейтинг в Яндексе</span>
                     </div>
@@ -26,7 +67,7 @@
             </div>
 
             <div class="reviews-header-right">
-                <a href="#" class="btn-yandex-open">Открыть в Яндексе</a>
+                <a href="<?php echo esc_url($yandex_link); ?>" target="_blank" class="btn-yandex-open">Открыть в Яндексе</a>
                 <div class="reviews-nav">
                     <button class="nav-arrow prev">
                         <svg width="12" height="24" viewBox="0 0 12 24" fill="none">
@@ -42,69 +83,26 @@
             </div>
         </div>
 
-        <!-- Сетка отзывов -->
         <div class="reviews-slider-window">
             <div class="reviews-grid-new">
-
-                <!-- Отзыв 1 -->
-                <div class="review-card-item">
-                    <p class="review-text">Большое спасибо за качественно выполненную работу. Уборка проведена со знанием дела. Все поверхности посто блестят! На мой взгляд оптимальное сочетание цены и качества. Буду обращаться еще.</p>
-                    <div class="review-footer">
-                        <div class="author-avatar" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/review_avatar_1.jpg');"></div>
-                        <div class="author-info">
-                            <h4><a href="https://yandex.by/maps/user/ezdtrbwkhj1tgqfm8xa8xuuqh8?ll=27.701393%2C52.858248&z=7" target="_blank">Гудкова Оля</a></h4>
-                            <span>Источник: Яндекс</span>
+                <?php foreach ($reviews as $review): ?>
+                    <div class="review-card-item">
+                        <p class="review-text"><?php echo esc_html($review['text']); ?></p>
+                        <div class="review-footer">
+                            <div class="author-avatar" style="background-image: url('<?php echo esc_url($review['avatar']); ?>');"></div>
+                            <div class="author-info">
+                                <h4>
+                                    <?php if ($review['link'] !== '#'): ?>
+                                        <a href="<?php echo esc_url($review['link']); ?>" target="_blank"><?php echo esc_html($review['author']); ?></a>
+                                    <?php else: ?>
+                                        <?php echo esc_html($review['author']); ?>
+                                    <?php endif; ?>
+                                </h4>
+                                <span>Источник: Яндекс</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Отзыв 2 -->
-                <div class="review-card-item">
-                    <p class="review-text">Сделали ремонт и случайно наткнулись на эту компанию. Нашему счастью нет предела. Во первых клиентоориентированность на высшем уровне, договорились о дате и времени без проблем. Во вторых никаких изъян после уборки мы не обнаружили. Так что теперь советуем всем знакомым эту компанию!</p>
-                    <div class="review-footer">
-                        <div class="author-avatar" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/review_avatar_2.webp');"></div>
-                        <div class="author-info">
-                            <h4><a href="https://yandex.by/maps/user/g70x1e32czmjfarc3vhwqe1c98?ll=27.701393%2C52.858248&z=7" target="_blank">Ксения Малинина</a></h4>
-                            <span>Источник: Яндекс</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Отзыв 3 -->
-                <div class="review-card-item">
-                    <p class="review-text">Персонал отлично справился со своим делом. После ремонта не успела убрать всё, решила вызвать клиннинг. В выборе вашей компании я не ошиблась! Убрали все отлично, даже стало легче дышать. Нет такого, что я не понимаю что и где, наоборот всё сделано просто, но аккуратно.</p>
-                    <div class="review-footer">
-                        <div class="author-avatar" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/review_avatar_3.webp');"></div>
-                        <div class="author-info">
-                            <h4><a href="https://yandex.by/maps/user/ev6c5e9wjypppwruju1a31mmjr?ll=27.701393%2C52.858248&z=7" target="_blank">Лина Артамонова</a></h4>
-                            <span>Источник: Яндекс</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Отзыв 4 -->
-                <div class="review-card-item">
-                    <p class="review-text">Очень довольна работой этой клининговой компании! Они сделали уборку быстро и качественно, оставив квартиру идеально чистой. Обязательно обращусь к ним снова и рекомендую всем
-                    </p>
-                    <div class="review-footer">
-                        <div class="author-avatar" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/review_avatar_4.webp');"></div>
-                        <div class="author-info">
-                            <h4><a href="#" target="_blank">Элна X.</a></h4>
-                            <span>Источник: Яндекс</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Отзыв 5 -->
-                <div class="review-card-item">
-                    <p class="review-text">Обратилась в клининговую компанию для проведения уборки после сдачи квартиры. Работу выполнили качественно и в оговорённые сроки. Ни каких следов прежнего проживания не осталось. Квартира после уборки выглядит чистой и свежей - полностью готова к заселению новых жильцов. Огромное спасибо за профессиональный подход. Рекомендую!
-                    </p>
-                    <div class="review-footer">
-                        <div class="author-avatar" style="background-image: url('<?php echo get_template_directory_uri(); ?>/assets/review_avatar_5.webp');"></div>
-                        <div class="author-info">
-                            <h4><a href="#" target="_blank">Ирина Бу</a></h4>
-                            <span>Источник: Яндекс</span>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="reviews-mobile-indicator" id="reviews-mobile-indicator" aria-hidden="true"></div>
