@@ -79,11 +79,7 @@ Author: Antigravity
     --fs-topbar: clamp(11px, 0.18rem + 0.82vw, 14px);
     --fs-caption: clamp(11px, 0.08rem + 0.72vw, 13px);
     --fs-label: clamp(11px, 0.1rem + 1.05vw, 14px);
-    /* Yandex map balloon */
-    --fs-map-title: clamp(11px, 0.15rem + 2.5vw, 14px);
-    --fs-map-meta: clamp(11px, 0.1rem + 2.1vw, 12px);
-    --fs-map-badge: clamp(11px, 0.08rem + 1.75vw, 12px);
-    --fs-map-btn: clamp(11px, 0.1rem + 1.95vw, 13px);
+
 
     /* Секции главной: чередование фонов */
     --section-bg-white: var(--white);
@@ -6003,120 +5999,6 @@ body.nav-drawer-open {
     }
 }
 
-/* =========================================
-   FULLWIDTH MAP SECTION
-   ========================================= */
-.map-section-full {
-    position: relative;
-    width: 100%;
-    height: 620px;
-    background: #e5e3df;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* Контейнер iframe (если понадобится вне Яндекса) */
-.map-wrapper {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-}
-
-.map-wrapper iframe {
-    width: 100%;
-    height: 100%;
-    border: none;
-}
-
-/* =========================================
-   FULLWIDTH MAP SECTION (YANDEX API)
-   ========================================= */
-/* Балун: ширина только от viewport. Внутри ymaps-balloon родитель схлопывается — min(100%,400px) даёт ~44px. */
-.map-custom-card {
-    position: relative;
-    z-index: 10;
-    box-sizing: border-box;
-    width: clamp(196px, calc(196px + (100vw - 360px) * 0.12), 245px);
-    flex-shrink: 0;
-    background: linear-gradient(145.13deg, #306E8C 18.76%, #1F4B62 104.43%), #8FC1E3;
-    border-radius: 20px;
-    padding: 20px 14px 12px;
-    box-shadow: 0 10px 20px rgba(22, 56, 74, 0.28);
-    color: #FFFFFF;
-    font-family: 'Manrope', sans-serif;
-    cursor: default;
-}
-
-/* Треугольник (хвостик) указывающий на метку */
-.map-custom-card::after {
-    content: '';
-    position: absolute;
-    bottom: -7px;
-    left: 50%;
-    transform: translateX(-50%);
-    border-width: 7px 7px 0;
-    border-style: solid;
-    border-color: #255C7A transparent transparent transparent;
-    display: block;
-    width: 0;
-}
-
-.m-card-title {
-    font-weight: 600;
-    font-size: var(--fs-map-title);
-    line-height: 1.2;
-    letter-spacing: 0;
-    margin: 0 0 6px;
-    color: #F8FAFB;
-}
-
-.m-card-address,
-.m-card-phone {
-    font-size: var(--fs-map-meta);
-    font-weight: 300;
-    color: #D7D7D7;
-    line-height: 1.35;
-    letter-spacing: 0;
-    margin: 0 0 1px;
-}
-
-.m-card-phone a {
-    color: #FFFFFF;
-    text-decoration: none;
-    font-weight: 500;
-    transition: opacity 0.3s;
-}
-
-.m-card-phone a:hover {
-    opacity: 0.8;
-}
-
-.m-card-badge {
-    display: inline-block;
-    background: #50859F;
-    padding: 4px 10px;
-    border-radius: 12px;
-    font-size: var(--fs-map-badge);
-    font-weight: 700;
-    line-height: 1.2;
-    letter-spacing: 0;
-    color: #FFF9F6;
-    margin: 6px 0 10px;
-}
-
-/* Кнопки */
-.m-card-actions {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 5px;
-}
-
-
 
 .nav-list a:focus-visible,
 .header-burger:focus-visible,
@@ -6140,36 +6022,6 @@ body.nav-drawer-open {
         font-size: 13px;
     }
 }
-
-/* --- Адаптивность карты / балуна --- */
-@media (max-width: 768px) {
-    .map-section-full {
-        height: 520px;
-    }
-
-    .map-custom-card {
-        width: clamp(196px, calc(196px + (100vw - 360px) * 0.12), 236px);
-        padding: 20px 14px 12px;
-    }
-
-    .m-card-actions {
-        gap: 6px;
-    }
-}
-
-@media (max-width: 1024px) and (min-width: 769px) {
-    .map-section-full {
-        height: 600px;
-    }
-
-    .map-custom-card {
-        width: min(400px, calc(100vw - 40px));
-        min-width: min(280px, calc(100vw - 40px));
-        max-width: min(420px, calc(100vw - 40px));
-        padding: 20px 22px;
-    }
-}
-
 
 /* =========================================
    SHARED SECTION HEADING SYSTEM

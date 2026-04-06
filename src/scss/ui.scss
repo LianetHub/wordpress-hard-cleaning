@@ -29,12 +29,19 @@ h6 {
 p {
 	font-weight: 500;
 	font-size: var(--text-m-base);
-	color: var(--color-slate-dark);
 	margin-bottom: 20px;
 }
 
 .title {
 	font-size: clamp(1.25rem, 0.85rem + 1.85vw, rem(40));
+}
+
+.title-md {
+	font-size: clamp(1.125rem, 0.85rem + 1.85vw, rem(35));
+}
+
+.title-sm {
+	font-size: clamp(rem(14), 0.15rem + 2.5vw, rem(20));
 }
 
 .hint {

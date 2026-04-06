@@ -372,4 +372,84 @@ $(function () {
     document.addEventListener('wpcf7mailfailed', function () {
         getErrorSubmitting()
     }, false);
+
+
+    function initYandexMap() {
+        const $mapContainer = $('#yandex-map');
+        if (!$mapContainer.length) return;
+
+        let myMap, myPlacemark;
+
+        const syncOffset = () => {
+            const $card = $('.baloon__card');
+            if (!$card.length || !myPlacemark) return;
+
+            const w = $card.outerWidth();
+            const h = $card.outerHeight();
+            const gap = window.innerWidth <= 768 ? 8 : 10;
+
+            myPlacemark.options.set('balloonOffset', [
+                -Math.round(w / 2),
+                -Math.round(h + gap)
+            ]);
+        };
+
+        const init = () => {
+            const rawCoords = $mapContainer.data('coords');
+            const centerCoords = rawCoords ? rawCoords.split(',').map(Number) : [59.957545, 30.412431];
+            const balloonHtml = $('#map-balloon-template').html();
+
+            myMap = new ymaps.Map('yandex-map', {
+                center: centerCoords,
+                zoom: 17,
+                controls: ['zoomControl']
+            });
+
+            myMap.behaviors.disable('scrollZoom');
+
+            const MyBalloonLayout = ymaps.templateLayoutFactory.createClass(
+                `<div class="map-balloon-wrapper">${balloonHtml}</div>`
+            );
+
+            myPlacemark = new ymaps.Placemark(centerCoords, {}, {
+                balloonLayout: MyBalloonLayout,
+                balloonCloseButton: false,
+                balloonPanelMaxMapArea: 0,
+                hideIconOnBalloonOpen: false,
+                balloonOffset: [0, 0]
+            });
+
+            myPlacemark.events.add('balloonopen', () => {
+                requestAnimationFrame(() => {
+                    requestAnimationFrame(syncOffset);
+                });
+                setTimeout(syncOffset, 120);
+            });
+
+            myMap.geoObjects.add(myPlacemark);
+            myPlacemark.balloon.open();
+
+            $(window).on('resize', () => {
+                clearTimeout(window.mapResizeTimer);
+                window.mapResizeTimer = setTimeout(() => {
+                    if (myPlacemark && myPlacemark.balloon.isOpen()) {
+                        syncOffset();
+                    }
+                }, 150);
+            });
+        };
+
+        if (typeof ymaps !== 'undefined' && ymaps.ready) {
+            ymaps.ready(init);
+        } else {
+            const checkYmaps = setInterval(() => {
+                if (typeof ymaps !== 'undefined' && ymaps.ready) {
+                    ymaps.ready(init);
+                    clearInterval(checkYmaps);
+                }
+            }, 100);
+        }
+    }
+
+    initYandexMap();
 })

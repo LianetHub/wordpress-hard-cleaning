@@ -1,24 +1,40 @@
+<?php
+$phone = get_field('phone', 'option');
+$phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
+$email = get_field('email', 'option');
+$address = get_field('address', 'option');
+?>
+
 <div class="top-bar">
     <div class="container top-bar-content">
         <div class="tb-left">
-            <span class="tb-address">Санкт-Петербург, пр-кт Металлистов, д. 19/30, лит. А, помещ. 17-Н</span>
-            <?php echo cleaning_inline_svg('tb-address-sep', array('class' => 'tb-address-sep', 'aria-hidden' => 'true')); ?>
-            <a class="tb-email" href="mailto:fortunakompani@yandex.ru">fortunakompani@yandex.ru</a>
+            <?php if ($address): ?>
+                <span class="tb-address"><?php echo $address; ?></span>
+            <?php endif; ?>
+
+            <?php if ($address && $email): ?>
+                <?php echo cleaning_inline_svg('tb-address-sep', array('class' => 'tb-address-sep', 'aria-hidden' => 'true')); ?>
+            <?php endif; ?>
+
+            <?php if ($email): ?>
+                <a class="tb-email" href="mailto:<?php echo antispambot($email); ?>">
+                    <?php echo antispambot($email); ?>
+                </a>
+            <?php endif; ?>
         </div>
         <div class="tb-right">
             <div class="tb-socials">
-                <!-- Telegram Icon (Оригинал из Figma, градиент починен) -->
                 <a href="#" class="tb-icon-circle" aria-label="Telegram">
                     <?php echo cleaning_inline_svg('tb-social-telegram', array('aria-hidden' => 'true')); ?>
                 </a>
-
-                <!-- Вторая иконка MAX (Оригинал из Figma) -->
                 <a href="#" class="tb-icon-circle" aria-label="Messenger">
                     <?php echo cleaning_inline_svg('tb-social-max', array('aria-hidden' => 'true')); ?>
                 </a>
-
             </div>
-            <a href="tel:+78129007868" class="tb-phone">+7 (812) 900-78-68</a>
+
+            <?php if ($phone): ?>
+                <a href="tel:<?php echo $phone_clean; ?>" class="tb-phone"><?php echo $phone; ?></a>
+            <?php endif; ?>
         </div>
     </div>
 </div>
