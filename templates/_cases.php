@@ -1,11 +1,8 @@
   <section class="cases-section">
       <div class="container">
 
-          <!-- Шапка -->
-          <div class="cases-header">
-              <span class="cases-kicker">до / после</span>
-              <h2 class="cases-title">Наши <span>работы</span></h2>
-          </div>
+          <span class="cases__hint hint">до / после</span>
+          <h2 class="cases__title title">Наши <span class="color-accent">работы</span></h2>
 
           <div class="cases-main-flex">
 

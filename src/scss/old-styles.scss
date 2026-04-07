@@ -336,8 +336,6 @@
 
     .comparison-container {
         width: 100%;
-        max-width: min(420px, 100%);
-        height: min(201px, 56vw);
         margin: 0 auto;
         border-radius: 10px 10px 0 0;
     }
@@ -372,29 +370,6 @@
         box-shadow: 0px 12px 24px rgba(0, 0, 0, 0.1);
     }
 
-    .info-card h4 {
-        margin-bottom: 5px;
-        font-family: 'Unbounded', sans-serif;
-        font-weight: 600;
-        font-size: 13px;
-        line-height: 1;
-        letter-spacing: 0;
-        font-variant: small-caps;
-        font-variant-numeric: lining-nums proportional-nums;
-    }
-
-    .info-card ul li {
-        font-size: 8px;
-        line-height: 11px;
-        margin-bottom: 5px;
-        padding-left: 10px;
-    }
-
-    .info-card ul li::before {
-        width: 3px;
-        height: 3px;
-        top: 4px;
-    }
 
     .card-white {
         border: 0;
@@ -548,33 +523,6 @@
     color: var(--color-blue-primary);
 }
 
-
-
-/* Узже 360px: убрать жёсткие поля и нижние пороги ширины, не ломать сетки */
-@media (max-width: 359px) {
-
-    .comparison-container {
-        max-width: 100%;
-        height: min(190px, 52vw);
-    }
-
-
-}
-
-/* ===== Mobile system pass (up to 700, header -> cases) ===== */
-@media (max-width: 700px) {
-
-    .comparison-container {
-        width: var(--m-main-card);
-        max-width: var(--m-main-card);
-    }
-
-
-    .info-card {
-        min-height: rem(120);
-    }
-
-}
 
 
 /* =========================================

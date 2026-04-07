@@ -64,11 +64,8 @@ $guarantee_docs = [
 
 <section class="guarantees-section">
     <div class="container">
-        <div class="guarantees-header">
-            <span class="g-kicker">Надёжность</span>
-            <h2 class="g-title">Гарантии и <span class="text-blue">безопасность</span> работ</h2>
-        </div>
-
+        <span class="guarantees__hint hint">Надёжность</span>
+        <h2 class="guarantees__title title">Гарантии и <span class="color-accent">безопасность</span> работ</h2>
         <div class="g-main-card">
             <aside class="g-sidebar">
                 <nav class="g-nav">
