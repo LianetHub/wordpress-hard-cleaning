@@ -2664,7 +2664,6 @@ body.nav-drawer-open {
 }
 
 .hero__subtitle {
-  font-family: "Manrope", sans-serif;
   font-weight: 300;
   font-size: clamp(0.875rem, 1.35vw + 0.65rem, 1rem);
   line-height: 1.375;
@@ -2783,7 +2782,6 @@ body.nav-drawer-open {
 }
 
 .trust__card-description {
-  font-family: "Manrope", sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.4;
@@ -2895,7 +2893,6 @@ body.nav-drawer-open {
 
 .services__item-title {
   margin: 0;
-  font-family: "Manrope", sans-serif;
   font-weight: 700;
   font-size: clamp(1.25rem, 2.1vw, 1.625rem);
   line-height: 1.4;
@@ -2926,7 +2923,6 @@ body.nav-drawer-open {
   padding: 0.5rem 1rem;
   background: #eaf3f8;
   border-radius: 0.75rem;
-  font-family: "Manrope", sans-serif;
   font-weight: 500;
   font-size: 0.8125rem;
   line-height: 1.35;
@@ -2989,7 +2985,6 @@ body.nav-drawer-open {
   padding: 0.875rem clamp(1.5rem, 11vw, 6.25rem);
   background: #31708e;
   color: #ffffff;
-  font-family: "Manrope", sans-serif;
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.375rem;
@@ -3097,7 +3092,6 @@ body.nav-drawer-open {
 
 .p-kicker {
   display: block;
-  font-family: "Manrope", sans-serif;
   font-weight: 500;
   font-size: 0.9375rem;
   line-height: 1.25rem;
@@ -3108,7 +3102,6 @@ body.nav-drawer-open {
 }
 
 .p-subtitle {
-  font-family: "Manrope", sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.375rem;
@@ -3323,7 +3316,6 @@ body.nav-drawer-open {
 }
 
 .p-step-desc {
-  font-family: "Manrope", sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.375rem;
@@ -3382,7 +3374,6 @@ body.nav-drawer-open {
 }
 
 .pricing-header p {
-  font-family: "Manrope", sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.4;
@@ -3471,7 +3462,6 @@ body.nav-drawer-open {
 }
 
 .price-info h4 {
-  font-family: "Manrope", sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.6875rem;
@@ -3480,7 +3470,6 @@ body.nav-drawer-open {
 }
 
 .price-info p {
-  font-family: "Manrope", sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.3;
@@ -3642,7 +3631,6 @@ body.nav-drawer-open {
 .price-card-special .text-muted {
   margin: 0;
   text-align: center;
-  font-family: "Manrope", sans-serif;
   font-weight: 300;
   font-size: clamp(0.875rem, 2.5vw, 1rem);
   line-height: 1.375rem;
@@ -3668,7 +3656,6 @@ body.nav-drawer-open {
   border-radius: 4.375rem;
   border: none;
   cursor: pointer;
-  font-family: "Manrope", sans-serif;
   font-weight: 600;
   font-size: clamp(0.625rem, 1.1vw, 0.875rem);
   line-height: 1.2;
@@ -3695,7 +3682,6 @@ body.nav-drawer-open {
 .cases-section {
   background: #FFFFFF;
   padding: 1.875rem 0;
-  font-family: "Manrope", sans-serif;
   overflow: hidden;
 }
 
@@ -3714,7 +3700,6 @@ body.nav-drawer-open {
 .cases-kicker {
   display: inline-block;
   margin: 0;
-  font-family: "Manrope", sans-serif;
   font-weight: 700;
   font-size: var(--fs-kicker);
   line-height: 1.2;
@@ -3943,13 +3928,11 @@ body.nav-drawer-open {
 .guarantees-section {
   padding: 3.125rem 0;
   background: #FFFFFF;
-  font-family: "Manrope", sans-serif;
 }
 
 .guarantees-section .g-kicker {
   display: inline-block;
   margin: 0 0 clamp(0.625rem, 1.6vw, 1.125rem);
-  font-family: "Manrope", sans-serif;
   font-weight: 700;
   font-size: var(--fs-kicker);
   line-height: 1.2;
@@ -4073,7 +4056,6 @@ body.nav-drawer-open {
 .g-text p {
   margin-bottom: 0.75rem;
   line-height: 1.5;
-  font-family: "Manrope", sans-serif;
   font-weight: 300;
   font-size: 1rem;
   color: #4B5D68;
@@ -4290,10 +4272,6 @@ body.nav-drawer-open {
   border-radius: 50%;
 }
 
-.rating-text {
-  font-family: "Manrope", sans-serif;
-}
-
 .reviews-nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4349,7 +4327,6 @@ body.nav-drawer-open {
 }
 
 .review-text {
-  font-family: "Manrope", sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.4;
@@ -4383,7 +4360,6 @@ body.nav-drawer-open {
 .author-info h4 a {
   text-decoration: none;
   display: inline-block;
-  font-family: "Manrope", sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1;
@@ -4424,13 +4400,23 @@ body.nav-drawer-open {
   background: #467E9E;
 }
 
-.equipment-section {
+.equipment {
   background: #F7F9FB;
-  padding: 1.875rem;
-  overflow: hidden;
+  padding: 1.875rem 0;
 }
 
-.equipment-section .equipment-header {
+.equipment__container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 1rem clamp(1rem, 4.4vw, 2rem);
+}
+
+.equipment__header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4445,22 +4431,11 @@ body.nav-drawer-open {
   margin-bottom: 3.75rem;
 }
 
-.equipment-section .equipment-title {
-  margin: 0;
-  font-family: "Unbounded", sans-serif;
-  font-weight: 700;
-  font-size: var(--fs-section-h2);
-  line-height: 1.22;
-  color: var(--color-dark);
-  -webkit-font-feature-settings: "pnum" on, "lnum" on;
-          font-feature-settings: "pnum" on, "lnum" on;
+.equipment__title {
+  max-width: 48rem;
 }
 
-.equipment-section .equipment-title .text-blue {
-  color: #467E9E;
-}
-
-.equipment-section .equipment-tabs {
+.equipment__tabs {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4469,7 +4444,7 @@ body.nav-drawer-open {
   gap: 0.9375rem;
 }
 
-.equipment-section .equip-tab {
+.equipment__tab {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
@@ -4482,7 +4457,6 @@ body.nav-drawer-open {
   height: 3rem;
   padding: 0 1.875rem;
   border-radius: 6.75rem;
-  font-family: "Manrope", sans-serif;
   font-weight: 600;
   font-size: 1rem;
   letter-spacing: 0.03em;
@@ -4492,24 +4466,24 @@ body.nav-drawer-open {
   border: 0.0625rem solid transparent;
 }
 
-.equipment-section .equip-tab.active {
+.equipment__tab.active {
   background: #467E9E;
   color: #F7F9FB;
   -webkit-box-shadow: 0 0.25rem 0.625rem rgba(49, 112, 142, 0.4);
           box-shadow: 0 0.25rem 0.625rem rgba(49, 112, 142, 0.4);
 }
 
-.equipment-section .equip-tab:not(.active) {
+.equipment__tab:not(.active) {
   background: transparent;
   border-color: #6B98AF;
   color: var(--color-dark);
 }
 
-.equipment-section .equip-tab:not(.active):hover {
+.equipment__tab:not(.active):hover {
   background: rgba(70, 126, 158, 0.08);
 }
 
-.equipment-section .equipment-grid {
+.equipment__grid {
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (1fr)[4];
@@ -4520,11 +4494,8 @@ body.nav-drawer-open {
           align-items: stretch;
 }
 
-.equip-card {
-  background: #FAFBFC;
-  border: 0.0625rem solid #6F9BB2;
-  -webkit-box-shadow: 0 0.375rem 0.875rem rgba(0, 0, 0, 0.08);
-          box-shadow: 0 0.375rem 0.875rem rgba(0, 0, 0, 0.08);
+.equipment__card {
+  background: #fff;
   border-radius: 1.25rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4533,10 +4504,9 @@ body.nav-drawer-open {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  overflow: hidden;
 }
 
-.equip-card-image {
+.equipment__card-image {
   height: 16.75rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4548,13 +4518,12 @@ body.nav-drawer-open {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 1.25rem;
-  border-bottom: 0.0625rem solid #6F9BB2;
   background: transparent;
   -webkit-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
 }
 
-.equip-card-image img {
+.equipment__card-image img {
   max-width: 90%;
   max-height: 90%;
   -o-object-fit: contain;
@@ -4573,7 +4542,7 @@ body.nav-drawer-open {
           user-select: none;
 }
 
-.equip-card-content {
+.equipment__card-content {
   padding: 1.5625rem;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4588,8 +4557,7 @@ body.nav-drawer-open {
           flex-grow: 1;
 }
 
-.equip-card-content h4 {
-  font-family: "Manrope", sans-serif;
+.equipment__card-caption {
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.35;
@@ -4599,8 +4567,7 @@ body.nav-drawer-open {
           font-feature-settings: "pnum" on, "lnum" on;
 }
 
-.equip-card-content p {
-  font-family: "Manrope", sans-serif;
+.equipment__card-description {
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.4;
@@ -4630,7 +4597,6 @@ body.nav-drawer-open {
 .coverage-section .coverage-kicker {
   display: inline-block;
   margin: 0;
-  font-family: "Manrope", sans-serif;
   font-weight: 700;
   font-size: var(--fs-kicker);
   line-height: 1.2;
@@ -4654,7 +4620,6 @@ body.nav-drawer-open {
 
 .coverage-section .coverage-desc {
   margin: 0;
-  font-family: "Manrope", sans-serif;
   font-weight: 500;
   font-size: var(--fs-section-lead);
   line-height: 1.5;
@@ -4726,7 +4691,6 @@ body.nav-drawer-open {
 }
 
 .district-top h4 {
-  font-family: "Manrope", sans-serif;
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.2;
@@ -4776,7 +4740,6 @@ body.nav-drawer-open {
 }
 
 .info-highlight-box p {
-  font-family: "Manrope", sans-serif;
   font-weight: 400;
   font-size: 1.125rem;
   line-height: 1.4;
@@ -4823,7 +4786,6 @@ body.nav-drawer-open {
 }
 
 .coverage-cta-box p {
-  font-family: "Manrope", sans-serif;
   font-weight: 300;
   font-size: 1rem;
   line-height: 1.4;
@@ -5875,7 +5837,7 @@ html {
     min-width: 0;
   }
 
-  .equipment-section .equipment-grid {
+  .equipment__grid {
     -ms-grid-columns: (1fr)[2];
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
@@ -6650,12 +6612,12 @@ html {
     line-height: 1.5;
   }
 
-  .equipment-section .equipment-header {
+  .equipment__header {
     gap: 1.5625rem;
     margin-bottom: 2.5rem;
   }
 
-  .equip-card-content p {
+  .equipment__card-description {
     font-size: var(--fs-body);
     line-height: 1.5;
   }
@@ -6680,7 +6642,6 @@ html {
   }
 
   .info-region-box h4 {
-    font-family: "Manrope", sans-serif;
     font-weight: 700;
     font-size: var(--fs-ui);
     line-height: 1.25;
@@ -7241,7 +7202,6 @@ html {
 
   .price-kicker {
     margin-bottom: 0.1875rem;
-    font-family: "Manrope", sans-serif;
     font-weight: 500;
     font-size: clamp(0.6875rem, 1.8vw, 0.8125rem);
     line-height: 0.4375rem;
@@ -7548,7 +7508,6 @@ html {
     content: attr(data-step);
     display: block;
     margin-bottom: 0.25rem;
-    font-family: "Manrope", sans-serif;
     font-weight: 600;
     font-size: clamp(0.6875rem, 1.6vw, 0.8125rem);
     line-height: 0.6875rem;
@@ -7647,7 +7606,6 @@ html {
   .g-docs-kicker {
     display: block;
     margin: 0.875rem 0 0.5rem;
-    font-family: "Manrope", sans-serif;
     font-weight: 700;
     font-size: 0.6875rem;
     line-height: 0.6875rem;
@@ -7731,7 +7689,6 @@ html {
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    font-family: "Manrope", sans-serif;
     font-weight: 600;
     font-size: clamp(0.6875rem, 2.8vw, 0.8125rem);
     line-height: 1.25;
@@ -7822,37 +7779,17 @@ html {
     padding-top: 0.25rem;
   }
 
-  .equipment-section {
-    padding: 0;
-  }
-
-  .equipment-section > .container {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
-    padding: 1rem clamp(1rem, 4.4vw, 2rem);
-  }
-
-  .equipment-section .equipment-header {
+  .equipment__header {
     gap: 0.875rem;
     margin-bottom: 1rem;
   }
 
-  .equipment-section .equipment-title {
-    font-size: clamp(1.125rem, 5vw, 1.5rem);
-    line-height: 1.2;
-  }
-
-  .equipment-section .equipment-tabs {
+  .equipment__tabs {
     width: 100%;
     gap: 0.625rem;
   }
 
-  .equipment-section .equip-tab {
+  .equipment__tab {
     min-height: 2.75rem;
     height: auto;
     padding: 0.625rem 1rem;
@@ -7861,42 +7798,39 @@ html {
     border-radius: 8.875rem;
   }
 
-  .equipment-section .equipment-grid {
+  .equipment__grid {
     gap: 0.75rem;
   }
 
-  .equip-card {
+  .equipment__card {
     border-radius: 0.625rem;
-    -webkit-transform: none !important;
-        -ms-transform: none !important;
-            transform: none !important;
   }
 
-  .equip-card-image img {
+  .equipment__card-image img {
     width: 100%;
     max-width: 100%;
     max-height: 100%;
   }
 
-  .equip-card-image {
+  .equipment__card-image {
     height: clamp(9.375rem, 32vw, 11.875rem);
     padding: 0.75rem;
   }
 
-  .equip-card-content h4 {
+  .equipment__card-content {
+    padding: 0.75rem;
+    gap: 0.375rem;
+  }
+
+  .equipment__card-caption {
     font-size: 0.875rem;
     line-height: 1.25;
   }
 
-  .equip-card-content p {
+  .equipment__card-description {
     font-size: 0.75rem;
     line-height: 1.35;
     text-align: left;
-  }
-
-  .equip-card-content {
-    padding: 0.75rem;
-    gap: 0.375rem;
   }
 
   .coverage-section {
@@ -8165,7 +8099,7 @@ html {
     line-height: clamp(0.625rem, 3.1vw, 0.75rem);
   }
 
-  .equip-card-image {
+  .equipment__card-image {
     height: 13.75rem;
   }
 }
@@ -8268,7 +8202,7 @@ html {
 }
 
 @media (max-width: 479px) {
-  .equipment-section .equipment-tabs {
+  .equipment__tabs {
     -webkit-box-orient: vertical !important;
     -webkit-box-direction: normal !important;
         -ms-flex-direction: column !important;
@@ -8278,25 +8212,25 @@ html {
             align-items: stretch;
   }
 
-  .equipment-section .equip-tab {
+  .equipment__tab {
     width: 100% !important;
   }
 
-  .equipment-section .equipment-grid {
+  .equipment__grid {
     -ms-grid-columns: (minmax(0, 1fr))[2] !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
     gap: 0.625rem !important;
   }
 
-  .equip-card-image {
+  .equipment__card-image {
     height: 8.25rem;
   }
 
-  .equip-card-content h4 {
+  .equipment__card-caption {
     font-size: 0.8125rem;
   }
 
-  .equip-card-content p {
+  .equipment__card-description {
     font-size: 0.6875rem;
   }
 }
@@ -8632,7 +8566,7 @@ html {
 }
 
 @media (min-width: 480px) and (max-width: 700px) {
-  .equipment-section .equipment-grid {
+  .equipment__grid {
     -ms-grid-columns: (minmax(0, 1fr))[2];
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.875rem;

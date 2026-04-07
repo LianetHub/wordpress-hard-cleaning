@@ -47,7 +47,7 @@ $reviews = [
             <div class="reviews-header-left">
                 <h2 class="reviews-title">Отзывы из <br><span>Яндекс Карт</span></h2>
 
-                <div class="yandex-rating-card">
+                <a href="https://yandex.com/maps/org/cleaningspb1/4725499215/reviews/?ll=30.422776%2C59.954106&utm_campaign=v1&utm_medium=rating&utm_source=badge&z=16" target="_blank" class="yandex-rating-card">
                     <div class="rating-circle"><?php echo $yandex_rating; ?></div>
                     <div class="rating-info">
                         <div class="rating-stars">
@@ -63,7 +63,7 @@ $reviews = [
                         </div>
                         <span class="rating-text">Рейтинг в Яндексе</span>
                     </div>
-                </div>
+                </a>
             </div>
 
             <div class="reviews-header-right">
