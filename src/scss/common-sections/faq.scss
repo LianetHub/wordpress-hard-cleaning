@@ -70,32 +70,30 @@
         box-shadow: 0 0.9375rem 1.875rem rgba(31, 75, 98, 0.15);
         color: #fff;
 
-        @media (max-width: 992px) {
+
+        @media (max-width: $md3) {
             padding: 1.875rem;
         }
 
 
-        @media (max-width: 700px) {
+        @media (max-width: $md4) {
             order: 3;
             width: 100%;
             border-radius: 0.625rem;
             padding: 1.25rem;
             display: flex;
             flex-direction: column;
+            text-align: center;
             gap: 1.25rem;
-            box-sizing: border-box;
             margin-top: 0.5rem;
 
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: $md5) {
             padding: 1.125rem 0.875rem;
         }
 
-        @media (max-width: 360px) {
-            padding: 0.875rem 0.625rem;
-            border-radius: 1rem;
-        }
+
     }
 
     // .faq__cta-title
@@ -107,9 +105,7 @@
         letter-spacing: 0.02em;
         margin: 0 0 0.625rem 0;
 
-        @media (max-width: $md4) {
-            text-align: center;
-        }
+
     }
 
     // .faq__cta-subtitle

@@ -23,7 +23,7 @@
     &__card {
         position: relative;
         z-index: 10;
-        width: rem(400);
+
         padding: 1.25rem 1.375rem;
         flex-shrink: 0;
         background: linear-gradient(145.13deg, #306e8c 18.76%, #1f4b62 104.43%), #8fc1e3;
@@ -32,6 +32,11 @@
         box-shadow: 0 0.625rem 1.25rem rgba(22, 56, 74, 0.28);
         color: #f8fafb;
         cursor: default;
+        width: calc(100vw - 4rem);
+
+        @media (min-width:$md5) {
+            width: rem(400);
+        }
 
         &::after {
             content: '';
