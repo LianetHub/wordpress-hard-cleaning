@@ -93,20 +93,22 @@ $guarantee_docs = [
         </div>
 
         <p class="g-docs-kicker">Наши документы</p>
-        <div class="g-docs-grid">
-            <?php foreach ($guarantee_docs as $doc): ?>
-                <div class="g-doc-card">
-                    <div class="g-doc-image">
-                        <img src="<?php echo esc_url($doc['img']); ?>"
-                            alt="<?php echo esc_attr($doc['label']); ?>"
-                            loading="lazy" decoding="async">
+        <div class="g-docs-grid documents-slider swiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($guarantee_docs as $doc): ?>
+                    <div class="g-doc-card swiper-slide">
+                        <div class="g-doc-image">
+                            <img src="<?php echo esc_url($doc['img']); ?>"
+                                alt="<?php echo esc_attr($doc['label']); ?>"
+                                loading="lazy" decoding="async">
+                        </div>
+                        <div class="g-doc-footer">
+                            <span class="g-doc-label"><?php echo esc_html($doc['label']); ?></span>
+                            <a href="<?php echo esc_url($doc['link']); ?>" class="g-doc-link">Смотреть <span class="link-arrow" aria-hidden="true">→</span></a>
+                        </div>
                     </div>
-                    <div class="g-doc-footer">
-                        <span class="g-doc-label"><?php echo esc_html($doc['label']); ?></span>
-                        <a href="<?php echo esc_url($doc['link']); ?>" class="g-doc-link">Смотреть <span class="link-arrow" aria-hidden="true">→</span></a>
-                    </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>

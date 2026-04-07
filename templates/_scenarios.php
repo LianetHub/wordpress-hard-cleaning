@@ -65,13 +65,16 @@ $scenarios = [
             <?php foreach ($scenarios as $item): ?>
                 <li class="services__item">
                     <div class="services__item-body">
-                        <div class="services__item-header">
-                            <div class="services__item-icon" aria-hidden="true">
-                                <img src="<?php echo esc_url($item['icon']); ?>" alt="">
+                        <div class="services__item-main">
+                            <div class="services__item-header">
+                                <div class="services__item-icon" aria-hidden="true">
+                                    <img src="<?php echo esc_url($item['icon']); ?>" alt="">
+                                </div>
+                                <h3 class="services__item-title"><?php echo esc_html($item['title']); ?></h3>
                             </div>
-                            <h3 class="services__item-title"><?php echo esc_html($item['title']); ?></h3>
+                            <a class="services__item-btn btn btn-primary icon-phone"
+                                href="tel:<?php echo $phone_clean; ?>">Вызвать бригаду</a>
                         </div>
-
                         <?php if (!empty($item['tags'])): ?>
                             <div class="services__item-tags">
                                 <?php foreach ($item['tags'] as $tag): ?>
@@ -83,8 +86,6 @@ $scenarios = [
                             </div>
                         <?php endif; ?>
 
-                        <a class="services__item-btn icon-phone"
-                            href="tel:<?php echo $phone_clean; ?>">Вызвать бригаду</a>
                     </div>
                     <div class="services__item-image">
                         <img src="<?php echo esc_url($item['image']); ?>"

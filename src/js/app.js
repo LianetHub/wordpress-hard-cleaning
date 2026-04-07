@@ -151,6 +151,13 @@ $(function () {
         })
     }
 
+    if ($('.documents-slider').length) {
+        new MobileSwiper('.documents-slider', {
+            slidesPerView: 'auto',
+            spaceBetween: 30,
+        })
+    }
+
     if ($('.process__slider').length) {
         new Swiper('.process__slider', {
             slidesPerView: "auto",
