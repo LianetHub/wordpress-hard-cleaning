@@ -10,7 +10,10 @@ $address = get_field('address', 'option');
 <header class="header">
     <div class="header__top">
         <div class="header__top-container container">
-            <button type="button" aria-label="Открыть меню" class="header__menu-toggler icon-menu">
+            <button
+                type="button"
+                aria-label="Открыть меню"
+                class="header__menu-toggler icon-menu">
                 <span></span><span></span><span></span>
             </button>
             <a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo">
@@ -47,7 +50,6 @@ $address = get_field('address', 'option');
                                 <?php if ($icon): ?>
                                     <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo $icon['alt'] ?>">
                                 <?php endif; ?>
-
                             </a>
                     <?php endif;
                     endwhile; ?>
@@ -63,60 +65,53 @@ $address = get_field('address', 'option');
             <?php endif; ?>
         </div>
     </div>
-    <div class="header__content">
-        <div class="header__content-container container">
-            <a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo">
+    <div class="header__menu menu" id="site-navigation">
+        <div class="menu__container container">
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="menu__logo">
                 <img
                     src="<?php echo esc_url($logo['url']); ?>"
                     alt="<?php echo esc_attr($logo['alt']) ?: 'Логотип '; ?>">
             </a>
-            <div id="site-navigation" class="header__menu menu">
-                <div class="menu__logo">
-                    <img
-                        src="<?php echo esc_url($logo['url']); ?>"
-                        alt="<?php echo esc_attr($logo['alt']) ?: 'Логотип '; ?>">
-                </div>
-                <nav class="menu__content" aria-label="Меню в шапке">
-                    <?php
-                    wp_nav_menu([
-                        'theme_location' => 'header_menu',
-                        'container'      => false,
-                        'menu_class'     => 'menu__list',
-                        'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                    ]);
+            <nav class="menu__content" aria-label="Меню в шапке">
+                <?php
+                wp_nav_menu([
+                    'theme_location' => 'header_menu',
+                    'container'      => false,
+                    'menu_class'     => 'menu__list',
+                    'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                ]);
+                ?>
+            </nav>
+            <?php if (have_rows('socials', 'option')): ?>
+                <div class="menu__socials socials">
+                    <?php while (have_rows('socials', 'option')): the_row();
+                        $icon = get_sub_field('icon');
+                        $link = get_sub_field('link');
+
+                        if ($link):
+                            $link_url    = $link['url'];
+                            $link_title  = !empty($link['title']) ? $link['title'] : false;
+                            $link_target = $link['target'] ? $link['target'] : '_self';
                     ?>
-                </nav>
-                <?php if (have_rows('socials', 'option')): ?>
-                    <div class="menu__socials socials">
-                        <?php while (have_rows('socials', 'option')): the_row();
-                            $icon = get_sub_field('icon');
-                            $link = get_sub_field('link');
+                            <a href="<?php echo esc_url($link_url); ?>"
+                                class="socials__item"
+                                target="<?php echo esc_attr($link_target); ?>"
+                                <?php if ($link_title): ?>aria-label="<?php echo esc_attr($link_title); ?>" <?php endif; ?>>
 
-                            if ($link):
-                                $link_url    = $link['url'];
-                                $link_title  = !empty($link['title']) ? $link['title'] : false;
-                                $link_target = $link['target'] ? $link['target'] : '_self';
-                        ?>
-                                <a href="<?php echo esc_url($link_url); ?>"
-                                    class="socials__item"
-                                    target="<?php echo esc_attr($link_target); ?>"
-                                    <?php if ($link_title): ?>aria-label="<?php echo esc_attr($link_title); ?>" <?php endif; ?>>
+                                <?php if ($icon): ?>
+                                    <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo $icon['alt'] ?>">
+                                <?php endif; ?>
 
-                                    <?php if ($icon): ?>
-                                        <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo $icon['alt'] ?>">
-                                    <?php endif; ?>
-
-                                </a>
-                        <?php endif;
-                        endwhile; ?>
-                    </div>
-                <?php endif; ?>
-            </div>
-            <div class="header__actions">
-                <a href="#contacts" class="header__actions-btn btn btn-sm btn-primary header-urgent-btn">
+                            </a>
+                    <?php endif;
+                    endwhile; ?>
+                </div>
+            <?php endif; ?>
+            <div class="menu__actions">
+                <a href="#contacts" class="menu__actions-btn btn btn-sm btn-primary header-urgent-btn">
                     Срочный вызов
                 </a>
-                <a href="#contacts" class="header__actions-btn btn btn-sm btn-primary header-help-btn">
+                <a href="#contacts" class="menu__actions-btn btn btn-sm btn-primary header-help-btn">
                     Задать вопрос
                 </a>
             </div>

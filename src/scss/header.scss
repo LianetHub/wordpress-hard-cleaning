@@ -17,10 +17,7 @@
 
     // .header__top
     &__top {
-        position: relative;
-        z-index: 900;
         background: #fff;
-        border-bottom: 0.0625rem solid #D7D7D7;
         padding: 0.25rem 0;
         box-shadow: 0 0.5rem rem(30) -0.25rem rgba(0, 0, 0, 0.1);
 
@@ -34,6 +31,8 @@
         }
 
         @media (min-width:$md3) {
+            position: relative;
+            z-index: 900;
             background: #F7F9FB;
             border-bottom: 0.0625rem solid #D7D7D7;
             height: rem(60);
@@ -65,7 +64,37 @@
             gap: 0.75rem;
         }
 
+    }
 
+    // .header__logo
+    &__logo {
+        flex-shrink: 0;
+        display: block;
+
+        img {
+            width: auto;
+            max-height: 100%;
+            display: block;
+            height: 2.5rem;
+
+            @media (min-width:$md5) {
+                height: 2.875rem;
+            }
+
+            @media (min-width:$md4) {
+                height: 3.5rem;
+            }
+
+            @media (min-width:$md3) {
+                height: 4rem;
+            }
+
+            @media (min-width:$md2) {
+                height: 5rem;
+
+            }
+
+        }
     }
 
     // .header__address
@@ -218,47 +247,80 @@
         }
     }
 
-    // .header__content
-    &__content {
-        display: none;
 
-        @media (min-width:$md3) {
-            background: #fff;
-            display: block;
-            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.03);
-            padding: 0.3125rem 0;
+}
+
+.menu {
+    background: #fff;
+    display: block;
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.03);
+    padding: 0.3125rem 0;
+
+    @media (max-width: $md3) {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        left: auto;
+        width: min(26.25rem, 92vw);
+        max-width: 100%;
+        z-index: 3100;
+        flex: none;
+        display: flex;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+        gap: 1rem;
+        padding: 0.35rem 1.25rem 1.75rem;
+        background: #fff;
+        box-shadow: -0.5rem 0 2rem rgba(0, 0, 0, 0.08);
+        overflow-y: auto;
+        overflow-x: hidden;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateX(-100%);
+        transition: transform 0.28s ease, visibility 0s linear 0.28s;
+
+        &.menu--open {
+            visibility: visible;
+            pointer-events: auto;
+            transform: translateX(0);
+            transition: transform 0.28s ease, visibility 0s linear 0s;
         }
-
     }
 
-    // .header__content-container
-    &__content-container {
+    // .menu__container
+    &__container {
+        flex: 1 1 auto;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        flex-direction: column;
         position: relative;
         min-width: 0;
         gap: 0.5rem;
+        width: 100%;
+
+        @media (min-width:$md3) {
+            justify-content: space-between;
+            align-items: center;
+
+        }
     }
 
-    // .header__logo
+    // .menu__logo
     &__logo {
         flex-shrink: 0;
         display: block;
+        margin-left: auto;
+
+        @media (min-width:$md3) {
+            margin-left: 0;
+        }
 
         img {
             width: auto;
             max-height: 100%;
             display: block;
-            height: 2.5rem;
-
-            @media (min-width:$md5) {
-                height: 2.875rem;
-            }
-
-            @media (min-width:$md4) {
-                height: 3.5rem;
-            }
+            height: 5rem;
 
             @media (min-width:$md3) {
                 height: 4rem;
@@ -272,85 +334,22 @@
         }
     }
 
-    // .header__menu
-    &__menu {}
-
-    // .header__actions
-    &__actions {
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-        flex-shrink: 0;
-        min-width: 0;
-
-        @media (min-width: 769px) and (max-width: 1100px) {
-            gap: 0.5rem;
-            justify-content: flex-end;
-        }
-    }
-
-    // .header__actions-btn
-    &__actions-btn {
-        flex-shrink: 0;
-    }
-
-    // .header__menu-toggler
-    &__menu-toggler {}
-}
-
-.menu {
-    flex: 1 1 auto;
-    display: flex;
-    justify-content: center;
-    min-width: 0;
-
-    @media (max-width: $md3) {
-        position: fixed;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: auto;
-        width: min(26.25rem, 92vw);
-        max-width: 100%;
-        z-index: 3100;
-        flex: none;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        justify-content: flex-start;
-        margin: 0;
-        padding: 5.25rem 1.25rem 1.75rem;
-        background: var(--white);
-        box-shadow: -0.5rem 0 2rem rgba(0, 0, 0, 0.08);
-        overflow-y: auto;
-        visibility: hidden;
-        pointer-events: none;
-        transform: translateX(100%);
-        transition: transform 0.28s ease, visibility 0s linear 0.28s;
-
-        &.is-open {
-            visibility: visible;
-            pointer-events: auto;
-            transform: translateX(0);
-            transition: transform 0.28s ease, visibility 0s linear 0s;
-        }
-    }
-
-    // .menu__logo
-    &__logo {
-        @media (min-width:$md3) {
-            display: none;
-        }
-    }
-
     // .menu__content
-    &__content {}
+    &__content {
+        flex: 1 1 auto;
+    }
 
     // .menu__list
     &__list {
+
         display: flex;
         align-items: center;
-        gap: 2rem;
+        gap: 1rem;
+
+        @media (min-width:$md3) {
+
+            gap: 2rem;
+        }
 
         @media (min-width:$md2) {
             gap: 2.5rem;
@@ -364,8 +363,9 @@
         }
 
         li {
-            @media (max-width: 768px) {
+            @media (max-width: $md4) {
                 border-bottom: 0.0625rem solid #eaeaea;
+                padding-bottom: 1rem;
             }
         }
 
@@ -398,53 +398,34 @@
 
     // .menu__socials
     &__socials {
+        margin-bottom: 1rem;
+
         @media (min-width:$md3) {
             display: none;
         }
     }
-}
 
-.nav-drawer-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 1100;
-    background: rgba(23, 37, 51, 0.38);
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-    transition: opacity 0.28s ease, visibility 0s linear 0.28s;
+    // .menu__actions
+    &__actions {
+        display: flex;
 
-    &.is-active {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transition: opacity 0.28s ease, visibility 0s linear 0s;
-    }
-}
+        gap: 0.75rem;
+        flex-shrink: 0;
+        flex-direction: column;
 
-.nav-arrow {
-    width: 3.125rem;
-    height: 3.125rem;
-    border-radius: 50%;
-    border: 0.0625rem solid #cde3f1;
-    background: #f7f9fb;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: 0.3s;
-
-    @media (any-hover: hover) {
-        &:hover {
-            background: #ffffff;
-            border-color: #467e9e;
+        @media (min-width:$md4) {
+            align-items: center;
+            flex-direction: row;
         }
     }
+
+    // .menu__actions-btn
+    &__actions-btn {
+        flex-shrink: 0;
+    }
+
 }
 
-body.nav-drawer-open {
-    overflow: hidden;
-}
 
 .icon-menu {
     flex-shrink: 0;
@@ -456,10 +437,11 @@ body.nav-drawer-open {
     padding: 0.125rem 0.125rem;
     color: $dark;
     flex-shrink: 0;
-    z-index: 11;
+    z-index: 999999;
     transition: all 0.3s ease;
     min-width: rem(36);
     height: rem(36);
+    background: transparent;
 
     @media (min-width: $md3) {
         display: none;
@@ -487,7 +469,7 @@ body.nav-drawer-open {
     }
 
     &.active {
-        background: transparent;
+
 
         & span {
             transition:
@@ -501,7 +483,7 @@ body.nav-drawer-open {
             }
 
             &:first-child {
-                transform: translateY(rem(6));
+                transform: translateY(rem(10));
 
                 &::before {
                     transform: rotate(-135deg);
@@ -513,7 +495,7 @@ body.nav-drawer-open {
             }
 
             &:nth-child(3) {
-                transform: translateY(rem(-6));
+                transform: translateY(rem(-10));
                 width: 100%;
 
                 &::before {
