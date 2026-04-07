@@ -1,5 +1,6 @@
 <?php
 $logo = get_field('logo', 'option');
+$logo_mobile = get_field('logo_mobile', 'option');
 $phone = get_field('phone', 'option');
 $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 $email = get_field('email', 'option');
@@ -14,17 +15,17 @@ $address = get_field('address', 'option');
             </button>
             <a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo">
                 <img
-                    src="<?php echo esc_url($logo['url']); ?>"
-                    alt="<?php echo esc_attr($logo['alt']) ?: 'Логотип '; ?>">
+                    src="<?php echo esc_url($logo_mobile['url']); ?>"
+                    alt="<?php echo esc_attr($logo_mobile['alt']) ?: 'Логотип '; ?>">
             </a>
             <?php if ($address): ?>
                 <address class="header__address"><?php echo $address; ?></address>
             <?php endif; ?>
             <?php if ($email): ?>
-                <a class="header__email icon-envelope"
+                <a class="header__email"
                     href="mailto:<?php echo antispambot($email); ?>"
                     target="_blank">
-                    <span><?php echo antispambot($email); ?></span>
+                    <?php echo antispambot($email); ?>
                 </a>
             <?php endif; ?>
             <?php if (have_rows('socials', 'option')): ?>
@@ -55,7 +56,10 @@ $address = get_field('address', 'option');
 
             <?php if ($phone): ?>
                 <a href="tel:<?php echo $phone_clean; ?>"
-                    class="header__phone icon-phone"><span><?php echo $phone; ?></span></a>
+                    class="header__phone icon-phone">
+                    <span class="header__phone-desktop"><?php echo $phone; ?></span>
+                    <span class="header__phone-mobile">Вызвать бригаду</span>
+                </a>
             <?php endif; ?>
         </div>
     </div>
