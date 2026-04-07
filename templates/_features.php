@@ -32,9 +32,7 @@ $process_steps = [
     ]
 ];
 
-
-$double_process_steps = array_merge($process_steps, $process_steps);
-
+$final_steps = wp_is_mobile() ? $process_steps : array_merge($process_steps, $process_steps);
 ?>
 
 <section class="process">
@@ -52,7 +50,7 @@ $double_process_steps = array_merge($process_steps, $process_steps);
         </div>
         <div class="process__slider swiper">
             <div class="swiper-wrapper">
-                <?php foreach ($process_steps as $step) : ?>
+                <?php foreach ($final_steps as $step) : ?>
                     <div class="process__slide swiper-slide">
                         <div class="process__slide-icon">
                             <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/<?php echo esc_attr($step['icon']); ?>" alt="icon">

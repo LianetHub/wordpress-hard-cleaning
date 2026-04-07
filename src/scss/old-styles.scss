@@ -1,9 +1,9 @@
-/*
-Theme Name: Cleaning Theme
-Description: Custom theme for a cleaning service company.
-Version: 1.1
-Author: Antigravity
-*/
+@use "sass:color";
+@use "sass:math";
+@use "mixins" as *;
+@use "variables" as *;
+@use "fonts";
+@use "icons";
 
 :root {
     /* 1. COLORS */
@@ -293,8 +293,7 @@ Author: Antigravity
 .info-card ul li {
     position: relative;
     padding-left: 20px;
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
+
     font-size: 16px;
     line-height: 1;
     letter-spacing: 0.03em;
@@ -470,7 +469,6 @@ Author: Antigravity
     color: #2DA05A;
     border-radius: 20px;
     padding: 4px 12px;
-    font-family: 'Manrope', sans-serif;
     font-weight: 700;
     font-size: 10px;
     line-height: 1.4;
@@ -483,7 +481,6 @@ Author: Antigravity
 }
 
 .district-time span {
-    font-family: 'Manrope', sans-serif;
     font-weight: 600;
     font-size: 16px;
     color: #467E9E;
@@ -504,7 +501,6 @@ Author: Antigravity
 }
 
 .info-region-box h4 {
-    font-family: 'Manrope', sans-serif;
     font-weight: 700;
     font-size: 20px;
     line-height: 1.2;
@@ -513,8 +509,7 @@ Author: Antigravity
 }
 
 .info-region-box p {
-    font-family: 'Manrope', sans-serif;
-    font-weight: 300;
+
     font-size: 16px;
     line-height: 1.4;
     color: #4B5D68;
@@ -523,8 +518,7 @@ Author: Antigravity
 
 .region-cities {
     display: block;
-    font-family: 'Inter', sans-serif;
-    font-weight: 300;
+
     font-size: 16px;
     color: #467E9E;
 }
@@ -545,8 +539,7 @@ Author: Antigravity
 .subtitle-primary,
 .price-kicker {
     display: inline-block;
-    margin: 0 0 clamp(10px, 1.6vw, 18px);
-    font-family: 'Manrope', sans-serif;
+    margin: 0 0 rem(18);
     font-weight: 700;
     font-size: var(--fs-kicker);
     line-height: 1.2;
@@ -578,7 +571,7 @@ Author: Antigravity
 
 
     .info-card {
-        min-height: clamp(102px, 23vw, 120px);
+        min-height: rem(120);
     }
 
 }

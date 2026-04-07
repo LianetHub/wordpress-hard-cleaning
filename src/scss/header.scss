@@ -453,13 +453,13 @@ body.nav-drawer-open {
     flex-wrap: nowrap;
     justify-content: center;
     align-items: flex-end;
-    padding: 0.62rem 0.125rem;
+    padding: 0.125rem 0.125rem;
     color: $dark;
     flex-shrink: 0;
     z-index: 11;
     transition: all 0.3s ease;
-    min-width: rem(24);
-    height: rem(24);
+    min-width: rem(36);
+    height: rem(36);
 
     @media (min-width: $md3) {
         display: none;
@@ -472,7 +472,7 @@ body.nav-drawer-open {
             transform 0.4s ease 0.4s,
             opacity 0.4s ease 0.4s;
         will-change: transform;
-        padding: rem(2) rem(0);
+        padding: rem(4) rem(0);
 
 
 
