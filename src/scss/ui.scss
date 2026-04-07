@@ -45,7 +45,7 @@ p {
 }
 
 .title {
-	font-size: clamp(1.25rem, 0.85rem + 1.85vw, rem(40));
+	font-size: clamp(rem(28), 0.85rem + 1.85vw, rem(40));
 }
 
 .title-md {
@@ -58,19 +58,14 @@ p {
 
 .hint {
 	display: inline-block;
-	font-family: 'Manrope', sans-serif;
 	font-weight: 700;
-	font-size: var(--fs-kicker);
+	font-size: rem(14);
 	line-height: 1.2;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
-	color: var(--color-blue-primary);
-	margin-bottom: clamp(0.625rem, 1.6vw, 1.125rem);
+	color: $accent;
+	margin-bottom: 1.125rem;
 
-	@media (max-width: 700px) {
-		margin: 0 0 0.1875rem;
-		font-size: 0.3125rem;
-	}
 }
 
 .text-center {
@@ -85,49 +80,42 @@ p {
 	color: $accent;
 }
 
-// .swiper-button-next,
-// .swiper-button-prev {
-// 	& .swiper-navigation-icon {
-// 		display: none !important;
-// 	}
+.swiper-button-next,
+.swiper-button-prev {
 
-// 	transition: background-color 0.3s ease 0s,
-// 	color 0.3s ease 0s;
-// 	z-index: 2;
 
-// 	flex-shrink: 0;
-// 	display: flex;
-// 	justify-content: center;
-// 	align-items: center;
-// 	background: #d9d9d9;
-// 	color: #353535;
-// 	border-radius: 50%;
-// 	--swiper-navigation-size: 1.08238rem;
-// 	font-size: 0.5rem;
+	transition: background-color 0.3s ease 0s,
+		color 0.3s ease 0s;
+	z-index: 2;
+	flex-shrink: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background: #FFF;
+	color: #2A627E;
+	border-radius: 50%;
+	--swiper-navigation-size: 2.5rem;
 
-// 	@media (min-width:$md5) {
-// 		--swiper-navigation-size: 2.1875rem;
-// 		font-size: 1rem;
+	@media (min-width:$md5) {
+		--swiper-navigation-size: 3.05756rem;
+		padding: 1rem;
+	}
 
-// 	}
+	&.swiper-button-lock {
+		display: none;
+	}
 
-// 	&.swiper-button-lock {
-// 		display: none;
-// 	}
+	&:disabled,
+	&.swiper-button-disabled,
+	&[aria-disabled="true"] {
+		pointer-events: none;
+		opacity: 0.3;
+	}
 
-// 	&:disabled,
-// 	&.swiper-button-disabled,
-// 	&[aria-disabled="true"] {
-// 		pointer-events: none;
-// 		opacity: 0.3;
-// 	}
-
-// 	@media (any-hover: hover) {
-// 		&:hover {
-// 			background: #B0DF1D;
-// 		}
-// 	}
-// }
+	@media (any-hover: hover) {
+		&:hover {}
+	}
+}
 
 // .swiper-button-prev {
 // 	@extend %ic, .icon-chevron-left;

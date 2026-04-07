@@ -3,7 +3,9 @@
          <div class="hero__image">
              <img src="<?php echo get_template_directory_uri(); ?>/assets/hero_cleaners.png"
                  alt="Спецуборка"
-                 class="hero__image-main">
+                 class="hero__image-main"
+                 fetchpriority="high"
+                 loading="eager">
              <ul class="hero__tags">
                  <li class="hero__tag">
                      <div class="hero__tag-icon">

@@ -41,7 +41,7 @@
               <!-- ПРАВАЯ КОЛОНКА -->
               <div class="cases-info-side">
                   <div class="cases-text-block">
-                      <h3>Последствия ЧП? <br><span class="text-blue">Решаем — проверено!</span></h3>
+                      <h3>Последствия ЧП? <br><span class="color-accent">Решаем — проверено!</span></h3>
                       <p>Реальные кейсы из нашей практики. Фотографии публикуются только с согласия клиентов.</p>
                   </div>
 

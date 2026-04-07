@@ -1,6 +1,5 @@
 "use strict";
 
-
 $(function () {
 
     //  init Fancybox
@@ -152,6 +151,35 @@ $(function () {
         })
     }
 
+    if ($('.process__slider').length) {
+        new Swiper('.process__slider', {
+            slidesPerView: "auto",
+            spaceBetween: 30,
+            watchOverflow: true,
+            centeredSlides: true,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                stopOnLastSlide: false
+            },
+            navigation: {
+                prevEl: '.process__prev',
+                nextEl: '.process__next'
+            },
+            pagination: {
+                el: '.process__slider-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                1200: {
+                    slidesPerView: 4,
+                    spaceBetween: 60,
+                }
+            }
+        })
+
+    }
+
     // Phone Input Mask Russia
 
     const $phoneInputs = $('input[type="tel"]');
@@ -225,151 +253,151 @@ $(function () {
         .on('paste', onPhonePaste);
 
     // custom select
-    class CustomSelect {
-        static openDropdown = null;
-        static eventsBound = false;
+    // class CustomSelect {
+    //     static openDropdown = null;
+    //     static eventsBound = false;
 
-        constructor(dropdownElement) {
-            this.$dropdown = $(dropdownElement);
-            this.$input = this.$dropdown.find('input[type="hidden"]');
-            this.$button = this.$dropdown.find('.dropdown__button');
-            this.$buttonText = this.$dropdown.find('.dropdown__button-text');
-            this.$listItems = this.$dropdown.find('.dropdown__list-item');
+    //     constructor(dropdownElement) {
+    //         this.$dropdown = $(dropdownElement);
+    //         this.$input = this.$dropdown.find('input[type="hidden"]');
+    //         this.$button = this.$dropdown.find('.dropdown__button');
+    //         this.$buttonText = this.$dropdown.find('.dropdown__button-text');
+    //         this.$listItems = this.$dropdown.find('.dropdown__list-item');
 
-            this.initialValue = this.$input.val();
-            this.initialText = this.$buttonText.text();
+    //         this.initialValue = this.$input.val();
+    //         this.initialText = this.$buttonText.text();
 
-            this.init();
-        }
+    //         this.init();
+    //     }
 
-        init() {
-            this.setupEvents();
-            this.bindGlobalEvents();
-            this.syncStateWithInput();
-        }
+    //     init() {
+    //         this.setupEvents();
+    //         this.bindGlobalEvents();
+    //         this.syncStateWithInput();
+    //     }
 
-        bindGlobalEvents() {
-            if (CustomSelect.eventsBound) return;
+    //     bindGlobalEvents() {
+    //         if (CustomSelect.eventsBound) return;
 
-            $(document).on('click.customSelectGlobal', (event) => {
-                if (CustomSelect.openDropdown && !$(event.target).closest('.dropdown').length) {
-                    CustomSelect.openDropdown.closeDropdown();
-                }
-            });
+    //         $(document).on('click.customSelectGlobal', (event) => {
+    //             if (CustomSelect.openDropdown && !$(event.target).closest('.dropdown').length) {
+    //                 CustomSelect.openDropdown.closeDropdown();
+    //             }
+    //         });
 
-            $(document).on('keydown.customSelectGlobal', (event) => {
-                if (event.key === 'Escape' && CustomSelect.openDropdown) {
-                    CustomSelect.openDropdown.closeDropdown();
-                }
-            });
+    //         $(document).on('keydown.customSelectGlobal', (event) => {
+    //             if (event.key === 'Escape' && CustomSelect.openDropdown) {
+    //                 CustomSelect.openDropdown.closeDropdown();
+    //             }
+    //         });
 
-            CustomSelect.eventsBound = true;
-        }
+    //         CustomSelect.eventsBound = true;
+    //     }
 
-        setupEvents() {
-            this.$button.on('click', (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                const isOpen = this.$dropdown.hasClass('visible');
-                this.toggleDropdown(!isOpen);
-            });
+    //     setupEvents() {
+    //         this.$button.on('click', (event) => {
+    //             event.preventDefault();
+    //             event.stopPropagation();
+    //             const isOpen = this.$dropdown.hasClass('visible');
+    //             this.toggleDropdown(!isOpen);
+    //         });
 
-            this.$dropdown.on('click', '.dropdown__list-item', (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                const item = $(event.currentTarget);
+    //         this.$dropdown.on('click', '.dropdown__list-item', (event) => {
+    //             event.preventDefault();
+    //             event.stopPropagation();
+    //             const item = $(event.currentTarget);
 
-                if (!item.hasClass('disabled')) {
-                    this.selectOption(item);
-                }
-            });
+    //             if (!item.hasClass('disabled')) {
+    //                 this.selectOption(item);
+    //             }
+    //         });
 
-            this.$input.closest('form').on('reset', () => {
-                setTimeout(() => this.restoreInitialState(), 0);
-            });
-        }
+    //         this.$input.closest('form').on('reset', () => {
+    //             setTimeout(() => this.restoreInitialState(), 0);
+    //         });
+    //     }
 
-        toggleDropdown(isOpen) {
-            if (isOpen && CustomSelect.openDropdown && CustomSelect.openDropdown !== this) {
-                CustomSelect.openDropdown.closeDropdown();
-            }
+    //     toggleDropdown(isOpen) {
+    //         if (isOpen && CustomSelect.openDropdown && CustomSelect.openDropdown !== this) {
+    //             CustomSelect.openDropdown.closeDropdown();
+    //         }
 
-            const body = this.$dropdown.find('.dropdown__body');
-            const list = this.$dropdown.find('.dropdown__list');
-            const hasScroll = list.length && list[0].scrollHeight > list[0].clientHeight;
+    //         const body = this.$dropdown.find('.dropdown__body');
+    //         const list = this.$dropdown.find('.dropdown__list');
+    //         const hasScroll = list.length && list[0].scrollHeight > list[0].clientHeight;
 
-            this.$dropdown.toggleClass('visible', isOpen);
-            this.$button.attr('aria-expanded', isOpen);
-            body.attr('aria-hidden', !isOpen);
+    //         this.$dropdown.toggleClass('visible', isOpen);
+    //         this.$button.attr('aria-expanded', isOpen);
+    //         body.attr('aria-hidden', !isOpen);
 
-            if (isOpen) {
-                CustomSelect.openDropdown = this;
-                this.$dropdown.removeClass('dropdown-top');
+    //         if (isOpen) {
+    //             CustomSelect.openDropdown = this;
+    //             this.$dropdown.removeClass('dropdown-top');
 
-                const dropdownRect = body[0].getBoundingClientRect();
-                const viewportHeight = window.innerHeight;
+    //             const dropdownRect = body[0].getBoundingClientRect();
+    //             const viewportHeight = window.innerHeight;
 
-                if (dropdownRect.bottom > viewportHeight) {
-                    this.$dropdown.addClass('dropdown-top');
-                }
-                list.toggleClass('has-scroll', hasScroll);
-            } else {
-                if (CustomSelect.openDropdown === this) {
-                    CustomSelect.openDropdown = null;
-                }
-            }
-        }
+    //             if (dropdownRect.bottom > viewportHeight) {
+    //                 this.$dropdown.addClass('dropdown-top');
+    //             }
+    //             list.toggleClass('has-scroll', hasScroll);
+    //         } else {
+    //             if (CustomSelect.openDropdown === this) {
+    //                 CustomSelect.openDropdown = null;
+    //             }
+    //         }
+    //     }
 
-        closeDropdown() {
-            this.toggleDropdown(false);
-        }
+    //     closeDropdown() {
+    //         this.toggleDropdown(false);
+    //     }
 
-        selectOption(item) {
-            const value = item.data('value');
-            const text = item.text();
+    //     selectOption(item) {
+    //         const value = item.data('value');
+    //         const text = item.text();
 
-            this.$listItems.removeClass('selected').attr('aria-checked', 'false');
-            item.addClass('selected').attr('aria-checked', 'true');
+    //         this.$listItems.removeClass('selected').attr('aria-checked', 'false');
+    //         item.addClass('selected').attr('aria-checked', 'true');
 
-            this.$button.addClass('selected');
-            this.$buttonText.text(text);
+    //         this.$button.addClass('selected');
+    //         this.$buttonText.text(text);
 
-            this.$input.val(value).trigger('change');
+    //         this.$input.val(value).trigger('change');
 
-            this.closeDropdown();
-        }
+    //         this.closeDropdown();
+    //     }
 
-        restoreInitialState() {
-            this.$input.val(this.initialValue);
-            this.$buttonText.text(this.initialText);
+    //     restoreInitialState() {
+    //         this.$input.val(this.initialValue);
+    //         this.$buttonText.text(this.initialText);
 
-            this.$listItems.removeClass('selected').attr('aria-checked', 'false');
-            const initialItem = this.$listItems.filter((_, el) => $(el).data('value') == this.initialValue);
+    //         this.$listItems.removeClass('selected').attr('aria-checked', 'false');
+    //         const initialItem = this.$listItems.filter((_, el) => $(el).data('value') == this.initialValue);
 
-            if (initialItem.length) {
-                initialItem.addClass('selected').attr('aria-checked', 'true');
-                this.$button.addClass('selected');
-            } else {
-                this.$button.removeClass('selected');
-            }
-        }
+    //         if (initialItem.length) {
+    //             initialItem.addClass('selected').attr('aria-checked', 'true');
+    //             this.$button.addClass('selected');
+    //         } else {
+    //             this.$button.removeClass('selected');
+    //         }
+    //     }
 
-        syncStateWithInput() {
-            const currentValue = this.$input.val();
-            const currentItem = this.$listItems.filter((_, el) => $(el).data('value') == currentValue);
+    //     syncStateWithInput() {
+    //         const currentValue = this.$input.val();
+    //         const currentItem = this.$listItems.filter((_, el) => $(el).data('value') == currentValue);
 
-            if (currentItem.length) {
-                this.$listItems.removeClass('selected').attr('aria-checked', 'false');
-                currentItem.addClass('selected').attr('aria-checked', 'true');
-                this.$buttonText.text(currentItem.text());
-                this.$button.addClass('selected');
-            }
-        }
-    }
+    //         if (currentItem.length) {
+    //             this.$listItems.removeClass('selected').attr('aria-checked', 'false');
+    //             currentItem.addClass('selected').attr('aria-checked', 'true');
+    //             this.$buttonText.text(currentItem.text());
+    //             this.$button.addClass('selected');
+    //         }
+    //     }
+    // }
 
-    $('.dropdown').each((index, element) => {
-        new CustomSelect(element);
-    });
+    // $('.dropdown').each((index, element) => {
+    //     new CustomSelect(element);
+    // });
 
 
     function getSuccessSubmitting() {

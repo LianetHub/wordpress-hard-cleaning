@@ -1,528 +1,68 @@
-<section class="process-section-new">
+<?php
+$process_steps = [
+    [
+        'icon'  => 'eye.svg',
+        'title' => 'Осмотр и оценка',
+        'desc'  => 'Согласуем сроки и удобное время выезда.'
+    ],
+    [
+        'icon'  => 'drying.svg',
+        'title' => 'Просушка помещений',
+        'desc'  => 'Осушаем помещение и конструкции до безопасной влажности.'
+    ],
+    [
+        'icon'  => 'bacterium.svg',
+        'title' => 'Дезинфекция',
+        'desc'  => 'Снижаем риски для здоровья и распространения бактерий.'
+    ],
+    [
+        'icon'  => 'blot.svg',
+        'title' => 'Удаление загрязнений',
+        'desc'  => 'Убираем последствия ЧП и сложные загрязнения.'
+    ],
+    [
+        'icon'  => 'smell.svg',
+        'title' => 'Устранение запахов',
+        'desc'  => 'Нейтрализуем стойкие запахи (гарь, сырость и др.).'
+    ],
+    [
+        'icon'  => 'tools.svg',
+        'title' => 'Подготовка к ремонту',
+        'desc'  => 'Вывозим мусор и повреждённые предметы при необходимости.'
+    ]
+];
 
-    <div class="container process-container-inner">
-        <header class="process-header process-header-row">
-            <div class="process-header-text">
-                <span class="p-kicker">Процесс</span>
-                <h2>Что мы делаем <span class="text-light-blue">под ключ</span></h2>
-                <p class="p-subtitle">Закрываем уборку, дезинфекцию, запахи, просушку и вывоз — без поиска отдельных специалистов.</p>
-            </div>
-            <div class="process-carousel-nav" role="group" aria-label="Прокрутка шагов">
-                <button type="button" class="process-nav-btn process-nav-prev" aria-label="Предыдущие шаги">
-                    <svg width="12" height="22" viewBox="0 0 12 22" fill="none" aria-hidden="true">
-                        <path d="M9 19L3 11L9 3" stroke="#2A627E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
-                <button type="button" class="process-nav-btn process-nav-next" aria-label="Следующие шаги">
-                    <svg width="12" height="22" viewBox="0 0 12 22" fill="none" aria-hidden="true">
-                        <path d="M3 19L9 11L3 3" stroke="#2A627E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </button>
-            </div>
-        </header>
-    </div>
 
-    <div class="process-glass-breakout">
-        <div class="process-glass-panel">
-            <div class="process-carousel-track" id="process-track">
-                <div class="process-carousel-inner" id="process-carousel-inner">
-                    <div class="p-step-slide">
-                        <article class="p-step">
-                            <div class="p-icon-box">
-                                <svg width="32" height="33" viewBox="0 0 32 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15.2856 26.7776C21.3607 26.7776 26.2856 21.6918 26.2856 18.2218C26.2856 14.7518 21.3607 9.66602 15.2856 9.66602C9.21059 9.66602 4.28564 14.7555 4.28564 18.2218C4.28564 21.6881 9.21059 26.7776 15.2856 26.7776Z"
-                                        stroke="#6E9FBB" stroke-width="3" stroke-linejoin="round" />
+$double_process_steps = array_merge($process_steps, $process_steps);
 
-                                    <path d="M15.2863 21.8892C16.2588 21.8892 17.1914 21.5029 17.879 20.8152C18.5667 20.1276 18.953 19.1949 18.953 18.2224C18.953 17.2499 18.5667 16.3173 17.879 15.6296C17.1914 14.942 16.2588 14.5557 15.2863 14.5557C14.3138 14.5557 13.3812 14.942 12.6936 15.6296C12.0059 16.3173 11.6196 17.2499 11.6196 18.2224C11.6196 19.1949 12.0059 20.1276 12.6936 20.8152C13.3812 21.5029 14.3138 21.8892 15.2863 21.8892Z"
-                                        stroke="#6E9FBB" stroke-width="3" stroke-linejoin="round" />
+?>
 
-                                    <path d="M8.72412 8.60707L10.3093 10.8194M22.3892 8.87841L20.8033 11.0907M15.2905 6V9.66677"
-                                        stroke="#6E9FBB" stroke-width="3" stroke-linecap="round" />
-                                </svg>
-                            </div>
-                            <h4 class="p-step-title">Осмотр и оценка</h4>
-                            <p class="p-step-desc">Согласуем сроки и удобное время выезда.</p>
-                        </article>
-                    </div>
-                    <div class="p-step-slide">
-                        <article class="p-step">
-                            <div class="p-icon-box">
-                                <svg width="33" height="33" viewBox="0 0 23 31" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M21.4549 0.158328C21.7497 0.266081 22.0184 0.425892 22.2457 0.628631C22.473 0.831371 22.6543 1.07307 22.7794 1.33992C22.9045 1.60677 22.9709 1.89354 22.9748 2.18385C22.9787 2.47417 22.92 2.76234 22.8021 3.03191L21.4678 6.08233C21.0311 7.081 20.8666 8.16183 20.9884 9.23161C21.1102 10.3014 21.5148 11.328 22.1672 12.223L22.9697 13.3252C24.0572 14.8167 24.7316 16.5277 24.9349 18.3107C25.1381 20.0936 24.8641 21.8951 24.1363 23.5596L22.8021 26.61C22.6842 26.8796 22.5094 27.1253 22.2877 27.3331C22.066 27.5409 21.8017 27.7067 21.5099 27.8211C21.2182 27.9355 20.9046 27.9963 20.5871 27.9998C20.2697 28.0034 19.9546 27.9498 19.6598 27.842C19.365 27.7342 19.0963 27.5744 18.8691 27.3716C18.6419 27.1689 18.4605 26.9272 18.3354 26.6603C18.2103 26.3935 18.1439 26.1067 18.14 25.8164C18.1361 25.5261 18.1948 25.238 18.3126 24.9684L19.6469 21.918C20.0836 20.9193 20.2482 19.8385 20.1263 18.7687C20.0045 17.6989 19.5999 16.6723 18.9475 15.7774L18.145 14.6751C17.0573 13.1834 16.3827 11.4722 16.1794 9.68891C15.9762 7.90566 16.2504 6.10396 16.9784 4.43923L18.3126 1.38881C18.5509 0.844589 19.0158 0.409214 19.6051 0.178456C20.1944 -0.0523019 20.8598 -0.059542 21.4549 0.158328ZM13.3978 0.158328C13.6926 0.266081 13.9613 0.425892 14.1886 0.628631C14.4158 0.831371 14.5972 1.07307 14.7223 1.33992C14.8474 1.60677 14.9138 1.89354 14.9177 2.18385C14.9215 2.47417 14.8628 2.76234 14.7449 3.03191L13.4107 6.08233C12.9739 7.081 12.8094 8.16183 12.9312 9.23161C13.0531 10.3014 13.4576 11.328 14.11 12.223L14.9125 13.3252C15.9997 14.8168 16.6739 16.5279 16.8769 18.3109C17.0798 20.0938 16.8055 21.8952 16.0776 23.5596L14.7449 26.61C14.6271 26.8796 14.4523 27.1253 14.2306 27.3331C14.0089 27.5409 13.7446 27.7067 13.4528 27.8211C12.8635 28.0522 12.198 28.0597 11.6026 27.842C11.0073 27.6243 10.5309 27.1992 10.2783 26.6603C10.0256 26.1214 10.0174 25.5128 10.2555 24.9684L11.5897 21.918C12.0265 20.9193 12.191 19.8385 12.0692 18.7687C11.9473 17.6989 11.5428 16.6723 10.8904 15.7774L10.0879 14.6751C9.00013 13.1834 8.32553 11.4722 8.12228 9.68891C7.91903 7.90566 8.19322 6.10396 8.92121 4.43923L10.2555 1.38881C10.4938 0.844589 10.9587 0.409214 11.548 0.178456C12.1373 -0.0523019 12.8026 -0.059542 13.3978 0.158328ZM5.34061 0.158328C5.63543 0.266081 5.90414 0.425892 6.1314 0.628631C6.35866 0.831371 6.54002 1.07307 6.66512 1.33992C6.79023 1.60677 6.85661 1.89354 6.8605 2.18385C6.86438 2.47417 6.80569 2.76234 6.68777 3.03191L5.35351 6.08233C4.91678 7.081 4.75225 8.16183 4.87408 9.23161C4.99592 10.3014 5.40048 11.328 6.05287 12.223L6.85536 13.3252C7.94258 14.8168 8.61675 16.5279 8.81972 18.3109C9.02269 20.0938 8.74837 21.8952 8.02042 23.5596L6.68777 26.61C6.5699 26.8796 6.39512 27.1253 6.17342 27.3331C5.95171 27.5409 5.68742 27.7067 5.39563 27.8211C5.10384 27.9355 4.79027 27.9963 4.47282 27.9998C4.15537 28.0034 3.84026 27.9498 3.54548 27.842C3.2507 27.7342 2.98202 27.5744 2.75478 27.3716C2.52755 27.1689 2.34621 26.9272 2.22111 26.6603C2.09602 26.3935 2.02962 26.1067 2.02571 25.8164C2.0218 25.5261 2.08045 25.238 2.19832 24.9684L3.53259 21.918C3.96931 20.9193 4.13385 19.8385 4.01201 18.7687C3.89017 17.6989 3.48561 16.6723 2.83323 15.7774L2.03073 14.6751C0.942979 13.1834 0.268379 11.4722 0.0651251 9.68891C-0.138129 7.90566 0.136066 6.10396 0.864058 4.43923L2.19832 1.38881C2.4366 0.844589 2.90152 0.409214 3.49081 0.178456C4.0801 -0.0523019 4.74549 -0.059542 5.34061 0.158328Z" fill="#6E9FBB" />
-                                </svg>
-                                </svg>
-                            </div>
-                            <h4 class="p-step-title">Просушка помещений</h4>
-                            <p class="p-step-desc">Осушаем помещение и конструкции до безопасной влажности.</p>
-                        </article>
-                    </div>
-                    <div class="p-step-slide">
-                        <article class="p-step">
-                            <div class="p-icon-box">
-                                <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M27.1913 21.5C27.1913 20.875 27.1275 20.35 27.0382 19.85L29.0415 18.875L27.8931 16.625L26.145 17.4875C25.4432 16.45 24.5245 15.875 23.7334 15.6L24.5755 13.15L22.1511 12.35L21.1814 15.2C19.4843 15.0375 18.4763 14.4 17.8766 13.7125L20.1096 12.625L18.9612 10.375L16.9834 11.3625C16.8944 10.4595 16.5788 9.59206 16.0647 8.8375L18.0424 5.9375L15.9243 4.55L14.1252 7.2C13.5127 6.9125 12.7726 6.6875 11.8794 6.575V4H9.32742V6.625C8.42147 6.8125 7.70691 7.175 7.18375 7.6375L3.84065 4.3625L2.0415 6.1375L5.80568 9.8125C5.49944 10.7375 5.49944 11.5 5.49944 11.5H2.94746V14H5.55048C5.62704 14.7875 5.7674 15.7 6.00984 16.6875L2.53914 17.8125L3.34302 20.1875L6.77544 19.0625C7.08167 19.7 7.41343 20.35 7.82175 20.975L4.78489 22.9625L6.20124 25.0375L9.41674 22.9375C10.1313 23.6375 10.9735 24.2625 11.956 24.8L10.731 27.1875L13.015 28.3125L14.291 25.8125L14.0869 25.7C15.2991 26.1 16.6771 26.375 18.2594 26.4625V29H20.8114V26.4125C21.7811 26.3 23.1209 26.05 24.3459 25.4875L26.2854 27.3875L28.0845 25.6125L26.3874 23.9375C26.8723 23.3 27.1913 22.5 27.1913 21.5ZM11.2414 15.25C10.7338 15.25 10.247 15.0525 9.88801 14.7008C9.52907 14.3492 9.32742 13.8723 9.32742 13.375C9.32742 12.8777 9.52907 12.4008 9.88801 12.0492C10.247 11.6975 10.7338 11.5 11.2414 11.5C11.749 11.5 12.2359 11.6975 12.5948 12.0492C12.9537 12.4008 13.1554 12.8777 13.1554 13.375C13.1554 13.8723 12.9537 14.3492 12.5948 14.7008C12.2359 15.0525 11.749 15.25 11.2414 15.25ZM14.4314 19C14.093 19 13.7684 18.8683 13.5291 18.6339C13.2898 18.3995 13.1554 18.0815 13.1554 17.75C13.1554 17.4185 13.2898 17.1005 13.5291 16.8661C13.7684 16.6317 14.093 16.5 14.4314 16.5C14.7698 16.5 15.0944 16.6317 15.3337 16.8661C15.5729 17.1005 15.7074 17.4185 15.7074 17.75C15.7074 18.0815 15.5729 18.3995 15.3337 18.6339C15.0944 18.8683 14.7698 19 14.4314 19ZM20.1734 22.75C19.6657 22.75 19.1789 22.5525 18.82 22.2008C18.461 21.8492 18.2594 21.3723 18.2594 20.875C18.2594 20.3777 18.461 19.9008 18.82 19.5492C19.1789 19.1975 19.6657 19 20.1734 19C20.681 19 21.1678 19.1975 21.5267 19.5492C21.8857 19.9008 22.0873 20.3777 22.0873 20.875C22.0873 21.3723 21.8857 21.8492 21.5267 22.2008C21.1678 22.5525 20.681 22.75 20.1734 22.75Z" fill="#6E9FBB" />
-                                </svg>
-                            </div>
-                            <h4 class="p-step-title">Дезинфекция</h4>
-                            <p class="p-step-desc">Снижаем риски для здоровья и распространения бактерий.</p>
-                        </article>
-                    </div>
-                    <div class="p-step-slide">
-                        <article class="p-step">
-                            <div class="p-icon-box">
-                                <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M25.5378 23.3713C24.3989 25.2598 22.9596 24.6595 21.608 23.859C20.2564 23.0586 18.9798 22.0955 18.1663 23.2337C17.2777 24.2092 17.9661 25.7726 18.3165 27.1484C18.6669 28.5367 18.6919 29.7374 16.4768 30C14.7246 29.7624 14.8247 28.3115 15.1126 26.7732C15.4004 25.2348 15.851 23.6089 14.7246 23.0336C13.8235 22.4332 13.1978 23.4713 12.4093 24.4969C11.5958 25.51 10.6697 26.498 9.14283 25.7726C7.76615 24.6345 8.29179 23.9716 9.01768 23.1211C9.74356 22.2706 10.6822 21.1325 10.144 19.1314C9.91877 18.3184 8.7924 18.506 7.67855 18.481C6.58972 18.456 5.48838 18.2309 5.37575 16.605C5.28814 15.6169 6.02654 15.2167 6.78997 14.904C7.56591 14.5913 8.35437 14.3662 8.36688 13.5783C8.40443 12.8153 7.89131 12.2775 7.56591 11.7147C7.24051 11.1519 7.10285 10.5641 7.87879 9.68856C9.19289 8.61296 10.2442 9.52597 11.2954 10.514C12.3467 11.5021 13.3855 12.5402 14.6746 11.7272C15.7008 11.0518 14.7622 9.86366 14.0363 8.70051C13.3104 7.53735 12.7973 6.42422 14.6746 5.91144C16.3015 5.46118 16.9273 6.57431 17.4905 7.86253C18.0662 9.15076 18.5668 10.6141 19.9435 10.8767C21.9084 11.2394 23.3351 8.93814 24.6993 7.11211C26.0634 5.28608 27.4025 3.92282 29.1171 6.17408C30.9944 8.53791 29.2047 9.63853 27.1147 10.6141C25.0247 11.5271 22.6217 12.3275 23.1974 14.091C23.5353 15.1166 24.6367 14.5538 25.8006 14.1661C26.952 13.7784 28.191 13.5657 28.7917 15.3292C29.43 17.1928 27.9157 17.618 26.2136 17.7931C24.5115 17.9682 22.6092 17.8932 22.4841 18.7437C22.3464 19.6317 23.4853 19.9944 24.474 20.5197C25.4627 21.0575 26.3012 21.7704 25.5378 23.3713ZM28.4914 26.2479C27.3024 26.2479 26.6892 25.3224 26.6892 24.3718C26.6892 23.4213 27.2899 22.4958 28.4914 22.4958C29.7429 22.4958 30.3687 23.4213 30.3687 24.3718C30.3687 25.3224 29.7429 26.2479 28.4914 26.2479Z" fill="#6E9FBB" />
-                                </svg>
-                            </div>
-                            <h4 class="p-step-title">Удаление загрязнений</h4>
-                            <p class="p-step-desc">Убираем последствия ЧП и сложные загрязнения.</p>
-                        </article>
-                    </div>
-                    <div class="p-step-slide">
-                        <article class="p-step">
-                            <div class="p-icon-box">
-                                <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16.5314 2.24813C16.6326 2.07454 16.6977 1.88255 16.7227 1.68354C16.7478 1.48453 16.7323 1.28256 16.6772 1.0896C16.622 0.896649 16.5284 0.716637 16.4018 0.560243C16.2752 0.403848 16.1183 0.274256 15.9402 0.17915C15.7622 0.0840444 15.5667 0.0253618 15.3654 0.00658209C15.1641 -0.0121976 14.961 0.00930808 14.7683 0.0698237C14.5755 0.130339 14.3969 0.228633 14.2431 0.358876C14.0894 0.489118 13.9635 0.648658 13.8731 0.828035L9.37975 9.10296C8.1337 11.3979 6.22912 13.7797 4.23392 15.3631C3.17667 16.202 1.80223 17.4438 0.917154 18.9223C0.0109325 20.4383 -0.496551 22.4396 0.713255 24.4409C1.17124 25.1982 1.78376 25.8522 2.51152 26.3609C3.23928 26.8696 4.06621 27.2218 4.93927 27.395L6.18381 27.6422C7.02509 27.8069 8.02495 28.1919 8.77712 28.7102C9.57006 29.2585 9.77396 29.7229 9.77396 30H12.7947C12.7947 28.911 12.3265 28.0137 11.7072 27.3096L11.7374 27.3021C13.3958 26.8602 15.1932 25.6049 16.1583 24.2013C13.8701 22.6538 11.6574 21.6292 8.8179 22.4246C7.37096 22.8291 6.31219 23.3953 5.31686 24.4065C4.47428 24.1818 3.75251 23.6415 3.30354 22.8995C2.87157 22.185 2.9335 21.4225 3.51499 20.4518C4.11763 19.4436 5.14921 18.4744 6.12189 17.703C8.47806 15.8305 10.6303 13.1191 12.0395 10.5231L16.5314 2.24813ZM17.8454 20.5057C18.2899 21.0048 18.6169 21.5956 18.8028 22.2354C18.9887 22.8753 19.0288 23.5481 18.9203 24.2052C18.8117 24.8623 18.5572 25.4873 18.1751 26.0348C17.793 26.5824 17.2929 27.0388 16.7111 27.371L18.2245 29.964C19.1931 29.4093 20.0254 28.6481 20.6612 27.7354C21.297 26.8227 21.7205 25.7813 21.901 24.6865C22.0815 23.5917 22.0146 22.4708 21.705 21.4047C21.3954 20.3387 20.8509 19.3542 20.1109 18.5224L17.8454 20.5057Z" fill="#6E9FBB" />
-                                </svg>
-                            </div>
-                            <h4 class="p-step-title">Устранение запахов</h4>
-                            <p class="p-step-desc">Нейтрализуем стойкие запахи (гарь, сырость и др.).</p>
-                        </article>
-                    </div>
-                    <div class="p-step-slide">
-                        <article class="p-step">
-                            <div class="p-icon-box">
-                                <svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M15.7773 15.7797L9.66699 9.66943" stroke="#6E9FBB" stroke-width="2" />
-                                    <path d="M8.44554 11.5019L11.5007 8.44676L7.83451 6.61367L6.61245 7.83573L8.44554 11.5019ZM26.7459 13.3044C27.3326 12.7182 27.7362 11.9741 27.9077 11.1626C28.0791 10.3512 28.0108 9.50735 27.7113 8.73394L25.9735 10.4717H23.5294V8.02759L25.2672 6.28982C24.4937 5.98961 23.6497 5.92084 22.8378 6.09187C22.0259 6.2629 21.2814 6.66637 20.6948 7.2531C20.1081 7.83984 19.7049 8.58451 19.534 9.39641C19.3631 10.2083 19.4321 11.0524 19.7325 11.8258L11.8258 19.7337C11.0524 19.4333 10.2083 19.3644 9.39641 19.5352C8.58451 19.7061 7.83984 20.1094 7.2531 20.696C6.66637 21.2826 6.2629 22.0272 6.09187 22.839C5.92084 23.6509 5.98961 24.495 6.28982 25.2684L8.02637 23.5306H10.4705V25.9748L8.73272 27.7125C9.50599 28.0127 10.3499 28.0816 11.1616 27.9108C11.9733 27.74 12.7178 27.3368 13.3045 26.7504C13.8912 26.164 14.2947 25.4196 14.4658 24.608C14.637 23.7963 14.5685 22.9524 14.2687 22.179L22.1778 14.2699C22.9509 14.5689 23.7942 14.6368 24.6052 14.4654C25.4162 14.294 26.1599 13.8907 26.7459 13.3044Z" stroke="#6E9FBB" stroke-width="2" stroke-linejoin="round" />
-                                    <path d="M16.7524 20.0566L23.6009 26.9051C23.7541 27.0586 23.9361 27.1804 24.1365 27.2635C24.3368 27.3466 24.5516 27.3894 24.7685 27.3894C24.9855 27.3894 25.2002 27.3466 25.4006 27.2635C25.601 27.1804 25.783 27.0586 25.9362 26.9051L26.9041 25.9372C27.0576 25.784 27.1794 25.602 27.2625 25.4016C27.3456 25.2012 27.3884 24.9864 27.3884 24.7695C27.3884 24.5526 27.3456 24.3378 27.2625 24.1375C27.1794 23.9371 27.0576 23.7551 26.9041 23.6018L20.0557 16.7534" stroke="#6E9FBB" stroke-width="2" stroke-linejoin="round" />
-                                </svg>
-                            </div>
-                            <h4 class="p-step-title">Подготовка к ремонту</h4>
-                            <p class="p-step-desc">Вывозим мусор и повреждённые предметы при необходимости.</p>
-                        </article>
-                    </div>
-                </div>
-            </div>
-            <div class="process-mobile-indicator" id="process-mobile-indicator" aria-hidden="true">
-                <span class="process-mobile-indicator__dot is-active"></span>
-                <span class="process-mobile-indicator__dot"></span>
-                <span class="process-mobile-indicator__dot"></span>
-                <span class="process-mobile-indicator__dot"></span>
-                <span class="process-mobile-indicator__dot"></span>
-                <span class="process-mobile-indicator__dot"></span>
-            </div>
-        </div>
-    </div>
-
-</section>
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        (function() {
-            "use strict";
-
-            function processGapPx() {
-                var w = window.innerWidth || document.documentElement.clientWidth;
-                return Math.round(Math.max(20, Math.min(60, (w * 60) / 1920)));
-            }
-
-            function prefersReducedMotion() {
-                try {
-                    return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-                } catch (e) {
-                    return false;
-                }
-            }
-
-            function supportsScrollEnd(el) {
-                return "onscrollend" in el;
-            }
-
-            /** Десктоп/планшетный режим карусели (выше мобильного брейкпоинта 768px). */
-            function isDesktopProcess() {
-                try {
-                    return window.matchMedia("(min-width: 769px)").matches;
-                } catch (e) {
-                    return (window.innerWidth || document.documentElement.clientWidth || 0) >= 769;
-                }
-            }
-
-            function initProcessCarousel() {
-                var track = document.querySelector("#process-track");
-                var inner = document.querySelector("#process-carousel-inner");
-                if (!track || !inner) return;
-
-                var prevBtn = document.querySelector(".process-section-new .process-nav-prev");
-                var nextBtn = document.querySelector(".process-section-new .process-nav-next");
-
-                var originals = [];
-                var targets = [];
-                var cycleLen = 0;
-                var scrollLow = 0;
-                var scrollOffset = 0;
-                var navBusy = false;
-                var scrollEndTimer;
-                var n = 0;
-
-                function isMobileSimpleMode() {
-                    try {
-                        return window.matchMedia("(max-width: 768px)").matches;
-                    } catch (e) {
-                        return (window.innerWidth || document.documentElement.clientWidth || 0) <= 768;
-                    }
-                }
-
-                var modeIsMobile = isMobileSimpleMode();
-
-                if (isMobileSimpleMode()) {
-                    var mobileSlides = Array.prototype.slice.call(inner.children).filter(function(el) {
-                        return el.classList.contains("p-step-slide");
-                    });
-                    if (!mobileSlides.length) return;
-
-                    var indicatorWrap = document.querySelector("#process-mobile-indicator");
-                    var indicatorDots = indicatorWrap ?
-                        Array.prototype.slice.call(indicatorWrap.querySelectorAll(".process-mobile-indicator__dot")) :
-                        [];
-
-                    var current = 0;
-                    var touchStartX = 0;
-                    var touchEndX = 0;
-
-                    function syncMobileIndicator() {
-                        if (!indicatorDots.length) return;
-                        indicatorDots.forEach(function(dot, i) {
-                            dot.classList.toggle("is-active", i === current);
-                        });
-                    }
-
-                    function showMobileSlide(idx) {
-                        if (!mobileSlides.length) return;
-                        if (idx < 0) idx = mobileSlides.length - 1;
-                        if (idx >= mobileSlides.length) idx = 0;
-                        current = idx;
-                        mobileSlides.forEach(function(slide, i) {
-                            slide.classList.toggle("is-active", i === current);
-                        });
-                        syncMobileIndicator();
-                    }
-
-                    if (prevBtn) {
-                        prevBtn.addEventListener("click", function() {
-                            showMobileSlide(current - 1);
-                        });
-                    }
-                    if (nextBtn) {
-                        nextBtn.addEventListener("click", function() {
-                            showMobileSlide(current + 1);
-                        });
-                    }
-
-                    track.addEventListener(
-                        "touchstart",
-                        function(event) {
-                            if (!event.touches || !event.touches.length) return;
-                            touchStartX = event.touches[0].clientX;
-                        }, {
-                            passive: true
-                        }
-                    );
-
-                    track.addEventListener(
-                        "touchend",
-                        function(event) {
-                            if (!event.changedTouches || !event.changedTouches.length) return;
-                            touchEndX = event.changedTouches[0].clientX;
-                            var delta = touchEndX - touchStartX;
-                            if (Math.abs(delta) < 40) return;
-                            if (delta < 0) {
-                                showMobileSlide(current + 1);
-                            } else {
-                                showMobileSlide(current - 1);
-                            }
-                        }, {
-                            passive: true
-                        }
-                    );
-
-                    var mobileResizeTimer;
-                    window.addEventListener(
-                        "resize",
-                        function() {
-                            clearTimeout(mobileResizeTimer);
-                            mobileResizeTimer = setTimeout(function() {
-                                var nowMobile = isMobileSimpleMode();
-                                if (nowMobile !== modeIsMobile) {
-                                    window.location.reload();
-                                }
-                            }, 120);
-                        }, {
-                            passive: true
-                        }
-                    );
-
-                    showMobileSlide(0);
-                    return;
-                }
-
-                function removeClones() {
-                    Array.prototype.forEach.call(inner.querySelectorAll(".p-step-slide--clone"), function(node) {
-                        node.remove();
-                    });
-                }
-
-                function collectOriginals() {
-                    originals = Array.prototype.slice
-                        .call(inner.children)
-                        .filter(function(el) {
-                            return el.classList.contains("p-step-slide") && !el.classList.contains("p-step-slide--clone");
-                        });
-                    n = originals.length;
-                }
-
-                function appendClones() {
-                    removeClones();
-                    collectOriginals();
-                    /* [prepend копия ряда][оригиналы][append копия] — чтобы с первого экрана можно было листать влево (scrollLeft > 0). */
-                    var fragPre = document.createDocumentFragment();
-                    originals.forEach(function(slide) {
-                        var c = slide.cloneNode(true);
-                        c.classList.add("p-step-slide--clone", "p-step-slide--clone-prepend");
-                        c.setAttribute("aria-hidden", "true");
-                        fragPre.appendChild(c);
-                    });
-                    inner.insertBefore(fragPre, inner.firstChild);
-
-                    originals.forEach(function(slide) {
-                        var c = slide.cloneNode(true);
-                        c.classList.add("p-step-slide--clone", "p-step-slide--clone-append");
-                        c.setAttribute("aria-hidden", "true");
-                        inner.appendChild(c);
-                    });
-                }
-
-                function measure() {
-                    collectOriginals();
-                    var cloneAppend0 = inner.querySelector(".p-step-slide--clone-append");
-                    if (!originals.length || !cloneAppend0) return;
-
-                    var first = originals[0];
-                    var peek = isDesktopProcess() ? 0 : Math.max(0, Math.round(first.offsetWidth / 2));
-                    inner.style.setProperty("--process-peek", peek + "px");
-                    void inner.offsetHeight;
-
-                    targets = originals.map(function(s) {
-                        return Math.round(s.offsetLeft);
-                    });
-                    cycleLen = Math.round(cloneAppend0.offsetLeft - originals[0].offsetLeft);
-                    scrollOffset = 0;
-                }
-
-                /** Однократно: сравниваем видимые «половинки» первой и последней карточки у краёв вьюпорта и сдвигаем scroll. */
-                function balancePeekOnce() {
-                    if (!originals.length || !targets.length) return;
-
-                    track.scrollLeft = targets[0];
-                    void track.offsetHeight;
-
-                    /* Десктоп: без «половинок» у края — только padding трека, левый и правый отступ от вьюпорта совпадают. */
-                    if (isDesktopProcess()) {
-                        scrollOffset = track.scrollLeft - targets[0];
-                        scrollLow = track.scrollLeft;
-                        return;
-                    }
-
-                    var tr = track.getBoundingClientRect();
-                    var cs = window.getComputedStyle(track);
-                    var pl = parseFloat(cs.paddingLeft) || 0;
-                    var pr = parseFloat(cs.paddingRight) || 0;
-                    var viewL = tr.left + pl;
-                    var viewR = tr.right - pr;
-
-                    var first = originals[0];
-                    var last = originals[n - 1];
-                    var fr = first.getBoundingClientRect();
-                    var lr = last.getBoundingClientRect();
-                    var wantL = first.offsetWidth / 2;
-                    var wantR = last.offsetWidth / 2;
-
-                    var visL = Math.min(fr.right, viewR) - Math.max(fr.left, viewL);
-                    var visR = Math.min(lr.right, viewR) - Math.max(lr.left, viewL);
-
-                    /* Положительный adj — сдвиг вправо (увеличить scrollLeft), если обрез слева глубже желаемого */
-                    var errL = wantL - visL;
-                    var errR = wantR - visR;
-                    var adj = Math.round((errL + errR) / 2);
-                    var lim = Math.max(24, Math.round(first.offsetWidth / 2) || 40);
-                    adj = Math.max(-lim, Math.min(lim, adj));
-
-                    var raw = Math.round(targets[0] + adj);
-                    track.scrollLeft = Math.max(0, raw);
-                    scrollOffset = track.scrollLeft - targets[0];
-                    scrollLow = track.scrollLeft;
-                }
-
-                function targetX(i) {
-                    return Math.round(targets[i] + scrollOffset);
-                }
-
-                function normalize() {
-                    if (!cycleLen || cycleLen < 4) return;
-                    var s = track.scrollLeft;
-                    var hi = scrollLow + cycleLen;
-                    if (s >= hi - 1) {
-                        track.scrollLeft = Math.round(s - cycleLen);
-                    } else if (s < scrollLow - 1) {
-                        track.scrollLeft = Math.round(s + cycleLen);
-                    }
-                }
-
-                function releaseNav() {
-                    navBusy = false;
-                }
-
-                function onScrollSettled() {
-                    normalize();
-                    releaseNav();
-                }
-
-                function bindScrollEnd() {
-                    if (supportsScrollEnd(track)) {
-                        track.addEventListener("scrollend", onScrollSettled, {
-                            passive: true
-                        });
-                    } else {
-                        track.addEventListener(
-                            "scroll",
-                            function() {
-                                clearTimeout(scrollEndTimer);
-                                scrollEndTimer = setTimeout(onScrollSettled, 120);
-                            }, {
-                                passive: true
-                            }
-                        );
-                    }
-                }
-
-                function nearestIndex() {
-                    normalize();
-                    var s = track.scrollLeft;
-                    var best = 0;
-                    var bd = 1e9;
-                    var i;
-                    for (i = 0; i < n; i++) {
-                        var d = Math.abs(s - targetX(i));
-                        if (d < bd) {
-                            bd = d;
-                            best = i;
-                        }
-                    }
-                    return best;
-                }
-
-                function goTo(left) {
-                    var smooth = !prefersReducedMotion();
-                    track.scrollTo({
-                        left: Math.round(left),
-                        top: 0,
-                        behavior: smooth ? "smooth" : "auto"
-                    });
-                    if (!smooth) {
-                        onScrollSettled();
-                    }
-                }
-
-                function goNext() {
-                    if (n < 2 || !cycleLen || !targets.length) return;
-                    navBusy = true;
-                    var idx = nearestIndex();
-                    var left;
-                    if (idx === n - 1) {
-                        left = targetX(0) + cycleLen;
-                    } else {
-                        left = targetX(idx + 1);
-                    }
-                    goTo(left);
-                }
-
-                function goPrev() {
-                    if (n < 2 || !cycleLen || !targets.length) return;
-                    navBusy = true;
-                    var idx = nearestIndex();
-                    var left;
-                    /* [prepend][O…O][append]: с первого шага назад — в зону prepend (эквивалент последнего слайда), симметрично goNext на последнем. */
-                    if (idx === 0) {
-                        left = targetX(n - 1) - cycleLen;
-                    } else {
-                        left = targetX(idx - 1);
-                    }
-                    goTo(left);
-                }
-
-                function layout() {
-                    inner.style.setProperty("--process-carousel-gap", processGapPx() + "px");
-                    appendClones();
-                    requestAnimationFrame(function() {
-                        requestAnimationFrame(function() {
-                            measure();
-                            if (targets.length) {
-                                balancePeekOnce();
-                            }
-                            normalize();
-                            releaseNav();
-                        });
-                    });
-                }
-
-                if (prevBtn) {
-                    prevBtn.addEventListener("click", function() {
-                        if (navBusy) return;
-                        goPrev();
-                    });
-                }
-                if (nextBtn) {
-                    nextBtn.addEventListener("click", function() {
-                        if (navBusy) return;
-                        goNext();
-                    });
-                }
-
-                bindScrollEnd();
-
-                var resizeTimer;
-                window.addEventListener(
-                    "resize",
-                    function() {
-                        clearTimeout(resizeTimer);
-                        resizeTimer = setTimeout(function() {
-                            var nowMobile = isMobileSimpleMode();
-                            if (nowMobile !== modeIsMobile) {
-                                window.location.reload();
-                                return;
-                            }
-                            layout();
-                        }, 150);
-                    }, {
-                        passive: true
-                    }
-                );
-
-                collectOriginals();
-                if (originals.length < 2) return;
-                layout();
-            }
-
-            if (document.readyState === "loading") {
-                document.addEventListener("DOMContentLoaded", initProcessCarousel);
-            } else {
-                initProcessCarousel();
-            }
-        })();
-
-    })
-</script>
 <section class="process">
     <div class="container">
-
+        <div class="process__header">
+            <div class="process__main">
+                <span class="process__hint hint">Процесс</span>
+                <h2 class="process__title title">Что мы делаем <span class="color-accent">под ключ</span></h2>
+                <p class="process__desc">Закрываем уборку, дезинфекцию, запахи, просушку и вывоз — без поиска отдельных специалистов.</p>
+            </div>
+            <div class="process__controls">
+                <button type="button" aria-label="Назад" class="process__prev swiper-button-prev"></button>
+                <button type="button" aria-label="Вперед" class="process__next swiper-button-next"></button>
+            </div>
+        </div>
+        <div class="process__slider swiper">
+            <div class="swiper-wrapper">
+                <?php foreach ($process_steps as $step) : ?>
+                    <div class="process__slide swiper-slide">
+                        <div class="process__slide-icon">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/img/icons/<?php echo esc_attr($step['icon']); ?>" alt="icon">
+                        </div>
+                        <h4 class="process__slide-title"><?php echo esc_html($step['title']); ?></h4>
+                        <p class="process__slide-desc"><?php echo esc_html($step['desc']); ?></p>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="process__slider-pagination swiper-pagination"></div>
+        </div>
     </div>
 </section>
