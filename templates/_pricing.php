@@ -40,50 +40,55 @@ $special_card = [
 ];
 ?>
 
-<section class="pricing-section-new">
+<section class="pricing">
     <div class="container">
-
-        <div class="pricing-header">
-            <span class="price-kicker">Тарифы</span>
-            <h2>Стоимость <span class="text-blue">услуг</span></h2>
-            <p class="pricing-subtitle pricing-subtitle--desktop">Цена зависит от площади помещения и степени загрязнения</p>
-            <p class="pricing-subtitle pricing-subtitle--mobile">Закрываем уборку, дезинфекцию, запахи, просушку и вывоз — без поиска отдельных специалистов.</p>
-        </div>
-
-        <div class="pricing-grid-new">
+        <span class="pricing__hint hint">Тарифы</span>
+        <h2 class="pricing__title title">Стоимость <span class="color-accent">услуг</span></h2>
+        <p class="pricing__subtitle">Цена зависит от площади помещения и степени загрязнения</p>
+        <ul class="pricing__list">
             <?php foreach ($pricing_plans as $plan): ?>
-                <div class="price-card-regular">
-                    <div class="price-val">
-                        <span class="price-from">от</span>
-                        <span class="price-amount"><?php echo esc_html($plan['amount']); ?></span>
-                        <span class="price-currency">₽</span>
+                <li class="pricing-card">
+                    <div class="pricing-card__value">
+                        <span class="pricing-card__value-from">от</span>
+                        <span class="pricing-card__value-amount"><?php echo esc_html($plan['amount']); ?></span>
+                        <span class="pricing-card__value-currency">₽</span>
                     </div>
-                    <div class="price-info">
-                        <h4><?php echo esc_html($plan['title']); ?></h4>
-                        <p><?php echo esc_html($plan['descr']); ?></p>
+                    <div class="pricing-card__info">
+                        <h4 class="pricing-card__caption"><?php echo esc_html($plan['title']); ?></h4>
+                        <p class="pricing-card__description"><?php echo esc_html($plan['descr']); ?></p>
                     </div>
-                    <a href="<?php echo esc_url($plan['link']); ?>" class="btn-price-outline">Подробнее</a>
-                </div>
+                    <a href="<?php echo esc_url($plan['link']); ?>"
+                        class="pricing-card__btn btn btn-outline">Подробнее</a>
+                </li>
             <?php endforeach; ?>
-
-            <article class="price-card-special" aria-label="Сводка по услугам и минимальному заказу">
-                <div class="price-card-special__stats">
-                    <div class="price-card-special__figure">
-                        <p class="title-big">
-                            <span class="title-big__num"><?php echo esc_html($special_card['count']); ?></span><span class="title-big__plus">+</span>
-                        </p>
+            <li class="pricing-card pricing-card--special"
+                aria-label="Сводка по услугам и минимальному заказу">
+                <div class="pricing-card__stats">
+                    <div class="pricing-card__figure">
+                        <div class="pricing-card__figure-header">
+                            <span class="pricing-card__value-amount"><?php echo esc_html($special_card['count']); ?></span>
+                            <span class="pricing-card__value-currency">+</span>
+                        </div>
+                        <div class="pricing-card__figure-bottom">
+                            Услуг
+                        </div>
                     </div>
-                    <div class="price-card-special__figure">
-                        <p class="title-small">
-                            <span class="title-small__prefix">от</span><span class="title-small__amount"><?php echo esc_html($special_card['min_price']); ?></span><span class="title-small__currency">₽</span>
-                        </p>
+                    <div class="pricing-card__figure">
+                        <div class="pricing-card__figure-header">
+                            <span class="pricing-card__value-from">от</span>
+                            <span class="pricing-card__value-amount"><?php echo esc_html($special_card['min_price']); ?></span>
+                            <span class="pricing-card__value-currency">₽</span>
+                        </div>
+                        <div class="pricing-card__figure-bottom">
+                            Минимальный заказ
+                        </div>
                     </div>
-                    <p class="text-muted">Услуг</p>
-                    <p class="text-muted">Минимальный заказ</p>
                 </div>
-                <a href="<?php echo esc_url($special_card['link']); ?>" class="btn-price-solid button">Показать все цены</a>
-            </article>
-
-        </div>
+                <a href="<?php echo esc_url($special_card['link']); ?>"
+                    class="btn btn-white btn-price-solid">
+                    Показать все цены
+                </a>
+            </li>
+        </ul>
     </div>
 </section>

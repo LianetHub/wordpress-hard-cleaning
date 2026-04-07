@@ -3,8 +3,8 @@
 /**
  * Данные для отзывов (имитация ACF)
  */
-$yandex_rating = '4.7'; // Общий рейтинг
-$yandex_link = get_field('yandex_maps_link', 'option') ?: '#'; // Ссылка на карты
+$yandex_rating = '4.7';
+$yandex_link = get_field('yandex_maps_link', 'option') ?: 'https://yandex.com/maps/org/cleaningspb1/4725499215/reviews/?ll=30.422776%2C59.954106&utm_campaign=v1&utm_medium=rating&utm_source=badge&z=16';
 
 $reviews = [
     [
@@ -21,9 +21,9 @@ $reviews = [
     ],
     [
         'text'   => 'Персонал отлично справился со своим делом. После ремонта не успела убрать всё, решила вызвать клиннинг. В выборе вашей компании я не ошиблась! Убрали все отлично, даже стало легче дышать.',
-        'author' => 'Лина Артамонова',
+        'author' => 'Лиза Артамонова',
         'avatar' => get_template_directory_uri() . '/assets/review_avatar_3.webp',
-        'link'   => 'https://yandex.by/maps/user/ev6c5e9wjypppwruju1a31mmjr'
+        'link'   => 'https://yandex.com/maps/org/4725499215/reviews?reviews%5BpublicId%5D=ev6c5e9wjypppwruju1a31mmjr&utm_source=review'
     ],
     [
         'text'   => 'Очень довольна работой этой клининговой компании! Они сделали уборку быстро и качественно, оставив квартиру идеально чистой. Обязательно обращусь к ним снова и рекомендую всем.',
@@ -47,7 +47,7 @@ $reviews = [
             <div class="reviews-header-left">
                 <h2 class="reviews-title">Отзывы из <br><span>Яндекс Карт</span></h2>
 
-                <a href="https://yandex.com/maps/org/cleaningspb1/4725499215/reviews/?ll=30.422776%2C59.954106&utm_campaign=v1&utm_medium=rating&utm_source=badge&z=16" target="_blank" class="yandex-rating-card">
+                <a href="<?php echo esc_url($yandex_link); ?>" target="_blank" class="yandex-rating-card">
                     <div class="rating-circle"><?php echo $yandex_rating; ?></div>
                     <div class="rating-info">
                         <div class="rating-stars">
@@ -67,7 +67,8 @@ $reviews = [
             </div>
 
             <div class="reviews-header-right">
-                <a href="<?php echo esc_url($yandex_link); ?>" target="_blank" class="btn-yandex-open">Открыть в Яндексе</a>
+                <a href="<?php echo esc_url($yandex_link); ?>"
+                    target="_blank" class="btn-yandex-open btn btn-primary">Открыть в Яндексе</a>
                 <div class="reviews-nav">
                     <button class="nav-arrow prev">
                         <svg width="12" height="24" viewBox="0 0 12 24" fill="none">
