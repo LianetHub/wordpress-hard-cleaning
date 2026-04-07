@@ -3165,7 +3165,6 @@ body.nav-drawer-open {
 }
 
 .pricing-card.pricing-card--special .pricing-card__value-amount {
-    font-size: 3.125rem;
     font-weight: 600
 }
 
@@ -3208,8 +3207,8 @@ body.nav-drawer-open {
 .pricing-card__value-amount {
     font-family: Unbounded;
     font-weight: 700;
-    font-size: 2.625rem;
-    line-height: 1
+    line-height: 1;
+    font-size: 2.25rem
 }
 
 .pricing-card__value-currency {
@@ -3583,8 +3582,8 @@ body.nav-drawer-open {
 .g-docs-grid {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (minmax(0, 1fr))[3];
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    -ms-grid-columns: (1fr)[3];
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.875rem
 }
 
@@ -3617,24 +3616,6 @@ body.nav-drawer-open {
     position: relative
 }
 
-.g-doc-image::after {
-    content: "";
-    position: absolute;
-    bottom: -1.5625rem;
-    left: 0;
-    width: 100%;
-    height: 5rem;
-    background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, .3)), to(rgba(0, 0, 0, 0)));
-    background: linear-gradient(to top, rgba(0, 0, 0, .3) 0, rgba(0, 0, 0, 0) 100%);
-    mask-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(20%, #000), color-stop(80%, #000), to(transparent));
-    mask-image: linear-gradient(to right, transparent 0, #000 20%, #000 80%, transparent 100%);
-    -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(20%, #000), color-stop(80%, #000), to(transparent));
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 20%, #000 80%, transparent 100%);
-    z-index: 1;
-    pointer-events: none;
-    border-radius: 0 0 .9375rem .9375rem
-}
-
 .g-doc-image img {
     max-width: 100%;
     height: auto;
@@ -3643,8 +3624,6 @@ body.nav-drawer-open {
     position: relative;
     z-index: 0;
     margin-bottom: -4.375rem;
-    -webkit-filter: drop-shadow(0 .625rem 1.25rem rgba(0, 0, 0, .15));
-    filter: drop-shadow(0 .625rem 1.25rem rgba(0, 0, 0, .15));
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1)
@@ -3654,20 +3633,14 @@ body.nav-drawer-open {
     position: relative;
     z-index: 2;
     width: 100%;
-    background: #fff;
-    -webkit-box-shadow: 0 .25rem 2.75rem rgba(0, 0, 0, .1);
-    box-shadow: 0 .25rem 2.75rem rgba(0, 0, 0, .1);
-    border-radius: 0 0 1.25rem 1.25rem;
-    padding: 1.375rem 2.1875rem;
+    gap: .5rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: justify;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column
 }
 
 .g-doc-label {
@@ -4096,7 +4069,7 @@ body.nav-drawer-open {
 
 .coverage-section {
     background: #f7f9fb;
-    padding: 6.25rem 0
+    padding: 3rem 0
 }
 
 .coverage-section .coverage-header {
@@ -4137,9 +4110,8 @@ body.nav-drawer-open {
 }
 
 .coverage-section .coverage-desc {
-    margin: 0;
     font-weight: 500;
-    font-size: var(--fs-section-lead);
+    font-size: 1.0625rem;
     line-height: 1.5;
     color: var(--color-slate-dark)
 }
@@ -4261,9 +4233,7 @@ body.nav-drawer-open {
 .info-highlight-box p {
     font-weight: 400;
     font-size: 1.125rem;
-    line-height: 1.4;
-    color: var(--color-dark);
-    margin: 0
+    line-height: 1.4
 }
 
 .info-region-box {
@@ -4718,7 +4688,7 @@ body.nav-drawer-open {
 
 .district-time span {
     font-weight: 600;
-    font-size: 16px;
+    font-size: 1rem;
     color: #467e9e;
     letter-spacing: .03em
 }
@@ -5210,6 +5180,47 @@ html {
         gap: .625rem;
         margin-bottom: 1.125rem
     }
+
+    .g-doc-image::after {
+        content: "";
+        position: absolute;
+        bottom: -1.5625rem;
+        left: 0;
+        width: 100%;
+        height: 5rem;
+        background: -webkit-gradient(linear, left bottom, left top, from(rgba(0, 0, 0, .3)), to(rgba(0, 0, 0, 0)));
+        background: linear-gradient(to top, rgba(0, 0, 0, .3) 0, rgba(0, 0, 0, 0) 100%);
+        mask-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(20%, #000), color-stop(80%, #000), to(transparent));
+        mask-image: linear-gradient(to right, transparent 0, #000 20%, #000 80%, transparent 100%);
+        -webkit-mask-image: -webkit-gradient(linear, left top, right top, from(transparent), color-stop(20%, #000), color-stop(80%, #000), to(transparent));
+        -webkit-mask-image: linear-gradient(to right, transparent 0, #000 20%, #000 80%, transparent 100%);
+        z-index: 1;
+        pointer-events: none;
+        border-radius: 0 0 .9375rem .9375rem
+    }
+
+    .g-doc-image img {
+        -webkit-filter: drop-shadow(0 .625rem 1.25rem rgba(0, 0, 0, .15));
+        filter: drop-shadow(0 .625rem 1.25rem rgba(0, 0, 0, .15))
+    }
+
+    .g-doc-footer {
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+        flex-direction: row;
+        background: #fff;
+        border-radius: 0 0 1.25rem 1.25rem;
+        padding: 1.375rem 2.1875rem;
+        -webkit-box-shadow: 0 .25rem 2.75rem rgba(0, 0, 0, .1);
+        box-shadow: 0 .25rem 2.75rem rgba(0, 0, 0, .1)
+    }
 }
 
 @media (min-width:1199.98px) {
@@ -5253,6 +5264,18 @@ html {
         -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr)
     }
+
+    .pricing-card.pricing-card--special .pricing-card__value-amount {
+        font-size: 3.125rem
+    }
+
+    .pricing-card__value-amount {
+        font-size: 2.625rem
+    }
+
+    .coverage-section {
+        padding: 6.25rem 0
+    }
 }
 
 @media (min-width:1200px) {
@@ -5266,8 +5289,7 @@ html {
         justify-content: space-between;
         -webkit-box-align: center;
         -ms-flex-align: center;
-        align-items: center;
-        margin-bottom: 4.375rem
+        align-items: center
     }
 }
 
@@ -5411,8 +5433,7 @@ html {
         -webkit-box-align: stretch;
         -ms-flex-align: stretch;
         align-items: stretch;
-        gap: 1.25rem;
-        margin-bottom: 4rem
+        gap: 1.25rem
     }
 
     .reviews-section-new .reviews-header-right {
@@ -5790,18 +5811,6 @@ html {
         font-size: var(--fs-card-heading)
     }
 
-    .g-docs-grid {
-        -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-        margin-top: .5rem
-    }
-
-    .g-doc-card {
-        overflow: hidden;
-        border-radius: 0 0 1.25rem 1.25rem
-    }
-
     .g-doc-image img {
         -webkit-transform: none;
         -ms-transform: none;
@@ -5813,10 +5822,6 @@ html {
     .g-doc-image {
         height: 14.25rem;
         overflow: hidden
-    }
-
-    .g-doc-footer {
-        padding: 1.125rem 1.375rem
     }
 
     .g-doc-label {
@@ -5880,36 +5885,6 @@ html {
     .equipment__card-description {
         font-size: var(--fs-body);
         line-height: 1.5
-    }
-
-    .coverage-section .coverage-desc {
-        font-size: var(--fs-body)
-    }
-
-    .district-time span {
-        font-size: var(--fs-body-sm);
-        line-height: 1.35
-    }
-
-    .info-highlight-box p {
-        font-size: var(--fs-body-sm);
-        line-height: 1.45
-    }
-
-    .info-region-box h4 {
-        font-weight: 700;
-        font-size: var(--fs-ui);
-        line-height: 1.25
-    }
-
-    .info-region-box p {
-        font-size: var(--fs-body-sm);
-        line-height: 1.45
-    }
-
-    .region-cities {
-        font-size: var(--fs-caption);
-        line-height: 1.4
     }
 
     .btn-check-region {
@@ -6516,19 +6491,11 @@ html {
         color: #467e9e
     }
 
-    .g-text p {
-        margin: 0;
-        font-size: var(--fs-body-sm);
-        line-height: 1.45;
-        letter-spacing: .03em
-    }
-
     .g-text {
         position: relative;
         margin-top: .5rem;
         margin-left: -3.5rem;
-        padding-left: .75rem;
-        max-width: 13.5625rem
+        padding-left: .75rem
     }
 
     .g-text::before {
@@ -6539,25 +6506,6 @@ html {
         bottom: .125rem;
         width: .0625rem;
         background: #d6e4ec
-    }
-
-    .g-docs-grid {
-        -ms-grid-columns: (minmax(0, 1fr))[3];
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: .625rem;
-        margin-top: 0
-    }
-
-    .g-doc-card {
-        -webkit-box-align: start;
-        -ms-flex-align: start;
-        align-items: flex-start;
-        border-radius: 0;
-        overflow: visible
-    }
-
-    .g-doc-image::after {
-        display: none
     }
 
     .g-doc-image img {
@@ -6576,16 +6524,6 @@ html {
         -ms-flex-pack: start;
         justify-content: flex-start;
         overflow: visible
-    }
-
-    .g-doc-footer {
-        margin-top: .125rem;
-        padding: 0;
-        display: block;
-        background: 0 0;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        border-radius: 0
     }
 
     .g-doc-label {
@@ -6627,11 +6565,6 @@ html {
         -webkit-box-direction: normal;
         -ms-flex-direction: column;
         flex-direction: column
-    }
-
-    .reviews-section-new .reviews-header {
-        gap: .625rem;
-        margin-bottom: .75rem
     }
 
     .reviews-section-new .reviews-header-right {
@@ -6796,12 +6729,6 @@ html {
         line-height: 1.375rem
     }
 
-    .coverage-section .coverage-desc {
-        font-size: .5rem;
-        line-height: .6875rem;
-        letter-spacing: .03em
-    }
-
     .districts-grid {
         gap: .625rem;
         margin: 0
@@ -6835,12 +6762,6 @@ html {
         border-radius: .625rem
     }
 
-    .district-time span {
-        font-size: .5rem;
-        line-height: .6875rem;
-        letter-spacing: .03em
-    }
-
     .district-time svg {
         width: .6875rem;
         height: .8125rem;
@@ -6865,11 +6786,6 @@ html {
         gap: .75rem
     }
 
-    .info-highlight-box p {
-        font-size: .625rem;
-        line-height: .875rem
-    }
-
     .info-highlight-box {
         width: 100%;
         padding: .375rem .8125rem;
@@ -6877,26 +6793,10 @@ html {
         border-radius: 0 .625rem .625rem 0
     }
 
-    .info-region-box h4 {
-        font-size: .875rem;
-        margin-bottom: .5rem
-    }
-
-    .info-region-box p {
-        font-size: .625rem;
-        line-height: 1.45;
-        letter-spacing: .03em;
-        margin-bottom: .5rem
-    }
-
     .info-region-box {
         width: 100%;
         padding: 1.25rem .875rem;
         border-radius: .625rem
-    }
-
-    .region-cities {
-        font-size: .5625rem
     }
 
     .coverage-cta-box {
@@ -7160,11 +7060,6 @@ html {
 
     .g-doc-image {
         height: 12.8125rem
-    }
-
-    .g-doc-footer {
-        padding: .875rem .75rem;
-        gap: .5rem
     }
 
     .g-doc-label {
