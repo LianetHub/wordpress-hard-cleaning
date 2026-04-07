@@ -33,7 +33,12 @@ p {
 }
 
 .title-lg {
-	font-size: 2.25rem;
+	font-size: 2rem;
+
+	@media (min-width:$md4) {
+		font-size: 2.25rem;
+
+	}
 
 	@media (min-width:$md2) {
 		font-size: 2.5rem;
@@ -159,42 +164,31 @@ p {
 
 .socials {
 	display: flex;
-	gap: clamp(0.125rem, 1vw, 0.375rem);
 	align-items: center;
+	gap: 0.375rem;
 
-	@media (min-width: 769px) {
+	@media (min-width:$md5) {
+		gap: 0.5rem;
+	}
+
+	@media (min-width:$md3) {
 		gap: 1.25rem;
 	}
 
-	@media (max-width: 360px) {
-		gap: 0.3125rem;
-	}
-
-	@media (max-width: 340px) {
-		gap: 0.125rem;
-	}
 
 	// .socials__item
 	&__item {
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		width: 2.25rem;
-		height: 2.25rem;
+
 		transition: opacity 0.2s ease, transform 0.2s ease;
 		background: none !important;
 		border: none !important;
 		flex-shrink: 0;
 
-		@media (min-width: 769px) {
-			width: 1.875rem;
-			height: 1.875rem;
-		}
-
-		@media (max-width: 480px) {
-			width: clamp(1rem, 4.2vw, 1.125rem);
-			height: clamp(1rem, 4.2vw, 1.125rem);
-		}
+		width: 1.875rem;
+		height: 1.875rem;
 
 
 		@media (any-hover: hover) {

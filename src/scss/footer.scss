@@ -497,6 +497,23 @@
 	list-style: none;
 	padding: 0;
 	margin: 0;
+
+
+
+	.icon-phone {
+		color: #4CAF50;
+	}
+
+	/* Зеленый */
+	.icon-mail {
+		color: #FFB300;
+	}
+
+	/* Желтый */
+	.icon-pin {
+		color: #E53935;
+	}
+
 }
 
 .f-contacts-list li {
@@ -510,21 +527,6 @@
 	margin-top: 3px;
 	/* Выравнивание по первой строке текста */
 	flex-shrink: 0;
-}
-
-
-.icon-phone {
-	color: #4CAF50;
-}
-
-/* Зеленый */
-.icon-mail {
-	color: #FFB300;
-}
-
-/* Желтый */
-.icon-pin {
-	color: #E53935;
 }
 
 

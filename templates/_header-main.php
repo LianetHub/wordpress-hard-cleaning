@@ -9,14 +9,22 @@ $address = get_field('address', 'option');
 <header class="header">
     <div class="header__top">
         <div class="header__top-container container">
+            <button type="button" aria-label="Открыть меню" class="header__menu-toggler icon-menu">
+                <span></span><span></span><span></span>
+            </button>
+            <a href="<?php echo esc_url(home_url('/')); ?>" class="header__logo">
+                <img
+                    src="<?php echo esc_url($logo['url']); ?>"
+                    alt="<?php echo esc_attr($logo['alt']) ?: 'Логотип '; ?>">
+            </a>
             <?php if ($address): ?>
                 <address class="header__address"><?php echo $address; ?></address>
             <?php endif; ?>
             <?php if ($email): ?>
-                <a class="header__email"
+                <a class="header__email icon-envelope"
                     href="mailto:<?php echo antispambot($email); ?>"
                     target="_blank">
-                    <?php echo antispambot($email); ?>
+                    <span><?php echo antispambot($email); ?></span>
                 </a>
             <?php endif; ?>
             <?php if (have_rows('socials', 'option')): ?>
@@ -47,7 +55,7 @@ $address = get_field('address', 'option');
 
             <?php if ($phone): ?>
                 <a href="tel:<?php echo $phone_clean; ?>"
-                    class="header__phone"><?php echo $phone; ?></a>
+                    class="header__phone icon-phone"><span><?php echo $phone; ?></span></a>
             <?php endif; ?>
         </div>
     </div>
