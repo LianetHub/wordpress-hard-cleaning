@@ -157,6 +157,52 @@ add_filter('upload_mimes', 'allow_svg_uploads');
 
 
 
+// запрет висячих строк
+function fix_widows_after_prepositions($text)
+{
+    if (empty($text) || !is_string($text)) {
+        return $text;
+    }
+
+    $prepositions = [
+        'в',
+        'и',
+        'или',
+        'к',
+        'с',
+        'на',
+        'у',
+        'о',
+        'от',
+        'для',
+        'за',
+        'по',
+        'без',
+        'из',
+        'над',
+        'под',
+        'при',
+        'про',
+        'через',
+        'об',
+        'со'
+    ];
+
+    $pattern = implode('|', array_map('preg_quote', $prepositions));
+    $regex = '/\b(' . $pattern . ')\s+/iu';
+
+    return preg_replace_callback($regex, function ($matches) {
+        return $matches[1] . "\xC2\xA0";
+    }, $text);
+}
+
+add_filter('the_content', 'fix_widows_after_prepositions', 99);
+add_filter('the_title', 'fix_widows_after_prepositions', 99);
+add_filter('the_excerpt', 'fix_widows_after_prepositions', 99);
+add_filter('widget_text_content', 'fix_widows_after_prepositions', 99);
+add_filter('acf/format_value', 'fix_widows_after_prepositions', 99, 3);
+
+
 
 /**
  * Подключение SVG из assets/svg/{name}.svg с уникализацией id/url(#…)/href="#…" на каждый вывод (без конфликтов на странице).

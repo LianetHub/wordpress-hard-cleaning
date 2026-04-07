@@ -101,10 +101,10 @@ $address = get_field('address', 'option');
                 <?php endif; ?>
             </div>
             <div class="header__actions">
-                <a href="#contacts" class="header__actions-btn btn btn-primary header-urgent-btn">
+                <a href="#contacts" class="header__actions-btn btn btn-sm btn-primary header-urgent-btn">
                     Срочный вызов
                 </a>
-                <a href="#contacts" class="header__actions-btn btn btn-primary header-help-btn">
+                <a href="#contacts" class="header__actions-btn btn btn-sm btn-primary header-help-btn">
                     Задать вопрос
                 </a>
             </div>

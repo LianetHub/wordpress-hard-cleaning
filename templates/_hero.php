@@ -27,7 +27,7 @@
              </ul>
          </div>
          <div class="hero__offer">
-             <h1 class="hero__title title-lg">Комплексная спецуборка в Санкт-Петербурге и&nbsp;области</h1>
+             <h1 class="hero__title title-lg">Комплексная спецуборка в&nbsp;Санкт-Петербурге и&nbsp;области</h1>
              <p class="hero__subtitle">После смерти, пожара, потопа и сильного загрязнения. Оценка в день обращения. Выезд по СПб и Ленобласти.</p>
              <div class="hero__btns">
                  <a href="#contacts" class="hero__btn btn btn-primary">Срочный вызов</a>
