@@ -52,7 +52,7 @@ function theme_enqueue_styles()
     wp_enqueue_style('reset', $theme_uri . '/assets/css/reset.min.css');
 
     $main_css_ver = filemtime($theme_dir . '/assets/css/style.min.css');
-    wp_enqueue_style('main-style', $theme_uri . '/assets/css/style.min.css', array(), $main_css_ver);
+    wp_enqueue_style('main-style', $theme_uri . '/assets/css/style.min.css?v2', array(), $main_css_ver);
 }
 
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
@@ -88,7 +88,7 @@ function theme_enqueue_scripts()
     wp_enqueue_script('swiper-js', $theme_uri . '/assets/js/libs/swiper-bundle.min.js', array(), null, true);
     wp_enqueue_script('fancybox-js', $theme_uri . '/assets/js/libs/fancybox.umd.js', array(), null, true);
 
-    $app_js_ver = filemtime($theme_dir . '/assets/js/app.min.js');
+    $app_js_ver = filemtime($theme_dir . '/assets/js/app.min.js?v2');
     wp_enqueue_script(
         'app-js',
         $theme_uri . '/assets/js/app.min.js',

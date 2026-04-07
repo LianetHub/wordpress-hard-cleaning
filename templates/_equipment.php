@@ -51,22 +51,25 @@ $active_category = $equipment_data['equipment'];
                 <button type="button" class="equipment__tab btn" data-filter="supplies">Средства и безопасность</button>
             </div>
         </div>
-        <ul class="equipment__grid">
-            <?php foreach ($active_category as $item): ?>
-                <li class="equipment__card">
-                    <div class="equipment__card-image">
-                        <img src="<?php echo esc_url($item['image']); ?>"
-                            alt="<?php echo esc_attr($item['title']); ?>"
-                            loading="lazy"
-                            decoding="async"
-                            draggable="false">
-                    </div>
-                    <div class="equipment__card-content">
-                        <h4 class="equipment__card-caption"><?php echo esc_html($item['title']); ?></h4>
-                        <p class="equipment__card-description"><?php echo esc_html($item['descr']); ?></p>
-                    </div>
-                </li>
-            <?php endforeach; ?>
-        </ul>
+        <div class="equipment__slider swiper">
+            <ul class="swiper-wrapper">
+                <?php foreach ($active_category as $item): ?>
+                    <li class="equipment__card swiper-slide">
+                        <div class="equipment__card-image">
+                            <img src="<?php echo esc_url($item['image']); ?>"
+                                alt="<?php echo esc_attr($item['title']); ?>"
+                                loading="lazy"
+                                decoding="async"
+                                draggable="false">
+                        </div>
+                        <div class="equipment__card-content">
+                            <h4 class="equipment__card-caption"><?php echo esc_html($item['title']); ?></h4>
+                            <p class="equipment__card-description"><?php echo esc_html($item['descr']); ?></p>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+            <div class="equipment__slider-pagination swiper-pagination"></div>
+        </div>
     </div>
 </section>

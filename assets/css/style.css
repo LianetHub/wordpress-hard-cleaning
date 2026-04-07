@@ -3845,16 +3845,6 @@ select.select {
   padding: 1.875rem 0;
 }
 
-.equipment__container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
 .equipment__header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -3922,20 +3912,14 @@ select.select {
   background: rgba(70, 126, 158, 0.08);
 }
 
-.equipment__grid {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[4];
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.875rem;
-  -webkit-box-align: stretch;
-      -ms-flex-align: stretch;
-          align-items: stretch;
+.equipment__slider {
+  overflow: visible;
 }
 
 .equipment__card {
   background: #fff;
-  border-radius: 1.25rem;
+  height: auto;
+  border-radius: 0.625rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -3943,6 +3927,8 @@ select.select {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  height: auto;
+  padding-bottom: 1.5rem;
 }
 
 .equipment__card-image {
@@ -5118,6 +5104,10 @@ html {
   .cases-text-block h3 {
     font-size: 1.875rem;
   }
+
+  .equipment__card {
+    border-radius: 1.25rem;
+  }
 }
 
 @media (min-width: 991.98px) {
@@ -5512,12 +5502,6 @@ html {
     -ms-grid-columns: (1fr)[2];
     grid-template-columns: repeat(2, 1fr);
     gap: 3.125rem;
-  }
-
-  .equipment__grid {
-    -ms-grid-columns: (1fr)[2];
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
   }
 }
 
@@ -6622,23 +6606,6 @@ html {
     gap: 0.625rem;
   }
 
-  .equipment__tab {
-    min-height: 2.75rem;
-    height: auto;
-    padding: 0.625rem 1rem;
-    font-size: 0.75rem;
-    line-height: 1.2;
-    border-radius: 8.875rem;
-  }
-
-  .equipment__grid {
-    gap: 0.75rem;
-  }
-
-  .equipment__card {
-    border-radius: 0.625rem;
-  }
-
   .equipment__card-image img {
     width: 100%;
     max-width: 100%;
@@ -6834,16 +6801,6 @@ html {
             align-items: stretch;
   }
 
-  .equipment__tab {
-    width: 100% !important;
-  }
-
-  .equipment__grid {
-    -ms-grid-columns: (minmax(0, 1fr))[2] !important;
-    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
-    gap: 0.625rem !important;
-  }
-
   .equipment__card-image {
     height: 8.25rem;
   }
@@ -6920,14 +6877,6 @@ html {
   .cases-cards-grid {
     max-width: none;
     margin-inline: 0;
-  }
-}
-
-@media (min-width: 480px) and (max-width: 700px) {
-  .equipment__grid {
-    -ms-grid-columns: (minmax(0, 1fr))[2];
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 0.875rem;
   }
 }
 

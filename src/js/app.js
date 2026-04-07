@@ -158,6 +158,36 @@ $(function () {
         })
     }
 
+    if ($('.equipment__slider').length) {
+        new Swiper('.equipment__slider', {
+            slidesPerView: 1.1,
+            spaceBetween: 16,
+            watchOverflow: true,
+            pagination: {
+                el: '.equipment__slider-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                575.98: {
+                    slidesPerView: 1.5,
+                    spaceBetween: 30,
+                },
+                767.98: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1199.98: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+                1439.98: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                }
+            }
+        })
+    }
+
     if ($('.process__slider').length) {
         new Swiper('.process__slider', {
             slidesPerView: "auto",
