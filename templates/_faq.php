@@ -5,7 +5,7 @@
             <div class="faq__header">
                 <span class="faq__hint hint">FAQ</span>
                 <h2 class="faq__title title">Частые <span class="color-accent">вопросы</span></h2>
-                <p class="faq__description">Коротко отвечаем на главное: сроки, стоимость, безопасность и порядок работ.</p>
+                <p class="faq__subtitle subtitle">Коротко отвечаем на главное: сроки, стоимость, безопасность и порядок работ.</p>
             </div>
 
             <div class="faq__cta">

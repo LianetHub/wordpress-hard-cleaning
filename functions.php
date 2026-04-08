@@ -21,10 +21,7 @@ define('TEMPLATE_PATH', dirname(__FILE__) . '/templates/');
 function cleaning_theme_setup()
 {
     add_theme_support('title-tag');
-
-    add_action('after_setup_theme', function () {
-        add_theme_support('post-thumbnails');
-    });
+    add_theme_support('post-thumbnails');
 
     add_theme_support('custom-logo', [
         'height'      => 81,
@@ -204,98 +201,29 @@ add_filter('acf/format_value', 'fix_widows_after_prepositions', 99, 3);
 
 
 
-/**
- * Подключение SVG из assets/svg/{name}.svg с уникализацией id/url(#…)/href="#…" на каждый вывод (без конфликтов на странице).
- *
- * @param string $name Имя файла без .svg
- * @param array  $attr Атрибуты корневого тега <svg>, нап. array( 'class' => 'x', 'aria-hidden' => 'true' )
- * @return string
- */
-function cleaning_inline_svg($name, $attr = array())
+add_action('init', 'register_reviews_post_type');
+function register_reviews_post_type()
 {
-    $base = basename((string) $name, '.svg');
-    $path = get_template_directory() . '/assets/svg/' . $base . '.svg';
-    if (! is_readable($path)) {
-        return '';
-    }
-    $svg = file_get_contents($path);
-    if (false === $svg) {
-        return '';
-    }
-    $svg = preg_replace("/\r\n|\r/", "\n", $svg);
-    $svg = trim($svg);
-
-    $sid = wp_unique_id('i');
-    $svg = preg_replace_callback(
-        '/\bid="([^"]+)"/',
-        static function ($m) use ($sid) {
-            return 'id="' . esc_attr($m[1] . '-' . $sid) . '"';
-        },
-        $svg
-    );
-    $svg = preg_replace_callback(
-        '/url\(\s*#([^)]+)\s*\)/',
-        static function ($m) use ($sid) {
-            return 'url(#' . $m[1] . '-' . $sid . ')';
-        },
-        $svg
-    );
-    $svg = preg_replace_callback(
-        '/href="#([^"]+)"/',
-        static function ($m) use ($sid) {
-            return 'href="#' . $m[1] . '-' . $sid . '"';
-        },
-        $svg
-    );
-
-    if (! empty($attr) && is_array($attr)) {
-        $inject = '';
-        foreach ($attr as $k => $v) {
-            $inject .= ' ' . esc_attr($k) . '="' . esc_attr(is_bool($v) ? ($v ? 'true' : 'false') : (string) $v) . '"';
-        }
-        $svg = preg_replace('/<svg\s/i', '<svg' . $inject . ' ', $svg, 1);
-    }
-
-    return $svg;
+    register_post_type('reviews', [
+        'labels' => [
+            'name'               => 'Отзывы',
+            'singular_name'      => 'Отзыв',
+            'add_new'            => 'Добавить отзыв',
+            'add_new_item'       => 'Добавить новый отзыв',
+            'edit_item'          => 'Редактировать отзыв',
+            'new_item'           => 'Новый отзыв',
+            'view_item'          => 'Посмотреть отзыв',
+            'search_items'       => 'Найти отзывы',
+            'not_found'          => 'Отзывов не найдено',
+            'parent_item_colon'  => '',
+            'menu_name'          => 'Отзывы'
+        ],
+        'public'             => false,
+        'show_ui'            => true,
+        'menu_icon'          => 'dashicons-testimonial',
+        'supports'           => ['title', 'editor', 'thumbnail'],
+        'has_archive'        => false,
+        'rewrite'            => false,
+        'query_var'          => true,
+    ]);
 }
-
-
-// function cleaning_theme_scripts()
-// {
-//     $style_path = get_template_directory() . '/style.css';
-//     wp_enqueue_style(
-//         'cleaning-style',
-//         get_template_directory_uri() . '/style.css',
-//         array(),
-//         file_exists($style_path) ? (string) filemtime($style_path) : wp_get_theme()->get('Version')
-//     );
-//     wp_enqueue_style('google-fonts', 'https://fonts.googleapis.com/css2?family=Manrope:wght@300;500;600;700&family=Unbounded:wght@400;600;700;800&display=swap', array(), null);
-
-//     wp_enqueue_script(
-//         'cleaning-header-nav',
-//         get_template_directory_uri() . '/js/header-nav.js',
-//         array(),
-//         wp_get_theme()->get('Version'),
-//         true
-//     );
-
-//     if (is_front_page()) {
-//         wp_enqueue_script(
-//             'cleaning-process-carousel',
-//             get_template_directory_uri() . '/js/process-carousel.js',
-//             array(),
-//             wp_get_theme()->get('Version'),
-//             true
-//         );
-
-//         $trust_js = get_template_directory() . '/js/trust-slider.js';
-//         wp_enqueue_script(
-//             'cleaning-trust-slider',
-//             get_template_directory_uri() . '/js/trust-slider.js',
-//             array(),
-//             file_exists($trust_js) ? (string) filemtime($trust_js) : wp_get_theme()->get('Version'),
-//             true
-//         );
-//     }
-// }
-// add_action('wp_enqueue_scripts', 'cleaning_theme_scripts');

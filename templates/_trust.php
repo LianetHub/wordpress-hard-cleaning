@@ -18,7 +18,7 @@ $wrapper_tag = $title ? 'section' : 'div';
         <?php endif; ?>
 
         <?php if ($subtitle): ?>
-            <p class="trust__subtitle"><?php echo esc_html($subtitle); ?></p>
+            <p class="trust__subtitle subtitle"><?php echo esc_html($subtitle); ?></p>
         <?php endif; ?>
 
         <?php if (have_rows('trust_cards')): ?>

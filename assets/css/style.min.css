@@ -404,7 +404,11 @@ body.error404 .main {
 }
 
 .faq {
-    padding: 2.5rem
+    padding: 1.25rem .75rem
+}
+
+.faq:last-child {
+    padding: 6.25rem 0
 }
 
 .faq__container {
@@ -601,14 +605,6 @@ body.error404 .main {
 .trust.bg-light {
     background: #f7f9fb;
     padding: 6.25rem 0
-}
-
-.trust__subtitle {
-    margin-top: .625rem;
-    color: #4b5d68;
-    font-size: 1rem;
-    letter-spacing: .03rem;
-    max-width: 31.375rem
 }
 
 .trust__slider {
@@ -960,6 +956,14 @@ p {
     text-transform: uppercase;
     color: #467e9e;
     margin-bottom: 1.125rem
+}
+
+.subtitle {
+    margin-top: .625rem;
+    color: #4b5d68;
+    font-size: 1rem;
+    letter-spacing: .03rem;
+    max-width: 31.375rem
 }
 
 .text-center {
@@ -4966,6 +4970,10 @@ p {
         max-width: 60rem
     }
 
+    .faq {
+        padding: 2.5rem
+    }
+
     .trust__slider:not(.swiper-initialized) .swiper-wrapper {
         -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr)
@@ -6073,11 +6081,6 @@ p {
 }
 
 @media (max-width:700px) {
-    .faq {
-        padding: 1rem 0;
-        overflow-x: clip
-    }
-
     .faq__container {
         gap: .625rem
     }
@@ -6583,10 +6586,6 @@ p {
 }
 
 @media (max-width:576px) {
-    .faq {
-        padding: 1.25rem .75rem
-    }
-
     .faq__question {
         padding: .9375rem 1.25rem;
         font-size: 1rem;
@@ -6652,10 +6651,6 @@ p {
 }
 
 @media (max-width:360px) {
-    .faq {
-        padding: 1rem .625rem
-    }
-
     .services__title {
         max-width: 16.375rem
     }

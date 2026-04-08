@@ -32,6 +32,8 @@ p {
 	margin-bottom: rem(20);
 }
 
+
+
 .title-lg {
 	font-size: rem(26);
 
@@ -70,7 +72,14 @@ p {
 	text-transform: uppercase;
 	color: $accent;
 	margin-bottom: 1.125rem;
+}
 
+.subtitle {
+	margin-top: rem(10);
+	color: #4B5D68;
+	font-size: 1rem;
+	letter-spacing: 0.03rem;
+	max-width: 31.375rem;
 }
 
 .text-center {
