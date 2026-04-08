@@ -1,20 +1,20 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: "icons";
-  font-display: swap;
-  src: url("../fonts/icons.woff2") format("woff2"), url("../fonts/icons.woff") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "Manrope";
   src: url("../fonts/Manrope-VariableFont_wght.woff2") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: "icons";
+  font-display: swap;
+  src: url("../fonts/icons.woff2") format("woff2"), url("../fonts/icons.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
@@ -4706,14 +4706,6 @@ select.select {
 /* =========================================
    GLOBAL MOBILE FONT SIZES (<=768) — uses --fs-* tokens
    ========================================= */
-
-.nojq {
-  display: none;
-}
-
-html {
-  margin-top: 0 !important;
-}
 
 @media (min-width: 575.98px) {
   .container {
