@@ -53,6 +53,7 @@ $reviews_query = new WP_Query([
                     <?php endwhile;
                     wp_reset_postdata(); ?>
                 </div>
+                <div class="reviews__slider-pagination swiper-pagination"></div>
             </div>
         <?php endif; ?>
     </div>

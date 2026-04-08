@@ -219,10 +219,9 @@ $(function () {
 
     if ($('.reviews__slider').length) {
         new Swiper('.reviews__slider', {
-            slidesPerView: "auto",
-            spaceBetween: 30,
+            slidesPerView: 1.1,
+            spaceBetween: 16,
             watchOverflow: true,
-            centeredSlides: true,
             loop: true,
             navigation: {
                 prevEl: '.reviews__prev',
@@ -233,7 +232,11 @@ $(function () {
                 clickable: true
             },
             breakpoints: {
-                1200: {
+                767.98: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                1199.98: {
                     slidesPerView: 3,
                     spaceBetween: 30,
                 }
