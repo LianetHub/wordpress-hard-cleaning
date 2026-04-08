@@ -127,17 +127,12 @@ p {
 	}
 
 	@media (any-hover: hover) {
-		&:hover {}
+		&:hover {
+			background: color.adjust($color: #fff, $lightness: -10%);
+		}
 	}
 }
 
-// .swiper-button-prev {
-// 	@extend %ic, .icon-chevron-left;
-// }
-
-// .swiper-button-next {
-// 	@extend %ic, .icon-chevron-right;
-// }
 
 .swiper-pagination {
 

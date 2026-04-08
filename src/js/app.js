@@ -217,6 +217,31 @@ $(function () {
 
     }
 
+    if ($('.reviews__slider').length) {
+        new Swiper('.reviews__slider', {
+            slidesPerView: "auto",
+            spaceBetween: 30,
+            watchOverflow: true,
+            centeredSlides: true,
+            loop: true,
+            navigation: {
+                prevEl: '.reviews__prev',
+                nextEl: '.reviews__next'
+            },
+            pagination: {
+                el: '.reviews__slider-pagination',
+                clickable: true
+            },
+            breakpoints: {
+                1200: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                }
+            }
+        })
+
+    }
+
     // Phone Input Mask Russia
 
     const $phoneInputs = $('input[type="tel"]');

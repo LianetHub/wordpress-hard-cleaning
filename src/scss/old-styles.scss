@@ -400,43 +400,7 @@
 
 
 
-/* Яндекс плашка */
-.yandex-rating-card {
-    background: #FFFFFF;
-    border-radius: 43.5px;
-    padding: 10px 25px 10px 10px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-}
 
-.rating-circle {
-    width: 45px;
-    height: 45px;
-    background: #F8604A;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Unbounded', sans-serif;
-    font-weight: 600;
-    font-size: 16px;
-    color: #FFFFFF;
-}
-
-.rating-stars {
-    display: flex;
-    gap: 3px;
-    margin-bottom: 4px;
-}
-
-.rating-text {
-    font-family: 'Inter', sans-serif;
-    font-weight: 500;
-    font-size: 11px;
-    color: #7998AD;
-}
 
 /* Бейдж "Быстро" */
 .badge-fast {
