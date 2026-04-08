@@ -1,0 +1,30 @@
+<?php
+if (class_exists('WPSEO_Breadcrumbs')) :
+    $breadcrumbs = WPSEO_Breadcrumbs::get_instance()->get_links();
+    if ($breadcrumbs) : ?>
+        <nav aria-label="Хлебные крошки" class="breadcrumbs">
+            <div class="container">
+                <ul class="breadcrumbs__list">
+                    <?php foreach ($breadcrumbs as $i => $breadcrumb) :
+                        $text = isset($breadcrumb['text']) ? esc_html($breadcrumb['text']) : '';
+                        $url = isset($breadcrumb['url']) ? esc_url($breadcrumb['url']) : '';
+
+                        if (empty($text)) continue;
+                    ?>
+                        <li class="breadcrumbs__item">
+                            <?php if ($i < count($breadcrumbs) - 1) : ?>
+                                <a href="<?php echo $url; ?>" class="breadcrumbs__link">
+                                    <?php echo $text; ?>
+                                </a>
+                            <?php else : ?>
+                                <span class="breadcrumbs__current" aria-current="page">
+                                    <?php echo $text; ?>
+                                </span>
+                            <?php endif; ?>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            </div>
+        </nav>
+<?php endif;
+endif; ?>

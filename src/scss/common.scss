@@ -126,15 +126,6 @@ body {
 	display: flex;
 	flex-direction: column;
 
-	padding-top: $header-height;
-
-	body.home & {
-		padding-top: 0;
-	}
-
-	body.error404 & {
-		padding-top: 0;
-	}
 
 }
 

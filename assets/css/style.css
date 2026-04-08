@@ -115,15 +115,6 @@ body {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding-top: var(--header-height, 9.375rem);
-}
-
-body.home .main {
-  padding-top: 0;
-}
-
-body.error404 .main {
-  padding-top: 0;
 }
 
 .typography-block {
