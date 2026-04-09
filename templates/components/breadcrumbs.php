@@ -39,14 +39,27 @@ if (is_tax('service_cat')) {
 
 <nav aria-label="Хлебные крошки" class="breadcrumbs">
     <div class="container">
-        <ul class="breadcrumbs__list">
+        <ul class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
             <?php foreach ($items as $index => $item) : ?>
-                <li class="breadcrumbs__item">
+                <li
+                    class="breadcrumbs__item"
+                    itemprop="itemListElement"
+                    itemscope
+                    itemtype="https://schema.org/ListItem">
                     <?php if ($item['link'] && $index < count($items) - 1) : ?>
-                        <a href="<?php echo esc_url($item['link']); ?>"><?php echo esc_html($item['name']); ?></a>
+                        <a
+                            href="<?php echo esc_url($item['link']); ?>"
+                            itemprop="item"
+                            class="breadcrumbs__link">
+                            <span itemprop="name"><?php echo esc_html($item['name']); ?></span>
+                        </a>
                     <?php else : ?>
-                        <span><?php echo esc_html($item['name']); ?></span>
+                        <span itemprop="name" class="breadcrumbs__current">
+                            <?php echo esc_html($item['name']); ?>
+                        </span>
+                        <link itemprop="item" href="<?php echo esc_url('http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']); ?>">
                     <?php endif; ?>
+                    <meta itemprop="position" content="<?php echo $index + 1; ?>" />
                 </li>
             <?php endforeach; ?>
         </ul>

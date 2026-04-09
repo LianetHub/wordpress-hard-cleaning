@@ -26,6 +26,7 @@
   font-display: swap;
 }
 
+.breadcrumbs__item:not(:last-child)::before,
 [class^=icon-]:before,
 [class*=" icon-"]:before {
   font-family: "icons";
@@ -48,7 +49,8 @@
   content: "\e902";
 }
 
-.icon-chevron-down:before {
+.icon-chevron-down:before,
+.breadcrumbs__item:not(:last-child):before {
   content: "\e900";
 }
 
@@ -710,6 +712,8 @@ body {
   overflow: hidden;
   white-space: nowrap;
   gap: 0.25rem;
+  font-size: 1rem;
+  font-weight: 500;
 }
 
 .breadcrumbs__item {
@@ -724,9 +728,6 @@ body {
   text-overflow: ellipsis;
   min-width: 0;
   gap: 0.25rem;
-  text-transform: uppercase;
-  font-size: 0.78125rem;
-  letter-spacing: -0.02344rem;
 }
 
 .breadcrumbs__item:not(:last-child) {
@@ -735,12 +736,12 @@ body {
 }
 
 .breadcrumbs__item:not(:last-child)::before {
-  content: "";
+  -webkit-transform: rotate(-90deg);
+      -ms-transform: rotate(-90deg);
+          transform: rotate(-90deg);
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
-  width: 1rem;
-  height: 0.0625rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -750,7 +751,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background: #7C981E;
 }
 
 .breadcrumbs__item:not(:last-child) {
@@ -761,7 +761,9 @@ body {
 }
 
 .breadcrumbs__link {
-  color: #7C981E;
+  word-break: break-all;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .breadcrumbs__link:is(a) {
@@ -769,16 +771,11 @@ body {
   transition: color 0.3s ease;
 }
 
-.breadcrumbs__current,
-.breadcrumbs__link {
+.breadcrumbs__current {
   word-break: break-all;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.breadcrumbs__current[aria-current=page],
-[aria-current=page].breadcrumbs__link {
-  color: #717680;
+  color: #467E9E;
 }
 
 .fancybox__container {
