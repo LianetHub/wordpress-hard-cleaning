@@ -65,16 +65,6 @@ function register_theme_entities()
     ]);
 }
 
-add_action('init', 'add_services_rewrites');
-function add_services_rewrites()
-{
-    add_rewrite_rule(
-        '^uslugi/(.+?)/([^/]+)/?$',
-        'index.php?services=$matches[2]',
-        'top'
-    );
-}
-
 /**
  * Обработка структуры URL для записей
  */
