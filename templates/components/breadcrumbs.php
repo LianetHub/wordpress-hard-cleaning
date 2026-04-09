@@ -1,8 +1,6 @@
 <?php
 $queried_object = get_queried_object();
 $items = [];
-$is_debug = isset($_GET['debug']);
-
 $items[] = ['name' => 'Главная', 'link' => home_url('/')];
 
 if (is_post_type_archive('services') || is_tax('service_cat') || is_singular('services')) {
@@ -55,19 +53,6 @@ if (is_post_type_archive('services') || is_tax('service_cat') || is_singular('se
     $items[] = ['name' => get_the_title(), 'link' => ''];
 }
 
-if ($is_debug) {
-    echo '<pre style="background:#222; color:#fff; padding:20px; margin:20px; border-radius:10px; font-size:13px; line-height:1.5; position:relative; z-index:9999;">';
-    echo "<b>DEBUG INFO:</b>\n";
-    echo "Current Object ID: " . (isset($queried_object->term_id) ? $queried_object->term_id : get_the_ID()) . "\n";
-    echo "is_tax('service_cat'): " . (is_tax('service_cat') ? 'YES' : 'NO') . "\n";
-    echo "is_singular('services'): " . (is_singular('services') ? 'YES' : 'NO') . "\n";
-    echo "is_page(): " . (is_page() ? 'YES' : 'NO') . "\n";
-    echo "Taxonomy: " . get_query_var('taxonomy') . "\n";
-    echo "Term: " . get_query_var('term') . "\n";
-    echo "\n<b>BREADCRUMBS ARRAY:</b>\n";
-    print_r($items);
-    echo '</pre>';
-}
 ?>
 
 <nav aria-label="Хлебные крошки" class="breadcrumbs">

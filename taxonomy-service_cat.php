@@ -35,12 +35,12 @@ if ($is_parent) {
                     <li class="filter-item">
                         <a href="<?php echo get_post_type_archive_link('services'); ?>" class="filter-link">Все</a>
                     </li>
-                    <?php foreach ($all_main_categories as $main_cat) : 
+                    <?php foreach ($all_main_categories as $main_cat) :
                         $is_active = ($current_term->term_id === $main_cat->term_id || $current_term->parent === $main_cat->term_id);
                     ?>
                         <li class="filter-item">
-                            <a href="<?php echo get_term_link($main_cat); ?>" 
-                               class="filter-link <?php echo $is_active ? 'is-active' : ''; ?>">
+                            <a href="<?php echo get_term_link($main_cat); ?>"
+                                class="filter-link <?php echo $is_active ? 'is-active' : ''; ?>">
                                 <?php echo esc_html($main_cat->name); ?>
                             </a>
                         </li>
