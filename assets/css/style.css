@@ -4904,6 +4904,11 @@ select.select {
     padding: 1.5rem 1.5rem 1.375rem;
   }
 
+  .services__item-body:first-child:last-child {
+    -ms-grid-column-span: 2;
+    grid-column: span 2;
+  }
+
   .services__item-main {
     display: contents;
   }

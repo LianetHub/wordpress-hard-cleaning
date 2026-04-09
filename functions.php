@@ -123,16 +123,23 @@ function fix_widows_after_prepositions($text)
 {
     if (empty($text) || !is_string($text)) return $text;
 
-    $prepositions = ['в', 'и', 'или', 'к', 'с', 'на', 'у', 'о', 'от', 'для', 'за', 'по', 'без', 'из', 'над', 'под', 'при', 'про', 'через', 'об', 'со'];
-    $pattern = implode('|', array_map('preg_quote', $prepositions));
-    $regex = '/\b(' . $pattern . ')\s+/iu';
+    $prepositions = [
+        'в', 'и', 'или', 'к', 'с', 'на', 'у', 'о', 'от', 'для', 'за', 
+        'по', 'без', 'из', 'над', 'под', 'при', 'про', 'через', 'об', 'со', 'ко'
+    ];
 
-    return preg_replace_callback($regex, function ($matches) {
-        return $matches[1] . "\xC2\xA0";
-    }, $text);
+    foreach ($prepositions as $prep) {
+        $pattern = '/(?<=\s|^)(' . preg_quote($prep, '/') . ')\s+/iu';
+        $text = preg_replace($pattern, '$1&nbsp;', $text);
+    }
+
+    return $text;
 }
 
 foreach (['the_content', 'the_title', 'the_excerpt', 'widget_text_content'] as $hook) {
     add_filter($hook, 'fix_widows_after_prepositions', 99);
 }
-add_filter('acf/format_value', 'fix_widows_after_prepositions', 99, 3);
+
+add_filter('acf/format_value', function($value, $post_id, $field) {
+    return fix_widows_after_prepositions($value);
+}, 99, 3);

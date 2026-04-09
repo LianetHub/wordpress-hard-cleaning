@@ -376,6 +376,9 @@
             flex-direction: column;
             height: 100%;
             padding: 1.5rem 1.5rem 1.375rem;
+            &:first-child:last-child {
+                grid-column: span 2
+            }
         }
 
         @media (min-width:$md3) {
