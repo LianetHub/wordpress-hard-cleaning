@@ -26,42 +26,53 @@ function register_theme_entities()
             'menu_name'     => 'Категории услуг',
         ],
         'public'             => true,
-        'hierarchical'       => true, 
+        'hierarchical'       => true,
         'show_in_rest'       => true,
         'show_admin_column'  => true,
         'query_var'          => true,
         'rewrite'            => [
             'slug'         => 'uslugi',
             'with_front'   => false,
-            'hierarchical' => true 
+            'hierarchical' => true
         ],
     ]);
 
     // 3. УСЛУГИ
     register_post_type('services', [
         'labels' => [
-        'name'               => 'Услуги',
-        'singular_name'      => 'Услуга',
-        'menu_name'          => 'Услуги',
-        'add_new'            => 'Добавить услугу',
-        'add_new_item'       => 'Добавить новую услугу',
-        'edit_item'          => 'Редактировать услугу',
-        'new_item'           => 'Новая услуга',
-        'view_item'          => 'Посмотреть услугу',
-        'search_items'       => 'Искать услуги',
-        'not_found'          => 'Услуг не найдено',
-        'not_found_in_trash' => 'В корзине услуг не найдено',
-    ],
+            'name'               => 'Услуги',
+            'singular_name'      => 'Услуга',
+            'menu_name'          => 'Услуги',
+            'add_new'            => 'Добавить услугу',
+            'add_new_item'       => 'Добавить новую услугу',
+            'edit_item'          => 'Редактировать услугу',
+            'new_item'           => 'Новая услуга',
+            'view_item'          => 'Посмотреть услугу',
+            'search_items'       => 'Искать услуги',
+            'not_found'          => 'Услуг не найдено',
+            'not_found_in_trash' => 'В корзине услуг не найдено',
+        ],
         'public'             => true,
-        'has_archive'        => 'uslugi', 
+        'has_archive'        => 'uslugi',
         'show_in_rest'       => true,
         'menu_icon'          => 'dashicons-admin-tools',
         'supports'           => ['title', 'editor', 'thumbnail', 'excerpt'],
         'rewrite'            => [
             'slug'       => 'uslugi/%service_cat%',
-            'with_front' => false
+            'with_front' => false,
+            'hierarchical' => true
         ],
     ]);
+}
+
+add_action('init', 'add_services_rewrites');
+function add_services_rewrites()
+{
+    add_rewrite_rule(
+        '^uslugi/(.+?)/([^/]+)/?$',
+        'index.php?services=$matches[2]',
+        'top'
+    );
 }
 
 /**
@@ -80,7 +91,7 @@ function services_permalink_structure($post_link, $post)
                     break;
                 }
             }
-          
+
             $hierarchical_slug = get_term_parents_list($current_term->term_id, 'service_cat', [
                 'separator' => '/',
                 'link'      => false,
@@ -88,7 +99,7 @@ function services_permalink_structure($post_link, $post)
                 'format'    => 'slug',
             ]);
             $hierarchical_slug = trim($hierarchical_slug, '/');
-            
+
             $post_link = str_replace('%service_cat%', $hierarchical_slug, $post_link);
         } else {
             $post_link = str_replace('%service_cat%', 'uncategorized', $post_link);
