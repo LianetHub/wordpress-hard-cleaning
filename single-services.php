@@ -67,13 +67,15 @@ $is_collage = !empty($image_left) || !empty($image_right);
 </section>
 <?php require_once(TEMPLATE_PATH . '_work.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_price.php'); ?>
-<article class="article">
-    <div class="container">
-        <div class="article__content typography-block">
-            <?php the_content() ?>
+<?php if (!empty(get_the_content())): ?>
+    <article class="article">
+        <div class="container">
+            <div class="article__content typography-block">
+                <?php the_content(); ?>
+            </div>
         </div>
-    </div>
-</article>
+    </article>
+<?php endif; ?>
 
 <?php require_once(TEMPLATE_PATH . '_reviews.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_faq.php'); ?>
