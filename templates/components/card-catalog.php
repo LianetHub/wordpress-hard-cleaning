@@ -1,42 +1,14 @@
 <?php
-$term = $args['term'] ?? null;
+$title = get_the_title();
+$link = get_permalink();
+$image = get_field('service_card_image') ?: ['url' => get_the_post_thumbnail_url(get_the_ID(), 'full'), 'alt' => $title];
+$description = get_the_excerpt();
 
-if ($term) {
-    $title = $term->name;
-    $link = get_term_link($term);
-    $image = get_field('category_image', $term);
-    $description = term_description($term->term_id, 'service_cat');
-
-    $tags_query = new WP_Query([
-        'post_type' => 'services',
-        'posts_per_page' => 2,
-        'tax_query' => [[
-            'taxonomy' => 'service_cat',
-            'field' => 'term_id',
-            'terms' => $term->term_id,
-            'include_children' => false
-        ]],
-    ]);
-    $tag_names = [];
-    if ($tags_query->have_posts()) {
-        while ($tags_query->have_posts()) {
-            $tags_query->the_post();
-            $tag_names[] = get_the_title();
-        }
-        wp_reset_postdata();
-    }
-} else {
-    $title = get_the_title();
-    $link = get_permalink();
-    $image = get_field('service_card_image') ?: ['url' => get_the_post_thumbnail_url(get_the_ID(), 'full'), 'alt' => $title];
-    $description = get_the_excerpt();
-
-    $post_terms = get_the_terms(get_the_ID(), 'service_cat');
-    $tag_names = [];
-    if ($post_terms && !is_wp_error($post_terms)) {
-        foreach (array_slice($post_terms, 0, 2) as $t) {
-            $tag_names[] = $t->name;
-        }
+$post_terms = get_the_terms(get_the_ID(), 'service_cat');
+$tag_names = [];
+if ($post_terms && !is_wp_error($post_terms)) {
+    foreach (array_slice($post_terms, 0, 2) as $t) {
+        $tag_names[] = $t->name;
     }
 }
 ?>
@@ -72,6 +44,8 @@ if ($term) {
         <?php endif; ?>
 
         <div class="catalog__card-footer">
+
+
             <a href="<?php echo esc_url($link); ?>" class="catalog__card-btn btn btn-primary">
                 Подробнее
             </a>

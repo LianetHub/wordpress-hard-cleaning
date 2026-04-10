@@ -3,29 +3,63 @@ $current_object = get_queried_object();
 $is_archive = is_post_type_archive('services');
 $current_term_id = (isset($current_object->term_id)) ? $current_object->term_id : 0;
 
+$first_btn_text = 'Все услуги';
+$first_btn_link = get_post_type_archive_link('services');
+$is_first_btn_active = $is_archive;
+$filter_terms = [];
 
 if ($is_archive) {
-    $parent_id = 0;
-} else {
-    $parent_id = $current_term_id;
-}
-
-$terms = get_terms([
-    'taxonomy'   => 'service_cat',
-    'hide_empty' => false,
-    'parent'     => $parent_id,
-]);
-
-
-if (empty($terms) && !$is_archive) {
-    $terms = get_terms([
+    $filter_terms = get_terms([
         'taxonomy'   => 'service_cat',
         'hide_empty' => false,
-        'parent'     => $current_object->parent,
+        'parent'     => 0,
     ]);
+} else {
+    $parent_term_id = $current_object->parent;
+
+    if ($parent_term_id == 0) {
+        $first_btn_text = 'Все ' . mb_strtolower($current_object->name);
+        $first_btn_link = get_term_link($current_object);
+        $is_first_btn_active = true;
+
+        $filter_terms = get_terms([
+            'taxonomy'   => 'service_cat',
+            'hide_empty' => false,
+            'parent'     => $current_term_id,
+        ]);
+    } else {
+        $parent_term = get_term($parent_term_id, 'service_cat');
+        $first_btn_text = 'Все ' . mb_strtolower($parent_term->name);
+        $first_btn_link = get_term_link($parent_term);
+        $is_first_btn_active = false;
+
+        $filter_terms = get_terms([
+            'taxonomy'   => 'service_cat',
+            'hide_empty' => false,
+            'parent'     => $parent_term_id,
+        ]);
+    }
 }
 
-$archive_link = get_post_type_archive_link('services');
+$query_args = [
+    'post_type'      => 'services',
+    'posts_per_page' => -1,
+    'orderby'        => 'menu_order',
+    'order'          => 'ASC'
+];
+
+if (!$is_archive && $current_term_id) {
+    $query_args['tax_query'] = [
+        [
+            'taxonomy'         => 'service_cat',
+            'field'            => 'term_id',
+            'terms'            => $current_term_id,
+            'include_children' => true
+        ]
+    ];
+}
+
+$services_query = new WP_Query($query_args);
 ?>
 
 <section class="catalog">
@@ -35,13 +69,13 @@ $archive_link = get_post_type_archive_link('services');
         <p class="catalog__subtitle subtitle">Нажмите на услугу — расскажем подробно что входит и&nbsp;сколько стоит</p>
 
         <div class="catalog__filters">
-            <a href="<?php echo esc_url($archive_link); ?>"
-                class="catalog__filter btn btn-outline <?php echo $is_archive ? 'active' : ''; ?>">
-                Все услуги
+            <a href="<?php echo esc_url($first_btn_link); ?>"
+                class="catalog__filter btn btn-outline <?php echo $is_first_btn_active ? 'active' : ''; ?>">
+                <?php echo esc_html($first_btn_text); ?>
             </a>
 
-            <?php if (!empty($terms) && !is_wp_error($terms)): ?>
-                <?php foreach ($terms as $term): ?>
+            <?php if (!empty($filter_terms) && !is_wp_error($filter_terms)): ?>
+                <?php foreach ($filter_terms as $term): ?>
                     <?php
                     $is_active = ($current_term_id === $term->term_id) ? 'active' : '';
                     $term_link = get_term_link($term);
@@ -53,31 +87,13 @@ $archive_link = get_post_type_archive_link('services');
                 <?php endforeach; ?>
             <?php endif; ?>
         </div>
-        <div class="catalog__grid">
-            <?php if ($is_archive): ?>
-                <?php
-                $all_services = new WP_Query([
-                    'post_type'      => 'services',
-                    'posts_per_page' => -1,
-                    'orderby'        => 'menu_order',
-                    'order'          => 'ASC'
-                ]);
 
-                if ($all_services->have_posts()):
-                    while ($all_services->have_posts()): $all_services->the_post();
-                        get_template_part('templates/components/card-catalog');
-                    endwhile;
-                    wp_reset_postdata();
-                endif;
-                ?>
-            <?php else: ?>
-                <?php
-                if (!empty($terms) && !is_wp_error($terms)):
-                    foreach ($terms as $term_item):
-                        get_template_part('templates/components/card-catalog', null, ['term' => $term_item]);
-                    endforeach;
-                endif;
-                ?>
+        <div class="catalog__grid">
+            <?php if ($services_query->have_posts()): ?>
+                <?php while ($services_query->have_posts()): $services_query->the_post(); ?>
+                    <?php get_template_part('templates/components/card-catalog'); ?>
+                <?php endwhile;
+                wp_reset_postdata(); ?>
             <?php endif; ?>
         </div>
 
