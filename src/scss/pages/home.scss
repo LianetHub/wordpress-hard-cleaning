@@ -275,11 +275,6 @@
 
 .services {
     background: #F7F9FB;
-
-    &.services--page {
-        padding-top: 1rem;
-    }
-
     padding: 2.5rem 0 3rem;
 
     @media (min-width:$md3) {
@@ -307,12 +302,6 @@
         }
     }
 
-    // .services__subtitle
-    &__subtitle {
-        &.subtitle {
-            max-width: rem(820);
-        }
-    }
 
     // .services__categories
     &__categories {
