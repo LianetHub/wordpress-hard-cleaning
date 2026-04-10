@@ -17,9 +17,12 @@
     // .heading__container
     &__container {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        align-items: center;
         gap: 2rem;
+
+        @media (min-width:$md3) {
+            grid-template-columns: repeat(2, 1fr);
+            align-items: center;
+        }
     }
 
     // .heading__offer
@@ -29,11 +32,7 @@
     &__title {}
 
     // .heading__subtitle
-    &__subtitle {
-        &.subtitle {
-            max-width: rem(820);
-        }
-    }
+    &__subtitle {}
 
     // .heading__image
     &__image {
@@ -42,6 +41,85 @@
             aspect-ratio: 5 / 3;
             border-radius: 1.25rem;
             box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.06);
+        }
+    }
+
+    // .heading__images
+    &__images {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        align-self: center;
+    }
+
+    // .heading__images-block
+    &__images-block {
+        aspect-ratio: 3/4;
+        border-radius: 1.25rem;
+        overflow: hidden;
+        box-shadow: 0 rem(4) rem(24) 0 rgba(0, 0, 0, 0.27);
+        position: relative;
+        z-index: 1;
+        width: 33.33%;
+
+        @media (min-width:$md3) {
+            width: 12rem;
+
+        }
+
+        @media (min-width:$md2) {
+            width: 16.3125rem;
+
+        }
+    }
+
+    // .heading__images-left
+    &__images-left {
+        margin-top: 1.5rem;
+        margin-right: -10%;
+
+        @media (min-width:$md3) {
+            margin-right: -2.5rem;
+
+        }
+
+        @media (min-width:$md2) {
+            margin-top: 2rem;
+            margin-right: -4rem;
+
+        }
+    }
+
+    // .heading__images-center
+    &__images-center {
+        z-index: 2;
+        width: 50%;
+
+        @media (min-width:$md3) {
+            width: 16.3125rem;
+
+        }
+
+        @media (min-width:$md2) {
+            width: 21.375rem;
+
+        }
+    }
+
+    // .heading__images-right
+    &__images-right {
+        margin-top: 3rem;
+        margin-left: -15%;
+
+        @media (min-width:$md3) {
+            margin-left: -5rem;
+        }
+
+        @media (min-width:$md2) {
+            margin-left: -6rem;
+            margin-top: 4.94rem;
+
+
         }
     }
 }
@@ -207,4 +285,13 @@
 
     // .catalog__card-btn
     &__card-btn {}
+}
+
+.article {
+    background: #fff;
+    padding: rem(50) 0;
+
+    &__content {
+        max-width: rem(1200);
+    }
 }

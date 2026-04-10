@@ -52,7 +52,6 @@ if (is_post_type_archive('services') || is_tax('service_cat') || is_singular('se
 } else {
     $items[] = ['name' => get_the_title(), 'link' => ''];
 }
-
 ?>
 
 <nav aria-label="Хлебные крошки" class="breadcrumbs">
@@ -60,13 +59,17 @@ if (is_post_type_archive('services') || is_tax('service_cat') || is_singular('se
         <ul class="breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
             <?php foreach ($items as $index => $item) : ?>
                 <li class="breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <?php
+                    $clean_name = clean_yoast_header_from_accents($item['name']);
+                    ?>
+
                     <?php if ($item['link'] && $index < count($items) - 1) : ?>
                         <a href="<?php echo esc_url($item['link']); ?>" itemprop="item" class="breadcrumbs__link">
-                            <span itemprop="name"><?php echo esc_html($item['name']); ?></span>
+                            <span itemprop="name"><?php echo esc_html($clean_name); ?></span>
                         </a>
                     <?php else : ?>
                         <span itemprop="name" class="breadcrumbs__current">
-                            <?php echo esc_html($item['name']); ?>
+                            <?php echo esc_html($clean_name); ?>
                         </span>
                         <link itemprop="item" href="<?php echo esc_url((is_ssl() ? 'https://' : 'http://') . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']); ?>">
                     <?php endif; ?>

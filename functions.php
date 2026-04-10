@@ -124,8 +124,28 @@ function fix_widows_after_prepositions($text)
     if (empty($text) || !is_string($text)) return $text;
 
     $prepositions = [
-        'в', 'и', 'или', 'к', 'с', 'на', 'у', 'о', 'от', 'для', 'за', 
-        'по', 'без', 'из', 'над', 'под', 'при', 'про', 'через', 'об', 'со', 'ко'
+        'в',
+        'и',
+        'или',
+        'к',
+        'с',
+        'на',
+        'у',
+        'о',
+        'от',
+        'для',
+        'за',
+        'по',
+        'без',
+        'из',
+        'над',
+        'под',
+        'при',
+        'про',
+        'через',
+        'об',
+        'со',
+        'ко'
     ];
 
     foreach ($prepositions as $prep) {
@@ -140,6 +160,20 @@ foreach (['the_content', 'the_title', 'the_excerpt', 'widget_text_content'] as $
     add_filter($hook, 'fix_widows_after_prepositions', 99);
 }
 
-add_filter('acf/format_value', function($value, $post_id, $field) {
+add_filter('acf/format_value', function ($value, $post_id, $field) {
     return fix_widows_after_prepositions($value);
 }, 99, 3);
+
+
+function highlight_accent_words($text)
+{
+    return preg_replace('/\{(.+?)\}/', '<span class="color-accent">$1</span>', $text);
+}
+function clean_yoast_header_from_accents($title)
+{
+    return preg_replace('/\{(.+?)\}/', '$1', $title);
+}
+
+add_filter('wpseo_title', 'clean_yoast_header_from_accents');
+add_filter('wpseo_opengraph_title', 'clean_yoast_header_from_accents');
+add_filter('wpseo_twitter_title', 'clean_yoast_header_from_accents');

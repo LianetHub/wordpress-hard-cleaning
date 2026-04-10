@@ -14,9 +14,7 @@
 	&__list {
 		display: flex;
 		align-items: center;
-		flex-wrap: nowrap;
-		overflow: hidden;
-		white-space: nowrap;
+		flex-wrap: wrap;
 		gap: 0.25rem;
 		font-size: 1rem;
 		font-weight: 500;
@@ -26,9 +24,7 @@
 	&__item {
 		display: inline-flex;
 		align-items: center;
-		white-space: nowrap;
-		overflow: hidden;
-		text-overflow: ellipsis;
+
 		min-width: 0;
 		gap: 0.25rem;
 
@@ -56,9 +52,7 @@
 
 	// .breadcrumbs__link
 	&__link {
-		word-break: break-all;
-		overflow: hidden;
-		text-overflow: ellipsis;
+
 
 
 		&:is(a) {
