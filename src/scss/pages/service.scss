@@ -120,6 +120,7 @@
     }
 }
 
+
 .catalog {
     padding: rem(50) 0 rem(100);
     background: #fff;
@@ -311,6 +312,28 @@
 
     // .catalog__card-btn
     &__card-btn {}
+
+    // .catalog__empty
+    &__empty {
+        background: #f7f9fb;
+        border-radius: 1.25rem;
+        padding: 1.875rem;
+        box-shadow: 0 .375rem 1.5rem 0 rgba(0, 0, 0, .06);
+
+        @media (min-width:$md4) {
+            grid-column: span 2;
+        }
+
+        @media (min-width:$md3) {
+            grid-column: span 3;
+        }
+    }
+
+    // .catalog__empty-title
+    &__empty-title {}
+
+    // .catalog__empty-text
+    &__empty-text {}
 }
 
 .article {

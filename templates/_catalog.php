@@ -11,7 +11,7 @@ $filter_terms = [];
 if ($is_archive) {
     $filter_terms = get_terms([
         'taxonomy'   => 'service_cat',
-        'hide_empty' => true,
+        'hide_empty' => false,
         'parent'     => 0,
     ]);
 } else {
@@ -35,7 +35,7 @@ if ($is_archive) {
 
         $filter_terms = get_terms([
             'taxonomy'   => 'service_cat',
-            'hide_empty' => true,
+            'hide_empty' => false,
             'parent'     => $parent_term_id,
         ]);
     }
@@ -65,7 +65,9 @@ $services_query = new WP_Query($query_args);
 <section class="catalog">
     <div class="container">
         <div class="catalog__hint hint">Каталог</div>
-        <h2 class="catalog__title title">Выберите <span class="color-accent">вашу ситуацию</span></h2>
+        <h2 class="catalog__title title">
+            <?php echo wp_kses('Выберите <span class="color-accent">вашу ситуацию</span>', ['span' => ['class' => []]]); ?>
+        </h2>
         <p class="catalog__subtitle subtitle">Нажмите на услугу — расскажем подробно что входит и&nbsp;сколько стоит</p>
 
         <div class="catalog__filters swiper">
@@ -96,6 +98,12 @@ $services_query = new WP_Query($query_args);
                     <?php get_template_part('templates/components/card-catalog'); ?>
                 <?php endwhile;
                 wp_reset_postdata(); ?>
+            <?php else: ?>
+                <div class="catalog__empty">
+                    <h3 class="catalog__empty-title title-sm">В этой категории пока нет услуг</h3>
+                    <p class="catalog__empty-text subtitle">Мы скоро добавим описание работ для этого раздела. А пока вы можете уточнить детали у менеджера.</p>
+                    <a href="<?php echo get_post_type_archive_link('services'); ?>" class="btn btn-outline btn-sm">Показать все услуги</a>
+                </div>
             <?php endif; ?>
         </div>
 
@@ -106,8 +114,8 @@ $services_query = new WP_Query($query_args);
                     <div class="catalog__support-desc">У нас есть и другие услуги — опишите что случилось, и мы подберём решение под вашу задачу.</div>
                 </div>
                 <div class="catalog__support-btns">
-                    <a href="" class="catalog__support-btn btn btn-primary">Уточнить лично</a>
-                    <a href="" class="catalog__support-btn btn btn-outline">Позвонить</a>
+                    <a href="#" class="catalog__support-btn btn btn-primary">Уточнить лично</a>
+                    <a href="tel:+70000000000" class="catalog__support-btn btn btn-outline">Позвонить</a>
                 </div>
             </div>
             <div class="catalog__support-card catalog__support-card--blue">
@@ -116,8 +124,8 @@ $services_query = new WP_Query($query_args);
                     <div class="catalog__support-desc">Все цены в одном месте — таблица по каждой услуге с комментариями</div>
                 </div>
                 <div class="catalog__support-btns">
-                    <a href="" class="catalog__support-btn btn btn-white">Смотреть прайс</a>
-                    <a href="" class="catalog__support-btn btn btn-outline-white">Позвонить</a>
+                    <a href="#" class="catalog__support-btn btn btn-white">Смотреть прайс</a>
+                    <a href="tel:+70000000000" class="catalog__support-btn btn btn-outline-white">Позвонить</a>
                 </div>
             </div>
         </div>
