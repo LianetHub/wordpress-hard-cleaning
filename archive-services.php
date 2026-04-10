@@ -5,7 +5,7 @@
 <section class="heading">
     <div class="heading__container container">
         <div class="heading__offer">
-            <h1 class="heading__title title-lg">Все услуги <span class="color-accent">спецуборки</span></h1>
+            <h1 class="heading__title title-lg">Все услуги <br> <span class="color-accent">спецуборки</span></h1>
             <p class="heading__subtitle subtitle">Работаем со сложными случаями — после пожара, потопа, смерти и других ЧП. Выбирайте ситуацию — расскажем что входит и сколько стоит.</p>
         </div>
         <div class="heading__image"></div>

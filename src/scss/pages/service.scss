@@ -15,7 +15,12 @@
     }
 
     // .heading__container
-    &__container {}
+    &__container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+        gap: 2rem;
+    }
 
     // .heading__offer
     &__offer {}
@@ -31,7 +36,14 @@
     }
 
     // .heading__image
-    &__image {}
+    &__image {
+
+        & img {
+            aspect-ratio: 5 / 3;
+            border-radius: 1.25rem;
+            box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.06);
+        }
+    }
 }
 
 

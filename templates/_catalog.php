@@ -3,6 +3,7 @@ $current_object = get_queried_object();
 $is_archive = is_post_type_archive('services');
 $current_term_id = (isset($current_object->term_id)) ? $current_object->term_id : 0;
 
+
 if ($is_archive) {
     $parent_id = 0;
 } else {
@@ -14,6 +15,7 @@ $terms = get_terms([
     'hide_empty' => false,
     'parent'     => $parent_id,
 ]);
+
 
 if (empty($terms) && !$is_archive) {
     $terms = get_terms([
@@ -52,26 +54,31 @@ $archive_link = get_post_type_archive_link('services');
             <?php endif; ?>
         </div>
         <div class="catalog__grid">
-            <?php
-            $main_query_args = [
-                'post_type' => 'services',
-                'posts_per_page' => -1,
-            ];
+            <?php if ($is_archive): ?>
+                <?php
+                $all_services = new WP_Query([
+                    'post_type'      => 'services',
+                    'posts_per_page' => -1,
+                    'orderby'        => 'menu_order',
+                    'order'          => 'ASC'
+                ]);
 
-            if (!$is_archive) {
-                $main_query_args['tax_query'] = [[
-                    'taxonomy' => 'service_cat',
-                    'field'    => 'term_id',
-                    'terms'    => $current_term_id,
-                ]];
-            }
-
-            if (!empty($terms) && !is_wp_error($terms)) {
-                foreach ($terms as $term_item) {
-                    get_template_part('templates/components/card-catalog', null, ['term' => $term_item]);
-                }
-            }
-            ?>
+                if ($all_services->have_posts()):
+                    while ($all_services->have_posts()): $all_services->the_post();
+                        get_template_part('templates/components/card-catalog');
+                    endwhile;
+                    wp_reset_postdata();
+                endif;
+                ?>
+            <?php else: ?>
+                <?php
+                if (!empty($terms) && !is_wp_error($terms)):
+                    foreach ($terms as $term_item):
+                        get_template_part('templates/components/card-catalog', null, ['term' => $term_item]);
+                    endforeach;
+                endif;
+                ?>
+            <?php endif; ?>
         </div>
 
         <div class="catalog__support">
