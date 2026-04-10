@@ -21,7 +21,7 @@ $is_collage = !empty($image_left) || !empty($image_right);
     <div class="heading__container container">
         <div class="heading__offer">
             <h1 class="heading__title title-lg">
-                <?php echo highlight_accent_words(wp_kses($title, array('span' => array('class' => array())))); ?>
+                <?php echo esc_html($title); ?>
             </h1>
             <?php if ($descr): ?>
                 <p class="heading__subtitle subtitle"><?php echo fix_widows_after_prepositions($descr); ?></p>
@@ -66,6 +66,7 @@ $is_collage = !empty($image_left) || !empty($image_right);
     </div>
 </section>
 <?php require_once(TEMPLATE_PATH . '_work.php'); ?>
+<?php require_once(TEMPLATE_PATH . '_price.php'); ?>
 <article class="article">
     <div class="container">
         <div class="article__content typography-block">
@@ -74,7 +75,7 @@ $is_collage = !empty($image_left) || !empty($image_right);
     </div>
 </article>
 
-<?php require_once(TEMPLATE_PATH . '_trust.php'); ?>
+<?php require_once(TEMPLATE_PATH . '_reviews.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_faq.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_cta.php'); ?>
 <?php get_footer(); ?>

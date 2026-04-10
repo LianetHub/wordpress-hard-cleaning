@@ -10,9 +10,8 @@ $work_list = get_field('work_list');
             <div class="work__hint hint">Состав работ</div>
 
             <h2 class="work__title title">
-                <?php echo highlight_accent_words(wp_kses($work_title, array('span' => array('class' => array())))); ?>
+                <?php echo wp_kses($work_title, ['span' => ['class' => []]]); ?>
             </h2>
-
             <?php if ($work_subtitle): ?>
                 <p class="work__subtitle subtitle"><?php echo esc_html($work_subtitle); ?></p>
             <?php endif; ?>
