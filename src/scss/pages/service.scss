@@ -120,7 +120,6 @@
     }
 }
 
-
 .catalog {
     padding: rem(50) 0 rem(100);
     background: #fff;
@@ -521,4 +520,15 @@
 
         }
     }
+}
+
+.works {
+    padding: rem(100) 0;
+    background: #F8FAFB;
+
+    // .works__hint
+    &__hint {}
+
+    // .works__title
+    &__title {}
 }

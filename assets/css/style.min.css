@@ -4417,6 +4417,11 @@ body {
     font-weight: 500
 }
 
+.works {
+    padding: 6.25rem 0;
+    background: #f8fafb
+}
+
 :root {
     --color-dark: #272727;
     --color-bg-light: #F8FAFB;

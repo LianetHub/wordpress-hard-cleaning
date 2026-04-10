@@ -4479,6 +4479,11 @@ body {
   font-weight: 500;
 }
 
+.works {
+  padding: 6.25rem 0;
+  background: #F8FAFB;
+}
+
 :root {
   /* 1. COLORS */
   --color-dark: #272727;
