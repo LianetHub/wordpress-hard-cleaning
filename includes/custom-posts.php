@@ -4,37 +4,40 @@ add_action('init', 'register_theme_entities');
 
 function register_theme_entities()
 {
+    // 1. ОТЗЫВЫ
     register_post_type('reviews', [
         'labels' => [
             'name'          => 'Отзывы',
             'singular_name' => 'Отзыв',
             'menu_name'     => 'Отзывы'
         ],
-        'public'       => true,
-        'show_in_rest' => true,
-        'supports'     => ['title', 'editor', 'thumbnail'],
-        'has_archive'  => false,
-        'rewrite'      => ['slug' => 'reviews-items'],
+        'public'             => true,
+        'show_in_rest'       => true,
+        'supports'           => ['title', 'editor', 'thumbnail'],
+        'has_archive'        => false,
+        'rewrite'            => ['slug' => 'reviews-items'],
     ]);
 
+    // 2. КАТЕГОРИИ УСЛУГ 
     register_taxonomy('service_cat', 'services', [
         'labels' => [
             'name'          => 'Категории услуг',
             'singular_name' => 'Категория услуги',
             'menu_name'     => 'Категории услуг',
         ],
-        'public'            => true,
-        'hierarchical'      => true,
-        'show_in_rest'      => true,
-        'show_admin_column' => true,
-        'query_var'         => true,
-        'rewrite'           => [
+        'public'             => true,
+        'hierarchical'       => true,
+        'show_in_rest'       => true,
+        'show_admin_column'  => true,
+        'query_var'          => true,
+        'rewrite'            => [
             'slug'         => 'uslugi',
             'with_front'   => false,
             'hierarchical' => true
         ],
     ]);
 
+    // 3. УСЛУГИ
     register_post_type('services', [
         'labels' => [
             'name'               => 'Услуги',
@@ -49,33 +52,47 @@ function register_theme_entities()
             'not_found'          => 'Услуг не найдено',
             'not_found_in_trash' => 'В корзине услуг не найдено',
         ],
-        'public'       => true,
-        'has_archive'  => 'uslugi-all',
-        'show_in_rest' => true,
-        'menu_icon'    => 'dashicons-admin-tools',
-        'supports'     => ['title', 'editor', 'thumbnail', 'excerpt'],
-        'rewrite'      => [
-            'slug'       => 'uslugi',
-            'with_front' => false,
+        'public'             => true,
+        'has_archive'        => 'uslugi',
+        'show_in_rest'       => true,
+        'menu_icon'          => 'dashicons-admin-tools',
+        'supports'           => ['title', 'editor', 'thumbnail', 'excerpt'],
+        'rewrite'            => [
+            'slug'       => 'uslugi/%service_cat%',
+            'with_front' => false
         ],
     ]);
 }
 
-add_filter('request', 'reorder_services_request_priority');
-function reorder_services_request_priority($query)
+/**
+ * Обработка структуры URL для записей
+ */
+add_filter('post_type_link', 'services_permalink_structure', 10, 2);
+function services_permalink_structure($post_link, $post)
 {
-    if (isset($query['service_cat']) && !empty($query['service_cat'])) {
-        $path_parts = explode('/', $query['service_cat']);
-        $last_segment = end($path_parts);
+    if ($post->post_type === 'services' && false !== strpos($post_link, '%service_cat%')) {
+        $terms = get_the_terms($post->ID, 'service_cat');
+        if ($terms && !is_wp_error($terms)) {
+            $current_term = $terms[0];
+            foreach ($terms as $term) {
+                if ($term->parent != 0) {
+                    $current_term = $term;
+                    break;
+                }
+            }
 
-        $post = get_page_by_path($last_segment, OBJECT, 'services');
+            $hierarchical_slug = get_term_parents_list($current_term->term_id, 'service_cat', [
+                'separator' => '/',
+                'link'      => false,
+                'inclusive' => true,
+                'format'    => 'slug',
+            ]);
+            $hierarchical_slug = trim($hierarchical_slug, '/');
 
-        if ($post) {
-            unset($query['service_cat']);
-            $query['services'] = $last_segment;
-            $query['post_type'] = 'services';
-            $query['name'] = $last_segment;
+            $post_link = str_replace('%service_cat%', $hierarchical_slug, $post_link);
+        } else {
+            $post_link = str_replace('%service_cat%', 'uncategorized', $post_link);
         }
     }
-    return $query;
+    return $post_link;
 }

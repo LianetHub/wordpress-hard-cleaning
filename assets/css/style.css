@@ -2671,13 +2671,34 @@ select.select {
 }
 
 .services {
-  padding: 3.125rem 0;
   background: #F7F9FB;
+}
+
+.services.services--page {
+  padding-top: 1rem;
+}
+
+.services {
+  padding: 2.5rem 0 3rem;
 }
 
 .services__title {
   margin: 0 0 0.875rem;
   max-width: 62rem;
+}
+
+.services__subtitle.subtitle {
+  max-width: 51.25rem;
+}
+
+.services__categories {
+  margin-top: 1.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .services__list {
@@ -5209,6 +5230,10 @@ select.select {
     gap: 0.75rem;
   }
 
+  .services {
+    padding: 2.75rem 0 3.25rem;
+  }
+
   .services__item-body {
     padding: 1.875rem 1.75rem;
   }
@@ -5340,6 +5365,10 @@ select.select {
 
   .hero__btn {
     padding-inline: 3.125rem;
+  }
+
+  .services {
+    padding: 3.125rem 0;
   }
 
   .services__list {
@@ -5520,10 +5549,6 @@ select.select {
 @media (max-width: 1024px) {
   .hero__title {
     margin-bottom: 0.75rem;
-  }
-
-  .services {
-    padding: 2.75rem 0 3.25rem;
   }
 
   .services__list {
@@ -5752,10 +5777,6 @@ select.select {
             flex-direction: column;
     text-align: center;
     gap: 1.25rem;
-  }
-
-  .services {
-    background: var(--white);
   }
 
   .process {
@@ -6207,10 +6228,6 @@ select.select {
     padding-right: 1rem;
   }
 
-  .services {
-    overflow-x: clip;
-  }
-
   .pricing__subtitle {
     margin-top: 0.3125rem;
     max-width: 17rem;
@@ -6476,10 +6493,6 @@ select.select {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
     gap: 2.5rem;
-  }
-
-  .services {
-    padding: 2.5rem 0 3rem;
   }
 
   .services__list {
