@@ -13,7 +13,12 @@
 
     &.bg-light {
         background: #F7F9FB;
-        padding: rem(100) 0;
+        padding: rem(50) 0;
+
+        @media (min-width:$md4) {
+            padding: rem(100) 0;
+
+        }
     }
 
     // .trust__hint

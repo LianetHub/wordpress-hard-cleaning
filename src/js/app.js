@@ -245,6 +245,17 @@ $(function () {
 
     }
 
+    if ($('.catalog__filters').length) {
+        const $this = $(this);
+        const activeIndex = $this.find('.catalog__filter.active').index();
+
+        new MobileSwiper('.catalog__filters', {
+            slidesPerView: "auto",
+            spaceBetween: 12,
+            initialSlide: activeIndex >= 0 ? activeIndex : 0
+        })
+    }
+
     // Phone Input Mask Russia
 
     const $phoneInputs = $('input[type="tel"]');

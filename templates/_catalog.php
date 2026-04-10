@@ -11,7 +11,7 @@ $filter_terms = [];
 if ($is_archive) {
     $filter_terms = get_terms([
         'taxonomy'   => 'service_cat',
-        'hide_empty' => false,
+        'hide_empty' => true,
         'parent'     => 0,
     ]);
 } else {
@@ -35,7 +35,7 @@ if ($is_archive) {
 
         $filter_terms = get_terms([
             'taxonomy'   => 'service_cat',
-            'hide_empty' => false,
+            'hide_empty' => true,
             'parent'     => $parent_term_id,
         ]);
     }
@@ -68,24 +68,26 @@ $services_query = new WP_Query($query_args);
         <h2 class="catalog__title title">Выберите <span class="color-accent">вашу ситуацию</span></h2>
         <p class="catalog__subtitle subtitle">Нажмите на услугу — расскажем подробно что входит и&nbsp;сколько стоит</p>
 
-        <div class="catalog__filters">
-            <a href="<?php echo esc_url($first_btn_link); ?>"
-                class="catalog__filter btn btn-outline <?php echo $is_first_btn_active ? 'active' : ''; ?>">
-                <?php echo esc_html($first_btn_text); ?>
-            </a>
+        <div class="catalog__filters swiper">
+            <div class="swiper-wrapper">
+                <a href="<?php echo esc_url($first_btn_link); ?>"
+                    class="catalog__filter swiper-slide btn btn-sm btn-outline <?php echo $is_first_btn_active ? 'active' : ''; ?>">
+                    <?php echo esc_html($first_btn_text); ?>
+                </a>
 
-            <?php if (!empty($filter_terms) && !is_wp_error($filter_terms)): ?>
-                <?php foreach ($filter_terms as $term): ?>
-                    <?php
-                    $is_active = ($current_term_id === $term->term_id) ? 'active' : '';
-                    $term_link = get_term_link($term);
-                    ?>
-                    <a href="<?php echo esc_url($term_link); ?>"
-                        class="catalog__filter btn btn-outline <?php echo $is_active; ?>">
-                        <?php echo esc_html($term->name); ?>
-                    </a>
-                <?php endforeach; ?>
-            <?php endif; ?>
+                <?php if (!empty($filter_terms) && !is_wp_error($filter_terms)): ?>
+                    <?php foreach ($filter_terms as $term): ?>
+                        <?php
+                        $is_active = ($current_term_id === $term->term_id) ? 'active' : '';
+                        $term_link = get_term_link($term);
+                        ?>
+                        <a href="<?php echo esc_url($term_link); ?>"
+                            class="catalog__filter swiper-slide btn btn-sm btn-outline <?php echo $is_active; ?>">
+                            <?php echo esc_html($term->name); ?>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
         </div>
 
         <div class="catalog__grid">
