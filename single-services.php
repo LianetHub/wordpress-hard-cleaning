@@ -65,7 +65,7 @@ $is_collage = !empty($image_left) || !empty($image_right);
         <?php endif; ?>
     </div>
 </section>
-
+<?php require_once(TEMPLATE_PATH . '_work.php'); ?>
 <article class="article">
     <div class="container">
         <div class="article__content typography-block">

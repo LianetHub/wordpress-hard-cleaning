@@ -3,7 +3,7 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2") format("woff2"), url("../fonts/icons.woff") format("woff");
+  src: url("../fonts/icons.woff2?v2") format("woff2"), url("../fonts/icons.woff?v2") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -43,6 +43,10 @@
 [class^=icon-]:before,
 [class*=" icon-"]:before {
   display: block;
+}
+
+.icon-check-circle:before {
+  content: "\e903";
 }
 
 .icon-envelope:before {
@@ -4358,6 +4362,56 @@ body {
   max-width: 75rem;
 }
 
+.work {
+  background: #fff;
+  padding: 3.125rem 0;
+}
+
+.work__title .color-accent {
+  white-space: nowrap;
+}
+
+.work__list {
+  margin-top: 3.125rem;
+  display: -ms-grid;
+  display: grid;
+  max-width: 58rem;
+  gap: 2rem;
+  row-gap: 0.9375rem;
+}
+
+.work__item {
+  border-radius: 0.625rem;
+  border: 0.0625rem solid #DDE6F0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.625rem;
+  font-size: 1rem;
+  padding: 0.625rem 1.5rem;
+}
+
+.work__item::before {
+  color: #467E9E;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
 :root {
   /* 1. COLORS */
   --color-dark: #272727;
@@ -5229,6 +5283,25 @@ body {
 
   .equipment__card {
     border-radius: 1.25rem;
+  }
+
+  .work {
+    padding: 6.25rem 0;
+  }
+
+  .work__list {
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .work__item {
+    padding: 0.625rem 2rem;
+  }
+
+  .work__item::before {
+    font-size: 2.125rem;
+    width: 2.125rem;
+    height: 2.125rem;
   }
 }
 
