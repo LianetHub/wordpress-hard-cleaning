@@ -17,6 +17,10 @@ $has_custom_images = ($img_left || $img_center || $img_right);
         <div class="heading__offer">
             <h1 class="heading__title title-lg">Все услуги <br> <span class="color-accent">спецуборки</span></h1>
             <p class="heading__subtitle subtitle">Работаем со сложными случаями — после пожара, потопа, смерти и других ЧП. Выбирайте ситуацию — расскажем что входит и сколько стоит.</p>
+            <div class="heading__btns">
+                <a href="" class="heading__btn btn btn-primary">Срочный вызов</a>
+                <a href="" class="heading__btn btn btn-outline">Оставить заявку</a>
+            </div>
         </div>
 
         <?php if ($has_custom_images): ?>
@@ -48,7 +52,7 @@ $has_custom_images = ($img_left || $img_center || $img_right);
     </div>
 </section>
 
-<?php require_once(TEMPLATE_PATH . '_catalog.php'); ?>
+<?php require_once(TEMPLATE_PATH . '_catalog-main.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_trust.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_faq.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_cta.php'); ?>

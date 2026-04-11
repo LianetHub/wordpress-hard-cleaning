@@ -7,6 +7,7 @@ $first_btn_text = 'Все услуги';
 $first_btn_link = get_post_type_archive_link('services');
 $is_first_btn_active = $is_archive;
 $filter_terms = [];
+$grid_terms = [];
 
 if ($is_archive) {
     $filter_terms = get_terms([
@@ -14,6 +15,7 @@ if ($is_archive) {
         'hide_empty' => false,
         'parent'     => 0,
     ]);
+    $grid_terms = get_field('main_catalog_items', 'option');
 } else {
     $parent_term_id = $current_object->parent;
 
@@ -41,25 +43,24 @@ if ($is_archive) {
     }
 }
 
-$query_args = [
-    'post_type'      => 'services',
-    'posts_per_page' => -1,
-    'orderby'        => 'menu_order',
-    'order'          => 'ASC'
-];
-
-if (!$is_archive && $current_term_id) {
-    $query_args['tax_query'] = [
-        [
-            'taxonomy'         => 'service_cat',
-            'field'            => 'term_id',
-            'terms'            => $current_term_id,
-            'include_children' => true
+$services_query = null;
+if (!$is_archive) {
+    $query_args = [
+        'post_type'      => 'services',
+        'posts_per_page' => -1,
+        'orderby'        => 'menu_order',
+        'order'          => 'ASC',
+        'tax_query' => [
+            [
+                'taxonomy'         => 'service_cat',
+                'field'            => 'term_id',
+                'terms'            => $current_term_id,
+                'include_children' => true
+            ]
         ]
     ];
+    $services_query = new WP_Query($query_args);
 }
-
-$services_query = new WP_Query($query_args);
 ?>
 
 <section class="catalog">
@@ -93,19 +94,35 @@ $services_query = new WP_Query($query_args);
         </div>
 
         <div class="catalog__grid">
-            <?php if ($services_query->have_posts()): ?>
-                <?php while ($services_query->have_posts()): $services_query->the_post(); ?>
-                    <?php get_template_part('templates/components/card-catalog'); ?>
-                <?php endwhile;
-                wp_reset_postdata(); ?>
+            <?php if ($is_archive): ?>
+
+                <?php if (!empty($grid_terms)): ?>
+                    <?php foreach ($grid_terms as $term): ?>
+                        <?php
+                        set_query_var('catalog_term', $term);
+                        get_template_part('templates/components/card-catalog-term');
+                        ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+
             <?php else: ?>
-                <div class="catalog__empty">
-                    <h3 class="catalog__empty-title title-sm">В этой категории пока нет услуг</h3>
-                    <p class="catalog__empty-text subtitle">Мы скоро добавим описание работ для этого раздела. А пока вы можете уточнить детали у менеджера.</p>
-                    <a href="<?php echo get_post_type_archive_link('services'); ?>" class="btn btn-outline btn-sm">Показать все услуги</a>
-                </div>
+
+                <?php if ($services_query && $services_query->have_posts()): ?>
+                    <?php while ($services_query->have_posts()): $services_query->the_post(); ?>
+                        <?php get_template_part('templates/components/card-catalog'); ?>
+                    <?php endwhile;
+                    wp_reset_postdata(); ?>
+                <?php else: ?>
+                    <div class="catalog__empty">
+                        <h3 class="catalog__empty-title title-sm">В этой категории пока нет услуг</h3>
+                        <p class="catalog__empty-text subtitle">Мы скоро добавим описание работ для этого раздела. А пока вы можете уточнить детали у менеджера.</p>
+                        <a href="<?php echo get_post_type_archive_link('services'); ?>" class="btn btn-outline btn-sm">Показать все услуги</a>
+                    </div>
+                <?php endif; ?>
+
             <?php endif; ?>
         </div>
+
         <?php get_template_part('templates/components/catalog-support-block'); ?>
     </div>
 </section>

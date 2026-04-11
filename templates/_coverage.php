@@ -84,7 +84,7 @@ $districts = [
 
         <span class="coverage__hint hint">Зона покрытия</span>
         <h2 class="coverage__title title">Где мы <span class="color-accent">работаем?</span></h2>
-        <p class="coverage__desc">Выезжаем во все районы Санкт-Петербурга. Время прибытия — от 60 минут после звонка. Жмите на свой район — проверьте время выезда.</p>
+        <p class="coverage__desc subtitle">Выезжаем во все районы Санкт-Петербурга. Время прибытия — от 60 минут после звонка. Жмите на свой район — проверьте время выезда.</p>
 
 
         <div class="districts-grid">

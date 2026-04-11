@@ -1831,15 +1831,13 @@
     }
 
 
-    .coverage__desc {
 
-        font-weight: 500;
-        font-size: rem(17);
-        line-height: 1.5;
-        color: var(--color-slate-dark);
+}
 
+.coverage__desc {
 
-    }
+    max-width: rem(580);
+
 }
 
 .districts-grid {
