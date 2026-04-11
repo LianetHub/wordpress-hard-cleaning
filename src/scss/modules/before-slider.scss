@@ -54,10 +54,11 @@
 		top: rem(20);
 		padding: rem(8) rem(25);
 		background: rgba(70, 89, 103, 0.86);
-		backdrop-filter: blur(2px);
+		backdrop-filter: blur(rem(2));
+		-webkit-backdrop-filter: blur(rem(2));
 		border-radius: rem(70);
 		color: #FFFFFF;
-		font-family: 'Unbounded', sans-serif;
+		font-family: $font-unbounded;
 		font-weight: 800;
 		font-size: rem(12);
 		z-index: 25;
