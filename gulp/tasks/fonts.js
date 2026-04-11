@@ -53,10 +53,8 @@ export const copyWoff = () => {
 export const fontsStyle = () => {
     let fontsFile = `${app.path.srcFolder}/scss/fonts.scss`;
 
-    // Проверяем наличие папки с шрифтами
     fs.readdir(app.path.build.fonts, function (err, fontsFiles) {
         if (fontsFiles) {
-            // Если файл существует, удаляем его
             if (fs.existsSync(fontsFile)) {
                 fs.unlinkSync(fontsFile);
                 console.log("Файл scss/fonts.scss актуализирован");
@@ -64,16 +62,15 @@ export const fontsStyle = () => {
                 console.log("Файл scss/fonts.scss создан");
             }
 
-            // Создаем новый файл
             fs.writeFile(fontsFile, "", cb);
             let newFileOnly;
 
+            const version = Date.now();
+
             for (let i = 0; i < fontsFiles.length; i++) {
-                // Получаем имя файла без расширения
                 let fontFileNameWithExtension = fontsFiles[i].split(".")[0];
                 let fontFileName = fontFileNameWithExtension;
 
-                // Проверка на вариативный шрифт
                 const isVariableFont = fontFileName.toLowerCase().includes("variablefont_");
 
                 if (isVariableFont) {
@@ -86,14 +83,11 @@ export const fontsStyle = () => {
                     let fontStyle = 'normal';
 
                     if (!isVariableFont) {
-
-                        // Обработка начертания Italic
                         if (fontWeight.toLowerCase().includes("italic")) {
                             fontStyle = "italic";
                             fontWeight = fontWeight.replace(/italic/i, "").trim();
                         }
 
-                        // Определение веса шрифта
                         switch (fontWeight.toLowerCase()) {
                             case "thin": fontWeight = 100; break;
                             case "extralight": fontWeight = 200; break;
@@ -110,30 +104,27 @@ export const fontsStyle = () => {
                         }
                     }
 
-
                     if (isVariableFont) {
-                        // Генерация для Вариативных шрифтов
                         fs.appendFile(fontsFile,
                             `@font-face {
-								font-family: '${fontName}';
-								src: url("../fonts/${fontFileNameWithExtension}.woff2") format("woff2 supports variations"),
-									url("../fonts/${fontFileNameWithExtension}.woff2") format("woff2-variations"),
-									url("../fonts/${fontFileNameWithExtension}.woff") format("woff");
-								font-weight: 100 900;
-								font-stretch: 75% 125%;
-								font-style: normal;
-								font-display: swap;
-							}\r\n`, cb);
+                                font-family: '${fontName}';
+                                src: url("../fonts/${fontFileNameWithExtension}.woff2?v=${version}") format("woff2 supports variations"),
+                                    url("../fonts/${fontFileNameWithExtension}.woff2?v=${version}") format("woff2-variations"),
+                                    url("../fonts/${fontFileNameWithExtension}.woff?v=${version}") format("woff");
+                                font-weight: 100 900;
+                                font-stretch: 75% 125%;
+                                font-style: normal;
+                                font-display: swap;
+                            }\r\n`, cb);
                     } else {
-                        // Генерация для Обычных шрифтов
                         fs.appendFile(fontsFile,
                             `@font-face {
-								font-family: '${fontName}';
-								font-display: swap;
-								src: url("../fonts/${fontFileNameWithExtension}.woff2") format("woff2"), url("../fonts/${fontFileNameWithExtension}.woff") format("woff");
-								font-weight: ${fontWeight};
-								font-style: ${fontStyle};
-							}\r\n`, cb);
+                                font-family: '${fontName}';
+                                font-display: swap;
+                                src: url("../fonts/${fontFileNameWithExtension}.woff2?v=${version}") format("woff2"), url("../fonts/${fontFileNameWithExtension}.woff?v=${version}") format("woff");
+                                font-weight: ${fontWeight};
+                                font-style: ${fontStyle};
+                            }\r\n`, cb);
                     }
 
                     newFileOnly = fontFileName;
