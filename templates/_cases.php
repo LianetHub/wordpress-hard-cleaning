@@ -73,7 +73,7 @@
               </div>
 
           </div>
-          <a href="#" class="btn btn-primary btn-all-cases">Посмотреть все работы <span class="link-arrow" aria-hidden="true">→</span></a>
+          <a href="<?php echo get_post_type_archive_link('portfolio') ?>" class="btn btn-primary btn-all-cases">Посмотреть все работы <span class="link-arrow" aria-hidden="true">→</span></a>
 
       </div>
   </section>

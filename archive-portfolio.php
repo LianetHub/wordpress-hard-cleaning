@@ -13,9 +13,7 @@
             query_posts($query_string . '&posts_per_page=-1');
 
             if (have_posts()) : while (have_posts()) : the_post(); ?>
-                    <div class="portfolio__item">
-                        <?php get_template_part('templates/components/card-portfolio'); ?>
-                    </div>
+                    <?php get_template_part('templates/components/card-portfolio'); ?>
                 <?php endwhile;
                 wp_reset_query();
                 ?>
