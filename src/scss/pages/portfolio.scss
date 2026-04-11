@@ -1,0 +1,22 @@
+@use "sass:color";
+@use "sass:math";
+@use "mixins" as *;
+@use "variables" as *;
+@use "fonts";
+@use "icons";
+
+.portfolio {
+
+    padding: 1rem 0 2rem;
+
+    // .portfolio__title
+    &__title {}
+
+    // .portfolio__grid
+    &__grid {
+        margin-top: 4rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+}

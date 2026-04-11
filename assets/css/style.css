@@ -4485,6 +4485,19 @@ body {
   background: #F8FAFB;
 }
 
+.portfolio {
+  padding: 1rem 0 2rem;
+}
+
+.portfolio__grid {
+  margin-top: 4rem;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
 :root {
   /* 1. COLORS */
   --color-dark: #272727;
