@@ -39,6 +39,14 @@ if (is_post_type_archive('services') || is_tax('service_cat') || is_singular('se
     } elseif (is_post_type_archive('services')) {
         $items[count($items) - 1]['link'] = '';
     }
+} elseif (is_post_type_archive('portfolio') || is_singular('portfolio')) {
+    $items[] = ['name' => 'Портфолио', 'link' => get_post_type_archive_link('portfolio')];
+
+    if (is_singular('portfolio')) {
+        $items[] = ['name' => get_the_title(), 'link' => ''];
+    } else {
+        $items[count($items) - 1]['link'] = '';
+    }
 } elseif (is_page()) {
     $ancestors = get_post_ancestors(get_the_ID());
     if ($ancestors) {
@@ -52,7 +60,6 @@ if (is_post_type_archive('services') || is_tax('service_cat') || is_singular('se
 } else {
     $items[] = ['name' => get_the_title(), 'link' => ''];
 }
-
 ?>
 
 <nav aria-label="Хлебные крошки" class="breadcrumbs">
