@@ -26,6 +26,10 @@ $is_collage = !empty($image_left) || !empty($image_right);
             <?php if ($descr): ?>
                 <p class="heading__subtitle subtitle"><?php echo fix_widows_after_prepositions($descr); ?></p>
             <?php endif; ?>
+            <div class="heading__btns">
+                <a href="" class="heading__btn btn btn-primary">Срочный вызов</a>
+                <a href="" class="heading__btn btn btn-outline">Оставить заявку</a>
+            </div>
         </div>
 
         <?php if ($is_collage): ?>

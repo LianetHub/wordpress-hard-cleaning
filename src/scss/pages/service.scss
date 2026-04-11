@@ -30,6 +30,17 @@
     // .heading__subtitle
     &__subtitle {}
 
+    // .heading__btns
+    &__btns {
+        margin-top: rem(15);
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(15);
+    }
+
+    // .heading__btn
+    &__btn {}
+
     // .heading__image
     &__image {
 
@@ -349,10 +360,6 @@
     background: #fff;
     padding: rem(50) 0;
 
-    @media (min-width:$md4) {
-        padding: rem(100) 0;
-
-    }
 
     // .work__hint
     &__hint {}
@@ -532,4 +539,21 @@
 
     // .works__title
     &__title {}
+
+    // .works__grid
+    &__grid {
+        display: grid;
+        margin-top: 2rem;
+        gap: 1.5rem;
+
+        @media (min-width:$md4) {
+            gap: 2rem;
+            margin-top: 4rem;
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width:$md2) {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
 }

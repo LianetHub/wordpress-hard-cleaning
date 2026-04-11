@@ -11,6 +11,8 @@
     z-index: 10;
     padding: rem(50) 0;
 
+
+
     &.bg-light {
         background: #F7F9FB;
         padding: rem(50) 0;
@@ -19,6 +21,10 @@
             padding: rem(100) 0;
 
         }
+    }
+
+    &.trust--small {
+        padding: rem(50) 0 !important;
     }
 
     // .trust__hint
@@ -33,6 +39,10 @@
 
     // .trust__slider
     &__slider {
+        &:not(:first-child) {
+            margin-top: rem(20);
+        }
+
         overflow: visible;
 
         &:not(.swiper-initialized) {
