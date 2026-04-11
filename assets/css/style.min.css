@@ -276,6 +276,109 @@
     margin-top: 1rem
 }
 
+.before-slider {
+    position: relative;
+    width: 100%;
+    height: 25.9375rem;
+    border-radius: .625rem;
+    overflow: hidden;
+    margin-bottom: 1.875rem;
+    cursor: col-resize;
+    background: #eee;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    --position: 50%
+}
+
+.before-slider__layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+.before-slider__layer--before {
+    z-index: 2;
+    clip-path: polygon(0 0, var(--position) 0, var(--position) 100%, 0 100%)
+}
+
+.before-slider__layer--after {
+    z-index: 1
+}
+
+.before-slider__image {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center;
+    display: block;
+    pointer-events: none
+}
+
+.before-slider__label {
+    position: absolute;
+    top: 1.25rem;
+    padding: .5rem 1.5625rem;
+    background: rgba(70, 89, 103, .86);
+    backdrop-filter: blur(2px);
+    border-radius: 4.375rem;
+    color: #fff;
+    font-family: Unbounded, sans-serif;
+    font-weight: 800;
+    font-size: .75rem;
+    z-index: 25;
+    pointer-events: none
+}
+
+.before-slider__label--before {
+    left: 1.25rem
+}
+
+.before-slider__label--after {
+    right: 1.25rem
+}
+
+.before-slider__divider {
+    position: absolute;
+    top: 0;
+    left: var(--position);
+    width: .125rem;
+    height: 100%;
+    background: #fff;
+    -webkit-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    z-index: 10;
+    pointer-events: none
+}
+
+.before-slider__arrows {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: .25rem;
+    background: 0 0
+}
+
+.before-slider__arrows svg {
+    -webkit-filter: drop-shadow(0 0 4px rgba(0, 0, 0, .5));
+    filter: drop-shadow(0 0 4px rgba(0, 0, 0, .5))
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: Unbounded;
     font-weight: 700
@@ -3379,153 +3482,6 @@ body {
     gap: 1.5625rem
 }
 
-.comparison-container {
-    position: relative;
-    width: 100%;
-    height: 25.9375rem;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-bottom: 30px;
-    cursor: col-resize;
-    background: #eee;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none
-}
-
-.img-before {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 1
-}
-
-.img-after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    overflow: hidden;
-    z-index: 2;
-    border-right: 1px solid #fff
-}
-
-.img-after img, .img-before img {
-    width: 100%;
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
-    -o-object-position: center;
-    object-position: center;
-    display: block;
-    pointer-events: none
-}
-
-.img-after img {
-    width: 100%;
-    max-width: none;
-    height: 100%;
-    -o-object-fit: cover;
-    object-fit: cover;
-    -o-object-position: center;
-    object-position: center
-}
-
-@supports (width:1cqi) {
-    .img-after img {
-        width: 100cqi
-    }
-}
-
-.comparison-divider {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 0;
-    height: 100%;
-    z-index: 10;
-    pointer-events: none;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center
-}
-
-.img-label {
-    position: absolute;
-    top: 20px;
-    padding: 8px 25px;
-    background: rgba(70, 89, 103, .86);
-    backdrop-filter: blur(2px);
-    border-radius: 70px;
-    color: #fff;
-    font-family: Unbounded, sans-serif;
-    font-weight: 800;
-    font-size: 12px;
-    z-index: 25;
-    pointer-events: none
-}
-
-.label-before {
-    left: 20px
-}
-
-.label-after {
-    right: 20px
-}
-
-.img-before {
-    z-index: 1
-}
-
-.img-after {
-    z-index: 2
-}
-
-.comparison-divider {
-    position: absolute;
-    top: 0;
-    left: 50%;
-    width: 2px;
-    height: 100%;
-    background: #fff;
-    -webkit-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    transform: translateX(-50%);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-    z-index: 5
-}
-
-.divider-arrows {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    gap: 4px;
-    background: 0 0
-}
-
-.divider-arrows svg {
-    -webkit-filter: drop-shadow(0 0 4px rgba(0, 0, 0, .5));
-    filter: drop-shadow(0 0 4px rgba(0, 0, 0, .5))
-}
-
 .guarantees-section {
     padding: 3.125rem 0;
     background: #fff
@@ -6044,6 +6000,30 @@ body {
 }
 
 @media (max-width:768px) {
+    .before-slider {
+        margin: 0 auto;
+        border-radius: .625rem .625rem 0 0
+    }
+
+    .before-slider__label {
+        top: .4375rem;
+        padding: .25rem .625rem;
+        font-size: .875rem;
+        line-height: 1.35
+    }
+
+    .before-slider__label--before {
+        left: .4375rem
+    }
+
+    .before-slider__label--after {
+        right: .4375rem
+    }
+
+    .before-slider__divider {
+        width: .0625rem
+    }
+
     .faq__answer-inner {
         line-height: 1.45
     }
@@ -6114,11 +6094,6 @@ body {
         grid-template-columns: repeat(2, minmax(0, 1fr))
     }
 
-    .cases-section .img-label {
-        font-size: var(--fs-label);
-        line-height: 1.35
-    }
-
     .cases-section .comparison-text {
         font-size: var(--fs-body);
         line-height: 1.5
@@ -6148,35 +6123,6 @@ body {
 
     .btn-all-cases {
         display: none
-    }
-
-    .comparison-container {
-        width: 100%;
-        margin: 0 auto;
-        border-radius: 10px 10px 0 0
-    }
-
-    .img-after {
-        width: 48.78%
-    }
-
-    .img-label {
-        top: 7px;
-        padding: 4px 10px;
-        font-size: 8px;
-        line-height: 10px
-    }
-
-    .label-before {
-        left: 7px
-    }
-
-    .label-after {
-        right: 7px
-    }
-
-    .comparison-divider {
-        width: 1px
     }
 
     .info-card {

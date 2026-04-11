@@ -1,113 +1,118 @@
+@use "sass:color";
+@use "sass:math";
+@use "mixins" as *;
+@use "variables" as *;
+@use "fonts";
+@use "icons";
+
+
 .before-slider {
 	position: relative;
-	min-width: 100%;
-	height: 100%;
-	aspect-ratio: math.div(288, 360);
-	@media (min-width: $md4) {
-		aspect-ratio: math.div(1250, 729);
-	}
+	width: 100%;
+	height: rem(415);
+	border-radius: rem(10);
 	overflow: hidden;
-	&__image {
+	margin-bottom: rem(30);
+	cursor: col-resize;
+	background: #eee;
+	user-select: none;
+	--position: 50%;
+
+	@media (max-width: 768px) {
+		margin: 0 auto;
+		border-radius: rem(10) rem(10) 0 0;
+	}
+
+	&__layer {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
-		height: inherit;
-		background-size: cover;
-		background-position: center 0;
-		background-repeat: no-repeat;
+		height: 100%;
+
+		&--before {
+			z-index: 2;
+			clip-path: polygon(0 0, var(--position) 0, var(--position) 100%, 0 100%);
+		}
+
+		&--after {
+			z-index: 1;
+		}
 	}
 
-	&__before {
-	}
-	&__after {
+	&__image {
 		width: 100%;
-		--value: 50%;
-		clip-path: polygon(0 0, var(--value) 0, var(--value) 100%, 0 100%);
-	}
-	&__input {
-		position: absolute;
-		-webkit-appearance: none;
-		appearance: none;
-		width: 100%;
-		height: inherit;
-		background: rgba(#f2f2f2, 0);
-		outline: none;
-		margin: 0;
-		transition: all 0.2s;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		&::-webkit-slider-container {
-			min-height: 100%;
-		}
-		&::-webkit-slider-runnable-track {
-			min-height: 100%;
-			align-self: stretch;
-		}
-		&::-ms-track {
-			min-height: 100%;
-			align-self: stretch;
-			background: transparent;
-			border-color: transparent;
-			color: transparent;
-		}
-		&::-moz-range-track {
-			min-height: 100%;
-			align-self: stretch;
-		}
-		&::-webkit-slider-thumb {
-			-webkit-appearance: none;
-			appearance: none;
-			width: rem(4);
-
-			height: 100%;
-			background: #fff;
-			cursor: e-resize;
-		}
-		&::-moz-range-thumb {
-			width: rem(4);
-			height: 100%;
-			background: #fff;
-			cursor: e-resize;
-		}
-		&::-ms-thumb {
-			width: rem(4);
-			height: 100%;
-			background: #fff;
-			cursor: e-resize;
-		}
-	}
-	&__button {
-		$size: rem(50);
+		height: 100%;
+		object-fit: cover;
+		object-position: center;
+		display: block;
 		pointer-events: none;
+	}
+
+	&__label {
 		position: absolute;
-		width: $size;
-		height: $size;
+		top: rem(20);
+		padding: rem(8) rem(25);
+		background: rgba(70, 89, 103, 0.86);
+		backdrop-filter: blur(2px);
+		border-radius: rem(70);
+		color: #FFFFFF;
+		font-family: 'Unbounded', sans-serif;
+		font-weight: 800;
+		font-size: rem(12);
+		z-index: 25;
+		pointer-events: none;
 
-		left: calc(50% - rem(math.div(50, 2)));
-		top: calc(50% - rem(math.div(50, 2)));
+		@media (max-width: 768px) {
+			top: rem(7);
+			padding: rem(4) rem(10);
+			font-size: rem(14);
+			line-height: 1.35;
+		}
 
+		&--before {
+			left: rem(20);
+
+			@media (max-width: 768px) {
+				left: rem(7);
+			}
+		}
+
+		&--after {
+			right: rem(20);
+
+			@media (max-width: 768px) {
+				right: rem(7);
+			}
+		}
+	}
+
+	&__divider {
+		position: absolute;
+		top: 0;
+		left: var(--position);
+		width: rem(2);
+		height: 100%;
+		background: #FFFFFF;
+		transform: translateX(-50%);
 		display: flex;
-		justify-content: space-between;
 		align-items: center;
-		cursor: e-resize;
-		@mixin arrow-helper() {
-			content: "";
-			width: 0;
-			height: 0;
-			border-left: 7px solid transparent;
-			border-right: 7px solid transparent;
-			border-bottom: 10.5px solid white;
-			pointer-events: none;
+		justify-content: center;
+		z-index: 10;
+		pointer-events: none;
+
+		@media (max-width: 768px) {
+			width: rem(1);
 		}
-		&:after {
-			@include arrow-helper();
-			transform: rotate(90deg);
-		}
-		&:before {
-			@include arrow-helper();
-			transform: rotate(-90deg);
+	}
+
+	&__arrows {
+		display: flex;
+		gap: rem(4);
+		background: transparent;
+
+		svg {
+			filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
 		}
 	}
 }

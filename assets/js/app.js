@@ -579,4 +579,50 @@ $(function () {
     }
 
     initYandexMap();
+
+    // before slider
+    const $sliders = $('.before-slider');
+
+    if ($sliders.length) {
+        $sliders.each(function () {
+            const $currentSlider = $(this);
+            let isDragging = false;
+
+            $currentSlider.on('mousemove', function (e) {
+                updateSliderPosition(e, $currentSlider);
+            });
+
+            $currentSlider.on('touchstart', function (e) {
+                isDragging = true;
+                updateSliderPosition(e, $currentSlider);
+            });
+
+            $(document).on('touchend', function () {
+                isDragging = false;
+            });
+
+            $(document).on('touchmove', function (e) {
+                if (isDragging) {
+                    updateSliderPosition(e, $currentSlider);
+                }
+            });
+
+            function updateSliderPosition(e, $element) {
+                let clientX;
+
+                if (e.type.includes('touch')) {
+                    clientX = e.originalEvent.touches[0].clientX;
+                } else {
+                    clientX = e.clientX;
+                }
+
+                const rect = $element[0].getBoundingClientRect();
+                const position = clientX - rect.left;
+                const percent = Math.max(0, Math.min((position / rect.width) * 100, 100));
+
+                $element.css('--position', percent + '%');
+            }
+        });
+    }
+
 })
