@@ -4117,6 +4117,19 @@ body {
     align-self: center
 }
 
+.heading__images.heading__images--grid {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem
+}
+
+.heading__images.heading__images--grid .heading__images-block {
+    width: 100%;
+    position: relative
+}
+
 .heading__images-block {
     aspect-ratio: 3/4;
     border-radius: 1.25rem;

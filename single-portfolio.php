@@ -52,9 +52,20 @@ $wrapper_tag = $title ? 'section' : 'div';
                 <a href="" class="heading__btn btn btn-outline">Оставить заявку</a>
             </div>
         </div>
-        <div class="heading__image">
-            <img src="<?php echo esc_url($before['url']); ?>" class="cover-image" alt="До">
-            <img src="<?php echo esc_url($after['url']); ?>" class="cover-image" alt="После">
+        <div class="heading__images heading__images--grid">
+            <div class="heading__images-block heading__images-block--before">
+                <img src="<?php echo esc_url($before['url']); ?>"
+                    class="cover-image"
+                    alt="До">
+                <span class="before-slider__label before-slider__label--before">До</span>
+
+            </div>
+            <div class="heading__images-block heading__images-block--after">
+                <img src="<?php echo esc_url($after['url']); ?>"
+                    class="cover-image"
+                    alt="После">
+                <span class="before-slider__label before-slider__label--after">После</span>
+            </div>
         </div>
     </div>
 </section>

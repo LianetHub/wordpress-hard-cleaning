@@ -57,6 +57,17 @@
         align-items: flex-start;
         justify-content: center;
         align-self: center;
+
+        &.heading__images--grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+
+            .heading__images-block {
+                width: 100%;
+                position: relative;
+            }
+        }
     }
 
     // .heading__images-block
