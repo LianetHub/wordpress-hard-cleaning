@@ -163,3 +163,22 @@ foreach (['the_content', 'the_title', 'the_excerpt', 'widget_text_content'] as $
 add_filter('acf/format_value', function ($value, $post_id, $field) {
     return fix_widows_after_prepositions($value);
 }, 99, 3);
+
+
+function get_processed_svg($url, $new_color)
+{
+    if (!$url) return '';
+
+    $path = str_replace(site_url('/'), ABSPATH, $url);
+
+    if (!file_exists($path)) {
+        return '<img src="' . esc_url($url) . '" alt="">';
+    }
+
+    $svg_code = file_get_contents($path);
+
+    $svg_code = preg_replace('/fill="((?!none)[^"]+)"/i', 'fill="' . $new_color . '"', $svg_code);
+    $svg_code = preg_replace('/stroke="((?!none)[^"]+)"/i', 'stroke="' . $new_color . '"', $svg_code);
+
+    return $svg_code;
+}

@@ -27,10 +27,10 @@ $services_query = new WP_Query([
             <div class="services__item-header">
                 <?php if ($icon): ?>
                     <div class="services__item-icon" aria-hidden="true">
-                        <img src="<?php echo esc_url($icon['url']); ?>" alt="<?php echo esc_attr($term->name); ?>">
+                        <?php echo get_processed_svg($icon['url'], '#ffffff'); ?>
                     </div>
                 <?php endif; ?>
-                
+
                 <h3 class="services__item-title">
                     <a href="<?php echo esc_url($term_link); ?>">
                         <?php echo fix_widows_after_prepositions($term->name); ?>
@@ -38,16 +38,17 @@ $services_query = new WP_Query([
                 </h3>
             </div>
             <a class="services__item-btn btn btn-primary icon-phone"
-               href="tel:<?php echo $phone_clean; ?>">Вызвать бригаду</a>
+                href="tel:<?php echo $phone_clean; ?>">Вызвать бригаду</a>
         </div>
-        
+
         <?php if ($services_query->have_posts()): ?>
             <div class="services__item-tags">
                 <?php while ($services_query->have_posts()): $services_query->the_post(); ?>
                     <a href="<?php the_permalink(); ?>" class="services__item-tag">
                         <?php echo fix_widows_after_prepositions(get_the_title()); ?>
                     </a>
-                <?php endwhile; wp_reset_postdata(); ?>
+                <?php endwhile;
+                wp_reset_postdata(); ?>
             </div>
         <?php endif; ?>
     </div>

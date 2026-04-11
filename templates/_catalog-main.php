@@ -104,31 +104,21 @@ if (!$is_archive) {
             </div>
         </div>
 
-        <div class="catalog__grid">
-            <?php if ($is_archive): ?>
-                <?php if (!empty($grid_terms) && !is_wp_error($grid_terms)): ?>
+
+        <?php if ($is_archive): ?>
+            <?php if (!empty($grid_terms) && !is_wp_error($grid_terms)): ?>
+                <ul class="services__list">
                     <?php foreach ($grid_terms as $term): ?>
                         <?php
-                        set_query_var('catalog_term', $term);
-                        get_template_part('templates/components/card-catalog-term');
+                        get_template_part('templates/components/card', 'service-cat', [
+                            'term' => $term
+                        ]);
                         ?>
                     <?php endforeach; ?>
-                <?php endif; ?>
-            <?php else: ?>
-                <?php if ($services_query && $services_query->have_posts()): ?>
-                    <?php while ($services_query->have_posts()): $services_query->the_post(); ?>
-                        <?php get_template_part('templates/components/card-catalog'); ?>
-                    <?php endwhile;
-                    wp_reset_postdata(); ?>
-                <?php else: ?>
-                    <div class="catalog__empty">
-                        <h3 class="catalog__empty-title title-sm">В этой категории пока нет услуг</h3>
-                        <p class="catalog__empty-text subtitle">Мы скоро добавим описание работ для этого раздела. А пока вы можете уточнить детали у менеджера.</p>
-                        <a href="<?php echo get_post_type_archive_link('services'); ?>" class="btn btn-outline btn-sm">Показать все услуги</a>
-                    </div>
-                <?php endif; ?>
+                </ul>
             <?php endif; ?>
-        </div>
+        <?php endif; ?>
+
 
         <?php get_template_part('templates/components/catalog-support-block'); ?>
     </div>
