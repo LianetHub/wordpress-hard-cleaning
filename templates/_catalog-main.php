@@ -15,7 +15,18 @@ if ($is_archive) {
         'hide_empty' => false,
         'parent'     => 0,
     ]);
-    $grid_terms = get_field('main_catalog_items', 'option');
+
+    $grid_terms = get_terms([
+        'taxonomy'   => 'service_cat',
+        'hide_empty' => false,
+        'meta_query' => [
+            [
+                'key'     => 'is_main_service',
+                'value'   => '1',
+                'compare' => '='
+            ]
+        ]
+    ]);
 } else {
     $parent_term_id = $current_object->parent;
 
@@ -95,8 +106,7 @@ if (!$is_archive) {
 
         <div class="catalog__grid">
             <?php if ($is_archive): ?>
-
-                <?php if (!empty($grid_terms)): ?>
+                <?php if (!empty($grid_terms) && !is_wp_error($grid_terms)): ?>
                     <?php foreach ($grid_terms as $term): ?>
                         <?php
                         set_query_var('catalog_term', $term);
@@ -104,9 +114,7 @@ if (!$is_archive) {
                         ?>
                     <?php endforeach; ?>
                 <?php endif; ?>
-
             <?php else: ?>
-
                 <?php if ($services_query && $services_query->have_posts()): ?>
                     <?php while ($services_query->have_posts()): $services_query->the_post(); ?>
                         <?php get_template_part('templates/components/card-catalog'); ?>
@@ -119,7 +127,6 @@ if (!$is_archive) {
                         <a href="<?php echo get_post_type_archive_link('services'); ?>" class="btn btn-outline btn-sm">Показать все услуги</a>
                     </div>
                 <?php endif; ?>
-
             <?php endif; ?>
         </div>
 

@@ -1,3 +1,8 @@
+<?php
+$phone = get_field('phone', 'option');
+$phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
+?>
+
 <div class="catalog__support">
     <div class="catalog__support-card">
         <div class="catalog__support-main">
@@ -6,7 +11,9 @@
         </div>
         <div class="catalog__support-btns">
             <a href="#" class="catalog__support-btn btn btn-primary">Уточнить лично</a>
-            <a href="tel:+70000000000" class="catalog__support-btn btn btn-outline">Позвонить</a>
+            <?php if ($phone): ?>
+                <a href="tel:<?php echo $phone_clean; ?>" class="catalog__support-btn btn btn-outline">Позвонить</a>
+            <?php endif; ?>
         </div>
     </div>
     <div class="catalog__support-card catalog__support-card--blue">
@@ -16,7 +23,9 @@
         </div>
         <div class="catalog__support-btns">
             <a href="#" class="catalog__support-btn btn btn-white">Смотреть прайс</a>
-            <a href="tel:+70000000000" class="catalog__support-btn btn btn-outline-white">Позвонить</a>
+            <?php if ($phone): ?>
+                <a href="tel:<?php echo $phone_clean; ?>" class="catalog__support-btn btn btn-outline-white">Позвонить</a>
+            <?php endif; ?>
         </div>
     </div>
 </div>

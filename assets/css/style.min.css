@@ -4289,7 +4289,9 @@ body {
     font-family: Manrope;
     font-size: 1.25rem;
     font-weight: 600;
-    letter-spacing: .0375rem
+    letter-spacing: .0375rem;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease
 }
 
 .catalog__card-description {
@@ -7235,6 +7237,10 @@ body {
     }
 
     .menu__list a:hover {
+        color: #467e9e
+    }
+
+    .catalog__card-title:hover {
         color: #467e9e
     }
 
