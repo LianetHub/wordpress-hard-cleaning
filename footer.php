@@ -156,7 +156,10 @@ $ogrn_number = get_field('ogrn_number', 'option');
 
                     <?php if ($email): ?>
                         <li class="footer__contacts-item icon-envelope-fill">
-                            <a href="mailto:<?php echo antispambot($email); ?>"><?php echo antispambot($email); ?></a>
+                            <a href="mailto:<?php echo antispambot($email); ?>"
+                                class="footer__contacts-link">
+                                <?php echo antispambot($email); ?>
+                            </a>
                         </li>
                     <?php endif; ?>
 
