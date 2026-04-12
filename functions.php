@@ -42,6 +42,8 @@ function cleaning_theme_setup()
 
     register_nav_menus([
         'header_menu' => 'Меню в шапке',
+        'footer_navigation_menu' => 'Меню навигации в подвале',
+        'footer_information_menu' => 'Меню информации в подвале',
     ]);
 }
 add_action('after_setup_theme', 'cleaning_theme_setup');
