@@ -167,7 +167,9 @@
         gap: 1.5rem;
 
         .cases-info-side {
+
             @media (min-width:$md4) {
+                margin-top: 0;
                 grid-column: span 2;
                 display: flex;
                 flex-direction: column;
@@ -206,6 +208,7 @@
     }
 
     @media (max-width: 768px) {
+        margin-top: 2rem;
         flex: 1 1 auto;
     }
 }
@@ -219,19 +222,20 @@
     @media (max-width: 768px) {
         width: 100%;
         max-width: min(26.25rem, 100%);
-        margin: 0 auto;
+        margin-inline: auto;
         gap: 0;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    @media (max-width: 700px) {
-        width: var(--m-main-card);
-        max-width: var(--m-main-card);
-    }
+
 
     @media (min-width: 701px) and (max-width: 768px) {
         max-width: none;
         margin-inline: 0;
+    }
+
+    @media (max-width:$md5) {
+        display: block;
     }
 
 }
