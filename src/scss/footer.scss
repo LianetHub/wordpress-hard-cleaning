@@ -69,9 +69,6 @@
 			.footer__column {
 				order: initial !important;
 			}
-		}
-
-		@media (min-width: 769px) {
 
 			.footer__column:nth-child(3),
 			.footer__column--cta {
@@ -79,7 +76,9 @@
 			}
 		}
 
-		@media (min-width: 1024px) {
+
+
+		@media (min-width: $md3) {
 			grid-template-columns: 1fr 1fr 1fr 1.3fr;
 			gap: 2.5rem;
 
@@ -262,35 +261,23 @@
 		grid-template-columns: 1fr;
 		gap: 1.875rem 0.875rem;
 
-		&>.footer__column:first-child {
-			grid-column: 1 / -1;
-		}
-
-		&>.footer__column:nth-child(2),
-		&>.footer__column:nth-child(3) {
-			display: flex;
-			flex-direction: column;
-			align-items: flex-start;
-		}
-
 		@media (min-width: $md4) {
 			grid-template-columns: repeat(2, 1fr);
 			gap: 3.125rem;
 
-			&>.footer__column:first-child {
-				grid-column: auto;
-			}
-
-			&>.footer__column:nth-child(2),
-			&>.footer__column:nth-child(3) {
-				display: block;
-			}
 		}
 
-		@media (min-width: 1024px) {
-			grid-template-columns: 1.2fr 1fr 1fr;
+		@media (min-width: $md3) {
+			grid-template-columns: 1.2fr 2fr;
 			gap: 3.75rem;
 		}
+	}
+
+	// .footer__middle-side
+	&__middle-side {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: rem(40);
 	}
 
 	// .footer__payments 
@@ -322,9 +309,10 @@
 		gap: 0.75rem;
 
 		p {
-			color: #898989;
-			font-size: 0.8125rem;
-			margin: 0;
+			color: #C3C3C3;
+			font-size: 1rem;
+			font-weight: 300;
+			letter-spacing: 0.03rem;
 
 			br {
 				display: none;
@@ -339,7 +327,7 @@
 			}
 		}
 
-		@media (min-width: 769px) {
+		@media (min-width: $md4) {
 			flex-direction: row;
 			justify-content: space-between;
 			gap: 2.5rem;

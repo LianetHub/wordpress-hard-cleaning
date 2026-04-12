@@ -41,9 +41,11 @@ function cleaning_theme_setup()
     ]);
 
     register_nav_menus([
-        'header_menu' => 'Меню в шапке',
-        'footer_navigation_menu' => 'Меню навигации в подвале',
+        'header_menu'             => 'Меню в шапке',
+        'footer_navigation_menu'  => 'Меню навигации в подвале',
         'footer_information_menu' => 'Меню информации в подвале',
+        'footer_individuals_menu' => 'Меню услуг частным лицам в подвале',
+        'footer_companies_menu'   => 'Меню услуг компаниям в подвале',
     ]);
 }
 add_action('after_setup_theme', 'cleaning_theme_setup');
