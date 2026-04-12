@@ -108,10 +108,10 @@ $address = get_field('address', 'option');
                 </div>
             <?php endif; ?>
             <div class="menu__actions">
-                <a href="#contacts" class="menu__actions-btn btn btn-sm btn-primary header-urgent-btn">
-                    Срочный вызов
-                </a>
-                <a href="#contacts" class="menu__actions-btn btn btn-sm btn-primary header-help-btn">
+                <?php if ($phone): ?>
+                    <a href="tel:<?php echo $phone_clean; ?>" class="menu__actions-btn btn btn-sm btn-primary">Срочный вызов</a>
+                <?php endif; ?>
+                <a href="#contacts" class="menu__actions-btn btn btn-sm btn-primary">
                     Задать вопрос
                 </a>
             </div>

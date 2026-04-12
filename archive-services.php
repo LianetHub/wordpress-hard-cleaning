@@ -4,6 +4,8 @@
 $img_left   = get_field('services_banner_left', 'option');
 $img_center = get_field('services_banner_center', 'option');
 $img_right  = get_field('services_banner_right', 'option');
+$phone = get_field('phone', 'option');
+$phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 
 $default_url = get_template_directory_uri() . '/assets/img/banner-services.jpg';
 
@@ -18,7 +20,9 @@ $has_custom_images = ($img_left || $img_center || $img_right);
             <h1 class="heading__title title-lg">Все услуги <br> <span class="color-accent">спецуборки</span></h1>
             <p class="heading__subtitle subtitle">Работаем со сложными случаями — после пожара, потопа, смерти и других ЧП. Выбирайте ситуацию — расскажем что входит и сколько стоит.</p>
             <div class="heading__btns">
-                <a href="" class="heading__btn btn btn-primary">Срочный вызов</a>
+                <?php if ($phone): ?>
+                    <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-primary">Срочный вызов</a>
+                <?php endif; ?>
                 <a href="" class="heading__btn btn btn-outline">Оставить заявку</a>
             </div>
         </div>

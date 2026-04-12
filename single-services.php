@@ -1,6 +1,9 @@
 <?php get_header(); ?>
 
 <?php
+$phone = get_field('phone', 'option');
+$phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
+
 $title = get_field('service_title') ?: get_the_title();
 $descr = get_field('service_subtitle') ?: get_the_excerpt();
 
@@ -27,7 +30,9 @@ $is_collage = !empty($image_left) || !empty($image_right);
                 <p class="heading__subtitle subtitle"><?php echo fix_widows_after_prepositions($descr); ?></p>
             <?php endif; ?>
             <div class="heading__btns">
-                <a href="" class="heading__btn btn btn-primary">Срочный вызов</a>
+                <?php if ($phone): ?>
+                    <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-primary">Срочный вызов</a>
+                <?php endif; ?>
                 <a href="" class="heading__btn btn btn-outline">Оставить заявку</a>
             </div>
         </div>

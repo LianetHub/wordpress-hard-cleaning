@@ -1,4 +1,7 @@
  <?php
+    $phone = get_field('phone', 'option');
+    $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
+
     $image = get_field('hero_image');
     $tags = get_field('hero_tags');
     $title = get_field('hero_title') ?: 'Комплексная спецуборка в Санкт-Петербурге и области';
@@ -43,7 +46,9 @@
              <h1 class="hero__title title-lg"><?php echo $title; ?></h1>
              <p class="hero__subtitle"><?php echo esc_html($subtitle); ?></p>
              <div class="hero__btns">
-                 <a href="#contacts" class="hero__btn btn btn-primary">Срочный вызов</a>
+                 <?php if ($phone): ?>
+                     <a href="tel:<?php echo $phone_clean; ?>" class="hero__btn btn btn-primary">Срочный вызов</a>
+                 <?php endif; ?>
                  <a href="#contacts" class="hero__btn btn btn-outline">Рассчитать стоимость</a>
              </div>
          </div>

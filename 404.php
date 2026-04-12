@@ -3,6 +3,8 @@
 <?php
 $image = get_field('hero_image');
 $tags = get_field('hero_tags');
+$phone = get_field('phone', 'option');
+$phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 ?>
 
 <section class="hero">
@@ -42,7 +44,9 @@ $tags = get_field('hero_tags');
         <div class="hero__offer">
             <h1 class="hero__title title-lg">404 <br> страница не найдена</h1>
             <div class="hero__btns">
-                <a href="#contacts" class="hero__btn btn btn-primary">Срочный вызов</a>
+                <?php if ($phone): ?>
+                    <a href="tel:<?php echo $phone_clean; ?>" class="hero__btn btn btn-primary">Срочный вызов</a>
+                <?php endif; ?>
                 <a href="/" class="hero__btn btn btn-outline">На главную</a>
             </div>
         </div>

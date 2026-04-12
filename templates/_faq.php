@@ -1,3 +1,8 @@
+<?php
+$phone = get_field('phone', 'option');
+$phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
+?>
+
 <section class="faq">
     <div class="faq__container container">
 
@@ -11,7 +16,15 @@
             <div class="faq__cta">
                 <h3 class="faq__cta-title">Не нашли вопрос?</h3>
                 <p class="faq__cta-subtitle">Отправьте фото — подскажем план работ.</p>
-                <a href="#" class="faq__cta-btn btn btn-white">Отправить фото</a>
+                <div class="faq__cta-btns">
+                    <a href="#" class="faq__cta-btn btn btn-white">Отправить фото</a>
+                    <?php if ($phone): ?>
+                        <a href="tel:<?php echo $phone_clean; ?>"
+                            class="faq__cta-btn btn btn-outline-white">
+                            Позвонить
+                        </a>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
 

@@ -3,14 +3,14 @@
 @font-face {
     font-family: icons;
     font-display: swap;
-    src: url(../fonts/icons.woff2?v=1776016143094) format("woff2"), url(../fonts/icons.woff?v=1776016143094) format("woff");
+    src: url(../fonts/icons.woff2?v=1776017657201) format("woff2"), url(../fonts/icons.woff?v=1776017657201) format("woff");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
-    font-family: Unbounded;
-    src: url(../fonts/Unbounded-VariableFont_wght.woff2?v=1776016143094) format("woff2 supports variations"), url(../fonts/Unbounded-VariableFont_wght.woff2?v=1776016143094) format("woff2-variations"), url(../fonts/Unbounded-VariableFont_wght.woff?v=1776016143094) format("woff");
+    font-family: Manrope;
+    src: url(../fonts/Manrope-VariableFont_wght.woff2?v=1776017657201) format("woff2 supports variations"), url(../fonts/Manrope-VariableFont_wght.woff2?v=1776017657201) format("woff2-variations"), url(../fonts/Manrope-VariableFont_wght.woff?v=1776017657201) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -18,8 +18,8 @@
 }
 
 @font-face {
-    font-family: Manrope;
-    src: url(../fonts/Manrope-VariableFont_wght.woff2?v=1776016143094) format("woff2 supports variations"), url(../fonts/Manrope-VariableFont_wght.woff2?v=1776016143094) format("woff2-variations"), url(../fonts/Manrope-VariableFont_wght.woff?v=1776016143094) format("woff");
+    font-family: Unbounded;
+    src: url(../fonts/Unbounded-VariableFont_wght.woff2?v=1776017657201) format("woff2 supports variations"), url(../fonts/Unbounded-VariableFont_wght.woff2?v=1776017657201) format("woff2-variations"), url(../fonts/Unbounded-VariableFont_wght.woff?v=1776017657201) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -40,6 +40,10 @@
 
 [class*=" icon-"]:before, [class^=icon-]:before {
     display: block
+}
+
+.icon-arrows:before {
+    content: "\e90e"
 }
 
 .icon-zoom:before {
@@ -398,7 +402,6 @@
     position: absolute;
     top: 0;
     left: var(--position);
-    width: .125rem;
     height: 100%;
     background: #fff;
     -webkit-transform: translateX(-50%);
@@ -417,19 +420,33 @@
     pointer-events: none
 }
 
-.before-slider__arrows {
+.before-slider__divider::before {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background: #467e9e;
+    color: #fff;
+    width: 2.5rem;
+    height: 2.5rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    gap: .25rem;
-    background: 0 0
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: 50%;
+    -webkit-box-shadow: 0 0 .25rem rgba(0, 0, 0, .5);
+    box-shadow: 0 0 .25rem rgba(0, 0, 0, .5)
 }
 
-.before-slider__arrows svg {
-    -webkit-filter: drop-shadow(0 0 4px rgba(0, 0, 0, .5));
-    filter: drop-shadow(0 0 4px rgba(0, 0, 0, .5));
-    width: .375rem;
-    height: .5rem
+.before-slider__divider {
+    width: .0625rem
 }
 
 .cases__more {
@@ -964,13 +981,20 @@ body {
 .faq__cta-subtitle {
     font-size: 1rem;
     line-height: 1.4;
-    color: #d7d7d7;
-    margin-bottom: 1.5625rem
+    color: #d7d7d7
+}
+
+.faq__cta-btns {
+    margin-top: 1.5625rem;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
+    gap: .75rem
 }
 
 .faq__cta-btn {
     width: 100%;
-    height: 3.125rem;
     font-weight: 600
 }
 
@@ -5729,6 +5753,10 @@ body {
         margin-top: 2rem
     }
 
+    .before-slider__divider {
+        width: .125rem
+    }
+
     .title-lg {
         font-size: 2.25rem
     }
@@ -7077,10 +7105,6 @@ body {
 
     .before-slider__label--after {
         right: .4375rem
-    }
-
-    .before-slider__divider {
-        width: .0625rem
     }
 
     .faq__answer-inner {

@@ -1,6 +1,9 @@
 <?php get_header(); ?>
 
 <?php
+$phone = get_field('phone', 'option');
+$phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
+
 $before = get_field('case_before_img');
 $after = get_field('case_after_img');
 $service = get_field('case_service_link');
@@ -48,7 +51,9 @@ $wrapper_tag = $title ? 'section' : 'div';
             </h1>
             <p class="heading__subtitle subtitle"> <?php the_excerpt(); ?></p>
             <div class="heading__btns">
-                <a href="" class="heading__btn btn btn-primary">Срочный вызов</a>
+                <?php if ($phone): ?>
+                    <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-primary">Срочный вызов</a>
+                <?php endif; ?>
                 <a href="" class="heading__btn btn btn-outline">Оставить заявку</a>
             </div>
         </div>

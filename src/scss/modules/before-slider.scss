@@ -95,7 +95,7 @@
 		position: absolute;
 		top: 0;
 		left: var(--position);
-		width: rem(2);
+
 		height: 100%;
 		background: #FFFFFF;
 		transform: translateX(-50%);
@@ -105,22 +105,30 @@
 		z-index: 10;
 		pointer-events: none;
 
-		@media (max-width: 768px) {
-			width: rem(1);
+		&::before {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			background: $accent;
+			color: #fff;
+			width: rem(40);
+			height: rem(40);
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			border-radius: 50%;
+			box-shadow: 0 0 rem(4) rgba(0, 0, 0, 0.5);
+		}
+
+		width: rem(1);
+
+		@media (min-width:$md4) {
+			width: rem(2);
 		}
 	}
 
-	&__arrows {
-		display: flex;
-		gap: rem(4);
-		background: transparent;
 
-		svg {
-			filter: drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.5));
-			width: rem(6);
-			height: rem(8);
-		}
-	}
 }
 
 .cases {
