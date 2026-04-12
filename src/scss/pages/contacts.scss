@@ -21,11 +21,41 @@
         }
     }
 
+    // .contacts__list
+    &__list {
+        display: grid;
+
+        gap: rem(20);
+        margin-top: rem(40);
+
+        @media (min-width:$md4) {
+            margin-top: rem(50);
+            grid-template-columns: repeat(2, 1fr);
+
+        }
+
+        @media (min-width:$md3) {
+            gap: rem(30);
+        }
+
+        @media (min-width:$md2) {
+            margin-top: rem(74);
+            grid-template-columns: repeat(3, 1fr);
+
+        }
+    }
+
     // .contacts__footer
     &__footer {
         margin-top: 3.2rem;
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+        row-gap: 2rem;
+
+        @media (min-width:$md2) {
+            grid-template-columns: repeat(2, 1fr);
+
+        }
     }
 
     // .contacts__socials
@@ -39,8 +69,57 @@
         letter-spacing: 0.04313rem;
     }
 
+    // .contacts__socials-btns
+    &__socials-btns {
+        margin-top: 2.19rem;
+        display: flex;
+        gap: rem(15);
+        flex-direction: column;
+
+        @media (min-width:$md5) {
+            flex-direction: row;
+            flex-wrap: wrap;
+        }
+    }
+
+    // .contacts__socials-btn
+    &__socials-btn {
+        @media (min-width:$md1) {
+            padding-inline: 3.75rem;
+
+        }
+
+        &.icon-telegram {
+
+            background: #5FC0F2;
+            color: #fff;
+            box-shadow: 0 rem(4) rem(10) 0 rgba(49, 112, 142, 0.40);
+        }
+
+        &.icon-vk {
+
+            background: #467E9E;
+            color: #fff;
+            box-shadow: 0 rem(4) rem(10) 0 rgba(49, 112, 142, 0.40);
+        }
+
+        &.icon-max {
+
+            background: #386BCA;
+            color: #fff;
+            box-shadow: 0 rem(4) rem(10) 0 rgba(49, 112, 142, 0.40);
+        }
+    }
+
     // .contacts__worktime
-    &__worktime {}
+    &__worktime {
+        @media (min-width:$md2) {
+            max-width: 27.9375rem;
+            margin: 0 auto;
+            width: 100%;
+
+        }
+    }
 
     // .contacts__worktime-title
     &__worktime-title {

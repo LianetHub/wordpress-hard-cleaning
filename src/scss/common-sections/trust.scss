@@ -110,6 +110,10 @@
         font-size: 1.0625rem;
         line-height: 1.2;
         letter-spacing: 0.02em;
+
+        &.trust__card-caption--large {
+            font-size: 1.25rem;
+        }
     }
 
     // .trust__card-description
@@ -118,6 +122,16 @@
         line-height: 1.4;
         letter-spacing: 0.03em;
         color: #4b5d68;
+
+        &:is(a) {
+            transition: color 0.3s ease;
+
+            @media (any-hover: hover) {
+                &:hover {
+                    color: $accent;
+                }
+            }
+        }
     }
 
     // .trust__slider-pagination
