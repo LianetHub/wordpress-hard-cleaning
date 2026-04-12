@@ -3,14 +3,14 @@
 @font-face {
     font-family: icons;
     font-display: swap;
-    src: url(../fonts/icons.woff2?v=1775918733874) format("woff2"), url(../fonts/icons.woff?v=1775918733874) format("woff");
+    src: url(../fonts/icons.woff2?v=1775985317945) format("woff2"), url(../fonts/icons.woff?v=1775985317945) format("woff");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
-    font-family: Unbounded;
-    src: url(../fonts/Unbounded-VariableFont_wght.woff2?v=1775918733874) format("woff2 supports variations"), url(../fonts/Unbounded-VariableFont_wght.woff2?v=1775918733874) format("woff2-variations"), url(../fonts/Unbounded-VariableFont_wght.woff?v=1775918733874) format("woff");
+    font-family: Manrope;
+    src: url(../fonts/Manrope-VariableFont_wght.woff2?v=1775985317945) format("woff2 supports variations"), url(../fonts/Manrope-VariableFont_wght.woff2?v=1775985317945) format("woff2-variations"), url(../fonts/Manrope-VariableFont_wght.woff?v=1775985317945) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -18,8 +18,8 @@
 }
 
 @font-face {
-    font-family: Manrope;
-    src: url(../fonts/Manrope-VariableFont_wght.woff2?v=1775918733874) format("woff2 supports variations"), url(../fonts/Manrope-VariableFont_wght.woff2?v=1775918733874) format("woff2-variations"), url(../fonts/Manrope-VariableFont_wght.woff?v=1775918733874) format("woff");
+    font-family: Unbounded;
+    src: url(../fonts/Unbounded-VariableFont_wght.woff2?v=1775985317945) format("woff2 supports variations"), url(../fonts/Unbounded-VariableFont_wght.woff2?v=1775985317945) format("woff2-variations"), url(../fonts/Unbounded-VariableFont_wght.woff?v=1775985317945) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -878,7 +878,7 @@ body {
     height: 100% !important
 }
 
-.contacts {
+.map {
     position: relative;
     width: 100%;
     background: #e5e3df;
@@ -959,6 +959,14 @@ body {
     display: -ms-grid;
     display: grid;
     gap: .375rem
+}
+
+.contacts {
+    padding: 3.5rem 0
+}
+
+.contacts__subtitle.subtitle {
+    max-width: 26.1875rem
 }
 
 .faq {
@@ -1260,6 +1268,10 @@ body {
     padding: 1rem 0
 }
 
+.reviews.reviews--page {
+    padding: 3.5rem 0 7rem
+}
+
 .reviews__header {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -1270,6 +1282,30 @@ body {
     flex-direction: column;
     gap: 1.25rem;
     margin-bottom: 2.5rem
+}
+
+.reviews__subtitle.subtitle {
+    max-width: 26.6875rem
+}
+
+.reviews__grid {
+    margin-top: 3.25rem;
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[3];
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.875rem
+}
+
+.reviews__column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    gap: 1.875rem
 }
 
 .reviews__btn {
@@ -1366,7 +1402,10 @@ body {
     -ms-flex-direction: column;
     flex-direction: column;
     border-radius: 1.25rem;
-    padding: 1.25rem 1.75rem
+    padding: 1.25rem 1.75rem;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    break-inside: avoid
 }
 
 .review-card.swiper-slide {
@@ -1439,8 +1478,7 @@ body {
 }
 
 .review-card__author-name {
-    text-decoration: none;
-    display: inline-block;
+    font-family: Manrope;
     font-weight: 700;
     line-height: 1;
     color: #272727;
@@ -1456,6 +1494,139 @@ body {
 .review-card__author-source {
     font-size: .75rem;
     color: #7998ad
+}
+
+.yandex-banner {
+    padding: 4.625rem 0;
+    background: #fff
+}
+
+.yandex-banner__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    gap: 1rem;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    padding: 1.56rem 3.75rem;
+    border-radius: 1.25rem;
+    border: .0625rem solid #d5dcdf
+}
+
+.yandex-banner__brand {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 1.25rem;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%
+}
+
+.yandex-banner__logo {
+    -ms-flex-negative: 0;
+    flex-shrink: 0
+}
+
+.yandex-banner__info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center
+}
+
+.yandex-banner__hint {
+    margin-top: .625rem;
+    color: #4b5d68;
+    font-size: 1rem;
+    letter-spacing: .03rem;
+    margin-bottom: 0
+}
+
+.yandex-banner__rating {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-flex: 1;
+    -ms-flex: 1;
+    flex: 1
+}
+
+.yandex-banner__action {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 50%;
+    flex: 0 1 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+    -ms-flex-pack: end;
+    justify-content: flex-end
+}
+
+.yandex-banner__btn::after {
+    content: "→";
+    margin-left: .625rem
+}
+
+.rating-yandex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-align: center;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 10rem;
+    flex: 0 0 10rem
+}
+
+.rating-yandex__value {
+    color: #272727;
+    font-family: Unbounded;
+    font-size: 3.75rem;
+    font-weight: 700;
+    letter-spacing: .075rem;
+    line-height: 1
+}
+
+.rating-yandex__stars {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: .375rem;
+    margin-bottom: .5rem
+}
+
+.rating-yandex__label {
+    color: #4b5d68;
+    font-size: 1rem;
+    letter-spacing: .03rem
 }
 
 .dropdown {
@@ -6083,6 +6254,13 @@ body {
         -ms-grid-columns: 1fr;
         grid-template-columns: 1fr;
         gap: 2.5rem
+    }
+
+    .yandex-banner__brand {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column
     }
 
     .coverage-bottom {

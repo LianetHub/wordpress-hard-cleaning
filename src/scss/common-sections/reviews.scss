@@ -11,9 +11,12 @@
     background: #F7F9FB;
     padding: 1rem 0;
 
+    &.reviews--page {
+        padding: 3.5rem 0 7rem;
+    }
+
     @media (min-width:$md4) {
         padding: 1.875rem 0;
-
     }
 
     // .reviews__header
@@ -34,8 +37,33 @@
         }
     }
 
+    // .reviews__hint
+    &__hint {}
+
     // .reviews__title
     &__title {}
+
+    // .reviews__subtitle
+    &__subtitle {
+        &.subtitle {
+            max-width: 26.6875rem;
+        }
+    }
+
+    // .reviews__grid
+    &__grid {
+        margin-top: 3.25rem;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: rem(30);
+    }
+
+    // .reviews__column
+    &__column {
+        display: flex;
+        flex-direction: column;
+        gap: rem(30);
+    }
 
     // .reviews__btn
     &__btn {
@@ -169,6 +197,7 @@
     flex-direction: column;
     border-radius: 1.25rem;
     padding: 1.25rem 1.75rem;
+    break-inside: avoid;
 
     &.swiper-slide {
         height: auto;
@@ -242,8 +271,7 @@
 
     // .review-card__author-name
     &__author-name {
-        text-decoration: none;
-        display: inline-block;
+        font-family: $fontfamily;
         font-weight: 700;
         line-height: 1;
         color: #272727;
@@ -271,5 +299,106 @@
     &__author-source {
         font-size: 0.75rem;
         color: #7998AD;
+    }
+}
+
+.yandex-banner {
+    padding: 4.625rem 0;
+    background: #fff;
+
+    &__content {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        padding: 1.56rem 3.75rem;
+        border-radius: 1.25rem;
+        border: rem(1) solid #D5DCDF;
+    }
+
+    &__brand {
+        display: flex;
+        align-items: center;
+        gap: rem(20);
+        flex: 0 1 50%;
+
+        @media (max-width: 992px) {
+            flex-direction: column;
+        }
+    }
+
+    &__logo {
+        flex-shrink: 0;
+    }
+
+    &__info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+    &__name {}
+
+    &__hint {
+        margin-top: rem(10);
+        color: #4B5D68;
+        font-size: 1rem;
+        letter-spacing: 0.03rem;
+        margin-bottom: 0;
+    }
+
+    &__rating {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        flex: 1;
+    }
+
+    &__action {
+        flex: 0 1 50%;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    &__btn {
+
+
+        &::after {
+            content: '→';
+            margin-left: rem(10);
+        }
+
+
+    }
+}
+
+.rating-yandex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 0 0 rem(160);
+
+    &__value {
+        color: #272727;
+        font-family: $font-unbounded;
+        font-size: 3.75rem;
+        font-weight: 700;
+        letter-spacing: 0.075rem;
+        line-height: 1;
+    }
+
+    &__stars {
+        display: flex;
+        gap: rem(6);
+        margin-bottom: rem(8);
+    }
+
+    &__label {
+        color: #4B5D68;
+
+        font-size: 1rem;
+        letter-spacing: 0.03rem;
     }
 }

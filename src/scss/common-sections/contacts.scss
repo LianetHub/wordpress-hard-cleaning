@@ -6,7 +6,7 @@
 @use "icons";
 
 
-.contacts {
+.map {
     position: relative;
     width: 100%;
     background: #e5e3df;
@@ -109,4 +109,22 @@
 
     // .baloon__btn
     &__btn {}
+}
+
+
+.contacts {
+    padding: 3.5rem 0;
+
+    // .contacts__hint
+    &__hint {}
+
+    // .contacts__title
+    &__title {}
+
+    // .contacts__subtitle
+    &__subtitle {
+        &.subtitle {
+            max-width: 26.1875rem;
+        }
+    }
 }

@@ -1,5 +1,7 @@
 <?php
 $post_id = $args['id'];
+$extra_class = !empty($args['class']) ? ' ' . esc_attr($args['class']) : '';
+
 $text = get_field('text', $post_id);
 $link_field = get_field('review_link', $post_id);
 $link = is_array($link_field) ? $link_field['url'] : $link_field;
@@ -14,7 +16,7 @@ $attrs = $link ? 'href="' . esc_url($link) . '" target="_blank"' : '';
 $bg_style = $avatar ? 'style="background-image: url(' . esc_url($avatar) . ');"' : '';
 ?>
 
-<div class="review-card swiper-slide">
+<div class="review-card<?php echo $extra_class; ?>">
     <div class="review-card__stars">
         <?php
         for ($i = 1; $i <= 5; $i++):

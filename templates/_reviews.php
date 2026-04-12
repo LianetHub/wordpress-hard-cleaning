@@ -49,7 +49,14 @@ $reviews_query = new WP_Query([
             <div class="reviews__slider swiper">
                 <div class="swiper-wrapper">
                     <?php while ($reviews_query->have_posts()): $reviews_query->the_post(); ?>
-                        <?php get_template_part('templates/components/review-card', null, ['id' => get_the_ID()]); ?>
+                        <?php get_template_part(
+                            'templates/components/review-card',
+                            null,
+                            [
+                                'id'    => get_the_ID(),
+                                'class' => 'swiper-slide'
+                            ]
+                        ); ?>
                     <?php endwhile;
                     wp_reset_postdata(); ?>
                 </div>

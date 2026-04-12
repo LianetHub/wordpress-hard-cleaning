@@ -11,7 +11,7 @@ $address = get_field('address', 'option');
 $route_url = "https://yandex.ru/maps/?mode=routes&rtext=~{$clean_url_coords}&ruri=~ymapsbm1://org?oid={$org_id}&rtt=auto";
 ?>
 
-<section id="contacts" class="contacts">
+<div id="contacts" class="map">
     <div id="yandex-map"
         style="width: 100%; height: 100%;"
         data-coords="<?php echo esc_attr($raw_coords); ?>">
@@ -47,4 +47,4 @@ $route_url = "https://yandex.ru/maps/?mode=routes&rtext=~{$clean_url_coords}&rur
             </div>
         </div>
     </div>
-</section>
+</div>
