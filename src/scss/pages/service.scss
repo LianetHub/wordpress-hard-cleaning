@@ -569,31 +569,3 @@
         }
     }
 }
-
-.works {
-    padding: rem(100) 0;
-    background: #F8FAFB;
-
-    // .works__hint
-    &__hint {}
-
-    // .works__title
-    &__title {}
-
-    // .works__grid
-    &__grid {
-        display: grid;
-        margin-top: 2rem;
-        gap: 1.5rem;
-
-        @media (min-width:$md4) {
-            gap: 2rem;
-            margin-top: 4rem;
-            grid-template-columns: repeat(2, 1fr);
-        }
-
-        @media (min-width:$md2) {
-            grid-template-columns: repeat(3, 1fr);
-        }
-    }
-}

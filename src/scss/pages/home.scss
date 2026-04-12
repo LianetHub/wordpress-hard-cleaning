@@ -828,10 +828,10 @@
 
 .pricing {
     background: #F7F9FB;
-    padding: 3.75rem 0 1.25rem;
+    padding: rem(25) 0;
 
     @media (min-width:$md4) {
-        padding: 1.875rem 0;
+        padding: rem(50) 0;
     }
 
 
@@ -1063,136 +1063,9 @@
     }
 }
 
-
 // pricing block
 
-// сases block
 
-.cases-section {
-    background: #FFFFFF;
-    padding: 1.875rem 0;
-
-    overflow: hidden;
-
-    @media (max-width: 768px) {
-        padding: 1.5625rem 0;
-    }
-
-    @media (max-width: 700px) {
-        overflow-x: clip;
-    }
-
-
-}
-
-.cases-main-flex {
-    margin-top: 2rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2.5rem 3.75rem;
-
-    @media (max-width: 1024px) {
-        justify-content: flex-start;
-        gap: 2rem 2.5rem;
-    }
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-        align-items: stretch;
-    }
-}
-
-.cases-visual-side {
-    flex: 1 1 37.5rem;
-    max-width: 42.8125rem;
-
-    @media (max-width: 1024px) {
-        flex: 1 1 100%;
-        max-width: 100%;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-    }
-}
-
-.cases-info-side {
-    flex: 1 1 25rem;
-
-    @media (max-width: 1024px) {
-        flex: 1 1 100%;
-        max-width: none;
-        width: 100%;
-    }
-
-    @media (max-width: 768px) {
-        flex: 1 1 auto;
-    }
-}
-
-.cases-text-block {
-
-
-    h3 {
-        font-family: $font-unbounded;
-        font-weight: 600;
-        line-height: 1.2;
-        color: #272727;
-        margin-bottom: 1.25rem;
-        font-size: 1.5rem;
-
-        @media (min-width:$md4) {
-            font-size: 1.875rem;
-
-        }
-
-    }
-
-    p {
-
-        font-size: 1rem;
-        line-height: 1.4;
-        color: #4B5D68;
-        max-width: 28.75rem;
-        margin-bottom: 2.5rem;
-
-    }
-}
-
-.cases-cards-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5625rem;
-
-    @media (max-width: 768px) {
-        width: 100%;
-        max-width: min(26.25rem, 100%);
-        margin: 0 auto;
-        gap: 0;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-
-    @media (max-width: 700px) {
-        width: var(--m-main-card);
-        max-width: var(--m-main-card);
-    }
-
-    @media (min-width: 701px) and (max-width: 768px) {
-        max-width: none;
-        margin-inline: 0;
-    }
-
-}
-
-.cases-section {
-    .comparison-text {
-        @media (max-width: 768px) {
-            font-size: var(--fs-body);
-            line-height: 1.5;
-        }
-    }
-}
 
 // GUARANTEES block
 
