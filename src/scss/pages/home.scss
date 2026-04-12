@@ -1841,16 +1841,12 @@
 }
 
 .districts-grid {
+    margin-top: 1.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(rem(300), 1fr));
     gap: 1.25rem;
     margin-bottom: 2.5rem;
 
-
-    @media (max-width: 700px) {
-        gap: 0.625rem;
-        margin: 0;
-    }
 
 
 }
