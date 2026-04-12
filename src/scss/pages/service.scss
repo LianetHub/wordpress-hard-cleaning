@@ -25,7 +25,11 @@
     &__offer {}
 
     // .heading__title
-    &__title {}
+    &__title {
+        @media (max-width:$md5) {
+            hyphens: auto;
+        }
+    }
 
     // .heading__subtitle
     &__subtitle {}

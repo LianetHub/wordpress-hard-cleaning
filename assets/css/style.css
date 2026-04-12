@@ -3,14 +3,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1776002854269") format("woff2"), url("../fonts/icons.woff?v=1776002854269") format("woff");
+  src: url("../fonts/icons.woff2?v=1776002884007") format("woff2"), url("../fonts/icons.woff?v=1776002884007") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776002854269") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776002854269") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776002854269") format("woff");
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776002884007") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776002884007") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776002884007") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776002854269") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776002854269") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776002854269") format("woff");
+  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776002884007") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776002884007") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776002884007") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -444,28 +444,23 @@ h6 {
   font-weight: 700;
 }
 
-p {
-  font-weight: 500;
-  font-size: 1rem;
-}
-
-.title-lg,
-.typography-block h1 {
+.title-lg {
   font-size: 1.625rem;
 }
 
 .title,
-.typography-block h2 {
+.typography-block h1 {
   font-size: clamp(1.75rem, 0.85rem + 1.85vw, 2.5rem);
 }
 
 .title-md,
-.typography-block h3 {
+.typography-block h2 {
   font-size: clamp(1.125rem, 0.85rem + 1.85vw, 2.1875rem);
 }
 
 .title-sm,
-.typography-block h4 {
+.typography-block h4,
+.typography-block h3 {
   font-size: clamp(0.875rem, 0.15rem + 2.5vw, 1.25rem);
 }
 
@@ -702,7 +697,8 @@ p {
 }
 
 .typography-block p a {
-  color: #1570ef;
+  color: #467E9E;
+  text-decoration: underline;
 }
 
 .typography-block p:not(:last-child) {
@@ -735,6 +731,8 @@ p {
   content: "";
   display: block;
   position: absolute;
+  color: #467E9E;
+  font-weight: 800;
   left: 0.3em;
 }
 
@@ -756,8 +754,9 @@ p {
   top: 0;
 }
 
-.typography-block a:not(.article__more, .btn) {
-  color: #1570ef;
+.typography-block a:not(.btn) {
+  color: #467E9E;
+  text-decoration: underline;
 }
 
 .typography-block cite,
@@ -5652,8 +5651,7 @@ body {
     margin-top: 2rem;
   }
 
-  .title-lg,
-  .typography-block h1 {
+  .title-lg {
     font-size: 2.25rem;
   }
 
@@ -6337,8 +6335,7 @@ body {
 }
 
 @media (min-width: 1199.98px) {
-  .title-lg,
-  .typography-block h1 {
+  .title-lg {
     font-size: 2.5rem;
   }
 
@@ -6499,8 +6496,7 @@ body {
 }
 
 @media (min-width: 1439.98px) {
-  .title-lg,
-  .typography-block h1 {
+  .title-lg {
     font-size: 3rem;
   }
 
@@ -7639,6 +7635,11 @@ body {
     padding: 0.75rem 0.5rem;
     font-size: 0.875rem;
   }
+
+  .heading__title {
+    -ms-hyphens: auto;
+        hyphens: auto;
+  }
 }
 
 @media (max-width: 480px) {
@@ -7772,8 +7773,12 @@ body {
             transform: translateY(-0.125rem);
   }
 
-  .typography-block a:not(.article__more, .btn):hover {
-    text-decoration: underline;
+  .typography-block p a:hover {
+    text-decoration: none;
+  }
+
+  .typography-block a:not(.btn):hover {
+    text-decoration: none;
   }
 
   ::-webkit-scrollbar-thumb:hover {

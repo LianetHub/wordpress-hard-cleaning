@@ -25,12 +25,6 @@ h6 {
 	font-weight: 700;
 }
 
-p {
-	font-weight: 500;
-	font-size: 1rem;
-}
-
-
 .title-lg {
 	font-size: rem(26);
 
@@ -159,10 +153,6 @@ p {
 	}
 }
 
-// .swiper-lazy-preloader {
-// 	--swiper-preloader-color: #{$accent};
-// }
-
 .socials {
 	display: flex;
 	align-items: center;
@@ -276,12 +266,12 @@ p {
 		margin-top: 0;
 
 		margin-bottom: 2.4rem;
-		@extend .title-lg;
+		@extend .title;
 	}
 
 	h2 {
 		margin: 2.5rem 0 1.25rem;
-		@extend .title;
+		@extend .title-md;
 
 		&:first-child {
 			margin-top: 0;
@@ -290,7 +280,7 @@ p {
 
 	h3 {
 		margin: 2rem 0 1rem;
-		@extend .title-md;
+		@extend .title-sm;
 
 		&:first-child {
 			margin-top: 0;
@@ -309,7 +299,14 @@ p {
 
 	p {
 		a {
-			color: #1570ef;
+			color: $accent;
+			text-decoration: underline;
+
+			@media (any-hover: hover) {
+				&:hover {
+					text-decoration: none;
+				}
+			}
 		}
 
 		&:not(:last-child) {
@@ -341,6 +338,8 @@ p {
 				content: "";
 				display: block;
 				position: absolute;
+				color: $accent;
+				font-weight: 800;
 				left: 0.3em;
 			}
 		}
@@ -369,12 +368,13 @@ p {
 	}
 
 	a {
-		&:not(.article__more, .btn) {
-			color: #1570ef;
+		&:not(.btn) {
+			color: $accent;
+			text-decoration: underline;
 
 			@media (any-hover: hover) {
 				&:hover {
-					text-decoration: underline;
+					text-decoration: none;
 				}
 			}
 		}
