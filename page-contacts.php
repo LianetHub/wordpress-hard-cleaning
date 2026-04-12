@@ -37,7 +37,20 @@ $worktime = get_field('worktime', 'option');
         </div>
     </div>
 </section>
-
+<section class="place">
+    <div class="container">
+        <div class="place__hint hint">Как нас найти</div>
+        <h2 class="place__title title">Наш <span class="color-accent">офис</span></h2>
+        <?php if ($address): ?>
+            <address class="place__address subtitle">
+                <?php echo nl2br($address) ?>
+            </address>
+        <?php endif; ?>
+        <div class="place__map">
+            <?php require_once(TEMPLATE_PATH . 'components/map.php'); ?>
+        </div>
+    </div>
+</section>
 <?php require_once(TEMPLATE_PATH . '_requisites.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_faq.php'); ?>
 
