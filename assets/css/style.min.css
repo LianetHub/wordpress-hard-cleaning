@@ -6164,6 +6164,11 @@ body {
         align-items: center
     }
 
+    .heading__offer:first-child:last-child {
+        -ms-grid-column-span: 2;
+        grid-column: span 2
+    }
+
     .heading__images-block {
         width: 12rem
     }
