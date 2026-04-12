@@ -7,7 +7,6 @@
 
 @use "common";
 
-@use "common-sections/contacts";
 @use "common-sections/faq";
 @use "common-sections/cta";
 @use "common-sections/trust";
@@ -23,6 +22,7 @@
 @use "pages/policy";
 @use "pages/service";
 @use "pages/portfolio";
+@use "pages/contacts";
 
 @use "old-styles";
 

@@ -1964,32 +1964,7 @@
     }
 }
 
-.info-highlight-box {
-    background: #EEF6FD;
-    border-left: 0.1875rem solid #467E9E;
-    padding: 1.25rem 1.875rem;
-    border-radius: 0 1.25rem 1.25rem 0;
 
-    p {
-
-        font-weight: 400;
-        font-size: 1.125rem;
-        line-height: 1.4;
-
-
-    }
-
-    @media (max-width: 576px) {
-        padding: 1.25rem;
-    }
-
-    @media (max-width: 700px) {
-        width: 100%;
-        padding: 0.375rem 0.8125rem;
-        border-left-width: 0.25rem;
-        border-radius: 0 0.625rem 0.625rem 0;
-    }
-}
 
 .info-region-box {
     background: #FAFBFC;

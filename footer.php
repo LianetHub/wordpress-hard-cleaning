@@ -3,6 +3,11 @@ $phone = get_field('phone', 'option');
 $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 $email = get_field('email', 'option');
 $address = get_field('address', 'option');
+$company_name = get_field('company_name', 'option');
+$post_index_number = get_field('post_index_number', 'option');
+$inn_number = get_field('inn_number', 'option');
+$kpp_number = get_field('kpp_number', 'option');
+$ogrn_number = get_field('ogrn_number', 'option');
 ?>
 
 </main>
@@ -73,16 +78,34 @@ $address = get_field('address', 'option');
                 <div class="f-col">
                     <h4>Компания</h4>
                     <div class="f-text-block">
-                        <p>ООО «ФОРТУНА-КОМПАНИ»<br>
-                            Клининг в сложных ситуациях<br>
-                            в Санкт-Петербурге и Ленинградской области</p>
-                        <p>Юридический и фактический адрес: 195176, г. Санкт-Петербург<br>
-                            пр-кт Металлистов д.19/30 лит. А<br>
-                            помещение 17-Н</p>
+                        <p>
+                            <?php if ($company_name): ?>
+                                <?php echo $company_name; ?>
+                            <?php endif; ?>
+                            <br>
+                            Клининг в сложных ситуациях
+                            <br>
+                            в Санкт-Петербурге и Ленинградской области
+                        </p>
+                        <p>
+                            Юридический и фактический адрес:
+                            <?php if ($post_index_number): ?>
+                                <?php echo $post_index_number; ?>,
+                            <?php endif; ?>
+                            <?php if ($address): ?>
+                                <?php echo nl2br($address); ?>
+                            <?php endif; ?>
+                        </p>
                         <p class="f-requisites">
-                            ИНН 7806621158<br>
-                            КПП 780601001<br>
-                            ОГРН 1247800066360
+                            <?php if ($inn_number): ?>
+                                ИНН <?php echo $inn_number; ?><br>
+                            <?php endif; ?>
+                            <?php if ($kpp_number): ?>
+                                КПП <?php echo $kpp_number; ?><br>
+                            <?php endif; ?>
+                            <?php if ($ogrn_number): ?>
+                                ОГРН <?php echo $ogrn_number; ?><br>
+                            <?php endif; ?>
                         </p>
                     </div>
                 </div>
