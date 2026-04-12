@@ -3,14 +3,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1776013405579") format("woff2"), url("../fonts/icons.woff?v=1776013405579") format("woff");
+  src: url("../fonts/icons.woff2?v=1776014450095") format("woff2"), url("../fonts/icons.woff?v=1776014450095") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776013405579") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776013405579") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776013405579") format("woff");
+  font-family: "Unbounded";
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776014450095") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776014450095") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776014450095") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -18,8 +18,8 @@
 }
 
 @font-face {
-  font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776013405579") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776013405579") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776013405579") format("woff");
+  font-family: "Manrope";
+  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776014450095") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776014450095") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776014450095") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -6696,7 +6696,7 @@ body {
     gap: 1.875rem;
   }
 
-  .reviews__all-link {
+  .reviews__all-link.btn {
     display: none;
   }
 

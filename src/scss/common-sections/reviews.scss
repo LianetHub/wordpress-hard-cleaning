@@ -125,11 +125,11 @@
                 width: fit-content;
 
             }
+            @media (min-width:$md2) {
+                display: none;
+            }
         }
 
-        @media (min-width:$md2) {
-            display: none;
-        }
     }
 
 
