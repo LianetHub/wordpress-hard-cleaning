@@ -43,21 +43,23 @@ $guarantee_tabs = [
 /**
  * Данные для карточек документов
  */
+$docs_page_id = 358;
+
 $guarantee_docs = [
     [
         'label' => 'Договор оферты',
         'img'   => get_template_directory_uri() . '/assets/certificate_1.jpg',
-        'link'  => '#'
+        'link'  => add_query_arg('type', 'offer', get_permalink($docs_page_id))
     ],
     [
         'label' => 'Сертификаты',
         'img'   => get_template_directory_uri() . '/assets/certificate_2.jpg',
-        'link'  => '#'
+        'link'  => add_query_arg('type', 'certificate', get_permalink($docs_page_id))
     ],
     [
         'label' => 'Лицензии',
         'img'   => get_template_directory_uri() . '/assets/certificate_3.jpg',
-        'link'  => '#'
+        'link'  => add_query_arg('type', 'license', get_permalink($docs_page_id))
     ]
 ];
 ?>
