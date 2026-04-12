@@ -44,7 +44,26 @@ $(function () {
         const $menu = $('.menu');
         const $toggler = $('.header__menu-toggler');
 
+        // Fancybox Gallery
+        const $fancyTrigger = $target.closest('[data-fancybox-gallery]');
+        if ($fancyTrigger.length) {
+            e.preventDefault();
+            const rawData = $fancyTrigger.attr('data-gallery');
+            if (rawData && typeof Fancybox !== 'undefined') {
+                try {
+                    const items = JSON.parse(rawData);
+                    Fancybox.show(items, {
+                        infinite: false,
+                        dragToClose: true
+                    });
+                } catch (err) {
+                    console.error("Fancybox JSON parse error:", err);
+                }
+            }
+            return;
+        }
 
+        // Menu toggler
         if ($target.closest('.header__menu-toggler').length) {
             $toggler.toggleClass("active");
             $menu.toggleClass("menu--open");
@@ -52,20 +71,21 @@ $(function () {
             return;
         }
 
+        // Close menu on click outside (overlay)
         if ($target.is('.menu') && $menu.hasClass('menu--open')) {
             $toggler.removeClass("active");
             $menu.removeClass("menu--open");
             $('body').removeClass('menu-lock');
         }
 
+        // Close menu on link click
         if ($menu.hasClass('menu--open') && $target.closest('.menu-item a').length) {
             $toggler.removeClass("active");
             $menu.removeClass("menu--open");
             $('body').removeClass('menu-lock');
         }
 
-        // faq accordion
-
+        // FAQ accordion
         if ($target.closest('.faq__question').length) {
             const $faqQuestion = $target.closest('.faq__question');
             const $item = $faqQuestion.closest('.faq__item');
@@ -245,11 +265,11 @@ $(function () {
 
     }
 
-    if ($('.catalog__filters').length) {
+    if ($('.filters').length) {
         const $this = $(this);
-        const activeIndex = $this.find('.catalog__filter.active').index();
+        const activeIndex = $this.find('.filters.active').index();
 
-        new MobileSwiper('.catalog__filters', {
+        new MobileSwiper('.filters', {
             slidesPerView: "auto",
             spaceBetween: 12,
             initialSlide: activeIndex >= 0 ? activeIndex : 0

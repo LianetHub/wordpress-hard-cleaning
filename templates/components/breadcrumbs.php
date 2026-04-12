@@ -47,6 +47,8 @@ if (is_post_type_archive('services') || is_tax('service_cat') || is_singular('se
     } else {
         $items[count($items) - 1]['link'] = '';
     }
+} elseif (is_post_type_archive('certificates')) {
+    $items[] = ['name' => 'Документы', 'link' => ''];
 } elseif (is_page()) {
     $ancestors = get_post_ancestors(get_the_ID());
     if ($ancestors) {

@@ -4,7 +4,7 @@
 @use "variables" as *;
 @use "fonts";
 @use "icons";
-@use "forms";
+
 
 .heading {
     background: #F7F9FB;
@@ -170,15 +170,6 @@
     // .catalog__filters
     &__filters {
         margin-top: 1rem;
-        overflow: visible;
-
-        .swiper-wrapper {
-            @media (min-width:$md3) {
-                display: flex;
-                flex-wrap: wrap;
-                gap: 1rem;
-            }
-        }
     }
 
     // .catalog__grid
@@ -201,16 +192,6 @@
         }
     }
 
-    // .catalog__filter
-    &__filter {
-        &.swiper-slide {
-            width: fit-content;
-        }
-
-        &.active {
-            @extend .btn-primary;
-        }
-    }
 
     // .catalog__support
     &__support {

@@ -82,10 +82,10 @@ if (!$is_archive) {
         </h2>
         <p class="catalog__subtitle subtitle">Нажмите на услугу — расскажем подробно что входит и&nbsp;сколько стоит</p>
 
-        <div class="catalog__filters swiper">
+        <div class="catalog__filters filters swiper">
             <div class="swiper-wrapper">
                 <a href="<?php echo esc_url($first_btn_link); ?>"
-                    class="catalog__filter swiper-slide btn btn-sm btn-outline <?php echo $is_first_btn_active ? 'active' : ''; ?>">
+                    class="filters__item swiper-slide btn btn-sm btn-outline <?php echo $is_first_btn_active ? 'active' : ''; ?>">
                     <?php echo esc_html($first_btn_text); ?>
                 </a>
 
@@ -96,7 +96,7 @@ if (!$is_archive) {
                         $term_link = get_term_link($term);
                         ?>
                         <a href="<?php echo esc_url($term_link); ?>"
-                            class="catalog__filter swiper-slide btn btn-sm btn-outline <?php echo $is_active; ?>">
+                            class="filters__item swiper-slide btn btn-sm btn-outline <?php echo $is_active; ?>">
                             <?php echo esc_html($term->name); ?>
                         </a>
                     <?php endforeach; ?>
