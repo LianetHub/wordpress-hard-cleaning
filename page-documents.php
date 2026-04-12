@@ -3,14 +3,17 @@
 /**
  * Template Name: Page Documents
  */
-get_header(); ?>
+get_header();
 
-<?php
+$active_filter = isset($_GET['type']) ? sanitize_text_field($_GET['type']) : 'all';
+
 $docs_query = new WP_Query([
     'post_type'      => 'certificates',
     'posts_per_page' => -1,
     'post_status'    => 'publish'
 ]);
+
+$found_any = false; // Флаг для проверки видимых элементов на уровне PHP
 ?>
 
 <?php require_once(TEMPLATE_PATH . '/components/breadcrumbs.php'); ?>
@@ -32,7 +35,7 @@ $docs_query = new WP_Query([
                 ];
 
                 foreach ($doc_types as $value => $label):
-                    $is_active = ($value === 'all') ? 'active' : '';
+                    $is_active = ($value === $active_filter) ? 'active' : '';
                 ?>
                     <button type="button"
                         data-filter="<?php echo esc_attr($value); ?>"
@@ -46,14 +49,18 @@ $docs_query = new WP_Query([
         <ul class="certs__grid">
             <?php if ($docs_query->have_posts()): while ($docs_query->have_posts()): $docs_query->the_post();
                     $type = get_field('cert_type');
-                    $type_value = $type['value'] ?? 'other';
-                    $type_label = $type['label'] ?? 'Документ';
+
+                    $type_value = (!empty($type['value'])) ? $type['value'] : 'certificate';
+                    $type_label = (!empty($type['label'])) ? $type['label'] : 'Сертификат';
+
                     $gallery = get_field('cert_gallery');
+                    $is_visible = ($active_filter === 'all' || $active_filter === $type_value);
+                    if ($is_visible) $found_any = true;
+
+                    $display_style = $is_visible ? 'display: flex;' : 'display: none;';
             ?>
                     <?php if ($gallery):
                         $first_image = $gallery[0];
-                        $count = count($gallery);
-
                         $gallery_data = [];
                         foreach ($gallery as $img) {
                             $gallery_data[] = [
@@ -63,61 +70,47 @@ $docs_query = new WP_Query([
                         }
                         $json_gallery = esc_attr(json_encode($gallery_data));
                     ?>
-                        <li class="certs__item" data-type="<?php echo esc_attr($type_value); ?>">
+                        <li class="certs__item"
+                            data-type="<?php echo esc_attr($type_value); ?>"
+                            style="<?php echo $display_style; ?>">
+
                             <a href="<?php echo esc_url($first_image['url']); ?>"
                                 class="certs__item-image icon-zoom"
                                 data-fancybox-gallery
                                 data-gallery='<?php echo $json_gallery; ?>'>
-
                                 <img src="<?php echo esc_url($first_image['url']); ?>"
                                     alt="<?php echo esc_attr($first_image['alt']); ?>"
-                                    loading="lazy"
-                                    decoding="async"
                                     class="cover-image">
                             </a>
 
                             <div class="certs__item-name"><?php the_title(); ?></div>
+
                             <div class="certs__item-footer">
                                 <div class="certs__item-type"><?php echo esc_html($type_label); ?></div>
-
-                                <a href="<?php echo esc_url($first_image['url']); ?>"
+                                <button type="button"
                                     class="certs__item-btn btn btn-primary"
                                     data-fancybox-gallery
                                     data-gallery='<?php echo $json_gallery; ?>'>
                                     Смотреть
-                                </a>
+                                </button>
                             </div>
                         </li>
                     <?php endif; ?>
                 <?php endwhile;
-                wp_reset_postdata();
-            else: ?>
-                <p>Документы скоро будут добавлены.</p>
+                wp_reset_postdata(); ?>
+
+                <div class="certs__empty"
+                    style="<?php echo $found_any ? 'display: none;' : 'display: block;'; ?>">
+                    <p>Документов в данной категории пока нет.</p>
+                </div>
+
+            <?php else: ?>
+                <div class="certs__empty">
+                    <p>Документы скоро будут добавлены.</p>
+                </div>
             <?php endif; ?>
         </ul>
     </div>
 </section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-
-        // Логика фильтрации
-        const filterBtns = document.querySelectorAll('.filters__item');
-        const certItems = document.querySelectorAll('.certs__item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.dataset.filter;
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                certItems.forEach(item => {
-                    item.style.display = (filter === 'all' || item.dataset.type === filter) ? 'block' : 'none';
-                });
-            });
-        });
-
-    });
-</script>
 
 <?php get_footer(); ?>

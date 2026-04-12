@@ -44,6 +44,40 @@ $(function () {
         const $menu = $('.menu');
         const $toggler = $('.header__menu-toggler');
 
+        // docs filters
+        const $filterBtn = $target.closest('.filters__item');
+        if ($filterBtn.length) {
+            const filter = $filterBtn.data('filter');
+            const $gridItems = $('.certs__item');
+            const $emptyMsg = $('.certs__empty');
+            let visibleCount = 0;
+
+            $('.filters__item').removeClass('active');
+            $filterBtn.addClass('active');
+
+            $gridItems.each(function () {
+                const itemType = $(this).data('type');
+                if (filter === 'all' || itemType === filter) {
+                    $(this).css('display', 'flex').hide().fadeIn(300);
+                    visibleCount++;
+                } else {
+                    $(this).hide();
+                }
+            });
+
+            // Показываем/скрываем сообщение о пустоте
+            if (visibleCount === 0) {
+                $emptyMsg.fadeIn(300);
+            } else {
+                $emptyMsg.hide();
+            }
+
+            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + (filter === 'all' ? '' : '?type=' + filter);
+            window.history.pushState({ path: newUrl }, '', newUrl);
+
+            return;
+        }
+
         // Fancybox Gallery
         const $fancyTrigger = $target.closest('[data-fancybox-gallery]');
         if ($fancyTrigger.length) {

@@ -28,10 +28,25 @@
 
     // .certs__grid
     &__grid {
-        margin-top: 3rem;
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: rem(30);
+        gap: rem(20);
+        margin-top: rem(40);
+
+        @media (min-width:$md4) {
+            margin-top: rem(50);
+            grid-template-columns: repeat(2, 1fr);
+
+        }
+
+        @media (min-width:$md3) {
+            gap: rem(30);
+        }
+
+        @media (min-width:$md2) {
+            margin-top: 3rem;
+            grid-template-columns: repeat(3, 1fr);
+
+        }
     }
 
 
@@ -107,6 +122,7 @@
 
     }
 
+    // .certs__item-footer
     &__item-footer {
         margin-top: auto;
         border-top: rem(1) solid #DDE6F0;

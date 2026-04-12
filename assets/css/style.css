@@ -5060,12 +5060,10 @@ body {
 }
 
 .certs__grid {
-  margin-top: 3rem;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.875rem;
+  gap: 1.25rem;
+  margin-top: 2.5rem;
 }
 
 .certs__item {
@@ -6296,6 +6294,12 @@ body {
   .place {
     padding: 6.25rem 0;
   }
+
+  .certs__grid {
+    margin-top: 3.125rem;
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (min-width: 991.98px) {
@@ -6659,6 +6663,10 @@ body {
   .requisites__item-value {
     font-size: 1.25rem;
   }
+
+  .certs__grid {
+    gap: 1.875rem;
+  }
 }
 
 @media (min-width: 1199.98px) {
@@ -6817,6 +6825,12 @@ body {
 
   .requisites__list {
     margin-top: 4.625rem;
+    -ms-grid-columns: (1fr)[3];
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .certs__grid {
+    margin-top: 3rem;
     -ms-grid-columns: (1fr)[3];
     grid-template-columns: repeat(3, 1fr);
   }
