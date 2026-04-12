@@ -3,14 +3,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1775985317945") format("woff2"), url("../fonts/icons.woff?v=1775985317945") format("woff");
+  src: url("../fonts/icons.woff2?v=1775990245145") format("woff2"), url("../fonts/icons.woff?v=1775990245145") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1775985317945") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1775985317945") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1775985317945") format("woff");
+  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1775990245145") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1775990245145") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1775990245145") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1775985317945") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1775985317945") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1775985317945") format("woff");
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1775990245145") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1775990245145") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1775990245145") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -1324,22 +1324,20 @@ body {
 
 .reviews__grid {
   margin-top: 3.25rem;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[3];
-  grid-template-columns: repeat(3, 1fr);
   gap: 1.875rem;
 }
 
-.reviews__column {
+.reviews__column:not(:last-child) {
+  margin-bottom: 1.5rem;
+}
+
+.reviews__all-link.btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  gap: 1.875rem;
+  margin-top: 2rem;
+  margin-inline: auto;
+  width: 100%;
 }
 
 .reviews__btn {
@@ -1532,7 +1530,10 @@ body {
 }
 
 .yandex-banner {
-  padding: 4.625rem 0;
+  padding: 2rem 0;
+}
+
+.yandex-banner {
   background: #fff;
 }
 
@@ -1543,13 +1544,17 @@ body {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 1.25rem;
+  border: 0.0625rem solid #D5DCDF;
   gap: 1rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 1.56rem 3.75rem;
-  border-radius: 1.25rem;
-  border: 0.0625rem solid #D5DCDF;
+  padding: 1.56rem;
 }
 
 .yandex-banner__brand {
@@ -1560,9 +1565,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 1.25rem;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 50%;
-          flex: 0 1 50%;
 }
 
 .yandex-banner__logo {
@@ -1581,6 +1583,13 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+.yandex-banner__name {
+  font-size: 1.25rem;
+  font-family: "Unbounded";
+  font-weight: 700;
+  letter-spacing: 0.025rem;
 }
 
 .yandex-banner__hint {
@@ -1607,18 +1616,6 @@ body {
           flex: 1;
 }
 
-.yandex-banner__action {
-  -webkit-box-flex: 0;
-      -ms-flex: 0 1 50%;
-          flex: 0 1 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-}
-
 .yandex-banner__btn::after {
   content: "→";
   margin-left: 0.625rem;
@@ -1636,9 +1633,6 @@ body {
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  -webkit-box-flex: 0;
-      -ms-flex: 0 0 10rem;
-          flex: 0 0 10rem;
 }
 
 .rating-yandex__value {
@@ -5318,6 +5312,12 @@ body {
     width: 26rem;
   }
 
+  .reviews__all-link.btn {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
   .dropdown {
     font-size: 1.125rem;
   }
@@ -5527,6 +5527,14 @@ body {
             flex-direction: row;
   }
 
+  .reviews__column {
+    display: contents;
+  }
+
+  .reviews__column:not(:last-child) {
+    margin-bottom: 0;
+  }
+
   .review-card {
     padding: 1.875rem 2.5rem;
   }
@@ -5538,6 +5546,14 @@ body {
 
   .review-card__author-name {
     font-size: 1.25rem;
+  }
+
+  .yandex-banner {
+    padding: 4.625rem 0;
+  }
+
+  .yandex-banner__content {
+    padding: 1.56rem 3.75rem;
   }
 
   .form__field-clear {
@@ -5829,6 +5845,37 @@ body {
     display: none;
   }
 
+  .yandex-banner__content {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+
+  .yandex-banner__brand {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 50%;
+            flex: 0 1 50%;
+  }
+
+  .yandex-banner__action {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 1 50%;
+            flex: 0 1 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+  }
+
+  .rating-yandex {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 10rem;
+            flex: 0 0 10rem;
+  }
+
   .header {
     top: -3.75rem;
   }
@@ -6083,6 +6130,28 @@ body {
     max-width: 71.25rem;
   }
 
+  .reviews__grid {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[3];
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .reviews__column {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    gap: 1.875rem;
+  }
+
+  .reviews__all-link {
+    display: none;
+  }
+
   .header__logo img {
     height: 5rem;
   }
@@ -6273,6 +6342,20 @@ body {
 }
 
 @media (max-width: 1199.98px) {
+  .reviews__grid .review-card {
+    -webkit-column-break-inside: avoid;
+       -moz-column-break-inside: avoid;
+            break-inside: avoid;
+  }
+
+  .reviews__grid .review-card:not(:last-child) {
+    margin-bottom: 1.5rem;
+  }
+
+  .reviews__column-btn {
+    display: none;
+  }
+
   .site-footer .f-top-grid {
     -ms-grid-columns: (1fr)[2];
     grid-template-columns: repeat(2, 1fr);
@@ -6369,13 +6452,6 @@ body {
     -ms-grid-columns: 1fr;
     grid-template-columns: 1fr;
     gap: 2.5rem;
-  }
-
-  .yandex-banner__brand {
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
   }
 
   .coverage-bottom {
@@ -7323,6 +7399,10 @@ body {
     padding: 1.125rem 0.875rem;
   }
 
+  .yandex-banner__btn.btn {
+    padding-inline: 1rem;
+  }
+
   .services__item-btn.btn {
     padding: 0.75rem 0.5rem;
     font-size: 0.875rem;
@@ -7370,6 +7450,18 @@ body {
 @media (min-width: 769px) and (max-width: 1024px) {
   .cta {
     padding: 3rem 0;
+  }
+}
+
+@media (max-width: 1199.98px) and (min-width: 767.98px) {
+  .reviews__grid {
+    -webkit-columns: 2;
+       -moz-columns: 2;
+            columns: 2;
+  }
+
+  .reviews__grid .review-card:not(:last-child) {
+    margin-bottom: 1.875rem;
   }
 }
 

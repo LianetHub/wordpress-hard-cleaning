@@ -53,17 +53,85 @@
     // .reviews__grid
     &__grid {
         margin-top: 3.25rem;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
         gap: rem(30);
+
+        @media (max-width:$md2) {
+
+
+            @media (min-width:$md4) {
+                columns: 2;
+            }
+
+
+            .review-card {
+                break-inside: avoid;
+
+                &:not(:last-child) {
+                    margin-bottom: rem(24);
+
+                    @media (min-width:$md4) {
+                        margin-bottom: rem(30);
+
+                    }
+                }
+            }
+        }
+
+        @media (min-width:$md2) {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+        }
     }
 
     // .reviews__column
     &__column {
-        display: flex;
-        flex-direction: column;
-        gap: rem(30);
+        &:not(:last-child) {
+            margin-bottom: 1.5rem;
+        }
+
+        @media (min-width:$md4) {
+            display: contents;
+
+            &:not(:last-child) {
+                margin-bottom: 0;
+            }
+
+        }
+
+        @media (min-width:$md2) {
+            display: flex;
+            flex-direction: column;
+            gap: rem(30);
+        }
     }
+
+    // .reviews__column-btn
+    &__column-btn {
+        @media (max-width:$md2) {
+            display: none;
+        }
+    }
+
+    // .reviews__all-link
+    &__all-link {
+        &.btn {
+            display: flex;
+            margin-top: 2rem;
+            margin-inline: auto;
+            width: 100%;
+
+            @media (min-width:$md5) {
+                width: fit-content;
+
+            }
+        }
+
+        @media (min-width:$md2) {
+            display: none;
+        }
+    }
+
 
     // .reviews__btn
     &__btn {
@@ -303,28 +371,45 @@
 }
 
 .yandex-banner {
-    padding: 4.625rem 0;
+    padding: 2rem 0;
+
+    @media (min-width:$md4) {
+        padding: 4.625rem 0;
+
+    }
+
     background: #fff;
 
     &__content {
         display: flex;
         justify-content: space-between;
-        gap: 1rem;
-        align-items: center;
-        padding: 1.56rem 3.75rem;
+        flex-direction: column;
         border-radius: 1.25rem;
         border: rem(1) solid #D5DCDF;
+        gap: 1rem;
+        align-items: center;
+        padding: 1.56rem;
+
+        @media (min-width:$md4) {
+            padding: 1.56rem 3.75rem;
+
+        }
+
+        @media (min-width:$md3) {
+            flex-direction: row;
+        }
     }
 
     &__brand {
         display: flex;
         align-items: center;
         gap: rem(20);
-        flex: 0 1 50%;
 
-        @media (max-width: 992px) {
-            flex-direction: column;
+        @media (min-width:$md3) {
+            flex: 0 1 50%;
         }
+
+
     }
 
     &__logo {
@@ -338,7 +423,12 @@
 
     }
 
-    &__name {}
+    &__name {
+        font-size: 1.25rem;
+        font-family: $font-unbounded;
+        font-weight: 700;
+        letter-spacing: 0.025rem;
+    }
 
     &__hint {
         margin-top: rem(10);
@@ -356,13 +446,19 @@
     }
 
     &__action {
-        flex: 0 1 50%;
-        display: flex;
-        justify-content: flex-end;
+        @media (min-width:$md3) {
+            flex: 0 1 50%;
+            display: flex;
+            justify-content: flex-end;
+        }
     }
 
     &__btn {
-
+        &.btn {
+            @media (max-width:$md5) {
+                padding-inline: 1rem;
+            }
+        }
 
         &::after {
             content: '→';
@@ -378,7 +474,11 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    flex: 0 0 rem(160);
+
+    @media (min-width:$md3) {
+        flex: 0 0 rem(160);
+
+    }
 
     &__value {
         color: #272727;

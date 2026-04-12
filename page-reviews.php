@@ -16,13 +16,27 @@ $reviews_query = new WP_Query([
     'orderby'        => 'date',
     'order'          => 'ASC'
 ]);
+
+$reviews_hint     = get_field('reviews_hint') ?: 'Отзывы клиентов';
+$reviews_title    = get_field('reviews_title');
+$reviews_subtitle = get_field('reviews_subtitle');
 ?>
 
 <section class="reviews reviews--page">
     <div class="container">
-        <div class="reviews__hint hint">Отзывы клиентов</div>
-        <h2 class="reviews__title title">Все отзывы</h2>
-        <p class="reviews__subtitle subtitle">Отвечаем на звонки и сообщения ежедневно — без выходных</p>
+        <?php if ($reviews_hint): ?>
+            <div class="reviews__hint hint">
+                <?php echo esc_html($reviews_hint); ?>
+            </div>
+        <?php endif; ?>
+        <h2 class="reviews__title title">
+            <?php echo esc_html($reviews_title); ?>
+        </h2>
+        <?php if ($reviews_subtitle): ?>
+            <p class="reviews__subtitle subtitle">
+                <?php echo esc_html($reviews_subtitle); ?>
+            </p>
+        <?php endif; ?>
         <?php if ($reviews_query->have_posts()):
             $all_reviews = $reviews_query->posts;
 
@@ -56,6 +70,11 @@ $reviews_query = new WP_Query([
             </div>
         <?php wp_reset_postdata();
         endif; ?>
+        <a href="<?php echo esc_url($yandex_link); ?>"
+            target="_blank"
+            class="reviews__all-link btn btn-primary">
+            Посмотреть все отзывы
+        </a>
     </div>
 </section>
 
@@ -72,7 +91,7 @@ $reviews_query = new WP_Query([
                         alt="Яндекс">
                 </div>
                 <div class="yandex-banner__info">
-                    <h2 class="yandex-banner__name title-sm">Мы на Яндекс.Картах</h2>
+                    <h2 class="yandex-banner__name">Мы на Яндекс.Картах</h2>
                     <p class="yandex-banner__hint">Читайте и оставляйте отзывы напрямую</p>
                 </div>
             </div>
