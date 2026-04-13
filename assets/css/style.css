@@ -3,14 +3,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1776107058162") format("woff2"), url("../fonts/icons.woff?v=1776107058162") format("woff");
+  src: url("../fonts/icons.woff2?v=1776107506571") format("woff2"), url("../fonts/icons.woff?v=1776107506571") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776107058162") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776107058162") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776107058162") format("woff");
+  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776107506571") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776107506571") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776107506571") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776107058162") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776107058162") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776107058162") format("woff");
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776107506571") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776107506571") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776107506571") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -1222,8 +1222,6 @@ body {
   margin-top: 1.5625rem;
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[2];
-  grid-template-columns: repeat(2, 1fr);
   gap: 0.75rem;
 }
 
@@ -3521,7 +3519,10 @@ body {
   background: #eaf3f8;
   border-radius: 0.75rem;
   font-weight: 500;
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
+}
+
+.services__item-tag {
   line-height: 1.35;
   letter-spacing: 0.02em;
   color: #3a6d8a;
@@ -6502,6 +6503,11 @@ body {
     padding: 6.25rem 0;
   }
 
+  .faq__cta-btns {
+    -ms-grid-columns: (1fr)[2];
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .cta__btns {
     -webkit-box-align: center;
         -ms-flex-align: center;
@@ -6780,6 +6786,10 @@ body {
         -ms-flex: 0 1 auto;
             flex: 0 1 auto;
     margin-bottom: 0.75rem;
+  }
+
+  .services__item-tag {
+    font-size: 0.8125rem;
   }
 
   .services__item-image {
