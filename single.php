@@ -134,11 +134,11 @@ $query = new WP_Query($args);
 
 if ($query->have_posts()) :
 ?>
-    <section class="blog">
+    <section class="posts">
         <div class="container">
-            <h2 class="blog__title title">Другие статьи</h2>
-            <div class="blog__body">
-                <div class="blog__grid">
+            <h2 class="posts__title title">Другие статьи</h2>
+            <div class="posts__body">
+                <div class="posts__grid">
                     <?php
                     while ($query->have_posts()) : $query->the_post();
                     ?>

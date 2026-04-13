@@ -1,5 +1,5 @@
-<div class="blog__card">
-    <a href="<?php the_permalink(); ?>" class="blog__card-image">
+<div class="posts__card">
+    <a href="<?php the_permalink(); ?>" class="posts__card-image">
         <?php if (has_post_thumbnail()) : ?>
             <?php the_post_thumbnail('full'); ?>
         <?php else : ?>
@@ -9,15 +9,15 @@
                 class="cover-image" />
         <?php endif; ?>
     </a>
-    <div class="blog__card-body">
-        <div class="blog__card-header">
-            <a href="<?php the_permalink(); ?>" class="blog__card-name"><?php the_title(); ?></a>
+    <div class="posts__card-body">
+        <div class="posts__card-header">
+            <a href="<?php the_permalink(); ?>" class="posts__card-name"><?php the_title(); ?></a>
             <time datetime="<?php the_time('c'); ?>"
-                class="blog__card-time icon-calendar">
+                class="posts__card-time icon-calendar">
                 <?php the_time('d.m.Y'); ?>
             </time>
         </div>
-        <p class="blog__card-desc">
+        <p class="posts__card-desc">
             <?php
             $short_desc = get_field('short_desc');
             if ($short_desc) {
@@ -27,6 +27,6 @@
             }
             ?>
         </p>
-        <a href="<?php the_permalink(); ?>" class="blog__card-more">Читать полностью</a>
+        <a href="<?php the_permalink(); ?>" class="posts__card-more">Читать полностью</a>
     </div>
 </div>
