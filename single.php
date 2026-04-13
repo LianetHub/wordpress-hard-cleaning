@@ -24,6 +24,10 @@
                             class="heading__stat icon-like">
                             <?php echo (int) get_post_meta(get_the_ID(), 'hard_cleaning_theme_likes', true); ?>
                         </div>
+                        <div
+                            class="heading__stat icon-eye">
+                            <?php echo hard_cleaning_theme_get_post_views(get_the_ID()); ?>
+                        </div>
                     </div>
 
                     <?php if (get_the_title()) : ?>

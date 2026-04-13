@@ -532,6 +532,7 @@ h6 {
 			padding: rem(25);
 			vertical-align: middle;
 			border: 0;
+			font-size: 1rem;
 
 			@media (min-width:$md4) {
 				font-size: 1.25rem;
@@ -552,11 +553,15 @@ h6 {
 			gap: 1rem;
 			padding: rem(5) rem(10);
 			text-align: right;
+			font-size: 1rem;
 
 			&:before {
 				content: attr(data-label);
 				text-align: left;
 				font-weight: 700;
+				flex-shrink: 0;
+				max-width: 50%;
+
 			}
 		}
 	}

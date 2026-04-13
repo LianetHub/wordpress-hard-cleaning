@@ -282,6 +282,7 @@
     &__likes-text {
         line-height: 150%;
         font-size: 1.125rem;
+        font-weight: 500;
 
         @media (min-width: $md4) {
             font-size: 1.25rem;
