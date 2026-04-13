@@ -6,24 +6,33 @@ $(function () {
 
     // copy
     if ($('.article__copy').length) {
-
         let copyTimeout = null;
 
         $('.article__copy').on('click', function (e) {
             e.preventDefault();
             const $btn = $(this);
             const url = $btn.attr('data-url');
+            const originalText = 'Скопировать';
+            const successText = 'Скопировано!';
 
-            if (!url) return;
+            if (!url || $btn.hasClass('is-copied')) return;
 
             navigator.clipboard.writeText(url).then(() => {
-
+                $btn.text(successText).addClass('is-copied');
 
                 if (copyTimeout) clearTimeout(copyTimeout);
 
+                copyTimeout = setTimeout(() => {
+                    $btn.text(originalText).removeClass('is-copied');
+                }, 2500);
 
             }).catch(err => {
                 console.error('Ошибка при копировании: ', err);
+                $btn.text('Ошибка').addClass('is-error');
+
+                setTimeout(() => {
+                    $btn.text(originalText).removeClass('is-error');
+                }, 2000);
             });
         });
     }
@@ -54,7 +63,7 @@ $(function () {
 
         const updateLikes = (actionName) => {
             return $.ajax({
-                url: great_ajax.url,
+                url: admin_ajax.url,
                 type: 'POST',
                 data: {
                     action: actionName,
@@ -130,7 +139,7 @@ $(function () {
 
         if (!lastView || (now - lastView) > dayInMs) {
             $.ajax({
-                url: great_ajax.url,
+                url: admin_ajax.url,
                 type: 'POST',
                 data: {
                     action: 'hard_cleaning_theme_increment_views',

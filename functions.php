@@ -87,6 +87,10 @@ add_action('wp_enqueue_scripts', function () {
     $app_js_ver = filemtime($theme_dir . '/assets/js/app.min.js');
     wp_enqueue_script('app-js', $theme_uri . '/assets/js/app.min.js', array('jquery', 'yandex-maps', 'swiper-js', 'fancybox-js'), $app_js_ver, true);
 
+    wp_localize_script('app-js', 'admin_ajax', [
+        'url' => admin_url('admin-ajax.php')
+    ]);
+
     if (is_singular('post')) {
         wp_enqueue_script(
             'post-scripts',

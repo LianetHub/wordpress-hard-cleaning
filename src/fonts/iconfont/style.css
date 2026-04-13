@@ -1,10 +1,10 @@
 @font-face {
   font-family: 'icons';
-  src:  url('fonts/icons.eot?l1m5xi');
-  src:  url('fonts/icons.eot?l1m5xi#iefix') format('embedded-opentype'),
-    url('fonts/icons.ttf?l1m5xi') format('truetype'),
-    url('fonts/icons.woff?l1m5xi') format('woff'),
-    url('fonts/icons.svg?l1m5xi#icons') format('svg');
+  src:  url('fonts/icons.eot?vc666m');
+  src:  url('fonts/icons.eot?vc666m#iefix') format('embedded-opentype'),
+    url('fonts/icons.ttf?vc666m') format('truetype'),
+    url('fonts/icons.woff?vc666m') format('woff'),
+    url('fonts/icons.svg?vc666m#icons') format('svg');
   font-weight: normal;
   font-style: normal;
   font-display: block;
@@ -25,6 +25,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-dislike:before {
+  content: "\e910";
+}
+.icon-like:before {
+  content: "\e911";
+}
+.icon-copy:before {
+  content: "\e912";
+}
 .icon-calendar:before {
   content: "\e90f";
 }

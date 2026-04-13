@@ -3,14 +3,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1776104817595") format("woff2"), url("../fonts/icons.woff?v=1776104817595") format("woff");
+  src: url("../fonts/icons.woff2?v=1776105991327") format("woff2"), url("../fonts/icons.woff?v=1776105991327") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776104817595") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776104817595") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776104817595") format("woff");
+  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776105991327") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776105991327") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776105991327") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -19,7 +19,7 @@
 
 @font-face {
   font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776104817595") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776104817595") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776104817595") format("woff");
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776105991327") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776105991327") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776105991327") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -43,6 +43,18 @@
 [class^=icon-]:before,
 [class*=" icon-"]:before {
   display: block;
+}
+
+.icon-dislike:before {
+  content: "\e910";
+}
+
+.icon-like:before {
+  content: "\e911";
+}
+
+.icon-copy:before {
+  content: "\e912";
 }
 
 .icon-calendar:before {
@@ -4451,6 +4463,39 @@ body {
   gap: 2rem;
 }
 
+.heading__stats {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-column-gap: 3rem;
+     -moz-column-gap: 3rem;
+          column-gap: 3rem;
+  row-gap: 0.875rem;
+  margin-bottom: 1rem;
+}
+
+.heading__stat {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.5rem;
+}
+
+.heading__stat::before {
+  color: #467E9E;
+  font-size: 1.25rem;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+
 .heading__btns {
   margin-top: 0.9375rem;
   display: -webkit-box;
@@ -5518,6 +5563,7 @@ body {
 
 .article__likes-btn {
   position: relative;
+  z-index: 1;
   line-height: 150%;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -5699,6 +5745,16 @@ body {
   width: 1.25rem;
   font-size: 1.25rem;
   height: 1.25rem;
+}
+
+.article__copy.is-copied {
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.article__copy.is-error {
+  pointer-events: none;
+  color: #dc3545;
 }
 
 :root {

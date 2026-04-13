@@ -298,6 +298,7 @@
     // .article__likes-btn
     &__likes-btn {
         position: relative;
+        z-index: 1;
         line-height: 150%;
         display: flex;
         align-items: center;
@@ -443,6 +444,16 @@
             width: 1.25rem;
             font-size: 1.25rem;
             height: 1.25rem;
+        }
+
+        &.is-copied {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+
+        &.is-error {
+            pointer-events: none;
+            color: #dc3545;
         }
 
         @media (any-hover: hover) {

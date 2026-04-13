@@ -19,6 +19,19 @@
 }
 
 
+
+.icon-dislike:before {
+	content: "\e910";
+}
+
+.icon-like:before {
+	content: "\e911";
+}
+
+.icon-copy:before {
+	content: "\e912";
+}
+
 .icon-calendar:before {
 	content: "\e90f";
 }

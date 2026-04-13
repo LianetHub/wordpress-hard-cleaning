@@ -70,7 +70,7 @@
                         <button
                             type="button"
                             class="article__copy icon-copy"
-                            data-url="<?php the_permalink(); ?>">Ссылка</button>
+                            data-url="<?php the_permalink(); ?>">Скопировать</button>
 
                         <?php
                         $share_url   = urlencode(get_permalink());
