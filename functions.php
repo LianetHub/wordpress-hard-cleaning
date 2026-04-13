@@ -50,6 +50,16 @@ function cleaning_theme_setup()
 }
 add_action('after_setup_theme', 'cleaning_theme_setup');
 
+add_action('init', function () {
+    unregister_taxonomy_for_object_type('category', 'post');
+    unregister_taxonomy_for_object_type('post_tag', 'post');
+});
+
+add_action('admin_menu', function () {
+    remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=category');
+    remove_submenu_page('edit.php', 'edit-tags.php?taxonomy=post_tag');
+});
+
 
 // =========================================================================
 // 3. ПОДКЛЮЧЕНИЕ СКРИПТОВ И СТИЛЕЙ
@@ -186,3 +196,52 @@ function get_processed_svg($url, $new_color)
 
     return $svg_code;
 }
+
+
+add_filter('the_content', function ($content) {
+    if (!is_singular() || strpos($content, '<table') === false) {
+        return $content;
+    }
+
+    $dom = new DOMDocument();
+    $html_encoded = mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8');
+    @$dom->loadHTML('<div>' . $html_encoded . '</div>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
+
+    $tables = $dom->getElementsByTagName('table');
+
+    foreach ($tables as $table) {
+        $headers = [];
+        $th_nodes = $table->getElementsByTagName('th');
+
+        foreach ($th_nodes as $th) {
+            $headers[] = trim($th->nodeValue);
+        }
+
+        if (!empty($headers)) {
+            $rows = $table->getElementsByTagName('tr');
+            foreach ($rows as $row) {
+                $cells = $row->getElementsByTagName('td');
+                $index = 0;
+                foreach ($cells as $cell) {
+                    if (isset($headers[$index])) {
+                        $cell->setAttribute('data-label', $headers[$index]);
+                    }
+                    $index++;
+                }
+            }
+        }
+    }
+
+    $new_content = '';
+    $wrapper = $dom->documentElement;
+
+    if ($wrapper) {
+        foreach ($wrapper->childNodes as $child) {
+            $new_content .= $dom->saveHTML($child);
+        }
+    } else {
+        $new_content = $content;
+    }
+
+    return $new_content;
+}, 20);

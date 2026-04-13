@@ -11,8 +11,8 @@ $price_table = get_field('price_table');
                 <?php echo wp_kses($price_title, ['span' => ['class' => []]]); ?>
             </h2>
 
-            <div class="price__table-wrapper">
-                <table class="price__table">
+            <div class="price__table-wrapper custom-table">
+                <table>
                     <thead>
                         <tr>
                             <th>Наименование</th>

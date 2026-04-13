@@ -47,6 +47,17 @@ if (is_post_type_archive('services') || is_tax('service_cat') || is_singular('se
     } else {
         $items[count($items) - 1]['link'] = '';
     }
+} elseif (is_home() || is_singular('post')) {
+    $blog_page_id = get_option('page_for_posts');
+    $blog_name = $blog_page_id ? get_the_title($blog_page_id) : 'Блог';
+    $blog_link = $blog_page_id ? get_permalink($blog_page_id) : home_url('/blog');
+
+    if (is_home()) {
+        $items[] = ['name' => $blog_name, 'link' => ''];
+    } else {
+        $items[] = ['name' => $blog_name, 'link' => $blog_link];
+        $items[] = ['name' => get_the_title(), 'link' => ''];
+    }
 } elseif (is_post_type_archive('certificates')) {
     $items[] = ['name' => 'Документы', 'link' => ''];
 } elseif (is_page()) {

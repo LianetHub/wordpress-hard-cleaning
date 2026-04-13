@@ -54,11 +54,12 @@
 
     // .heading__image
     &__image {
+        display: block;
 
         & img {
             aspect-ratio: 5 / 3;
             border-radius: 1.25rem;
-            box-shadow: 0 6px 24px 0 rgba(0, 0, 0, 0.06);
+            box-shadow: 0 rem(6) rem(24) 0 rgba(0, 0, 0, 0.06);
         }
     }
 
@@ -470,77 +471,10 @@
     &__title {}
 
     // .price__table-wrapper
-    &__table-wrapper {
-        margin-top: 40px;
-        overflow: hidden;
-        border-radius: 1.25rem;
-        box-shadow: 0 rem(6) 1.5rem rgba(0, 0, 0, 0.13);
-    }
+    &__table-wrapper {}
 
     // .price__table
-    &__table {
-        width: 100%;
-        border-collapse: collapse;
-
-
-        thead {
-            background-color: #467E9E;
-            color: #fff;
-            text-align: left;
-
-            th {
-                padding: rem(25);
-                font-size: 1.25rem;
-                font-weight: 700;
-            }
-        }
-
-        tbody {
-            tr {
-                border-bottom: 1px solid #DDE6F0;
-                background: #fff;
-
-                &:last-child {
-                    border-bottom: none;
-                }
-
-                &:nth-child(even) {
-                    background-color: #F8FAFB;
-                }
-            }
-
-            td {
-                padding: rem(25);
-                vertical-align: middle;
-
-                @media (min-width:$md4) {
-                    font-size: 1.25rem;
-
-                }
-            }
-        }
-
-        @media (max-width:$md4) {
-
-            thead {
-                display: none;
-            }
-
-            td {
-                display: flex;
-                justify-content: space-between;
-                gap: 1rem;
-                padding: rem(5) rem(10);
-                text-align: right;
-
-                &:before {
-                    content: attr(data-label);
-                    text-align: left;
-                    font-weight: 700;
-                }
-            }
-        }
-    }
+    &__table {}
 
     // .price__value
     &__value {
