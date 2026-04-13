@@ -10,9 +10,11 @@
 	display: flex;
 	align-items: center;
 	gap: rem(2);
+
 	@media (max-width: $md4) {
 		display: none;
 	}
+
 	// .pagination__item
 	.page-numbers {
 		width: rem(40);
@@ -30,10 +32,12 @@
 			background-color 0.3s ease,
 			color 0.3s ease;
 		color: #717680;
+
 		&.current {
 			color: #414651;
 			background: #fafafa;
 		}
+
 		&:is(a) {
 			@media (any-hover: hover) {
 				&:hover {
@@ -43,6 +47,7 @@
 			}
 		}
 	}
+
 	// .pagination__next
 	&__next,
 	&__prev {
@@ -58,6 +63,7 @@
 		font-size: 1rem;
 		line-height: 150%;
 		padding: rem(8) rem(12);
+
 		&::before {
 			color: #a4a7ae;
 			width: 1.25rem;
@@ -69,22 +75,27 @@
 			flex-shrink: 0;
 			transition: color 0.3s ease;
 		}
+
 		& span {
 			display: none;
+
 			@media (min-width: $md4) {
 				display: inline;
 			}
 		}
+
 		&:disabled,
 		&[aria-disabled="true"] {
 			pointer-events: none;
 			user-select: none;
 			color: #a4a7ae;
 			border: rem(1) solid #e9eaeb;
+
 			&::before {
 				color: #d5d7da;
 			}
 		}
+
 		@media (any-hover: hover) {
 			&:hover {
 				background: #fafafa;
@@ -95,11 +106,14 @@
 			}
 		}
 	}
+
 	&__prev {
 		margin-right: auto;
 	}
+
 	&__next {
 		margin-left: auto;
+
 		&::before {
 			order: 1;
 		}

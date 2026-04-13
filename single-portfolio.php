@@ -49,7 +49,9 @@ $wrapper_tag = $title ? 'section' : 'div';
             <h1 class="heading__title title-lg">
                 <?php the_title(); ?>
             </h1>
-            <p class="heading__subtitle subtitle"> <?php the_excerpt(); ?></p>
+            <div class="heading__subtitle subtitle">
+                <?php the_excerpt(); ?>
+            </div>
             <div class="heading__btns">
                 <?php if ($phone): ?>
                     <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-primary">Срочный вызов</a>

@@ -86,6 +86,16 @@ add_action('wp_enqueue_scripts', function () {
 
     $app_js_ver = filemtime($theme_dir . '/assets/js/app.min.js');
     wp_enqueue_script('app-js', $theme_uri . '/assets/js/app.min.js', array('jquery', 'yandex-maps', 'swiper-js', 'fancybox-js'), $app_js_ver, true);
+
+    if (is_singular('post')) {
+        wp_enqueue_script(
+            'post-scripts',
+            get_template_directory_uri() . '/assets/js/article-actions.min.js',
+            array('app-js'),
+            null,
+            true
+        );
+    }
 });
 
 
@@ -245,3 +255,131 @@ add_filter('the_content', function ($content) {
 
     return $new_content;
 }, 20);
+
+// pagination
+function hard_cleaning_theme_pagination_class_filter($template)
+{
+    $template = str_replace('page-numbers', 'pagination__item', $template);
+    $template = str_replace('current', 'active', $template);
+
+    $template = str_replace('prev pagination__item', 'pagination__prev icon-arrow-left', $template);
+    $template = str_replace('next pagination__item', 'pagination__next icon-arrow-right', $template);
+
+    return $template;
+}
+add_filter('paginate_links', 'hard_cleaning_theme_pagination_class_filter');
+
+add_filter('next_posts_link_attributes', 'posts_link_attributes');
+add_filter('previous_posts_link_attributes', 'posts_link_attributes');
+
+function posts_link_attributes()
+{
+    return 'class="pagination__item"';
+}
+
+function custom_prev_class($format)
+{
+    return str_replace('href=', 'class="pagination__prev icon-arrow-left" href=', $format);
+}
+add_filter('previous_posts_link_attributes', function () {
+    return 'class="pagination__prev icon-arrow-left"';
+});
+add_filter('next_posts_link_attributes', function () {
+    return 'class="pagination__next icon-arrow-right"';
+});
+
+
+// время чтения в минутах для поста
+function hard_cleaning_theme_reading_time($post_id = null, $wpm = 10, $seconds_per_image = 5)
+{
+    $post_id = $post_id ?: get_the_ID();
+    $html = apply_filters('the_content', get_post_field('post_content', $post_id));
+    $words = str_word_count(wp_strip_all_tags($html));
+    preg_match_all('/<img\b[^>]*>/i', $html, $matches);
+    $images = count($matches[0]);
+    $words += ($images * $seconds_per_image) * $wpm / 60;
+
+    return max(1, (int) ceil($words / $wpm));
+}
+
+function hard_cleaning_theme_the_reading_time($before = '', $after = ' мин. читать')
+{
+    printf(
+        '%s%d%s',
+        $before,
+        hard_cleaning_theme_reading_time(),
+        $after
+    );
+}
+
+// Просмотры статьи
+function hard_cleaning_theme_set_post_views($postID)
+{
+    $count_key = 'hard_cleaning_theme_post_views';
+    $count     = get_post_meta($postID, $count_key, true);
+
+    if ($count == '') {
+        $count = 0;
+        delete_post_meta($postID, $count_key);
+        add_post_meta($postID, $count_key, 1);
+    } else {
+        $count++;
+        update_post_meta($postID, $count_key, $count);
+    }
+}
+
+function hard_cleaning_theme_get_post_views($postID)
+{
+    $count = get_post_meta($postID, 'hard_cleaning_theme_post_views', true);
+    return $count ? (int) $count : 0;
+}
+
+function hard_cleaning_theme_increment_views_ajax()
+{
+    if (isset($_POST['post_id']) && is_numeric($_POST['post_id'])) {
+        hard_cleaning_theme_set_post_views((int)$_POST['post_id']);
+        wp_send_json_success();
+    }
+    wp_send_json_error();
+}
+add_action('wp_ajax_hard_cleaning_theme_increment_views', 'hard_cleaning_theme_increment_views_ajax');
+add_action('wp_ajax_nopriv_hard_cleaning_theme_increment_views', 'hard_cleaning_theme_increment_views_ajax');
+
+
+// Лайки статьи
+function hard_cleaning_theme_add_like()
+{
+    if (! isset($_POST['post_id']) || ! is_numeric($_POST['post_id'])) {
+        wp_send_json_error();
+    }
+
+    $post_id = (int) $_POST['post_id'];
+
+    $current_likes = (int) get_post_meta($post_id, 'hard_cleaning_theme_likes', true);
+    $current_likes++;
+    update_post_meta($post_id, 'hard_cleaning_theme_likes', $current_likes);
+
+    wp_send_json_success(['likes' => $current_likes]);
+}
+
+add_action('wp_ajax_hard_cleaning_theme_add_like', 'hard_cleaning_theme_add_like');
+add_action('wp_ajax_nopriv_hard_cleaning_theme_add_like', 'hard_cleaning_theme_add_like');
+
+function hard_cleaning_theme_remove_like()
+{
+    if (!isset($_POST['post_id']) || !is_numeric($_POST['post_id'])) {
+        wp_send_json_error();
+    }
+
+    $post_id = (int)$_POST['post_id'];
+    $current_likes = (int)get_post_meta($post_id, 'hard_cleaning_theme_likes', true);
+
+    if ($current_likes > 0) {
+        $current_likes--;
+        update_post_meta($post_id, 'hard_cleaning_theme_likes', $current_likes);
+    }
+
+    wp_send_json_success(['likes' => $current_likes]);
+}
+add_action('wp_ajax_hard_cleaning_theme_remove_like', 'hard_cleaning_theme_remove_like');
+add_action('wp_ajax_nopriv_hard_cleaning_theme_remove_like', 'hard_cleaning_theme_remove_like');
