@@ -1,16 +1,24 @@
 @charset "UTF-8";
 
 @font-face {
+  font-family: "DAMN";
+  font-display: swap;
+  src: url("../fonts/DAMN.woff2?v=1776352649309") format("woff2"), url("../fonts/DAMN.woff?v=1776352649309") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1776350456418") format("woff2"), url("../fonts/icons.woff?v=1776350456418") format("woff");
+  src: url("../fonts/icons.woff2?v=1776352649309") format("woff2"), url("../fonts/icons.woff?v=1776352649309") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776350456418") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776350456418") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776350456418") format("woff");
+  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776352649309") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776352649309") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776352649309") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -19,7 +27,7 @@
 
 @font-face {
   font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776350456418") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776350456418") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776350456418") format("woff");
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776352649309") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776352649309") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776352649309") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -5798,11 +5806,11 @@ body {
 
 .price-formation__card::after {
   content: attr(data-number);
+  font-family: "DAMN";
   color: rgba(193, 213, 222, 0.52);
   font-size: 10.625rem;
   font-weight: 900;
   line-height: 0.8;
-  letter-spacing: -0.1em;
 }
 
 .price-formation__card:hover {
