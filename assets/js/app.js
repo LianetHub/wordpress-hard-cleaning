@@ -130,6 +130,25 @@ $(function () {
             $item.toggleClass('active');
             $answer.slideToggle();
         }
+
+
+        // Price List Tabs Switching
+        const $priceTab = $target.closest('.price-list__tab');
+        if ($priceTab.length && !$priceTab.hasClass('is-active')) {
+            const targetId = $priceTab.data('target');
+            const $panes = $('.price-list__pane');
+            const $currentPane = $('#pane-' + targetId);
+
+            // 1. Меняем активный класс у кнопок
+            $('.price-list__tab').removeClass('is-active');
+            $priceTab.addClass('is-active');
+
+            // 2. Переключаем видимость панелей с легким эффектом
+            $panes.hide().removeClass('is-active');
+            $currentPane.fadeIn(400).addClass('is-active');
+
+            return;
+        }
     });
 
 

@@ -3,7 +3,7 @@
 @font-face {
   font-family: "DAMN";
   font-display: swap;
-  src: url("../fonts/DAMN.woff2?v=1776352649309") format("woff2"), url("../fonts/DAMN.woff?v=1776352649309") format("woff");
+  src: url("../fonts/DAMN.woff2?v=1776357861133") format("woff2"), url("../fonts/DAMN.woff?v=1776357861133") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -11,14 +11,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1776352649309") format("woff2"), url("../fonts/icons.woff?v=1776352649309") format("woff");
+  src: url("../fonts/icons.woff2?v=1776357861133") format("woff2"), url("../fonts/icons.woff?v=1776357861133") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776352649309") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776352649309") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776352649309") format("woff");
+  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776357861133") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776357861133") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776357861133") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -27,7 +27,7 @@
 
 @font-face {
   font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776352649309") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776352649309") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776352649309") format("woff");
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776357861133") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776357861133") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776357861133") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -5875,6 +5875,202 @@ body {
   transition: color 0.3s ease;
 }
 
+.price-list {
+  background: #fff;
+  padding: 3.125rem 0;
+}
+
+.price-list__content {
+  margin-top: 4.25rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  gap: 5.62rem;
+}
+
+.price-list__tabs {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 22.375rem;
+          flex: 0 0 22.375rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.9375rem;
+  text-align: left;
+  position: sticky;
+  top: 6.25rem;
+}
+
+.price-list__tab {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: left;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.9375rem;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: #FFF;
+  -webkit-box-shadow: 0 0.25rem 0.875rem 0 rgba(0, 0, 0, 0.06);
+          box-shadow: 0 0.25rem 0.875rem 0 rgba(0, 0, 0, 0.06);
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  border: 0.0625rem solid #fff;
+}
+
+.price-list__tab.is-active {
+  border: 0.0625rem solid #D1E5F3;
+  background: #EAF3F8;
+  -webkit-box-shadow: 0 0.25rem 0.875rem 0 #EAF3F8;
+          box-shadow: 0 0.25rem 0.875rem 0 #EAF3F8;
+}
+
+.price-list__tab.is-active .price-list__tab-icon {
+  background: #31708e;
+  color: #fff;
+}
+
+.price-list__tab.is-active .price-list__tab-title {
+  color: #467E9E;
+}
+
+.price-list__tab.is-active .price-list__tab-subtitle {
+  color: #31708E;
+}
+
+.price-list__tab-icon {
+  border-radius: 0.625rem;
+  border: 0.0625rem solid #E6EEF1;
+  background: #FFF;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.625rem;
+  width: 2.9375rem;
+  height: 2.9375rem;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  color: #6E9FBB;
+}
+
+.price-list__tab-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+}
+
+.price-list__tab-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.price-list__tab-subtitle {
+  margin-top: 0.31rem;
+  color: #4B5D68;
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.03rem;
+}
+
+.price-list__main {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.price-list__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-bottom: 1.19rem;
+  margin-bottom: 1.19rem;
+  border-bottom: 0.0625rem solid #DDE6F0;
+}
+
+.price-list__header-info {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 1.2rem;
+}
+
+.price-list__header-icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 3.9375rem;
+  height: 3.9375rem;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 0.625rem;
+  border-radius: 0.625rem;
+  border: 0.0625rem solid #E6EEF1;
+  background: #31708E;
+  color: #fff;
+}
+
+.price-list__header-content {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+}
+
+.price-list__header-title {
+  color: #467E9E;
+  font-family: "Unbounded";
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.price-list__header-tags {
+  margin-top: 0.31rem;
+  color: #31708E;
+  font-size: 1.125rem;
+  font-weight: 300;
+  letter-spacing: 0.03375rem;
+}
+
+.price-list__link {
+  color: #467E9E;
+  font-size: 1.4375rem;
+  font-weight: 700;
+}
+
 :root {
   /* 1. COLORS */
   --color-dark: #272727;
@@ -7120,6 +7316,10 @@ body {
     margin-top: 3.125rem;
     -ms-grid-columns: (1fr)[2];
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .price-list {
+    padding: 6.25rem 0;
   }
 }
 

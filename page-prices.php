@@ -77,6 +77,8 @@ $is_collage = !empty($image_left) || !empty($image_right);
         <?php endif; ?>
     </div>
 </section>
+
+<?php require_once(TEMPLATE_PATH . '_price-list.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_pricing-formation.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_trust.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_faq.php'); ?>
