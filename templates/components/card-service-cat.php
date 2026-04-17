@@ -19,6 +19,10 @@ $services_query = new WP_Query([
         'include_children' => false
     ]],
 ]);
+
+$total_services = $services_query->found_posts;
+$limit = 4;
+$counter = 0;
 ?>
 
 <li class="services__item">
@@ -43,12 +47,24 @@ $services_query = new WP_Query([
 
         <?php if ($services_query->have_posts()): ?>
             <div class="services__item-tags">
-                <?php while ($services_query->have_posts()): $services_query->the_post(); ?>
-                    <a href="<?php the_permalink(); ?>" class="services__item-tag">
-                        <?php echo fix_widows_after_prepositions(get_the_title()); ?>
+                <?php while ($services_query->have_posts()): $services_query->the_post();
+                    if ($counter < $limit): ?>
+                        <a href="<?php the_permalink(); ?>" class="services__item-tag">
+                            <?php echo fix_widows_after_prepositions(get_the_title()); ?>
+                        </a>
+                <?php
+                    endif;
+                    $counter++;
+                endwhile; ?>
+
+                <?php if ($total_services > $limit):
+                    $remaining = $total_services - $limit; ?>
+                    <a href="<?php echo esc_url($term_link); ?>" class="services__item-tag services__item-tag--more">
+                        +<?php echo $remaining; ?> <?php echo russian_plural($remaining, ['услугу', 'услуги', 'услуг']); ?>
                     </a>
-                <?php endwhile;
-                wp_reset_postdata(); ?>
+                <?php endif; ?>
+
+                <?php wp_reset_postdata(); ?>
             </div>
         <?php endif; ?>
     </div>
