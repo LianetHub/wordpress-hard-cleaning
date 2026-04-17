@@ -111,7 +111,7 @@ $address = get_field('address', 'option');
                 <?php if ($phone): ?>
                     <a href="tel:<?php echo $phone_clean; ?>" class="menu__actions-btn btn btn-sm btn-primary">Срочный вызов</a>
                 <?php endif; ?>
-                <a href="#contacts" class="menu__actions-btn btn btn-sm btn-primary">
+                <a href="#callback" data-fancybox class="menu__actions-btn btn btn-sm btn-primary">
                     Задать вопрос
                 </a>
             </div>

@@ -196,7 +196,7 @@ $ogrn_number = get_field('ogrn_number', 'option');
         </div>
     </div>
 </footer>
-
+<?php require_once(TEMPLATE_PATH . '_modals.php'); ?>
 <?php wp_footer(); ?>
 </body>
 

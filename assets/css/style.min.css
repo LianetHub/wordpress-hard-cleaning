@@ -3,7 +3,7 @@
 @font-face {
     font-family: DAMN;
     font-display: swap;
-    src: url(../fonts/DAMN.woff2?v=1776357861133) format("woff2"), url(../fonts/DAMN.woff?v=1776357861133) format("woff");
+    src: url(../fonts/DAMN.woff2?v=1776430743443) format("woff2"), url(../fonts/DAMN.woff?v=1776430743443) format("woff");
     font-weight: 400;
     font-style: normal
 }
@@ -11,14 +11,14 @@
 @font-face {
     font-family: icons;
     font-display: swap;
-    src: url(../fonts/icons.woff2?v=1776357861133) format("woff2"), url(../fonts/icons.woff?v=1776357861133) format("woff");
+    src: url(../fonts/icons.woff2?v=1776430743443) format("woff2"), url(../fonts/icons.woff?v=1776430743443) format("woff");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: Manrope;
-    src: url(../fonts/Manrope-VariableFont_wght.woff2?v=1776357861133) format("woff2 supports variations"), url(../fonts/Manrope-VariableFont_wght.woff2?v=1776357861133) format("woff2-variations"), url(../fonts/Manrope-VariableFont_wght.woff?v=1776357861133) format("woff");
+    src: url(../fonts/Manrope-VariableFont_wght.woff2?v=1776430743443) format("woff2 supports variations"), url(../fonts/Manrope-VariableFont_wght.woff2?v=1776430743443) format("woff2-variations"), url(../fonts/Manrope-VariableFont_wght.woff?v=1776430743443) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -27,7 +27,7 @@
 
 @font-face {
     font-family: Unbounded;
-    src: url(../fonts/Unbounded-VariableFont_wght.woff2?v=1776357861133) format("woff2 supports variations"), url(../fonts/Unbounded-VariableFont_wght.woff2?v=1776357861133) format("woff2-variations"), url(../fonts/Unbounded-VariableFont_wght.woff?v=1776357861133) format("woff");
+    src: url(../fonts/Unbounded-VariableFont_wght.woff2?v=1776430743443) format("woff2 supports variations"), url(../fonts/Unbounded-VariableFont_wght.woff2?v=1776430743443) format("woff2-variations"), url(../fonts/Unbounded-VariableFont_wght.woff?v=1776430743443) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -251,25 +251,21 @@
     --f-close-button-svg-stroke-width: 0.09375rem;
     --f-close-button-svg-width: 2rem;
     --f-close-button-svg-height: 2rem;
-    --f-close-button-color: black;
-    --f-close-button-hover-color: #dc3232;
+    --f-close-button-color: #aaaaaa;
+    --f-close-button-hover-color: #000;
     top: .5rem;
     right: .5rem
 }
 
 .popup {
     display: none;
-    background-color: #d9f970;
+    background-color: #fff;
     color: #000;
+    max-width: 100%;
     padding: 0;
     width: 100%;
-    max-width: 57.25rem;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    border-radius: 1.4375rem;
-    padding: 3.25rem 1.5rem 1.75rem
+    border-radius: 1rem;
+    overflow: hidden
 }
 
 .popup.popup--small {
@@ -288,12 +284,32 @@
     padding: 2.5rem 2rem
 }
 
-.popup__title {
-    color: #000;
-    text-align: center;
-    font-size: 1.63069rem;
-    font-weight: 600;
-    line-height: 153.659%
+.popup__icon {
+    width: 7.6875rem;
+    margin-bottom: 1rem
+}
+
+.popup__icon img {
+    width: 100%;
+    height: auto
+}
+
+.popup__image {
+    display: none
+}
+
+.popup__content {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    padding: 2.625rem 1.5rem 1.5rem
 }
 
 .popup__btn[data-fancybox-close] {
@@ -303,12 +319,6 @@
 
 .popup__btn[data-fancybox-close].btn-secondary {
     background: #fff
-}
-
-.popup__subtitle {
-    font-size: .875rem;
-    margin-top: .875rem;
-    line-height: 157.143%
 }
 
 .popup__form {
@@ -321,14 +331,6 @@
     flex-direction: column;
     gap: .5rem;
     margin-top: 1.5rem
-}
-
-.popup__form .wpcf7-form-control-wrap {
-    display: block
-}
-
-.popup__form .wpcf7-form-control-wrap:not(:last-child) {
-    margin-bottom: 2rem
 }
 
 .popup__download-link {
@@ -1995,77 +1997,19 @@ body {
 }
 
 .form__field {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    position: relative;
-    gap: .3rem
-}
-
-.form__field.has-error .form__control {
-    -webkit-box-shadow: inset 0 0 0 .0625rem #f04438;
-    box-shadow: inset 0 0 0 .0625rem #f04438;
-    border-color: #dc3232;
-    color: #dc3232;
-    background-color: rgba(220, 50, 50, .1)
-}
-
-.form__field.has-error .form__control::-webkit-input-placeholder {
-    color: #dc3232;
-    opacity: .5
-}
-
-.form__field.has-error .form__control::-moz-placeholder {
-    color: #dc3232;
-    opacity: .5
-}
-
-.form__field.has-error .form__control:-ms-input-placeholder {
-    color: #dc3232;
-    opacity: .5
-}
-
-.form__field.has-error .form__control::-ms-input-placeholder {
-    color: #dc3232;
-    opacity: .5
-}
-
-.form__field.has-error .form__control::placeholder {
-    color: #dc3232;
-    opacity: .5
-}
-
-.form__field-error {
-    color: #dc3232;
-    padding-top: .25rem;
-    display: block;
-    position: absolute;
-    top: 100%;
     width: 100%
 }
 
-.form__field-clear {
-    position: absolute;
-    right: 1rem;
-    font-size: 1.5rem;
-    -webkit-transition: color .3s ease;
-    transition: color .3s ease;
-    bottom: .3rem
+.form__field-label {
+    font-size: .875rem;
+    margin-bottom: .375rem;
+    display: block
 }
 
-.form__field-label {
-    color: #262624;
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: .5625rem;
-    padding: 0 1rem
+.form__field-label--required::after {
+    content: "*";
+    color: #f10;
+    margin-left: .13rem
 }
 
 .form__control {
@@ -2075,118 +2019,44 @@ body {
     transition: border-color .3s ease 0s, color .3s ease 0s, box-shadow .3s ease, background-color .3s ease;
     transition: border-color .3s ease 0s, color .3s ease 0s, box-shadow .3s ease, background-color .3s ease, -webkit-box-shadow .3s ease;
     width: 100%;
-    border-radius: 3.125rem;
-    border: .0625rem solid #fff;
+    border-radius: .5rem;
+    border: .0625rem solid #d5d7da;
     background: #fff;
-    color: #262624;
-    font-weight: 600;
-    padding: .5rem 1rem;
-    font-size: 1rem
-}
-
-.form__control.form__control--green {
-    background: #d9f970;
-    border-color: #d9f970
-}
-
-.form__control.form__control--green::-webkit-input-placeholder {
-    opacity: 1;
-    color: #262624
-}
-
-.form__control.form__control--green::-moz-placeholder {
-    opacity: 1;
-    color: #262624
-}
-
-.form__control.form__control--green:-ms-input-placeholder {
-    opacity: 1;
-    color: #262624
-}
-
-.form__control.form__control--green::-ms-input-placeholder {
-    opacity: 1;
-    color: #262624
-}
-
-.form__control.form__control--green::placeholder {
-    opacity: 1;
-    color: #262624
-}
-
-.form__control.form__control--green-outline {
-    text-align: center;
-    border: .0625rem solid #b1df1d
-}
-
-.form__control.form__control--underline {
-    background: 0 0;
-    color: #262624;
-    border: 0;
-    border-radius: 0;
-    border-bottom: .0625rem solid #262624;
-    padding: 0 .5rem 1.88rem
-}
-
-.form__control.form__control--underline.form__control.wpcf7-not-valid {
-    -webkit-box-shadow: none;
-    box-shadow: none
-}
-
-.form__control.form__control--underline:focus {
-    -webkit-box-shadow: none;
-    box-shadow: none
-}
-
-.form__control.form__control--underline::-webkit-input-placeholder {
-    color: #262624
-}
-
-.form__control.form__control--underline::-moz-placeholder {
-    color: #262624
-}
-
-.form__control.form__control--underline:-ms-input-placeholder {
-    color: #262624
-}
-
-.form__control.form__control--underline::-ms-input-placeholder {
-    color: #262624
-}
-
-.form__control.form__control--underline::placeholder {
-    color: #262624
+    color: #181d27;
+    font-size: 1rem;
+    line-height: 150%;
+    padding: .625rem .875rem
 }
 
 .form__control::-webkit-input-placeholder {
     opacity: 1;
-    color: #bdbdbd
+    color: #717680
 }
 
 .form__control::-moz-placeholder {
     opacity: 1;
-    color: #bdbdbd
+    color: #717680
 }
 
 .form__control:-ms-input-placeholder {
     opacity: 1;
-    color: #bdbdbd
+    color: #717680
 }
 
 .form__control::-ms-input-placeholder {
     opacity: 1;
-    color: #bdbdbd
+    color: #717680
 }
 
 .form__control::placeholder {
     opacity: 1;
-    color: #bdbdbd
+    color: #717680
 }
 
 .form__control:focus {
-    border-color: #467e9e;
-    -webkit-box-shadow: inset 0 0 0 .0625rem #467e9e;
-    box-shadow: inset 0 0 0 .0625rem #467e9e
+    border-color: #9e77ed;
+    -webkit-box-shadow: inset 0 0 0 .0625rem #9e77ed;
+    box-shadow: inset 0 0 0 .0625rem #9e77ed
 }
 
 .form__control:disabled {
@@ -2194,48 +2064,47 @@ body {
     border-color: #ddd
 }
 
-.form__control.wpcf7-not-valid {
+.form__control._error {
+    background: #fff1ed;
+    border-color: #f04438;
     -webkit-box-shadow: inset 0 0 0 .0625rem #f04438;
     box-shadow: inset 0 0 0 .0625rem #f04438;
-    border-color: #dc3232;
-    color: #dc3232;
-    background-color: rgba(220, 50, 50, .1)
+    color: #f04438
 }
 
-.form__control.wpcf7-not-valid::-webkit-input-placeholder {
-    color: #dc3232;
-    opacity: .5
+.form__control._error::-webkit-input-placeholder {
+    color: #f04438;
+    opacity: 1
 }
 
-.form__control.wpcf7-not-valid::-moz-placeholder {
-    color: #dc3232;
-    opacity: .5
+.form__control._error::-moz-placeholder {
+    color: #f04438;
+    opacity: 1
 }
 
-.form__control.wpcf7-not-valid:-ms-input-placeholder {
-    color: #dc3232;
-    opacity: .5
+.form__control._error:-ms-input-placeholder {
+    color: #f04438;
+    opacity: 1
 }
 
-.form__control.wpcf7-not-valid::-ms-input-placeholder {
-    color: #dc3232;
-    opacity: .5
+.form__control._error::-ms-input-placeholder {
+    color: #f04438;
+    opacity: 1
 }
 
-.form__control.wpcf7-not-valid::placeholder {
-    color: #dc3232;
-    opacity: .5
+.form__control._error::placeholder {
+    color: #f04438;
+    opacity: 1
 }
 
 .form__control:is(textarea) {
     resize: none;
     height: 7.5rem;
-    border-radius: 1.4375rem
+    font-size: 1rem
 }
 
 .form__submit {
     position: relative;
-    margin-top: 2.5rem;
     margin-inline: auto;
     cursor: pointer
 }
@@ -2331,30 +2200,13 @@ body {
     font-size: 1rem;
     -ms-flex-negative: 0;
     flex-shrink: 0;
-    color: #d92d20;
+    color: #f10;
     -webkit-transition: color .3s ease;
     transition: color .3s ease
 }
 
 .form__btn {
-    width: 100%;
-    cursor: pointer
-}
-
-.form__btn .wpcf7-spinner {
-    display: none
-}
-
-.form__btn input[type=submit] {
-    background: 0 0;
-    padding: 0;
-    margin: -.15rem 0;
-    font-family: inherit;
-    color: inherit;
-    font-size: inherit;
-    font-weight: inherit;
-    text-transform: inherit;
-    cursor: pointer
+    width: 100%
 }
 
 .form__policy {
@@ -2366,76 +2218,11 @@ body {
     color: #175cd3
 }
 
-.form__option {
+.form__error {
+    color: #f04438;
+    margin-top: .25rem;
+    font-size: .875rem;
     display: block
-}
-
-.form__option-input:checked~.form__option-btn::after {
-    opacity: 1;
-    -webkit-transform: scale(1);
-    -ms-transform: scale(1);
-    transform: scale(1)
-}
-
-.form__option-btn {
-    color: #262624;
-    font-size: 1.125rem;
-    font-weight: 600;
-    padding-left: 1.75rem;
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    align-items: center;
-    position: relative;
-    min-height: 1.25rem;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    -webkit-font-smoothing: antialiased
-}
-
-.form__option-btn::after, .form__option-btn::before {
-    content: "";
-    position: absolute;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    transform-style: preserve-3d;
-    -webkit-font-smoothing: subpixel-antialiased;
-    will-change: transform
-}
-
-.form__option-btn::before {
-    left: 0;
-    top: 50%;
-    margin-top: -.5rem;
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    border: .0625rem solid #b1df1d;
-    background-color: #fff
-}
-
-.form__option-btn::after {
-    left: .25rem;
-    top: 50%;
-    margin-top: -.25rem;
-    width: .5rem;
-    height: .5rem;
-    border-radius: 50%;
-    background-color: #b1df1d;
-    opacity: 0;
-    -webkit-transform: scale(0);
-    -ms-transform: scale(0);
-    transform: scale(0);
-    -webkit-transition: opacity .2s ease, -webkit-transform .2s cubic-bezier(.175, .885, .32, 1.275);
-    transition: opacity .2s ease, -webkit-transform .2s cubic-bezier(.175, .885, .32, 1.275);
-    transition: transform .2s cubic-bezier(.175, .885, .32, 1.275), opacity .2s ease;
-    transition: transform .2s cubic-bezier(.175, .885, .32, 1.275), opacity .2s ease, -webkit-transform .2s cubic-bezier(.175, .885, .32, 1.275)
 }
 
 .wpcf7-list-item {
@@ -6418,7 +6205,7 @@ body {
 
 @media (min-width:575.98px) {
     .popup__form {
-        margin-top: 4rem
+        margin-top: 2rem
     }
 
     .swiper-button-next, .swiper-button-prev {
@@ -6455,17 +6242,8 @@ body {
         max-height: 17.5rem
     }
 
-    .form__field {
-        gap: .69rem
-    }
-
-    .form__field-label {
-        font-size: .75rem;
-        padding: 0 1.69rem
-    }
-
     .form__control:is(textarea) {
-        height: 8.125rem
+        height: 5.9375rem
     }
 
     .form__policy {
@@ -6625,10 +6403,6 @@ body {
         right: .875rem
     }
 
-    .popup {
-        padding: 3.25rem 3.5rem 1.75rem
-    }
-
     .popup.popup--small {
         padding: 2.5rem 1.5rem
     }
@@ -6637,14 +6411,53 @@ body {
         font-size: 1.75rem
     }
 
-    .popup__btn[data-fancybox-close] {
-        margin-top: 1.5rem
+    .popup__icon {
+        margin-bottom: 1.5rem
     }
 
-    .popup__subtitle {
-        margin-top: 1.25rem;
-        font-size: 1rem;
-        line-height: 140%
+    .popup__image {
+        display: block;
+        background: #467e9e;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 47.5%;
+        flex: 0 0 47.5%;
+        min-height: 40.625rem;
+        height: 100%;
+        position: relative;
+        overflow: hidden
+    }
+
+    .popup__image::before {
+        content: "";
+        position: absolute;
+        top: 2rem;
+        left: 2rem;
+        width: 12.3125rem;
+        height: 2.625rem;
+        background: url(../img/logo-white.svg) 0 0/cover no-repeat;
+        z-index: 2
+    }
+
+    .popup__image::after {
+        content: "";
+        position: absolute;
+        top: -7.94rem;
+        left: -9.13rem;
+        border-radius: 50%;
+        background: #467e9e;
+        width: 34.625rem;
+        height: 18.6875rem;
+        z-index: 1;
+        -webkit-filter: blur(5rem);
+        filter: blur(5rem)
+    }
+
+    .popup__content {
+        padding: 3.25rem 3.5rem 1.25rem 3rem
+    }
+
+    .popup__btn[data-fancybox-close] {
+        margin-top: 1.5rem
     }
 
     .popup__form-footer {
@@ -6745,14 +6558,6 @@ body {
 
     .yandex-banner__content {
         padding: 1.56rem 3.75rem
-    }
-
-    .form__field-clear {
-        bottom: .4rem
-    }
-
-    .form__control.form__control--green-outline {
-        border: .1875rem solid #b1df1d
     }
 
     .header__top {
@@ -7193,6 +6998,10 @@ body {
 }
 
 @media (min-width:991.98px) {
+    .popup {
+        max-width: 59.375rem
+    }
+
     .socials {
         gap: 1.25rem
     }
@@ -7759,15 +7568,6 @@ body {
     }
 
     .dropdown__button {
-        padding: .65625rem 1.4375rem;
-        font-size: 1.125rem
-    }
-
-    .form__field-clear {
-        bottom: .75rem
-    }
-
-    .form__control {
         padding: .65625rem 1.4375rem;
         font-size: 1.125rem
     }
@@ -8793,10 +8593,6 @@ body {
 
     .dropdown__list-item:hover {
         background: rgba(177, 223, 29, .7)
-    }
-
-    .form__field-clear:hover {
-        color: #dc3232
     }
 
     .form__file-remove:hover {
