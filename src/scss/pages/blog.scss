@@ -163,8 +163,35 @@
     background: #fff;
     padding: rem(50) 0;
 
+    // .article__wrapper
+    &__wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+
+        @media (min-width:$md3) {
+            align-items: flex-start;
+            flex-direction: row;
+        }
+    }
+
+    // .article__content
     &__content {
         max-width: rem(1200);
+        flex: 1 1 auto;
+    }
+
+    // .article__checker
+    &__checker {
+        @media (min-width:$md3) {
+            position: sticky;
+            top: rem(100);
+            flex: 0 0 17rem;
+        }
+
+        @media (min-width:$md2) {
+            flex: 0 0 rem(320);
+        }
     }
 
     // .article__title
@@ -465,4 +492,71 @@
         }
     }
 
+}
+
+
+.checker-block {
+    padding: 1.875rem;
+    background-color: #f9f9f9;
+    border-radius: 1.25rem;
+    border: 0.0625rem solid #e0e0e0;
+    text-align: center;
+
+
+    // .checker-block__label
+    &__label {
+        font-size: 0.875rem;
+        color: #777;
+        margin-bottom: 1.25rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        font-weight: 600;
+    }
+
+    // .checker-block__content
+    &__content {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        gap: 1.25rem;
+
+    }
+
+    // .checker-block__avatar
+    &__avatar {
+        flex-shrink: 0;
+        width: 7.5rem;
+        height: 7.5rem;
+        border-radius: 50%;
+        overflow: hidden;
+        border: 0.125rem solid $accent;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    // .checker-block__info
+    &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    // .checker-block__name
+    &__name {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #333;
+        line-height: 1.2;
+    }
+
+    // .checker-block__position
+    &__position {
+        font-size: 1rem;
+        color: $accent;
+        font-weight: 500;
+    }
 }

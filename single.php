@@ -6,6 +6,8 @@
     while (have_posts()) :
         the_post();
         $reading_time = hard_cleaning_theme_reading_time(get_the_ID()) . ' мин. читать';
+
+        $checker = get_field('post_checker');
 ?>
         <section class="heading">
             <div class="heading__container container">
@@ -58,9 +60,36 @@
         </section>
         <section data-post-id="<?php echo get_the_ID(); ?>" class="article">
             <div class="container">
-                <article class="article__content typography-block">
-                    <?php the_content(); ?>
-                </article>
+                <div class="article__wrapper">
+                    <article class="article__content typography-block">
+                        <?php the_content(); ?>
+                    </article>
+
+                    <?php if ($checker) :
+                        $checker_id = $checker->ID;
+                        $checker_name = get_the_title($checker_id);
+                        $checker_position = get_field('position', $checker_id);
+                        $checker_img = get_the_post_thumbnail_url($checker_id, 'thumbnail');
+                    ?>
+                        <div class="article__checker checker-block">
+                            <div class="checker-block__label">Статью проверил:</div>
+                            <div class="checker-block__content">
+                                <?php if ($checker_img) : ?>
+                                    <div class="checker-block__avatar">
+                                        <img src="<?php echo $checker_img; ?>" alt="<?php echo $checker_name; ?>">
+                                    </div>
+                                <?php endif; ?>
+                                <div class="checker-block__info">
+                                    <div class="checker-block__name"><?php echo $checker_name; ?></div>
+                                    <?php if ($checker_position) : ?>
+                                        <div class="checker-block__position"><?php echo $checker_position; ?></div>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                </div>
+
                 <div class="article__footer">
                     <div class="article__likes">
                         <div class="article__likes-text">Статья была полезной?</div>

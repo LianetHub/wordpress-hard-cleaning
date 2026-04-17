@@ -335,11 +335,15 @@ function hard_cleaning_theme_remove_like()
 // =========================================================================
 
 add_action('wp_footer', function () {
-    if (!isset($_COOKIE['cookie_notice'])) : ?>
+    if (!isset($_COOKIE['cookie_notice'])) :
+        $privacy_url = get_privacy_policy_url();
+        $agreement_url = get_permalink(327);
+?>
         <div id="cookie-notice" class="cookie cookie--hidden">
             <div class="cookie__text">
-                Мы используем файлы cookie, чтобы сайт работал&nbsp;лучше. Оставаясь с нами, вы соглашаетесь на
-                <a href="<?php echo esc_url(get_privacy_policy_url() . '#cookies'); ?>" target="_blank">использование файлов cookie</a>.
+                Продолжая использовать этот сайт, вы даете согласие
+                на&nbsp;обработку файлов cookie в&nbsp;соответствии с&nbsp;<a href="<?php echo esc_url($privacy_url); ?>" target="_blank">Политикой в отношении персональных данных</a>
+                и&nbsp;<a href="<?php echo esc_url($agreement_url); ?>" target="_blank">Соглашением об использовании сайта</a>.
             </div>
             <button type="button" class="cookie__accept btn btn-primary btn-sm">Хорошо</button>
         </div>

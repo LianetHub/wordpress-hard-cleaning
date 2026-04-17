@@ -3,22 +3,14 @@
 @font-face {
   font-family: "DAMN";
   font-display: swap;
-  src: url("../fonts/DAMN.woff2?v=1776430743443") format("woff2"), url("../fonts/DAMN.woff?v=1776430743443") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: "icons";
-  font-display: swap;
-  src: url("../fonts/icons.woff2?v=1776430743443") format("woff2"), url("../fonts/icons.woff?v=1776430743443") format("woff");
+  src: url("../fonts/DAMN.woff2?v=1776440020015") format("woff2"), url("../fonts/DAMN.woff?v=1776440020015") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776430743443") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776430743443") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776430743443") format("woff");
+  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776440020015") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776440020015") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776440020015") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -26,8 +18,16 @@
 }
 
 @font-face {
+  font-family: "icons";
+  font-display: swap;
+  src: url("../fonts/icons.woff2?v=1776440020015") format("woff2"), url("../fonts/icons.woff?v=1776440020015") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776430743443") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776430743443") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776430743443") format("woff");
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776440020015") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776440020015") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776440020015") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -2824,9 +2824,6 @@ body {
 }
 
 .footer__top {
-  -webkit-box-ordinal-group: 3;
-      -ms-flex-order: 2;
-          order: 2;
   background: #363636;
   padding: 1.875rem 0;
   border-bottom: 0;
@@ -5301,8 +5298,22 @@ body {
   padding: 3.125rem 0;
 }
 
+.article__wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 2rem;
+}
+
 .article__content {
   max-width: 75rem;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
 }
 
 .article__title {
@@ -5598,6 +5609,78 @@ body {
 .article__copy.is-error {
   pointer-events: none;
   color: #dc3545;
+}
+
+.checker-block {
+  padding: 1.875rem;
+  background-color: #f9f9f9;
+  border-radius: 1.25rem;
+  border: 0.0625rem solid #e0e0e0;
+  text-align: center;
+}
+
+.checker-block__label {
+  font-size: 0.875rem;
+  color: #777;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+}
+
+.checker-block__content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 1.25rem;
+}
+
+.checker-block__avatar {
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 0.125rem solid #467E9E;
+}
+
+.checker-block__avatar img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.checker-block__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.25rem;
+}
+
+.checker-block__name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.2;
+}
+
+.checker-block__position {
+  font-size: 1rem;
+  color: #467E9E;
+  font-weight: 500;
 }
 
 .price-formation {
@@ -6374,7 +6457,7 @@ body {
 
   .cookie {
     padding: 1.5rem 1.875rem 1.5625rem 1.875rem;
-    max-width: 32.0625rem;
+    max-width: 33.1625rem;
     bottom: 2.5rem;
     left: 2rem;
     right: auto;
@@ -7560,6 +7643,24 @@ body {
     gap: 1.875rem;
   }
 
+  .article__wrapper {
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+
+  .article__checker {
+    position: sticky;
+    top: 6.25rem;
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 17rem;
+            flex: 0 0 17rem;
+  }
+
   .price-formation__list {
     gap: 1.875rem;
   }
@@ -7739,6 +7840,12 @@ body {
     margin-top: 4.625rem;
     -ms-grid-columns: (1fr)[3];
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .article__checker {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 20rem;
+            flex: 0 0 20rem;
   }
 
   .price-formation__list {
