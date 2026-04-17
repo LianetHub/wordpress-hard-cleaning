@@ -387,3 +387,64 @@ function hard_cleaning_theme_remove_like()
 }
 add_action('wp_ajax_hard_cleaning_theme_remove_like', 'hard_cleaning_theme_remove_like');
 add_action('wp_ajax_nopriv_hard_cleaning_theme_remove_like', 'hard_cleaning_theme_remove_like');
+
+
+add_action('wp_footer', function () {
+    if (!isset($_COOKIE['cookie_notice'])) : ?>
+        <div id="cookie-notice" class="cookie cookie--hidden">
+            <div class="cookie__text">
+                Мы используем файлы cookie, чтобы сайт работал&nbsp;лучше. Оставаясь с нами, вы соглашаетесь на
+                <a href="<?php echo esc_url(get_privacy_policy_url() . '#cookies'); ?>" target="_blank">использование файлов cookie</a>.
+            </div>
+            <button type="button" class="cookie__accept btn btn-primary btn-sm">Хорошо</button>
+        </div>
+
+        <script>
+            (function() {
+                function setCookie(name, value, options) {
+                    options = options || {};
+                    var expires = options.expires;
+
+                    if (typeof expires == "number" && expires) {
+                        var d = new Date();
+                        d.setTime(d.getTime() + expires * 1000);
+                        expires = options.expires = d;
+                    }
+                    if (expires && expires.toUTCString) {
+                        options.expires = expires.toUTCString();
+                    }
+                    value = encodeURIComponent(value);
+                    var updatedCookie = name + "=" + value;
+
+                    for (var propName in options) {
+                        updatedCookie += "; " + propName;
+                        var propValue = options[propName];
+                        if (propValue !== true) {
+                            updatedCookie += "=" + propValue;
+                        }
+                    }
+                    document.cookie = updatedCookie;
+                }
+
+                var noticeDiv = document.getElementById('cookie-notice');
+                if (noticeDiv) {
+                    setTimeout(function() {
+                        noticeDiv.classList.remove('cookie--hidden');
+                    }, 3000);
+
+                    noticeDiv.querySelector('.cookie__accept').addEventListener('click', function() {
+                        setCookie('cookie_notice', 1, {
+                            expires: 180 * 24 * 60 * 60,
+                            path: '/'
+                        });
+                        noticeDiv.classList.add('cookie--hidden');
+
+                        setTimeout(function() {
+                            noticeDiv.remove();
+                        }, 500);
+                    });
+                }
+            })();
+        </script>
+<?php endif;
+});
