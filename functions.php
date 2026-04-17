@@ -69,7 +69,6 @@ add_action('wp_enqueue_scripts', function () {
     $theme_dir = get_template_directory();
     $theme_uri = get_template_directory_uri();
 
-    // Styles
     wp_enqueue_style('swiper', $theme_uri . '/assets/css/libs/swiper-bundle.min.css');
     wp_enqueue_style('fancybox', $theme_uri . '/assets/css/libs/fancybox.css');
     wp_enqueue_style('reset', $theme_uri . '/assets/css/reset.min.css');
@@ -77,7 +76,6 @@ add_action('wp_enqueue_scripts', function () {
     $main_css_ver = filemtime($theme_dir . '/assets/css/style.min.css');
     wp_enqueue_style('main-style', $theme_uri . '/assets/css/style.min.css', array(), $main_css_ver);
 
-    // Scripts
     wp_deregister_script('jquery');
     wp_enqueue_script('jquery', $theme_uri . '/assets/js/libs/jquery-4.0.0.min.js', array(), '4.0.0', true);
     wp_enqueue_script('yandex-maps', 'https://api-maps.yandex.ru/2.1/?apikey=496cd84c-0a7a-4b7e-a9d5-bd9261e5f0a6&lang=ru_RU', array(), null, true);
@@ -144,43 +142,19 @@ add_filter('upload_mimes', function ($mimes) {
 
 
 // =========================================================================
-// 6. ТИПОГРАФИКА (НЕРАЗРЫВНЫЕ ПРОБЕЛЫ)
+// 6. ТИПОГРАФИКА И КОНТЕНТ
 // =========================================================================
 
 function fix_widows_after_prepositions($text)
 {
     if (empty($text) || !is_string($text)) return $text;
 
-    $prepositions = [
-        'в',
-        'и',
-        'или',
-        'к',
-        'с',
-        'на',
-        'у',
-        'о',
-        'от',
-        'для',
-        'за',
-        'по',
-        'без',
-        'из',
-        'над',
-        'под',
-        'при',
-        'про',
-        'через',
-        'об',
-        'со',
-        'ко'
-    ];
+    $prepositions = ['в', 'и', 'или', 'к', 'с', 'на', 'у', 'о', 'от', 'для', 'за', 'по', 'без', 'из', 'над', 'под', 'при', 'про', 'через', 'об', 'со', 'ко'];
 
     foreach ($prepositions as $prep) {
         $pattern = '/(?<=\s|^)(' . preg_quote($prep, '/') . ')\s+/iu';
         $text = preg_replace($pattern, '$1&nbsp;', $text);
     }
-
     return $text;
 }
 
@@ -192,45 +166,33 @@ add_filter('acf/format_value', function ($value, $post_id, $field) {
     return fix_widows_after_prepositions($value);
 }, 99, 3);
 
-
 function get_processed_svg($url, $new_color)
 {
     if (!$url) return '';
-
     $path = str_replace(site_url('/'), ABSPATH, $url);
-
     if (!file_exists($path)) {
         return '<img src="' . esc_url($url) . '" alt="">';
     }
-
     $svg_code = file_get_contents($path);
-
     $svg_code = preg_replace('/fill="((?!none)[^"]+)"/i', 'fill="' . $new_color . '"', $svg_code);
     $svg_code = preg_replace('/stroke="((?!none)[^"]+)"/i', 'stroke="' . $new_color . '"', $svg_code);
-
     return $svg_code;
 }
-
 
 add_filter('the_content', function ($content) {
     if (!is_singular() || strpos($content, '<table') === false) {
         return $content;
     }
-
     $dom = new DOMDocument();
     $html_encoded = mb_convert_encoding($content, 'HTML-ENTITIES', 'UTF-8');
     @$dom->loadHTML('<div>' . $html_encoded . '</div>', LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
-
     $tables = $dom->getElementsByTagName('table');
-
     foreach ($tables as $table) {
         $headers = [];
         $th_nodes = $table->getElementsByTagName('th');
-
         foreach ($th_nodes as $th) {
             $headers[] = trim($th->nodeValue);
         }
-
         if (!empty($headers)) {
             $rows = $table->getElementsByTagName('tr');
             foreach ($rows as $row) {
@@ -245,10 +207,8 @@ add_filter('the_content', function ($content) {
             }
         }
     }
-
     $new_content = '';
     $wrapper = $dom->documentElement;
-
     if ($wrapper) {
         foreach ($wrapper->childNodes as $child) {
             $new_content .= $dom->saveHTML($child);
@@ -256,35 +216,31 @@ add_filter('the_content', function ($content) {
     } else {
         $new_content = $content;
     }
-
     return $new_content;
 }, 20);
 
-// pagination
+
+// =========================================================================
+// 7. ПАГИНАЦИЯ
+// =========================================================================
+
 function hard_cleaning_theme_pagination_class_filter($template)
 {
     $template = str_replace('page-numbers', 'pagination__item', $template);
     $template = str_replace('current', 'active', $template);
-
     $template = str_replace('prev pagination__item', 'pagination__prev icon-arrow-left', $template);
     $template = str_replace('next pagination__item', 'pagination__next icon-arrow-right', $template);
-
     return $template;
 }
 add_filter('paginate_links', 'hard_cleaning_theme_pagination_class_filter');
-
-add_filter('next_posts_link_attributes', 'posts_link_attributes');
-add_filter('previous_posts_link_attributes', 'posts_link_attributes');
 
 function posts_link_attributes()
 {
     return 'class="pagination__item"';
 }
+add_filter('next_posts_link_attributes', 'posts_link_attributes');
+add_filter('previous_posts_link_attributes', 'posts_link_attributes');
 
-function custom_prev_class($format)
-{
-    return str_replace('href=', 'class="pagination__prev icon-arrow-left" href=', $format);
-}
 add_filter('previous_posts_link_attributes', function () {
     return 'class="pagination__prev icon-arrow-left"';
 });
@@ -293,7 +249,11 @@ add_filter('next_posts_link_attributes', function () {
 });
 
 
-// время чтения в минутах для поста
+// =========================================================================
+// 8. СТАТИСТИКА И ВЗАИМОДЕЙСТВИЕ (BLOG METRICS)
+// =========================================================================
+
+// Время чтения
 function hard_cleaning_theme_reading_time($post_id = null, $wpm = 10, $seconds_per_image = 5)
 {
     $post_id = $post_id ?: get_the_ID();
@@ -302,26 +262,19 @@ function hard_cleaning_theme_reading_time($post_id = null, $wpm = 10, $seconds_p
     preg_match_all('/<img\b[^>]*>/i', $html, $matches);
     $images = count($matches[0]);
     $words += ($images * $seconds_per_image) * $wpm / 60;
-
     return max(1, (int) ceil($words / $wpm));
 }
 
-function hard_cleaning_theme_the_reading_time($before = '', $after = ' мин. читать')
+function hard_cleaning_theme_the_reading_time($before = '', $after = ' мин. читать')
 {
-    printf(
-        '%s%d%s',
-        $before,
-        hard_cleaning_theme_reading_time(),
-        $after
-    );
+    printf('%s%d%s', $before, hard_cleaning_theme_reading_time(), $after);
 }
 
-// Просмотры статьи
+// Просмотры
 function hard_cleaning_theme_set_post_views($postID)
 {
     $count_key = 'hard_cleaning_theme_post_views';
-    $count     = get_post_meta($postID, $count_key, true);
-
+    $count = get_post_meta($postID, $count_key, true);
     if ($count == '') {
         $count = 0;
         delete_post_meta($postID, $count_key);
@@ -338,6 +291,8 @@ function hard_cleaning_theme_get_post_views($postID)
     return $count ? (int) $count : 0;
 }
 
+add_action('wp_ajax_hard_cleaning_theme_increment_views', 'hard_cleaning_theme_increment_views_ajax');
+add_action('wp_ajax_nopriv_hard_cleaning_theme_increment_views', 'hard_cleaning_theme_increment_views_ajax');
 function hard_cleaning_theme_increment_views_ajax()
 {
     if (isset($_POST['post_id']) && is_numeric($_POST['post_id'])) {
@@ -346,48 +301,38 @@ function hard_cleaning_theme_increment_views_ajax()
     }
     wp_send_json_error();
 }
-add_action('wp_ajax_hard_cleaning_theme_increment_views', 'hard_cleaning_theme_increment_views_ajax');
-add_action('wp_ajax_nopriv_hard_cleaning_theme_increment_views', 'hard_cleaning_theme_increment_views_ajax');
 
-
-// Лайки статьи
+// Лайки
+add_action('wp_ajax_hard_cleaning_theme_add_like', 'hard_cleaning_theme_add_like');
+add_action('wp_ajax_nopriv_hard_cleaning_theme_add_like', 'hard_cleaning_theme_add_like');
 function hard_cleaning_theme_add_like()
 {
-    if (! isset($_POST['post_id']) || ! is_numeric($_POST['post_id'])) {
-        wp_send_json_error();
-    }
-
+    if (!isset($_POST['post_id']) || !is_numeric($_POST['post_id'])) wp_send_json_error();
     $post_id = (int) $_POST['post_id'];
-
     $current_likes = (int) get_post_meta($post_id, 'hard_cleaning_theme_likes', true);
     $current_likes++;
     update_post_meta($post_id, 'hard_cleaning_theme_likes', $current_likes);
-
     wp_send_json_success(['likes' => $current_likes]);
 }
 
-add_action('wp_ajax_hard_cleaning_theme_add_like', 'hard_cleaning_theme_add_like');
-add_action('wp_ajax_nopriv_hard_cleaning_theme_add_like', 'hard_cleaning_theme_add_like');
-
+add_action('wp_ajax_hard_cleaning_theme_remove_like', 'hard_cleaning_theme_remove_like');
+add_action('wp_ajax_nopriv_hard_cleaning_theme_remove_like', 'hard_cleaning_theme_remove_like');
 function hard_cleaning_theme_remove_like()
 {
-    if (!isset($_POST['post_id']) || !is_numeric($_POST['post_id'])) {
-        wp_send_json_error();
-    }
-
+    if (!isset($_POST['post_id']) || !is_numeric($_POST['post_id'])) wp_send_json_error();
     $post_id = (int)$_POST['post_id'];
     $current_likes = (int)get_post_meta($post_id, 'hard_cleaning_theme_likes', true);
-
     if ($current_likes > 0) {
         $current_likes--;
         update_post_meta($post_id, 'hard_cleaning_theme_likes', $current_likes);
     }
-
     wp_send_json_success(['likes' => $current_likes]);
 }
-add_action('wp_ajax_hard_cleaning_theme_remove_like', 'hard_cleaning_theme_remove_like');
-add_action('wp_ajax_nopriv_hard_cleaning_theme_remove_like', 'hard_cleaning_theme_remove_like');
 
+
+// =========================================================================
+// 9. СЛУЖЕБНЫЕ УВЕДОМЛЕНИЯ (COOKIES)
+// =========================================================================
 
 add_action('wp_footer', function () {
     if (!isset($_COOKIE['cookie_notice'])) : ?>
@@ -404,7 +349,6 @@ add_action('wp_footer', function () {
                 function setCookie(name, value, options) {
                     options = options || {};
                     var expires = options.expires;
-
                     if (typeof expires == "number" && expires) {
                         var d = new Date();
                         d.setTime(d.getTime() + expires * 1000);
@@ -415,7 +359,6 @@ add_action('wp_footer', function () {
                     }
                     value = encodeURIComponent(value);
                     var updatedCookie = name + "=" + value;
-
                     for (var propName in options) {
                         updatedCookie += "; " + propName;
                         var propValue = options[propName];
@@ -438,7 +381,6 @@ add_action('wp_footer', function () {
                             path: '/'
                         });
                         noticeDiv.classList.add('cookie--hidden');
-
                         setTimeout(function() {
                             noticeDiv.remove();
                         }, 500);
