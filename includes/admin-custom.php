@@ -39,15 +39,18 @@ class Wptuts_Simple_Admin
 	{
 		echo "
         <style>
-            #toplevel_page_theme-general-settings .wp-menu-name { 
+            #toplevel_page_theme-general-settings .wp-menu-name,
+			#toplevel_page_services-prices .wp-menu-name { 
                 background: #467E9E !important; 
                 color: #ffffff !important; 
                 font-weight: 600;
             }
-			#toplevel_page_theme-general-settings .wp-menu-image::before {
+			#toplevel_page_theme-general-settings .wp-menu-image::before,
+			#toplevel_page_services-prices .wp-menu-image::before {
 				color: #ffffff !important; 
 			}
-            #toplevel_page_theme-general-settings:hover .wp-menu-name { 
+            #toplevel_page_theme-general-settings:hover .wp-menu-name,
+            #toplevel_page_services-prices:hover .wp-menu-name { 
                 background: #1F4B62 !important; 
             }
            

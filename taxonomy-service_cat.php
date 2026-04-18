@@ -34,7 +34,7 @@ $image = get_field('category_heading_image', $term) ?: get_field('category_image
 <?php require_once(TEMPLATE_PATH . '_catalog.php'); ?>
 <?php
 $term = get_queried_object();
-$prices_group = get_field('all_services_prices_list', 'option', false);
+$prices_group = get_field('all_services_prices_list', 'option');
 
 $services_query = new WP_Query([
     'post_type'      => 'services',
@@ -71,14 +71,12 @@ if ($services_query->have_posts()) :
                         <?php
                         while ($services_query->have_posts()) : $services_query->the_post();
                             $sid = get_the_ID();
+
+                            // Получаем данные группы для конкретного ID услуги
                             $service_data = $prices_group['service_data_' . $sid] ?? null;
 
-
-                            $first_row = $service_data['additional_services'][0] ?? null;
-
                             $display_name = get_the_title();
-                            $display_price = $first_row['price'] ?? '—';
-
+                            $display_price = !empty($service_data['service_price']) ? $service_data['service_price'] : '—';
                         ?>
                             <tr>
                                 <td data-label="Наименование">

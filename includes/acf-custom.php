@@ -56,6 +56,14 @@ function acf_load_services_prices_fields($field)
 			'layout'     => 'block',
 			'sub_fields' => [
 				[
+					'key'   => 'service_main_price_' . $sid,
+					'name'  => 'service_price',
+					'_name' => 'service_price',
+					'label' => 'Основная стоимость услуги',
+					'type'  => 'text',
+					'wrapper' => ['width' => '100'],
+				],
+				[
 					'key'          => 'repeater_' . $sid,
 					'name'         => 'additional_services',
 					'_name'        => 'additional_services',
@@ -127,14 +135,6 @@ function my_acf_admin_head()
 {
 ?>
 	<style type="text/css">
-		#toplevel_page_services-prices {
-			background: rgba(177, 223, 29, 0.15) !important;
-		}
-
-		#toplevel_page_services-prices .wp-menu-name {
-			font-weight: 700 !important;
-		}
-
 		.acf-accordion .acf-accordion-title label {
 			text-transform: uppercase;
 			color: #000;
