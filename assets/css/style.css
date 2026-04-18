@@ -3750,8 +3750,8 @@ body {
 }
 
 .guarantees-section {
-  padding: 3.125rem 0;
   background: #FFFFFF;
+  padding: 3.125rem 0;
 }
 
 .g-main-card {
@@ -3961,7 +3961,7 @@ body {
 
 .equipment {
   background: #F7F9FB;
-  padding: 1.875rem 0;
+  padding: 3.125rem 0;
 }
 
 .equipment__header {
@@ -7123,6 +7123,14 @@ body {
     gap: 0.875rem;
   }
 
+  .guarantees-section {
+    padding: 6.25rem 0;
+  }
+
+  .equipment {
+    padding: 6.25rem 0;
+  }
+
   .equipment__card {
     border-radius: 1.25rem;
   }
@@ -8460,11 +8468,6 @@ body {
 
   .pricing-card__description {
     text-align: center;
-  }
-
-  .guarantees-section {
-    padding: 1.5rem 0;
-    overflow-x: clip;
   }
 
   .g-main-card {

@@ -1,5 +1,5 @@
 <?php
-$service = get_field('case_service_link');
+$services = get_field('case_service_link');
 $before = get_field('case_before_img');
 $after = get_field('case_after_img');
 $case_area = get_field('case_area');
@@ -9,6 +9,8 @@ $case_title = get_the_title();
 $case_link = get_permalink();
 
 $case_excerpt = has_excerpt() ? get_the_excerpt() : get_the_content();
+
+$primary_service = (!empty($services) && is_array($services)) ? $services[0] : null;
 ?>
 
 <div class="case-card">
@@ -38,9 +40,11 @@ $case_excerpt = has_excerpt() ? get_the_excerpt() : get_the_content();
     <?php endif; ?>
 
     <div class="case-card__details">
-        <?php if ($service) : ?>
-            <a href="<?php echo get_permalink($service->ID); ?>" class="case-card__category">
-                <?php echo get_the_title($service->ID); ?>
+        <?php if ($primary_service) :
+            $p_id = is_object($primary_service) ? $primary_service->ID : $primary_service;
+        ?>
+            <a href="<?php echo get_permalink($p_id); ?>" class="case-card__category">
+                <?php echo get_the_title($p_id); ?>
             </a>
         <?php endif; ?>
 

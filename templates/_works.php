@@ -7,8 +7,8 @@ $args = [
     'meta_query'     => [
         [
             'key'     => 'case_service_link',
-            'value'   => $current_service_id,
-            'compare' => '='
+            'value'   => '"' . $current_service_id . '"',
+            'compare' => 'LIKE'
         ]
     ]
 ];
@@ -27,6 +27,11 @@ $works_query = new WP_Query($args);
                     <?php get_template_part('templates/components/card-portfolio'); ?>
                 <?php endwhile; ?>
             </div>
+
+            <a href="<?php echo get_post_type_archive_link('portfolio') ?>"
+                class="cases__more btn btn-primary">
+                Посмотреть все работы →
+            </a>
         </div>
     </section>
 <?php
