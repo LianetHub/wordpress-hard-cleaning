@@ -2,12 +2,7 @@
 $terms = get_terms([
     'taxonomy'   => 'service_cat',
     'hide_empty' => false,
-    'slug'       => [
-        'uborka-posle-pozhara',
-        'uborka-posle-potopa',
-        'uborka-posle-smerti',
-        'uborka-zapushhennoj-kvartiry'
-    ],
+    'include'    => [4, 5, 6, 8],
     'orderby'    => 'include'
 ]);
 ?>

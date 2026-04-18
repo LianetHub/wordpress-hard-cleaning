@@ -1,15 +1,14 @@
 <?php
-$price_title = get_field('price_title') ?: 'Цены на услуги';
-$price_table = get_field('price_table');
-?>
+$prices_group = get_field('all_services_prices_list', 'option');
+$service_data = $prices_group['service_data_' . get_the_ID()] ?? null;
 
-<?php if ($price_table): ?>
+if ($service_data && !empty($service_data['additional_services'])) :
+    $price_table = $service_data['additional_services'];
+?>
     <section class="price">
         <div class="container">
             <div class="price__hint hint">Прайс-лист</div>
-            <h2 class="price__title title">
-                <?php echo wp_kses($price_title, ['span' => ['class' => []]]); ?>
-            </h2>
+            <h2 class="price__title title">Цены на услуги</h2>
 
             <div class="price__table-wrapper custom-table">
                 <table>
@@ -24,13 +23,13 @@ $price_table = get_field('price_table');
                         <?php foreach ($price_table as $row): ?>
                             <tr>
                                 <td data-label="Наименование">
-                                    <?php echo esc_html($row['price_name']); ?>
+                                    <?php echo nl2br(esc_html($row['name'])); ?>
                                 </td>
                                 <td data-label="Стоимость" class="price__value">
-                                    <?php echo esc_html($row['price_value']); ?>
+                                    <?php echo esc_html($row['price']); ?>
                                 </td>
                                 <td data-label="Комментарий" class="price__comment">
-                                    <?php echo esc_html($row['price_comment']); ?>
+                                    <?php echo nl2br(esc_html($row['comment'])); ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
