@@ -410,6 +410,13 @@
         }
     }
 
+    // .catalog__card-price
+    &__card-price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: $accent;
+    }
+
     // .catalog__card-btn
     &__card-btn {
         flex-shrink: 0;

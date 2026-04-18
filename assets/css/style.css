@@ -4596,6 +4596,12 @@ body {
   transition: background-color 0.3s ease;
 }
 
+.catalog__card-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #467E9E;
+}
+
 .catalog__card-btn {
   -ms-flex-negative: 0;
       flex-shrink: 0;

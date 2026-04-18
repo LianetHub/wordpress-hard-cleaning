@@ -86,7 +86,7 @@ function acf_load_services_prices_fields($field)
 							'name'  => 'price',
 							'_name' => 'price',
 							'label' => 'Стоимость',
-							'type'  => 'text',
+							'type'  => 'number',
 						],
 						[
 							'key'   => 'add_comment_' . $sid,

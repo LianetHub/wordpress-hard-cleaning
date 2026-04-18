@@ -72,7 +72,6 @@ if ($services_query->have_posts()) :
                         while ($services_query->have_posts()) : $services_query->the_post();
                             $sid = get_the_ID();
 
-                            // Получаем данные группы для конкретного ID услуги
                             $service_data = $prices_group['service_data_' . $sid] ?? null;
 
                             $display_name = get_the_title();
@@ -85,7 +84,7 @@ if ($services_query->have_posts()) :
                                     </a>
                                 </td>
                                 <td data-label="Стоимость" class="price__value">
-                                    <?php echo esc_html($display_price); ?>
+                                    от <?php echo format_service_price($display_price); ?> ₽
                                 </td>
                             </tr>
                         <?php endwhile;

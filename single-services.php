@@ -33,7 +33,9 @@ $is_collage = !empty($image_left) || !empty($image_right);
                 <?php if ($phone): ?>
                     <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-primary">Срочный вызов</a>
                 <?php endif; ?>
-                <a href="" class="heading__btn btn btn-outline">Оставить заявку</a>
+                <a href="#callback"
+                    data-fancybox
+                    class="heading__btn btn btn-outline">Оставить заявку</a>
             </div>
         </div>
 

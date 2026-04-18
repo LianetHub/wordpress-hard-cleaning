@@ -225,6 +225,17 @@ function russian_plural($number, $titles)
     return $titles[($number % 100 > 4 && $number % 100 < 20) ? 2 : $cases[min($number % 10, 5)]];
 }
 
+function format_service_price($price)
+{
+    if (!$price) return '';
+    $clean_price = (float)preg_replace('/[^0-9.]/', '', $price);
+
+    if ($clean_price <= 0) return '';
+    $formatted = number_format($clean_price, 0, '.', "\u{2009}");
+
+    return $formatted;
+}
+
 
 // =========================================================================
 // 7. ПАГИНАЦИЯ
