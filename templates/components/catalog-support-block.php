@@ -10,7 +10,7 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
             <div class="catalog__support-desc">У нас есть и другие услуги — опишите что случилось, и мы подберём решение под вашу задачу.</div>
         </div>
         <div class="catalog__support-btns">
-            <a href="#" class="catalog__support-btn btn btn-primary">Уточнить лично</a>
+            <a href="#callback" data-fancybox class="catalog__support-btn btn btn-primary">Уточнить лично</a>
             <?php if ($phone): ?>
                 <a href="tel:<?php echo $phone_clean; ?>" class="catalog__support-btn btn btn-outline">Позвонить</a>
             <?php endif; ?>

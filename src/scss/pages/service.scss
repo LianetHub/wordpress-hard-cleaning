@@ -489,7 +489,10 @@
 
     @media (min-width:$md4) {
         padding: rem(100) 0;
+    }
 
+    &.price--blue {
+        background: #f7f9fb;
     }
 
     // .price__hint
