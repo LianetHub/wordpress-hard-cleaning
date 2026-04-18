@@ -8706,6 +8706,10 @@ body {
 }
 
 @media (max-width: 575.98px) {
+  .cases__more {
+    width: 100%;
+  }
+
   .mobile-hidden {
     display: none !important;
   }

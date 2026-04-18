@@ -134,5 +134,9 @@
 .cases {
 	&__more {
 		margin-top: 2rem;
+
+		@media (max-width:$md5) {
+			width: 100%;
+		}
 	}
 }

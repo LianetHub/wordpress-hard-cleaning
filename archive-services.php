@@ -55,10 +55,11 @@ $has_custom_images = ($img_left || $img_center || $img_right);
 
     </div>
 </section>
-
+<?php require_once(TEMPLATE_PATH . '_trust.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_catalog-main.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_reviews.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_trust.php'); ?>
+<?php require_once(TEMPLATE_PATH . '_coverage.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_faq.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_cta.php'); ?>
 
