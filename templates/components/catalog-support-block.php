@@ -22,7 +22,7 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
             <div class="catalog__support-desc">Все цены в одном месте — таблица по каждой услуге с комментариями</div>
         </div>
         <div class="catalog__support-btns">
-            <a href="#" class="catalog__support-btn btn btn-white">Смотреть прайс</a>
+            <a href="<?php echo get_permalink(83); ?>" class="catalog__support-btn btn btn-white">Смотреть прайс</a>
             <?php if ($phone): ?>
                 <a href="tel:<?php echo $phone_clean; ?>" class="catalog__support-btn btn btn-outline-white">Позвонить</a>
             <?php endif; ?>

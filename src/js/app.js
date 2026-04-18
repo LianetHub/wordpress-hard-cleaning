@@ -45,7 +45,7 @@ $(function () {
         const $toggler = $('.header__menu-toggler');
 
         // docs filters
-        const $filterBtn = $target.closest('.filters__item');
+        const $filterBtn = $target.closest('.docs-filter');
         if ($filterBtn.length) {
             const filter = $filterBtn.data('filter');
             const $gridItems = $('.certs__item');
