@@ -81,7 +81,7 @@ $is_collage = !empty($image_left) || !empty($image_right);
 <?php require_once(TEMPLATE_PATH . '_works.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_price.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_guarantees.php'); ?>
-<?php require_once(TEMPLATE_PATH . '_equipment.php'); ?>
+
 <?php if (!empty(get_the_content())): ?>
     <article class="article">
         <div class="container">
