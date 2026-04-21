@@ -86,7 +86,7 @@ function acf_load_services_prices_fields($field)
 							'name'  => 'price',
 							'_name' => 'price',
 							'label' => 'Стоимость',
-							'type'  => 'number',
+							'type'  => 'text',
 						],
 						[
 							'key'   => 'add_comment_' . $sid,
@@ -107,29 +107,29 @@ function acf_load_services_prices_fields($field)
 }
 add_filter('acf/load_field/name=all_services_prices_list', 'acf_load_services_prices_fields');
 
-add_filter('acf/load_value/name=additional_services', function ($value, $post_id, $field) {
+// add_filter('acf/load_value/name=additional_services', function ($value, $post_id, $field) {
 
-	if ((empty($value) || $value === false) && is_admin()) {
+// 	if ((empty($value) || $value === false) && is_admin()) {
 
 
-		preg_match('/\d+/', $field['key'], $matches);
-		$sid = $matches[0] ?? '';
+// 		preg_match('/\d+/', $field['key'], $matches);
+// 		$sid = $matches[0] ?? '';
 
-		$value = [
-			[
-				'add_name_' . $sid    => 'Консультация',
-				'add_price_' . $sid   => 'Бесплатно',
-				'add_comment_' . $sid => 'Оставьте заявку или позвоните нам',
-			],
-			[
-				'add_name_' . $sid    => 'Выезд на осмотр для составления сметы',
-				'add_price_' . $sid   => 'Бесплатно',
-				'add_comment_' . $sid => 'Бесплатно в пределах Санкт-Петербурга.',
-			]
-		];
-	}
-	return $value;
-}, 10, 3);
+// 		$value = [
+// 			[
+// 				'add_name_' . $sid    => 'Консультация',
+// 				'add_price_' . $sid   => 'Бесплатно',
+// 				'add_comment_' . $sid => 'Оставьте заявку или позвоните нам',
+// 			],
+// 			[
+// 				'add_name_' . $sid    => 'Выезд на осмотр для составления сметы',
+// 				'add_price_' . $sid   => 'Бесплатно',
+// 				'add_comment_' . $sid => 'Бесплатно в пределах Санкт-Петербурга.',
+// 			]
+// 		];
+// 	}
+// 	return $value;
+// }, 10, 3);
 
 function my_acf_admin_head()
 {
@@ -145,11 +145,11 @@ function my_acf_admin_head()
 			margin-bottom: 10px !important;
 		}
 
-		.acf-field-repeater[data-name="additional_services"] tbody tr:nth-child(1) .acf-row-handle .acf-icon.-minus,
+		/* .acf-field-repeater[data-name="additional_services"] tbody tr:nth-child(1) .acf-row-handle .acf-icon.-minus,
 		.acf-field-repeater[data-name="additional_services"] tbody tr:nth-child(2) .acf-row-handle .acf-icon.-minus {
 			display: none !important;
 			pointer-events: none;
-		}
+		} */
 	</style>
 <?php
 }

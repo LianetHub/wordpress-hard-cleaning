@@ -439,7 +439,11 @@
     }
 
     // .work__subtitle
-    &__subtitle {}
+    &__subtitle {
+        &.subtitle {
+            max-width: 100%;
+        }
+    }
 
     // .work__list
     &__list {
