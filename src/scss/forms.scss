@@ -411,6 +411,20 @@
 		}
 	}
 
+	&.btn-secondary-outline {
+		background: transparent;
+		border: 0.0625rem solid #20b2aa;
+		color: #20b2aa;
+
+		@media (any-hover: hover) {
+			&:hover {
+				background: #20b2aa;
+				color: #fff;
+				box-shadow: 0 0.375rem 0.9375rem 0 rgba($color: #20a19b, $alpha: 0.5);
+			}
+		}
+	}
+
 	&.btn-outline {
 		background: transparent;
 		border: 0.0625rem solid var(--color-blue-primary);

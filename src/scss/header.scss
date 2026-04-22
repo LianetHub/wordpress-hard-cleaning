@@ -177,9 +177,9 @@
             font-family: $fontfamily;
             line-height: 1.375;
             letter-spacing: 0.03em;
-            background: #467E9E;
+            background: #20b2aa;
             color: #fff;
-            box-shadow: 0 0.25rem 0.625rem 0 rgba(49, 112, 142, 0.4);
+            box-shadow: 0 0.25rem 0.625rem 0 rgba($color: #20a19b, $alpha: 0.3);
             overflow: hidden;
 
             &::after {

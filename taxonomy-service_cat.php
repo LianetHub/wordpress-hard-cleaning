@@ -6,6 +6,9 @@ $title = get_field('term_title', $term) ?: $term->name;
 $descr = get_field('term_descr', $term) ?: $term->description;
 
 $image = get_field('category_heading_image', $term) ?: get_field('category_image', $term);
+
+$phone = get_field('phone', 'option');
+$phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 ?>
 
 <?php require_once(TEMPLATE_PATH . '/components/breadcrumbs.php'); ?>

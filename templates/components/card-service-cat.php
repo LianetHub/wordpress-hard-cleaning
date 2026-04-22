@@ -21,12 +21,11 @@ $services_query = new WP_Query([
 ]);
 
 $total_services = $services_query->found_posts;
-$limit = 4;
+$limit = is_tax('service_cat') ? 0 : 4;
 $counter = 0;
 ?>
 
 <li class="services__item">
-
     <?php if ($image): ?>
         <a href="<?php echo esc_url($term_link); ?>" class="services__item-image">
             <img src="<?php echo esc_url($image['url']); ?>"
@@ -52,14 +51,14 @@ $counter = 0;
                     </a>
                 </h3>
             </div>
-            <a class="services__item-btn btn btn-secondary icon-phone"
+            <a class="services__item-btn btn btn-secondary-outline icon-phone"
                 href="tel:<?php echo $phone_clean; ?>">Вызвать бригаду</a>
         </div>
 
         <?php if ($services_query->have_posts()): ?>
             <div class="services__item-tags">
                 <?php while ($services_query->have_posts()): $services_query->the_post();
-                    if ($counter < $limit): ?>
+                    if ($limit === 0 || $counter < $limit): ?>
                         <a href="<?php the_permalink(); ?>" class="services__item-tag">
                             <?php echo fix_widows_after_prepositions(get_the_title()); ?>
                         </a>
@@ -68,10 +67,10 @@ $counter = 0;
                     $counter++;
                 endwhile; ?>
 
-                <?php if ($total_services > $limit):
+                <?php if ($limit > 0 && $total_services > $limit):
                     $remaining = $total_services - $limit; ?>
                     <a href="<?php echo esc_url($term_link); ?>" class="services__item-tag services__item-tag--more">
-                        +<?php echo $remaining; ?> <?php echo russian_plural($remaining, ['услугу', 'услуги', 'услуг']); ?>
+                        +<?php echo $remaining; ?> <?php echo russian_plural($remaining, ['услуга', 'услуги', 'услуг']); ?>
                     </a>
                 <?php endif; ?>
 
@@ -79,5 +78,4 @@ $counter = 0;
             </div>
         <?php endif; ?>
     </div>
-
 </li>
