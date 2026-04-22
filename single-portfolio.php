@@ -54,7 +54,7 @@ $wrapper_tag = $title ? 'section' : 'div';
             </div>
             <div class="heading__btns">
                 <?php if ($phone): ?>
-                    <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-primary">Срочный вызов</a>
+                    <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-secondary">Срочный вызов</a>
                 <?php endif; ?>
                 <a href="" class="heading__btn btn btn-outline">Оставить заявку</a>
             </div>

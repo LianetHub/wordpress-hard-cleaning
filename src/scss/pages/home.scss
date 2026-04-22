@@ -601,7 +601,8 @@
                 }
             }
 
-            font-size: 1.125rem;
+            font-size: rem(21);
+            font-weight: 700;
 
             @media (max-width:$md5) {
                 padding: 0.5rem 0.5rem;

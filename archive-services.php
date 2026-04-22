@@ -21,7 +21,7 @@ $has_custom_images = ($img_left || $img_center || $img_right);
             <p class="heading__subtitle subtitle">Работаем со сложными случаями — после пожара, потопа, смерти и других ЧП. Выбирайте ситуацию — расскажем что входит и сколько стоит.</p>
             <div class="heading__btns">
                 <?php if ($phone): ?>
-                    <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-primary">Срочный вызов</a>
+                    <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-secondary">Срочный вызов</a>
                 <?php endif; ?>
                 <a href="#callback" data-fancybox class="heading__btn btn btn-outline">Оставить заявку</a>
             </div>

@@ -12,7 +12,7 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
         <div class="catalog__support-btns">
             <a href="#callback" data-fancybox class="catalog__support-btn btn btn-primary">Уточнить лично</a>
             <?php if ($phone): ?>
-                <a href="tel:<?php echo $phone_clean; ?>" class="catalog__support-btn btn btn-outline">Позвонить</a>
+                <a href="tel:<?php echo $phone_clean; ?>" class="catalog__support-btn btn btn-secondary">Позвонить</a>
             <?php endif; ?>
         </div>
     </div>
@@ -24,7 +24,7 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
         <div class="catalog__support-btns">
             <a href="<?php echo get_permalink(83); ?>" class="catalog__support-btn btn btn-white">Смотреть прайс</a>
             <?php if ($phone): ?>
-                <a href="tel:<?php echo $phone_clean; ?>" class="catalog__support-btn btn btn-outline-white">Позвонить</a>
+                <a href="tel:<?php echo $phone_clean; ?>" class="catalog__support-btn btn btn-secondary">Позвонить</a>
             <?php endif; ?>
         </div>
     </div>
