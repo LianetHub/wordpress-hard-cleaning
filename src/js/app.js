@@ -1,5 +1,29 @@
 "use strict";
 
+// animation lazy loading images
+
+document.addEventListener('DOMContentLoaded', () => {
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+    lazyImages.forEach(img => {
+        const parent = img.parentElement;
+
+        function markAsLoaded() {
+            img.classList.add('is-loaded');
+            if (parent) {
+                parent.classList.add('is-ready');
+            }
+        }
+
+        if (img.complete) {
+            markAsLoaded();
+        } else {
+            img.addEventListener('load', markAsLoaded);
+            img.addEventListener('error', markAsLoaded);
+        }
+    });
+});
+
 $(function () {
 
     //  init Fancybox

@@ -307,6 +307,17 @@
         width: 100%;
         position: relative;
         padding-bottom: #{math.div(275, 447) * 100%};
+        background: linear-gradient(90deg,
+                rgba(70, 126, 158, 0.1) 25%,
+                rgba(70, 126, 158, 0.2) 50%,
+                rgba(70, 126, 158, 0.1) 75%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite linear;
+
+        &.is-ready {
+            animation: none;
+            background: #EAF3F8;
+        }
 
         & img {
             position: absolute;
@@ -531,7 +542,7 @@
 
         @media (min-width:$md4) {
             color: #4B5D68;
-            max-width: 14.1875rem;
+            max-width: 18.1875rem;
 
         }
     }

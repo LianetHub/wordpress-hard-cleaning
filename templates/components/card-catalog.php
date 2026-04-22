@@ -24,7 +24,8 @@ if ($post_terms && !is_wp_error($post_terms)) {
         <?php if (!empty($image['url'])): ?>
             <img src="<?php echo esc_url($image['url']); ?>"
                 alt="<?php echo esc_attr($image['alt'] ?: $title); ?>"
-                class="cover-image" loading="lazy">
+                class="cover-image"
+                loading="lazy">
         <?php else: ?>
             <div class="catalog__card-placeholder">
                 <img

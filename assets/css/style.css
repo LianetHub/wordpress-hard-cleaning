@@ -1,24 +1,24 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: "icons";
+  font-family: "DAMN";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1776797009178") format("woff2"), url("../fonts/icons.woff?v=1776797009178") format("woff");
+  src: url("../fonts/DAMN.woff2?v=1776844615268") format("woff2"), url("../fonts/DAMN.woff?v=1776844615268") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "DAMN";
+  font-family: "icons";
   font-display: swap;
-  src: url("../fonts/DAMN.woff2?v=1776797009178") format("woff2"), url("../fonts/DAMN.woff?v=1776797009178") format("woff");
+  src: url("../fonts/icons.woff2?v=1776844615268") format("woff2"), url("../fonts/icons.woff?v=1776844615268") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776797009178") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776797009178") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776797009178") format("woff");
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776844615268") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776844615268") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776844615268") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -27,7 +27,7 @@
 
 @font-face {
   font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776797009178") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776797009178") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776797009178") format("woff");
+  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776844615268") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776844615268") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776844615268") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -1132,6 +1132,36 @@ h6 {
   vertical-align: middle;
   border: 0;
   font-size: 1rem;
+}
+
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+img[loading=lazy] {
+  opacity: 0;
+  -webkit-transition: opacity 0.6s ease-in-out;
+  transition: opacity 0.6s ease-in-out;
+}
+
+img[loading=lazy].is-loaded {
+  opacity: 1;
 }
 
 ::-webkit-scrollbar {
@@ -4512,6 +4542,17 @@ body {
   width: 100%;
   position: relative;
   padding-bottom: 61.5212527964%;
+  background: -webkit-gradient(linear, left top, right top, color-stop(25%, rgba(70, 126, 158, 0.1)), color-stop(50%, rgba(70, 126, 158, 0.2)), color-stop(75%, rgba(70, 126, 158, 0.1)));
+  background: linear-gradient(90deg, rgba(70, 126, 158, 0.1) 25%, rgba(70, 126, 158, 0.2) 50%, rgba(70, 126, 158, 0.1) 75%);
+  background-size: 200% 100%;
+  -webkit-animation: shimmer 2s infinite linear;
+          animation: shimmer 2s infinite linear;
+}
+
+.catalog__card-image.is-ready {
+  -webkit-animation: none;
+          animation: none;
+  background: #EAF3F8;
 }
 
 .catalog__card-image img {
@@ -7181,7 +7222,7 @@ body {
 
   .price__comment {
     color: #4B5D68;
-    max-width: 14.1875rem;
+    max-width: 18.1875rem;
   }
 
   .portfolio {
