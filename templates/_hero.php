@@ -47,7 +47,7 @@
              <p class="hero__subtitle"><?php echo esc_html($subtitle); ?></p>
              <div class="hero__btns">
                  <?php if ($phone): ?>
-                     <a href="tel:<?php echo $phone_clean; ?>" class="hero__btn btn btn-primary">Срочный вызов</a>
+                     <a href="tel:<?php echo $phone_clean; ?>" class="hero__btn btn btn-secondary">Срочный вызов</a>
                  <?php endif; ?>
                  <a href="#callback" data-fancybox class="hero__btn btn btn-outline">Задать вопрос</a>
              </div>
