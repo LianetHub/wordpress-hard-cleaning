@@ -26,6 +26,17 @@ $counter = 0;
 ?>
 
 <li class="services__item">
+
+    <?php if ($image): ?>
+        <a href="<?php echo esc_url($term_link); ?>" class="services__item-image">
+            <img src="<?php echo esc_url($image['url']); ?>"
+                alt="<?php echo esc_attr($term->name); ?>"
+                width="482"
+                height="686"
+                loading="lazy"
+                decoding="async">
+        </a>
+    <?php endif; ?>
     <div class="services__item-body">
         <div class="services__item-main">
             <div class="services__item-header">
@@ -41,7 +52,7 @@ $counter = 0;
                     </a>
                 </h3>
             </div>
-            <a class="services__item-btn btn btn-primary icon-phone"
+            <a class="services__item-btn btn btn-secondary icon-phone"
                 href="tel:<?php echo $phone_clean; ?>">Вызвать бригаду</a>
         </div>
 
@@ -69,14 +80,4 @@ $counter = 0;
         <?php endif; ?>
     </div>
 
-    <?php if ($image): ?>
-        <a href="<?php echo esc_url($term_link); ?>" class="services__item-image">
-            <img src="<?php echo esc_url($image['url']); ?>"
-                alt="<?php echo esc_attr($term->name); ?>"
-                width="482"
-                height="686"
-                loading="lazy"
-                decoding="async">
-        </a>
-    <?php endif; ?>
 </li>

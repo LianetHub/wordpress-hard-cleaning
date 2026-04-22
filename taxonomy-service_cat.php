@@ -19,6 +19,12 @@ $image = get_field('category_heading_image', $term) ?: get_field('category_image
             <?php if ($descr): ?>
                 <p class="heading__subtitle subtitle"><?php echo $descr; ?></p>
             <?php endif; ?>
+            <div class="heading__btns">
+                <?php if ($phone): ?>
+                    <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-primary">Срочный вызов</a>
+                <?php endif; ?>
+                <a href="#callback" data-fancybox class="heading__btn btn btn-outline">Оставить заявку</a>
+            </div>
         </div>
         <?php if ($image): ?>
             <div class="heading__image">

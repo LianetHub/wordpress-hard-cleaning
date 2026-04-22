@@ -49,7 +49,7 @@
                  <?php if ($phone): ?>
                      <a href="tel:<?php echo $phone_clean; ?>" class="hero__btn btn btn-primary">Срочный вызов</a>
                  <?php endif; ?>
-                 <a href="#contacts" class="hero__btn btn btn-outline">Рассчитать стоимость</a>
+                 <a href="#callback" data-fancybox class="hero__btn btn btn-outline">Задать вопрос</a>
              </div>
          </div>
      </div>

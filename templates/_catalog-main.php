@@ -12,21 +12,18 @@ $grid_terms = [];
 if ($is_archive) {
     $filter_terms = get_terms([
         'taxonomy'   => 'service_cat',
-        'hide_empty' => false,
+        'hide_empty' => true,
         'parent'     => 0,
     ]);
 
-    $grid_terms = get_terms([
+    $all_terms = get_terms([
         'taxonomy'   => 'service_cat',
-        'hide_empty' => false,
-        'meta_query' => [
-            [
-                'key'     => 'is_main_service',
-                'value'   => '1',
-                'compare' => '='
-            ]
-        ]
+        'hide_empty' => true,
     ]);
+
+    $grid_terms = array_filter($all_terms, function ($term) {
+        return $term->parent !== 0;
+    });
 } else {
     $parent_term_id = $current_object->parent;
 
@@ -37,7 +34,7 @@ if ($is_archive) {
 
         $filter_terms = get_terms([
             'taxonomy'   => 'service_cat',
-            'hide_empty' => false,
+            'hide_empty' => true,
             'parent'     => $current_term_id,
         ]);
     } else {
@@ -48,7 +45,7 @@ if ($is_archive) {
 
         $filter_terms = get_terms([
             'taxonomy'   => 'service_cat',
-            'hide_empty' => false,
+            'hide_empty' => true,
             'parent'     => $parent_term_id,
         ]);
     }

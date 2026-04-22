@@ -23,7 +23,7 @@ $has_custom_images = ($img_left || $img_center || $img_right);
                 <?php if ($phone): ?>
                     <a href="tel:<?php echo $phone_clean; ?>" class="heading__btn btn btn-primary">Срочный вызов</a>
                 <?php endif; ?>
-                <a href="" class="heading__btn btn btn-outline">Оставить заявку</a>
+                <a href="#callback" data-fancybox class="heading__btn btn btn-outline">Оставить заявку</a>
             </div>
         </div>
 
