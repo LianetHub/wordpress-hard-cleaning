@@ -10,7 +10,8 @@ $case_link = get_permalink();
 
 $case_excerpt = has_excerpt() ? get_the_excerpt() : get_the_content();
 
-$primary_service = (!empty($services) && is_array($services)) ? $services[0] : null;
+$primary_term_id = (!empty($services) && is_array($services)) ? $services[0] : $services;
+$term = $primary_term_id ? get_term($primary_term_id, 'service_cat') : null;
 ?>
 
 <div class="case-card">
@@ -40,11 +41,9 @@ $primary_service = (!empty($services) && is_array($services)) ? $services[0] : n
     <?php endif; ?>
 
     <div class="case-card__details">
-        <?php if ($primary_service) :
-            $p_id = is_object($primary_service) ? $primary_service->ID : $primary_service;
-        ?>
-            <a href="<?php echo get_permalink($p_id); ?>" class="case-card__category">
-                <?php echo get_the_title($p_id); ?>
+        <?php if ($term && !is_wp_error($term)) : ?>
+            <a href="<?php echo esc_url(get_term_link($term)); ?>" class="case-card__category">
+                <?php echo esc_html($term->name); ?>
             </a>
         <?php endif; ?>
 
