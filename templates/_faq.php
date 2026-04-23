@@ -20,7 +20,7 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
                     <a href="#" class="faq__cta-btn btn btn-white">Отправить фото</a>
                     <?php if ($phone): ?>
                         <a href="tel:<?php echo $phone_clean; ?>"
-                            class="faq__cta-btn btn btn-outline-white">
+                            class="faq__cta-btn btn btn-secondary">
                             Позвонить
                         </a>
                     <?php endif; ?>

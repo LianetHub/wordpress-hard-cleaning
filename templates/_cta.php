@@ -11,7 +11,7 @@
 
             <div class="cta__btns">
                 <a href="#" class="cta__btn btn btn-white">Отправить фото в мессенджер</a>
-                <a href="#" class="cta__btn btn btn-outline-white">Заказать СпецУборку</a>
+                <a href="#" class="cta__btn btn btn-secondary">Заказать СпецУборку</a>
             </div>
         </div>
     </div>

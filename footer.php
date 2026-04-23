@@ -62,7 +62,7 @@ $ogrn_number = get_field('ogrn_number', 'option');
                 <p>Пришлите фото или опишите ситуацию <br>— скажем план работ и стоимость.</p>
                 <div class="footer__btns">
                     <a href="#" class="btn btn-primary btn-footer">Отправить фото</a>
-                    <a href="#" class="btn btn-outline-white btn-footer">Позвонить</a>
+                    <a href="#" class="btn btn-secondary btn-footer">Позвонить</a>
                 </div>
             </div>
         </div>
