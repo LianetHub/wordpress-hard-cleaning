@@ -406,7 +406,7 @@
         }
 
         @media (min-width:$md3) {
-            padding: 1.875rem 1.75rem;
+            padding: 1.875rem 1.75rem 1.875rem 0rem;
         }
     }
 
@@ -480,6 +480,20 @@
 
     }
 
+    // .services__item-info
+    &__item-info {
+        display: inline;
+
+        @media (max-width:$md4) {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 0.25rem;
+            margin-bottom: 0.25rem;
+
+        }
+    }
+
     // .services__item-title
     &__item-title {
         font-weight: 700;
@@ -489,13 +503,30 @@
         font-family: $fontfamily;
 
         @media (min-width:$md4) {
+            display: inline;
+            font-size: 1.5rem;
+        }
+
+        @media (min-width:$md2) {
+            font-size: 1.6rem;
+        }
+    }
+
+    // .services__item-price
+    &__item-price {
+        font-weight: 700;
+        color: #059669;
+        font-size: 1rem;
+
+        @media (min-width:$md4) {
+            white-space: nowrap;
+            display: inline;
             font-size: 1.5rem;
         }
 
         @media (min-width:$md2) {
             font-size: 1.625rem;
         }
-
 
     }
 

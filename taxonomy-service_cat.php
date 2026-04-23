@@ -59,8 +59,7 @@ $services_query = new WP_Query([
     'order'   => 'ASC',
 ]);
 
-if ($services_query->have_posts()) :
-?>
+if ($services_query->have_posts()) : ?>
     <section class="price price--blue">
         <div class="container">
             <div class="price__hint hint">Прайс-лист</div>
@@ -69,7 +68,7 @@ if ($services_query->have_posts()) :
                 <span class="color-accent"><?php echo esc_html($term->name); ?></span>
             </h2>
             <div class="price__table-wrapper custom-table">
-                <table>
+                <table class="js-price-table">
                     <thead>
                         <tr>
                             <th>Наименование услуги</th>
@@ -78,17 +77,19 @@ if ($services_query->have_posts()) :
                     </thead>
                     <tbody>
                         <?php
+                        $row_counter = 0;
                         while ($services_query->have_posts()) : $services_query->the_post();
+                            $row_counter++;
                             $sid = get_the_ID();
-
                             $service_data = $prices_group['service_data_' . $sid] ?? null;
-
                             $display_name = get_the_title();
                             $display_price = !empty($service_data['service_price']) ? $service_data['service_price'] : '—';
+
+                            $row_class = ($row_counter > 12) ? 'is-hidden' : '';
                         ?>
-                            <tr>
+                            <tr class="<?php echo $row_class; ?>">
                                 <td data-label="Наименование">
-                                    <a href="<?php the_permalink(); ?>" style="color: inherit; text-decoration: none;">
+                                    <a href="<?php the_permalink(); ?>">
                                         <?php echo esc_html($display_name); ?>
                                     </a>
                                 </td>
@@ -100,6 +101,14 @@ if ($services_query->have_posts()) :
                         wp_reset_postdata(); ?>
                     </tbody>
                 </table>
+
+                <?php if ($row_counter > 12) : ?>
+                    <div class="price__more-wrapper">
+                        <button class="btn btn-secondary js-price-show-more" data-text-less="Скрыть">
+                            Показать все цены
+                        </button>
+                    </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>

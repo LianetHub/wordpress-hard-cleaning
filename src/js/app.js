@@ -173,6 +173,35 @@ $(function () {
 
             return;
         }
+
+
+        // Show More Prices
+        const $showMoreBtn = $target.closest('.js-price-show-more');
+        if ($showMoreBtn.length) {
+            const $btn = $showMoreBtn;
+            const $table = $btn.closest('.price__table-wrapper').find('.js-price-table');
+            const $hiddenRows = $table.find('tbody tr.is-hidden');
+
+            if (!$btn.data('text-more')) {
+                $btn.data('text-more', $btn.text());
+            }
+
+            if (!$btn.hasClass('is-active')) {
+                $hiddenRows.fadeIn(400).css('display', 'table-row');
+                $btn.text($btn.data('text-less')).addClass('is-active');
+                $btn.parent().addClass('is-active');
+            } else {
+
+                $hiddenRows.hide();
+                $btn.text($btn.data('text-more')).removeClass('is-active');
+                $btn.parent().removeClass('is-active');
+
+                $('html, body').animate({
+                    scrollTop: $table.offset().top - 100
+                }, 400);
+            }
+            return;
+        }
     });
 
 

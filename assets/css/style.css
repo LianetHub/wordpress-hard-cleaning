@@ -3,7 +3,7 @@
 @font-face {
   font-family: "DAMN";
   font-display: swap;
-  src: url("../fonts/DAMN.woff2?v=1776878497835") format("woff2"), url("../fonts/DAMN.woff?v=1776878497835") format("woff");
+  src: url("../fonts/DAMN.woff2?v=1776949377643") format("woff2"), url("../fonts/DAMN.woff?v=1776949377643") format("woff");
   font-weight: 400;
   font-style: normal;
 }
@@ -11,14 +11,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1776878497835") format("woff2"), url("../fonts/icons.woff?v=1776878497835") format("woff");
+  src: url("../fonts/icons.woff2?v=1776949377643") format("woff2"), url("../fonts/icons.woff?v=1776949377643") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: "Manrope";
-  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776878497835") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776878497835") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776878497835") format("woff");
+  font-family: "Unbounded";
+  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776949377643") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776949377643") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776949377643") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -26,8 +26,8 @@
 }
 
 @font-face {
-  font-family: "Unbounded";
-  src: url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776878497835") format("woff2 supports variations"), url("../fonts/Unbounded-VariableFont_wght.woff2?v=1776878497835") format("woff2-variations"), url("../fonts/Unbounded-VariableFont_wght.woff?v=1776878497835") format("woff");
+  font-family: "Manrope";
+  src: url("../fonts/Manrope-VariableFont_wght.woff2?v=1776949377643") format("woff2 supports variations"), url("../fonts/Manrope-VariableFont_wght.woff2?v=1776949377643") format("woff2-variations"), url("../fonts/Manrope-VariableFont_wght.woff?v=1776949377643") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -1114,6 +1114,11 @@ h6 {
 .typography-block .wp-block-table tbody tr {
   border-bottom: 1px solid #DDE6F0;
   background: #fff;
+}
+
+.custom-table tbody tr.is-hidden,
+.typography-block .wp-block-table tbody tr.is-hidden {
+  display: none;
 }
 
 .custom-table tbody tr:last-child,
@@ -3363,12 +3368,22 @@ body {
   display: none;
 }
 
+.services__item-info {
+  display: inline;
+}
+
 .services__item-title {
   font-weight: 700;
   line-height: 1.4;
   color: #272727;
   font-size: 1.125rem;
   font-family: "Manrope";
+}
+
+.services__item-price {
+  font-weight: 700;
+  color: #059669;
+  font-size: 1rem;
 }
 
 .services__item-tags {
@@ -4737,6 +4752,10 @@ body {
   background: #f7f9fb;
 }
 
+.price__table-wrapper {
+  position: relative;
+}
+
 .price__value {
   font-weight: 700;
   color: #2A7F8A;
@@ -4744,6 +4763,32 @@ body {
 
 .price__comment {
   font-weight: 500;
+}
+
+.price__more-wrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(#f7f9fb));
+  background: linear-gradient(180deg, transparent, #f7f9fb);
+  padding: 2rem 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.price__more-wrapper.is-active {
+  position: static;
+  bottom: auto;
+  left: auto;
+  background: transparent;
 }
 
 .portfolio {
@@ -7103,6 +7148,13 @@ body {
   }
 
   .services__item-title {
+    display: inline;
+    font-size: 1.5rem;
+  }
+
+  .services__item-price {
+    white-space: nowrap;
+    display: inline;
     font-size: 1.5rem;
   }
 
@@ -7602,7 +7654,7 @@ body {
   }
 
   .services__item-body {
-    padding: 1.875rem 1.75rem;
+    padding: 1.875rem 1.75rem 1.875rem 0rem;
   }
 
   .services__item-tags {
@@ -7840,6 +7892,10 @@ body {
   }
 
   .services__item-title {
+    font-size: 1.6rem;
+  }
+
+  .services__item-price {
     font-size: 1.625rem;
   }
 
@@ -8407,6 +8463,21 @@ body {
   .menu__list li {
     border-bottom: 0.0625rem solid #eaeaea;
     padding-bottom: 1rem;
+  }
+
+  .services__item-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    gap: 0.25rem;
+    margin-bottom: 0.25rem;
   }
 
   .services__item-tag {

@@ -18,11 +18,35 @@ $services_query = new WP_Query([
         'terms'    => $term->term_id,
         'include_children' => false
     ]],
+    'meta_query'     => [
+        [
+            'key'     => 'current_city',
+            'value'   => 'Санкт-Петербург',
+            'compare' => '='
+        ]
+    ]
 ]);
 
 $total_services = $services_query->found_posts;
 $limit = is_tax('service_cat') ? 0 : 4;
 $counter = 0;
+
+$min_price = 0;
+$prices_group = get_field('all_services_prices_list', 'option');
+
+if ($services_query->have_posts()) {
+    while ($services_query->have_posts()) {
+        $services_query->the_post();
+        $sid = get_the_ID();
+        $service_data = $prices_group['service_data_' . $sid] ?? null;
+        $price = !empty($service_data['service_price']) ? (int)preg_replace('/[^\d]/', '', $service_data['service_price']) : 0;
+
+        if ($price > 0 && ($min_price === 0 || $price < $min_price)) {
+            $min_price = $price;
+        }
+    }
+    $services_query->rewind_posts();
+}
 ?>
 
 <li class="services__item">
@@ -45,6 +69,16 @@ $counter = 0;
                     </div>
                 <?php endif; ?>
 
+                <a href="<?php echo esc_url($term_link); ?>" class="services__item-info">
+                    <div class="services__item-title">
+                        <?php echo fix_widows_after_prepositions($term->name); ?>
+                    </div>
+                    <?php if ($min_price > 0): ?>
+                        <div class="services__item-price">
+                            от&nbsp;<?php echo format_service_price($min_price); ?>&nbsp;₽
+                        </div>
+                    <?php endif; ?>
+                </a>
             </div>
             <a class="services__item-btn btn btn-secondary-outline icon-phone"
                 href="tel:<?php echo $phone_clean; ?>">Вызвать бригаду</a>

@@ -524,7 +524,9 @@
     &__title {}
 
     // .price__table-wrapper
-    &__table-wrapper {}
+    &__table-wrapper {
+        position: relative;
+    }
 
     // .price__table
     &__table {}
@@ -544,6 +546,26 @@
             color: #4B5D68;
             max-width: 18.1875rem;
 
+        }
+    }
+
+    // .price__more-wrapper
+    &__more-wrapper {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(180deg, transparent, #f7f9fb);
+        padding: 2rem 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &.is-active {
+            position: static;
+            bottom: auto;
+            left: auto;
+            background: transparent;
         }
     }
 }
