@@ -45,11 +45,6 @@ $counter = 0;
                     </div>
                 <?php endif; ?>
 
-                <h3 class="services__item-title">
-                    <a href="<?php echo esc_url($term_link); ?>">
-                        <?php echo fix_widows_after_prepositions($term->name); ?>
-                    </a>
-                </h3>
             </div>
             <a class="services__item-btn btn btn-secondary-outline icon-phone"
                 href="tel:<?php echo $phone_clean; ?>">Вызвать бригаду</a>
