@@ -95,7 +95,7 @@
 
     // .faq__cta-title
     &__cta-title {
-        font-family: $font-unbounded;
+
         font-weight: 700;
         font-size: 1.25rem;
         line-height: 100%;
@@ -118,6 +118,7 @@
         margin-top: 1.5625rem;
         display: grid;
         gap: 0.75rem;
+
         @media (min-width:$md4) {
             grid-template-columns: repeat(2, 1fr);
         }

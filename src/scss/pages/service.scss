@@ -331,13 +331,17 @@
         flex: 1 1 auto;
         display: flex;
         flex-direction: column;
-        padding: rem(30);
         gap: rem(10);
+        padding: rem(24) rem(16);
+
+        @media (min-width:$md4) {
+            padding: rem(30);
+
+        }
     }
 
     // .catalog__card-title
     &__card-title {
-        font-family: $fontfamily;
         font-size: 1.25rem;
         font-weight: 600;
         letter-spacing: 0.0375rem;
@@ -396,11 +400,18 @@
     &__card-footer {
         border-top: rem(1) solid #DDE6F0;
         margin-top: auto;
-        padding-top: 2.2rem;
+        padding-top: 1.2rem;
         display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        gap: 1rem;
+        flex-direction: column;
+        gap: 0.5rem;
+
+        @media (min-width:$md5) {
+            padding-top: 2.2rem;
+            gap: 1rem;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-direction: row;
+        }
     }
 
     // .catalog__card-service

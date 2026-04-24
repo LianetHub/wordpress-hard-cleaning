@@ -500,7 +500,6 @@
         line-height: 1.4;
         color: #272727;
         font-size: rem(18);
-        font-family: $fontfamily;
 
         @media (min-width:$md4) {
             display: inline;
@@ -886,7 +885,7 @@
 
     // .process__slide-title
     &__slide-title {
-        font-family: $font-unbounded;
+
         font-weight: 700;
         font-size: 1.25rem;
         line-height: 1.5625rem;
@@ -1043,7 +1042,7 @@
 
     // .pricing-card__value-from
     &__value-from {
-        font-family: $font-unbounded;
+
         font-size: 2rem;
         font-weight: 700;
         font-variant: small-caps;
@@ -1051,7 +1050,7 @@
 
     // .pricing-card__value-amount
     &__value-amount {
-        font-family: $font-unbounded;
+
         font-weight: 700;
         line-height: 1;
         font-size: 2.25rem;
@@ -1064,7 +1063,7 @@
 
     // .pricing-card__value-currency
     &__value-currency {
-        font-family: $font-unbounded;
+
         font-size: 1.25rem;
         font-weight: 700;
         font-variant: small-caps;
@@ -1337,7 +1336,6 @@
 
     h3 {
         margin-bottom: 1.5625rem !important;
-        font-family: 'Unbounded', sans-serif;
         font-weight: 700;
         font-size: 1.25rem;
         color: #467E9E;
@@ -1864,7 +1862,6 @@
     margin-bottom: 0.75rem;
 
     h4 {
-        font-family: $fontfamily;
         font-weight: 700;
         font-size: 1.25rem;
         line-height: 1.2;
@@ -1964,7 +1961,7 @@
     text-align: center;
 
     h3 {
-        font-family: $font-unbounded;
+
         font-weight: 700;
         font-size: 1.25rem;
         margin: 0 0 0.9375rem 0;

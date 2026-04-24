@@ -125,6 +125,7 @@
                 width: fit-content;
 
             }
+
             @media (min-width:$md2) {
                 display: none;
             }
@@ -233,7 +234,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: $font-unbounded;
+
         font-weight: 600;
         font-size: 1rem;
         color: #fff;
@@ -339,7 +340,6 @@
 
     // .review-card__author-name
     &__author-name {
-        font-family: $fontfamily;
         font-weight: 700;
         line-height: 1;
         color: #272727;
@@ -425,7 +425,7 @@
 
     &__name {
         font-size: 1.25rem;
-        font-family: $font-unbounded;
+
         font-weight: 700;
         letter-spacing: 0.025rem;
     }
@@ -482,7 +482,7 @@
 
     &__value {
         color: #272727;
-        font-family: $font-unbounded;
+
         font-size: 3.75rem;
         font-weight: 700;
         letter-spacing: 0.075rem;

@@ -56,7 +56,6 @@
 
         &::after {
             content: attr(data-number);
-            font-family: "DAMN";
             color: rgba(193, 213, 222, 0.52);
             font-size: 10.625rem;
             font-weight: 900;
@@ -98,7 +97,7 @@
 
     // .price-formation__card-title
     &__card-title {
-        font-family: $font-unbounded;
+
         font-weight: 700;
         font-size: 1.0625rem;
         line-height: 1.2;
@@ -274,7 +273,7 @@
     // .price-list__header-title
     &__header-title {
         color: #467E9E;
-        font-family: $font-unbounded;
+
         font-size: 1.875rem;
         font-weight: 700;
     }
