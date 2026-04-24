@@ -342,14 +342,18 @@
 	font-weight: 500;
 	font-size: 1rem;
 	line-height: 1.375;
+	min-height: rem(48);
 	letter-spacing: 0.03em;
-	min-height: rem(50);
 	cursor: pointer;
 	border: 0;
 	white-space: nowrap;
 	transition: all 0.3s ease;
 	user-select: none;
 
+	@media (min-width:$md4) {
+		min-height: rem(50);
+
+	}
 
 	&.btn-white {
 		background: #fff;

@@ -2388,8 +2388,8 @@ body {
     font-weight: 500;
     font-size: 1rem;
     line-height: 1.375;
+    min-height: 3rem;
     letter-spacing: .03em;
-    min-height: 3.125rem;
     cursor: pointer;
     border: 0;
     white-space: nowrap;
@@ -6460,6 +6460,14 @@ body {
     color: var(--color-blue-primary)
 }
 
+.nojq {
+    display: none
+}
+
+html {
+    margin-top: 0 !important
+}
+
 @media (min-width:575.98px) {
     .popup__form {
         margin-top: 2rem
@@ -6584,6 +6592,10 @@ body {
         height: 3rem;
         border-radius: .25rem;
         padding: .75rem
+    }
+
+    .services__item-btn.btn {
+        padding-inline: 1rem
     }
 
     .process__slide.swiper-slide {
@@ -6832,6 +6844,10 @@ body {
 
     .yandex-banner__content {
         padding: 1.56rem 3.75rem
+    }
+
+    .btn {
+        min-height: 3.125rem
     }
 
     .header__top {
@@ -8755,8 +8771,9 @@ body {
     }
 
     .services__item-btn.btn {
-        padding: .5rem .5rem;
+        padding: .5rem;
         font-size: .875rem;
+        min-height: 2.75rem;
         line-height: 1.4285714286;
         text-transform: uppercase
     }
