@@ -86,75 +86,60 @@ $districts = [
         <h2 class="coverage__title title">Где мы <span class="color-accent">работаем?</span></h2>
         <p class="coverage__desc subtitle">Выезжаем во все районы Санкт-Петербурга. Время прибытия — от 60 минут после звонка. Жмите на свой район — проверьте время выезда.</p>
 
+        <div class="coverage__content">
+            <div class="districts-grid">
+                <?php foreach ($districts as $index => $district): ?>
+                    <div class="district-card <?php echo $index === 0 ? 'active' : ''; ?>"
+                        data-name="<?php echo esc_attr($district['name']); ?>"
+                        data-desc="<?php echo esc_attr($district['desc']); ?>"
+                        data-time="<?php echo esc_attr($district['time']); ?>">
 
-        <div class="districts-grid">
-            <?php foreach ($districts as $index => $district): ?>
-                <div class="district-card <?php echo $index === 0 ? 'active' : ''; ?>"
-                    data-name="<?php echo esc_attr($district['name']); ?>"
-                    data-desc="<?php echo esc_attr($district['desc']); ?>"
-                    data-time="<?php echo esc_attr($district['time']); ?>">
-
-                    <div class="district-top">
-                        <h4><?php echo esc_html($district['name']); ?></h4>
-                        <?php if ($district['is_fast']): ?>
-                            <span class="badge-fast">Быстро</span>
-                        <?php endif; ?>
+                        <div class="district-top">
+                            <h4><?php echo esc_html($district['name']); ?></h4>
+                            <?php if ($district['is_fast']): ?>
+                                <span class="badge-fast">Быстро</span>
+                            <?php endif; ?>
+                        </div>
+                        <div class="district-time">
+                            <svg width="18" height="21" viewBox="0 0 24 24" fill="none" stroke="#467E9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                            <span><?php echo esc_html($district['time']); ?></span>
+                        </div>
                     </div>
-                    <div class="district-time">
-                        <svg width="18" height="21" viewBox="0 0 24 24" fill="none" stroke="#467E9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                        <span><?php echo esc_html($district['time']); ?></span>
-                    </div>
-                </div>
-            <?php endforeach; ?>
-        </div>
-
-        <div class="coverage-bottom">
-            <div class="coverage-info-left">
-                <div class="info-highlight-box">
-                    <?php
-                    $first = $districts[0];
-                    ?>
-                    <p><strong><?php echo esc_html($first['name']); ?> район</strong> — <?php echo esc_html($first['desc']); ?> <span class="text-blue fw-700">Время выезда: <?php echo esc_html($first['time']); ?></span></p>
-                </div>
-
-                <div class="info-region-box">
-                    <h4>Ленинградская область</h4>
-                    <p>Выезжаем по предварительному звонку — стоимость уточняется индивидуально.</p>
-                    <span class="region-cities">Гатчина · Всеволожск · Выборг · Тосно · Кириши · Сосновый Бор</span>
-                </div>
+                <?php endforeach; ?>
+            </div>
+            <div class="coverage__info-mobile info-highlight-box">
+                <?php
+                $first = $districts[0];
+                ?>
+                <p class="district-card__details"><strong><?php echo esc_html($first['name']); ?> район</strong> — <?php echo esc_html($first['desc']); ?> <span class="text-blue fw-700">Время выезда: <?php echo esc_html($first['time']); ?></span></p>
             </div>
 
-            <div class="coverage-cta-box">
-                <?php $phone = get_field('site_phone', 'option') ?: '#'; ?>
-                <h3>Не нашли свой район?</h3>
-                <p>Позвоните — уточним за 1 минуту. Работаем ежедневно с 9:00 до 23:00</p>
-                <button class="btn btn-primary btn-check-region">Проверить выезд в мой район</button>
+            <div class="coverage-bottom">
+                <div class="coverage-info-left">
+                    <div class="coverage__info-desktop info-highlight-box">
+                        <?php
+                        $first = $districts[0];
+                        ?>
+                        <p class="district-card__details"><strong><?php echo esc_html($first['name']); ?> район</strong> — <?php echo esc_html($first['desc']); ?> <span class="text-blue fw-700">Время выезда: <?php echo esc_html($first['time']); ?></span></p>
+                    </div>
+
+                    <div class="info-region-box">
+                        <h4>Ленинградская область</h4>
+                        <p>Выезжаем по предварительному звонку — стоимость уточняется индивидуально.</p>
+                        <span class="region-cities">Гатчина · Всеволожск · Выборг · Тосно · Кириши · Сосновый Бор</span>
+                    </div>
+                </div>
+
+                <div class="coverage-cta-box">
+                    <?php $phone = get_field('site_phone', 'option') ?: '#'; ?>
+                    <h3>Не нашли свой район?</h3>
+                    <p>Позвоните — уточним за 1 минуту. Работаем ежедневно с 9:00 до 23:00</p>
+                    <button class="btn btn-primary btn-check-region">Проверить выезд в мой район</button>
+                </div>
             </div>
         </div>
     </div>
 </section>
-
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const districtCards = document.querySelectorAll('.district-card');
-        const highlightBox = document.querySelector('.info-highlight-box p');
-
-        if (!highlightBox || districtCards.length === 0) return;
-
-        districtCards.forEach(card => {
-            card.addEventListener('click', () => {
-                districtCards.forEach(c => c.classList.remove('active'));
-                card.classList.add('active');
-
-                const name = card.getAttribute('data-name');
-                const desc = card.getAttribute('data-desc');
-                const time = card.getAttribute('data-time');
-
-                highlightBox.innerHTML = `<strong>${name} район</strong> — ${desc} <span class="text-blue fw-700">Время выезда: ${time}</span>`;
-            });
-        });
-    });
-</script>

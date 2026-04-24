@@ -202,6 +202,26 @@ $(function () {
             }
             return;
         }
+
+
+        // Districts logic (Coverage section)
+        const $districtCard = $target.closest('.district-card');
+        if ($districtCard.length) {
+            $('.district-card').removeClass('active');
+            $districtCard.addClass('active');
+
+            const name = $districtCard.attr('data-name');
+            const desc = $districtCard.attr('data-desc');
+            const time = $districtCard.attr('data-time');
+
+            const content = `<strong>${name} район</strong> — ${desc} <span class="text-blue fw-700">Время выезда: ${time}</span>`;
+
+            $('.district-card__details').each(function () {
+                $(this).html(content);
+            });
+
+            return;
+        }
     });
 
 

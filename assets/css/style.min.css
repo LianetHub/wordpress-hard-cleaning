@@ -3,7 +3,7 @@
 @font-face {
     font-family: DAMN;
     font-display: swap;
-    src: url(../fonts/DAMN.woff2?v=1776949377643) format("woff2"), url(../fonts/DAMN.woff?v=1776949377643) format("woff");
+    src: url(../fonts/DAMN.woff2?v=1777049567491) format("woff2"), url(../fonts/DAMN.woff?v=1777049567491) format("woff");
     font-weight: 400;
     font-style: normal
 }
@@ -11,14 +11,14 @@
 @font-face {
     font-family: icons;
     font-display: swap;
-    src: url(../fonts/icons.woff2?v=1776949377643) format("woff2"), url(../fonts/icons.woff?v=1776949377643) format("woff");
+    src: url(../fonts/icons.woff2?v=1777049567491) format("woff2"), url(../fonts/icons.woff?v=1777049567491) format("woff");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
-    font-family: Unbounded;
-    src: url(../fonts/Unbounded-VariableFont_wght.woff2?v=1776949377643) format("woff2 supports variations"), url(../fonts/Unbounded-VariableFont_wght.woff2?v=1776949377643) format("woff2-variations"), url(../fonts/Unbounded-VariableFont_wght.woff?v=1776949377643) format("woff");
+    font-family: Manrope;
+    src: url(../fonts/Manrope-VariableFont_wght.woff2?v=1777049567491) format("woff2 supports variations"), url(../fonts/Manrope-VariableFont_wght.woff2?v=1777049567491) format("woff2-variations"), url(../fonts/Manrope-VariableFont_wght.woff?v=1777049567491) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -26,8 +26,8 @@
 }
 
 @font-face {
-    font-family: Manrope;
-    src: url(../fonts/Manrope-VariableFont_wght.woff2?v=1776949377643) format("woff2 supports variations"), url(../fonts/Manrope-VariableFont_wght.woff2?v=1776949377643) format("woff2-variations"), url(../fonts/Manrope-VariableFont_wght.woff?v=1776949377643) format("woff");
+    font-family: Unbounded;
+    src: url(../fonts/Unbounded-VariableFont_wght.woff2?v=1777049567491) format("woff2 supports variations"), url(../fonts/Unbounded-VariableFont_wght.woff2?v=1777049567491) format("woff2-variations"), url(../fonts/Unbounded-VariableFont_wght.woff?v=1777049567491) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -4143,6 +4143,13 @@ body {
     max-width: 36.25rem
 }
 
+.coverage__info-mobile {
+    margin-bottom: 1.5rem;
+    position: sticky;
+    bottom: 0;
+    width: 100%
+}
+
 .districts-grid {
     margin-top: 1.5rem;
     display: -ms-grid;
@@ -7584,6 +7591,10 @@ body {
         box-shadow: 0 .25rem 2.75rem rgba(0, 0, 0, .1)
     }
 
+    .coverage__info-mobile {
+        display: none
+    }
+
     .heading__container {
         -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
@@ -8163,6 +8174,10 @@ body {
         transition: visibility 0s linear 0s, -webkit-transform .28s ease;
         transition: transform .28s ease, visibility 0s linear 0s;
         transition: transform .28s ease, visibility 0s linear 0s, -webkit-transform .28s ease
+    }
+
+    .coverage__info-desktop {
+        display: none
     }
 }
 

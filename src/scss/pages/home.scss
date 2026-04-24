@@ -1791,15 +1791,29 @@
 
 }
 
+.coverage__info-mobile {
+    margin-bottom: 1.5rem;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+
+    @media (min-width:$md3) {
+        display: none;
+    }
+}
+
+.coverage__info-desktop {
+    @media (max-width:$md3) {
+        display: none;
+    }
+}
+
 .districts-grid {
     margin-top: 1.5rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(rem(300), 1fr));
     gap: 1.25rem;
     margin-bottom: 2.5rem;
-
-
-
 }
 
 .district-card {
