@@ -3359,7 +3359,8 @@ body {
 }
 
 .services__item-btn.btn {
-    font-size: 1.3125rem
+    font-size: 1.3125rem;
+    font-weight: 600
 }
 
 .services__item-image {
@@ -3534,7 +3535,7 @@ body {
 
 .pricing {
     background: #f7f9fb;
-    padding: 1.5625rem 0
+    padding: 3.125rem 0
 }
 
 .pricing__subtitle {
@@ -3547,13 +3548,14 @@ body {
 }
 
 .pricing__list {
+    margin-top: 2rem;
     display: -ms-grid;
     display: grid;
     gap: 1.875rem
 }
 
 .pricing-card {
-    height: 18.0625rem;
+    min-height: 18.0625rem;
     background: #fafbfc;
     border: .0625rem solid #e3ebf0;
     -webkit-box-shadow: 0 .375rem 1.5rem rgba(0, 0, 0, .1);
@@ -7081,7 +7083,7 @@ body {
     }
 
     .pricing {
-        padding: 3.125rem 0
+        padding: 6.25rem 0
     }
 
     .pricing__list {
@@ -8331,7 +8333,7 @@ body {
         -ms-flex-align: start;
         align-items: flex-start;
         gap: .25rem;
-        margin-bottom: .25rem
+        margin-bottom: 1.25rem
     }
 
     .services__item-tag {
@@ -8340,7 +8342,7 @@ body {
 
     .services__item-image {
         width: 5.625rem;
-        height: 7.5rem;
+        min-height: 7.5rem;
         border-radius: .5rem
     }
 
@@ -8784,7 +8786,7 @@ body {
 
 @media (max-width:767.98px) and (min-width:575.98px) {
     .services__item-image {
-        height: 12.5rem;
+        min-height: 12.5rem;
         width: 10rem;
         border-radius: .75rem
     }

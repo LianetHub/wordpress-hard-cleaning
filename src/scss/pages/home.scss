@@ -489,7 +489,7 @@
             flex-direction: column;
             align-items: flex-start;
             gap: 0.25rem;
-            margin-bottom: 0.25rem;
+            margin-bottom: 1.25rem;
 
         }
     }
@@ -632,7 +632,7 @@
             }
 
             font-size: rem(21);
-            // font-weight: 700;
+            font-weight: 600;
 
             @media (min-width:$md5) {
                 padding-inline: 1rem;
@@ -657,11 +657,11 @@
 
         @media (max-width:$md4) {
             width: rem(90);
-            height: rem(120);
+            min-height: rem(120);
             border-radius: 0.5rem;
 
             @media (min-width:$md5) {
-                height: rem(200);
+                min-height: rem(200);
                 width: rem(160);
                 border-radius: 0.75rem;
             }
@@ -908,10 +908,10 @@
 
 .pricing {
     background: #F7F9FB;
-    padding: rem(25) 0;
+    padding: rem(50) 0;
 
     @media (min-width:$md4) {
-        padding: rem(50) 0;
+        padding: rem(100) 0;
     }
 
 
@@ -945,6 +945,7 @@
 
     // .pricing__list
     &__list {
+        margin-top: 2rem;
         display: grid;
         gap: 1.875rem;
 
@@ -960,7 +961,7 @@
 }
 
 .pricing-card {
-    height: 18.0625rem;
+    min-height: 18.0625rem;
     background: #FAFBFC;
     border: 0.0625rem solid #E3EBF0;
     box-shadow: 0 0.375rem 1.5rem rgba(0, 0, 0, 0.1);
