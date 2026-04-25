@@ -3,14 +3,14 @@
 @font-face {
     font-family: icons;
     font-display: swap;
-    src: url(../fonts/icons.woff2?v=1777051796454) format("woff2"), url(../fonts/icons.woff?v=1777051796454) format("woff");
+    src: url(../fonts/icons.woff2?v=1777107817590) format("woff2"), url(../fonts/icons.woff?v=1777107817590) format("woff");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: Rubik;
-    src: url(../fonts/Rubik-VariableFont_wght.woff2?v=1777051796454) format("woff2 supports variations"), url(../fonts/Rubik-VariableFont_wght.woff2?v=1777051796454) format("woff2-variations"), url(../fonts/Rubik-VariableFont_wght.woff?v=1777051796454) format("woff");
+    src: url(../fonts/Rubik-VariableFont_wght.woff2?v=1777107817590) format("woff2 supports variations"), url(../fonts/Rubik-VariableFont_wght.woff2?v=1777107817590) format("woff2-variations"), url(../fonts/Rubik-VariableFont_wght.woff?v=1777107817590) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -129,8 +129,7 @@
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     gap: .25rem;
-    font-size: 1rem;
-    font-weight: 500
+    font-size: 1rem
 }
 
 .breadcrumbs__item {
@@ -1190,10 +1189,6 @@ body {
 }
 
 .faq {
-    padding: 1.5625rem 0
-}
-
-.faq:last-child {
     padding: 3.125rem 0
 }
 
@@ -1209,13 +1204,7 @@ body {
 }
 
 .faq__cta {
-    margin-top: 1.5rem;
-    background: linear-gradient(145.13deg, #306e8c 18.76%, #1f4b62 104.43%);
-    border-radius: 1.25rem;
-    padding: 2.5rem;
-    -webkit-box-shadow: 0 .9375rem 1.875rem rgba(31, 75, 98, .15);
-    box-shadow: 0 .9375rem 1.875rem rgba(31, 75, 98, .15);
-    color: #fff
+    padding: 1.125rem .875rem
 }
 
 .faq__cta-title {
@@ -1617,7 +1606,6 @@ body {
 }
 
 .yandex-rating-card__text {
-    font-weight: 500;
     font-size: .6875rem;
     color: #7998ad
 }
@@ -2359,7 +2347,6 @@ body {
     gap: .625rem;
     padding: .75rem 3.4375rem;
     border-radius: 8.875rem;
-    font-weight: 500;
     font-size: 1rem;
     line-height: 1.375;
     min-height: 3rem;
@@ -2624,7 +2611,6 @@ body {
 }
 
 .menu__list a {
-    font-weight: 500;
     line-height: 1.375;
     letter-spacing: .03em;
     display: -webkit-box;
@@ -3061,7 +3047,6 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    font-weight: 500;
     line-height: 1.375;
     color: #467e9e;
     letter-spacing: .03em;
@@ -3324,7 +3309,6 @@ body {
     padding: .5rem 1rem;
     background: #eaf3f8;
     border-radius: .75rem;
-    font-weight: 500;
     font-size: .75rem
 }
 
@@ -3375,8 +3359,7 @@ body {
 }
 
 .services__item-btn.btn {
-    font-size: 1.3125rem;
-    font-weight: 700
+    font-size: 1.3125rem
 }
 
 .services__item-image {
@@ -4572,7 +4555,6 @@ body {
 .catalog__card-service {
     color: #467e9e;
     font-size: .875rem;
-    font-weight: 500;
     letter-spacing: .0225rem;
     padding: .375rem 1.25rem;
     border-radius: .75rem;
@@ -4664,10 +4646,6 @@ body {
     color: #2a7f8a
 }
 
-.price__comment {
-    font-weight: 500
-}
-
 .price__more-wrapper {
     position: absolute;
     bottom: 0;
@@ -4741,7 +4719,6 @@ body {
 .case-card__category {
     color: #467e9e;
     font-size: 1rem;
-    font-weight: 500;
     letter-spacing: .0225rem;
     border-radius: .75rem;
     background: #eaf3f8;
@@ -4869,7 +4846,6 @@ body {
 .contacts__socials-title {
     color: #4b5d68;
     font-size: 1.4375rem;
-    font-weight: 500;
     letter-spacing: .04313rem
 }
 
@@ -4909,7 +4885,6 @@ body {
 .contacts__worktime-title {
     color: #000;
     font-size: 1.25rem;
-    font-weight: 500;
     letter-spacing: .0375rem
 }
 
@@ -4917,7 +4892,6 @@ body {
     margin-top: .56rem;
     color: #4b5d68;
     font-size: 1rem;
-    font-weight: 500;
     letter-spacing: .03rem
 }
 
@@ -4981,7 +4955,6 @@ body {
 
 .baloon__phone-link {
     color: #fff;
-    font-weight: 500;
     -webkit-transition: opacity .3s ease;
     transition: opacity .3s ease
 }
@@ -5043,7 +5016,6 @@ body {
 .requisites__item-caption {
     color: #4b5d68;
     font-size: .9375rem;
-    font-weight: 500;
     letter-spacing: .06563rem;
     text-transform: uppercase
 }
@@ -5163,7 +5135,6 @@ body {
 .certs__item-type {
     color: #467e9e;
     font-size: 1rem;
-    font-weight: 500;
     letter-spacing: .0225rem;
     border-radius: .75rem;
     background: #eaf3f8;
@@ -5427,8 +5398,7 @@ body {
 
 .article__likes-text {
     line-height: 150%;
-    font-size: 1.125rem;
-    font-weight: 500
+    font-size: 1.125rem
 }
 
 .article__likes-btns {
@@ -5705,8 +5675,7 @@ body {
 
 .checker-block__position {
     font-size: 1rem;
-    color: #467e9e;
-    font-weight: 500
+    color: #467e9e
 }
 
 .price-formation {
@@ -6415,14 +6384,6 @@ body {
     color: var(--color-blue-primary)
 }
 
-.nojq {
-    display: none
-}
-
-html {
-    margin-top: 0 !important
-}
-
 @media (min-width:575.98px) {
     .popup__form {
         margin-top: 2rem
@@ -6463,6 +6424,25 @@ html {
         box-sizing: content-box;
         max-width: 33.75rem;
         padding: 0 1.25rem
+    }
+
+    .faq__cta {
+        -webkit-box-ordinal-group: 4;
+        -ms-flex-order: 3;
+        order: 3;
+        width: 100%;
+        border-radius: .625rem;
+        padding: 1.25rem;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        display: none;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        text-align: center;
+        margin-top: .5rem
     }
 
     .reviews__all-link.btn {
@@ -6745,8 +6725,14 @@ html {
         max-width: 45rem
     }
 
-    .faq:last-child {
+    .faq {
         padding: 6.25rem 0
+    }
+
+    .faq__cta {
+        text-align: left;
+        gap: 0;
+        padding: 1.875rem
     }
 
     .faq__cta-btns {
@@ -7294,8 +7280,17 @@ html {
         max-width: 60rem
     }
 
-    .faq {
-        padding: 3.125rem 0
+    .faq__cta {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        margin-top: 1.5rem;
+        background: linear-gradient(145.13deg, #306e8c 18.76%, #1f4b62 104.43%);
+        border-radius: 1.25rem;
+        padding: 2.5rem;
+        -webkit-box-shadow: 0 .9375rem 1.875rem rgba(31, 75, 98, .15);
+        box-shadow: 0 .9375rem 1.875rem rgba(31, 75, 98, .15);
+        color: #fff
     }
 
     .trust__slider:not(.swiper-initialized) .swiper-wrapper {
@@ -7419,7 +7414,6 @@ html {
         -ms-flex-align: center;
         align-items: center;
         color: #4b5d68;
-        font-weight: 500;
         line-height: 1.45;
         letter-spacing: .03em;
         font-size: 1rem;
@@ -8013,12 +8007,6 @@ html {
 }
 
 @media (max-width:992px) {
-    .faq__container {
-        -ms-grid-columns: 1fr;
-        grid-template-columns: 1fr;
-        gap: 2.5rem
-    }
-
     .coverage-bottom {
         -ms-grid-columns: 1fr;
         grid-template-columns: 1fr
@@ -8030,8 +8018,10 @@ html {
         overflow: hidden
     }
 
-    .faq__cta {
-        padding: 1.875rem
+    .faq__container {
+        -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+        gap: 2.5rem
     }
 
     .header__socials {
@@ -8051,7 +8041,6 @@ html {
         gap: .625rem;
         padding: .45rem 1.5rem;
         border-radius: 8.875rem;
-        font-weight: 500;
         font-size: .75rem;
         line-height: 1.375;
         letter-spacing: .03em;
@@ -8310,23 +8299,19 @@ html {
         max-width: 50%
     }
 
-    .faq__cta {
-        -webkit-box-ordinal-group: 4;
-        -ms-flex-order: 3;
-        order: 3;
-        width: 100%;
-        border-radius: .625rem;
-        padding: 1.25rem;
-        display: -webkit-box;
-        display: -ms-flexbox;
-        display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-        flex-direction: column;
-        text-align: center;
-        gap: 1.25rem;
-        margin-top: .5rem
+    .faq__container {
+        gap: .625rem
+    }
+
+    .faq__main {
+        display: contents
+    }
+
+    .faq__list {
+        -webkit-box-ordinal-group: 3;
+        -ms-flex-order: 2;
+        order: 2;
+        gap: .625rem
     }
 
     .menu__list li {
@@ -8428,30 +8413,6 @@ html {
 }
 
 @media (max-width:700px) {
-    .faq__container {
-        gap: .625rem
-    }
-
-    .faq__main {
-        display: contents
-    }
-
-    .faq__list {
-        -webkit-box-ordinal-group: 3;
-        -ms-flex-order: 2;
-        order: 2;
-        gap: .625rem
-    }
-
-    .faq__question {
-        padding: .625rem 1.25rem;
-        border-radius: .625rem;
-        font-size: .625rem;
-        line-height: 1.45;
-        color: #272727;
-        gap: .625rem
-    }
-
     .faq__answer-inner {
         padding: .625rem .625rem 0;
         line-height: 1.45
@@ -8700,12 +8661,6 @@ html {
 }
 
 @media (max-width:576px) {
-    .faq__question {
-        padding: .9375rem 1.25rem;
-        font-size: 1rem;
-        line-height: 1.3
-    }
-
     .faq__answer-inner {
         padding: .9375rem 1.25rem
     }
@@ -8728,8 +8683,10 @@ html {
         display: none !important
     }
 
-    .faq__cta {
-        padding: 1.125rem .875rem
+    .faq__question {
+        padding: .9375rem 1.25rem;
+        font-size: 1rem;
+        line-height: 1.3
     }
 
     .yandex-banner__btn.btn {

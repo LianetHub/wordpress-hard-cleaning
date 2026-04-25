@@ -6,19 +6,10 @@
 @use "icons";
 
 .faq {
-    padding: rem(25) 0;
+    padding: rem(50) 0;
 
-    @media (min-width:$md3) {
-        padding: rem(50) 0;
-    }
-
-    &:last-child {
-        padding: rem(50) 0;
-
-        @media (min-width:$md4) {
-            padding: rem(100) 0;
-
-        }
+    @media (min-width:$md4) {
+        padding: rem(100) 0;
     }
 
     // .faq__container
@@ -28,12 +19,12 @@
         gap: 3.75rem;
         align-items: start;
 
-        @media (max-width: 992px) {
+        @media (max-width: $md3) {
             grid-template-columns: 1fr;
             gap: 2.5rem;
         }
 
-        @media (max-width: 700px) {
+        @media (max-width: $md4) {
             gap: 0.625rem;
         }
 
@@ -41,7 +32,7 @@
 
     // .faq__main
     &__main {
-        @media (max-width: 700px) {
+        @media (max-width: $md4) {
             display: contents;
         }
     }
@@ -60,35 +51,39 @@
 
     // .faq__cta
     &__cta {
-        margin-top: 1.5rem;
-        background: linear-gradient(145.13deg, #306e8c 18.76%, #1f4b62 104.43%);
-        border-radius: 1.25rem;
-        padding: 2.5rem;
-        box-shadow: 0 0.9375rem 1.875rem rgba(31, 75, 98, 0.15);
-        color: #fff;
+        padding: 1.125rem 0.875rem;
 
-
-        @media (max-width: $md3) {
-            padding: 1.875rem;
-        }
-
-
-        @media (max-width: $md4) {
+        @media (min-width:$md5) {
             order: 3;
             width: 100%;
             border-radius: 0.625rem;
             padding: 1.25rem;
             display: flex;
+            display: none;
             flex-direction: column;
             text-align: center;
-            gap: 1.25rem;
             margin-top: 0.5rem;
+        }
+
+        @media (min-width:$md4) {
+            text-align: left;
+            gap: 0;
+            padding: 1.875rem;
+        }
+
+        @media (min-width:$md3) {
+            display: flex;
+            margin-top: 1.5rem;
+            background: linear-gradient(145.13deg, #306e8c 18.76%, #1f4b62 104.43%);
+            border-radius: 1.25rem;
+            padding: 2.5rem;
+            box-shadow: 0 0.9375rem 1.875rem rgba(31, 75, 98, 0.15);
+            color: #fff;
 
         }
 
-        @media (max-width: $md5) {
-            padding: 1.125rem 0.875rem;
-        }
+
+
 
 
     }
@@ -145,7 +140,7 @@
         flex-direction: column;
         gap: 0.9375rem;
 
-        @media (max-width: 700px) {
+        @media (max-width: $md4) {
             order: 2;
             gap: 0.625rem;
         }
@@ -207,16 +202,7 @@
         }
 
 
-        @media (max-width: 700px) {
-            padding: 0.625rem 1.25rem;
-            border-radius: 0.625rem;
-            font-size: 0.625rem;
-            line-height: 1.45;
-            color: #272727;
-            gap: 0.625rem;
-        }
-
-        @media (max-width: 576px) {
+        @media (max-width: $md5) {
             padding: 0.9375rem 1.25rem;
             font-size: 1rem;
             line-height: 1.3;

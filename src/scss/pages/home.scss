@@ -78,7 +78,7 @@
         background: #EAF3F8;
         display: flex;
         align-items: center;
-        font-weight: 500;
+        // font-weight: 500;;
         line-height: 1.375;
         color: #467e9e;
         letter-spacing: 0.03em;
@@ -563,7 +563,7 @@
         background: #eaf3f8;
         border-radius: 0.75rem;
 
-        font-weight: 500;
+        // font-weight: 500;;
         font-size: rem(12);
 
         @media (min-width:$md4) {
@@ -632,7 +632,7 @@
             }
 
             font-size: rem(21);
-            font-weight: 700;
+            // font-weight: 700;
 
             @media (min-width:$md5) {
                 padding-inline: 1rem;

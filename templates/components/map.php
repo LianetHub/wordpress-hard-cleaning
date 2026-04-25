@@ -42,7 +42,7 @@ $route_url = "https://yandex.ru/maps/?mode=routes&rtext=~{$clean_url_coords}&rur
 
                 <?php if ($phone): ?>
                     <a href="tel:<?php echo $phone_clean; ?>"
-                        class="baloon__btn btn btn-outline-white">Позвонить</a>
+                        class="baloon__btn btn btn-secondary">Позвонить</a>
                 <?php endif; ?>
             </div>
         </div>
