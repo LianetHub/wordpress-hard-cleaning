@@ -1038,7 +1038,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .custom-table thead th, .typography-block .wp-block-table thead th {
-    padding: 1.5625rem;
+    padding: 1.5625rem 1.25rem;
     font-size: 1.25rem;
     font-weight: 700;
     border: 0
@@ -1062,7 +1062,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .custom-table tbody td, .typography-block .wp-block-table tbody td {
-    padding: 1.5625rem;
+    padding: 1.25rem;
     vertical-align: middle;
     border: 0;
     font-size: 1rem
@@ -4642,9 +4642,15 @@ body {
     position: relative
 }
 
+.price__service-link {
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease
+}
+
 .price__value {
     font-weight: 700;
-    color: #2a7f8a
+    color: #2a7f8a;
+    min-width: 12.5rem
 }
 
 .price__more-wrapper {
@@ -5691,6 +5697,8 @@ body {
 }
 
 .price-formation__card {
+    position: relative;
+    z-index: 1;
     background: #fff;
     -webkit-box-shadow: 0 .375rem 1.5rem rgba(0, 0, 0, .1);
     box-shadow: 0 .375rem 1.5rem rgba(0, 0, 0, .1);
@@ -5716,7 +5724,11 @@ body {
     color: rgba(193, 213, 222, .52);
     font-size: 10.625rem;
     font-weight: 900;
-    line-height: .8
+    line-height: .875;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: -1
 }
 
 .price-formation__card:hover {
@@ -5956,7 +5968,7 @@ body {
 }
 
 .price-list__header-title {
-    color: #467e9e;
+    color: #000;
     font-size: 1.875rem;
     font-weight: 700
 }
@@ -5972,7 +5984,9 @@ body {
 .price-list__link {
     color: #467e9e;
     font-size: 1.4375rem;
-    font-weight: 700
+    font-weight: 700;
+    -ms-flex-negative: 0;
+    flex-shrink: 0
 }
 
 :root {
@@ -7155,7 +7169,8 @@ body {
 
     .price__comment {
         color: #4b5d68;
-        max-width: 18.1875rem
+        font-size: 1rem !important;
+        max-width: 30rem
     }
 
     .portfolio {
@@ -8985,6 +9000,11 @@ body {
 
     .catalog__card-service:hover {
         background-color: rgb(195.75, 221.1428571429, 235.25)
+    }
+
+    .price__service-link:hover {
+        text-decoration: underline;
+        color: #467e9e
     }
 
     .case-card__category:hover {

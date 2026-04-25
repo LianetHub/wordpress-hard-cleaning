@@ -542,10 +542,23 @@
     // .price__table
     &__table {}
 
+    // .price__service-link
+    &__service-link {
+        transition: color 0.3s ease;
+
+        @media (any-hover: hover) {
+            &:hover {
+                text-decoration: underline;
+                color: $accent;
+            }
+        }
+    }
+
     // .price__value
     &__value {
         font-weight: 700;
         color: #2A7F8A;
+        min-width: rem(200);
 
     }
 
@@ -555,7 +568,8 @@
 
         @media (min-width:$md4) {
             color: #4B5D68;
-            max-width: 18.1875rem;
+            font-size: 1rem !important;
+            max-width: 30rem;
 
         }
     }
