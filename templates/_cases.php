@@ -98,7 +98,7 @@ if (!empty($final_ids)) {
                         <h3 class="faq__cta-title">Оценим масштаб по фото</h3>
                         <p class="faq__cta-subtitle">Пришлите снимки вашего объекта — рассчитаем стоимость и сроки очистки за 15 минут.</p>
                         <div class="faq__cta-btns">
-                            <a href="#" class="faq__cta-btn btn btn-white">Отправить фото</a>
+                            <a href="#callback" data-fancybox class="faq__cta-btn btn btn-white">Отправить фото</a>
                             <?php if ($phone): ?>
                                 <a href="tel:<?php echo $phone_clean; ?>"
                                     class="faq__cta-btn btn btn-outline-white">

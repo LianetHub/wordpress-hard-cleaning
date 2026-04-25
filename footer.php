@@ -61,8 +61,10 @@ $ogrn_number = get_field('ogrn_number', 'option');
                 <h4 class="footer__caption">Нужна оценка по вашему случаю?</h4>
                 <p>Пришлите фото или опишите ситуацию <br>— скажем план работ и стоимость.</p>
                 <div class="footer__btns">
-                    <a href="#" class="btn btn-primary btn-footer">Отправить фото</a>
-                    <a href="#" class="btn btn-secondary btn-footer">Позвонить</a>
+                    <a href="#callback" data-fancybox class="btn btn-primary btn-footer">Задать вопрос</a>
+                    <?php if ($phone): ?>
+                        <a href="tel:<?php echo $phone_clean; ?>" class="btn btn-secondary btn-footer">Позвонить</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

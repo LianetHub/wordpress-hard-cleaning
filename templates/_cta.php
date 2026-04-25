@@ -1,3 +1,7 @@
+<?php
+$phone = get_field('phone', 'option');
+$phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
+?>
 <section class="cta">
     <div class="cta__container container">
         <div class="cta__content">
@@ -10,8 +14,10 @@
             <?php endif; ?>
 
             <div class="cta__btns">
-                <a href="#" class="cta__btn btn btn-white">Отправить фото в мессенджер</a>
-                <a href="#" class="cta__btn btn btn-secondary">Заказать СпецУборку</a>
+                <a href="#callback" data-fancybox class="cta__btn btn btn-white">Заказать СпецУборку</a>
+                <?php if ($phone): ?>
+                    <a href="tel:<?php echo $phone_clean; ?>" class="cta__btn btn btn-secondary">Срочный вызов</a>
+                <?php endif; ?>
             </div>
         </div>
     </div>
