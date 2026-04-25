@@ -77,6 +77,11 @@ $districts = [
         'is_fast' => false
     ]
 ];
+
+
+$phone = get_field('phone', 'option');
+$phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
+
 ?>
 
 <section class="coverage-section">
@@ -134,10 +139,11 @@ $districts = [
                 </div>
 
                 <div class="coverage-cta-box">
-                    <?php $phone = get_field('site_phone', 'option') ?: '#'; ?>
                     <h3>Не нашли свой район?</h3>
                     <p>Позвоните — уточним за 1 минуту. Работаем ежедневно с 9:00 до 23:00</p>
-                    <button class="btn btn-primary btn-check-region">Проверить выезд в мой район</button>
+                    <?php if ($phone): ?>
+                        <a href="tel:<?php echo $phone_clean; ?>" class="btn btn-primary">Проверить выезд в мой район</a>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

@@ -3,14 +3,14 @@
 @font-face {
     font-family: icons;
     font-display: swap;
-    src: url(../fonts/icons.woff2?v=1777107817590) format("woff2"), url(../fonts/icons.woff?v=1777107817590) format("woff");
+    src: url(../fonts/icons.woff2?v=1777132778272) format("woff2"), url(../fonts/icons.woff?v=1777132778272) format("woff");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: Rubik;
-    src: url(../fonts/Rubik-VariableFont_wght.woff2?v=1777107817590) format("woff2 supports variations"), url(../fonts/Rubik-VariableFont_wght.woff2?v=1777107817590) format("woff2-variations"), url(../fonts/Rubik-VariableFont_wght.woff?v=1777107817590) format("woff");
+    src: url(../fonts/Rubik-VariableFont_wght.woff2?v=1777132778272) format("woff2 supports variations"), url(../fonts/Rubik-VariableFont_wght.woff2?v=1777132778272) format("woff2-variations"), url(../fonts/Rubik-VariableFont_wght.woff?v=1777132778272) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -4296,8 +4296,12 @@ body {
     align-content: center
 }
 
+.heading__subtitle {
+    margin-top: 1rem
+}
+
 .heading__btns {
-    margin-top: .9375rem;
+    margin-top: 1.5rem;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -4527,7 +4531,18 @@ body {
     border-radius: 1.25rem;
     padding: 1.875rem;
     -webkit-box-shadow: 0 .375rem 1.5rem 0 rgba(0, 0, 0, .06);
-    box-shadow: 0 .375rem 1.5rem 0 rgba(0, 0, 0, .06)
+    box-shadow: 0 .375rem 1.5rem 0 rgba(0, 0, 0, .06);
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+    gap: 1rem
 }
 
 .catalog__card-services {

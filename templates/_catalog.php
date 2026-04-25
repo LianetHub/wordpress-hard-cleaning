@@ -79,7 +79,7 @@ if (empty($grid_categories)) {
                 <div class="catalog__empty">
                     <h3 class="catalog__empty-title title-sm">В этой категории пока нет услуг</h3>
                     <p class="catalog__empty-text subtitle">Мы скоро добавим описание работ для этого раздела. А пока вы можете уточнить детали у менеджера.</p>
-                    <a href="<?php echo get_post_type_archive_link('services'); ?>" class="btn btn-outline btn-sm">Показать все услуги</a>
+                    <a href="<?php echo get_post_type_archive_link('services'); ?>" class="btn btn-secondary btn-sm">Показать все услуги</a>
                 </div>
             </div>
         <?php endif; ?>
