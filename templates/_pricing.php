@@ -1,14 +1,5 @@
 <?php
 $target_cat_ids = [10, 12, 5, 6, 4];
-
-$custom_descriptions = [
-    10 => 'Уничтожение бактерий, вирусов и неприятных запахов',
-    12 => 'Осушение стен, полов и предотвращение плесени',
-    5  => 'Удаление воды, следов затопления и просушка',
-    6  => 'Удаление биологических загрязнений и запахов',
-    4  => 'Очистка копоти, гари и подготовка к ремонту'
-];
-
 $ordered_pricing_plans = [];
 $global_min_price = PHP_INT_MAX;
 
@@ -30,6 +21,8 @@ foreach ($target_cat_ids as $cat_id) {
     $category = get_term($cat_id, 'service_cat');
 
     if (!$category || is_wp_error($category)) continue;
+
+    $short_tagline = get_field('short_tagline', $category);
 
     $cat_posts = get_posts([
         'post_type'      => 'services',
@@ -70,7 +63,7 @@ foreach ($target_cat_ids as $cat_id) {
     $ordered_pricing_plans[] = [
         'amount' => ($cat_min_price === PHP_INT_MAX) ? '0' : $cat_min_price,
         'title'  => $category->name,
-        'descr'  => $custom_descriptions[$cat_id] ?? $category->description,
+        'descr'  => $short_tagline ? $short_tagline : $category->description,
         'link'   => get_term_link($category)
     ];
 }

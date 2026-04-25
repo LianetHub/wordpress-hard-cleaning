@@ -3328,19 +3328,17 @@ body {
 
 .services__item-info {
   display: inline;
-}
-
-.services__item-title {
   font-weight: 700;
   line-height: 1.4;
-  color: #272727;
   font-size: 1.125rem;
 }
 
+.services__item-title {
+  color: #272727;
+}
+
 .services__item-price {
-  font-weight: 700;
   color: #2da05a;
-  font-size: 1rem;
 }
 
 .services__item-tags {
@@ -3423,7 +3421,7 @@ body {
 }
 
 .services__item-btn.btn {
-  font-size: 1.3125rem;
+  font-size: 1.25rem;
   font-weight: 600;
 }
 
@@ -3452,6 +3450,7 @@ body {
   display: flex;
   max-width: 28.125rem;
   width: 100%;
+  font-weight: 600;
   margin-inline: auto;
 }
 
@@ -7128,15 +7127,17 @@ body {
     padding: 0.875rem;
   }
 
+  .services__item-info {
+    font-size: 1.5rem;
+  }
+
   .services__item-title {
     display: inline;
-    font-size: 1.5rem;
   }
 
   .services__item-price {
     white-space: nowrap;
     display: inline;
-    font-size: 1.5rem;
   }
 
   .services__item-tags {
@@ -7888,12 +7889,8 @@ body {
     padding: 1rem;
   }
 
-  .services__item-title {
-    font-size: 1.6rem;
-  }
-
-  .services__item-price {
-    font-size: 1.625rem;
+  .services__item-info {
+    font-size: 1.375rem;
   }
 
   .pricing__list {
