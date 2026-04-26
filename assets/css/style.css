@@ -3,14 +3,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1777203005930") format("woff2"), url("../fonts/icons.woff?v=1777203005930") format("woff");
+  src: url("../fonts/icons.woff2?v=1777209359055") format("woff2"), url("../fonts/icons.woff?v=1777209359055") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Rubik";
-  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1777203005930") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1777203005930") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1777203005930") format("woff");
+  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1777209359055") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1777209359055") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1777209359055") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -4054,13 +4054,13 @@ body {
 }
 
 .equipment__slider {
-  overflow: visible;
+  border-radius: 0.625rem;
+  background: #fff;
+  overflow: hidden;
 }
 
 .equipment__card {
-  background: #fff;
   height: auto;
-  border-radius: 0.625rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -7327,7 +7327,7 @@ body {
     padding: 6.25rem 0;
   }
 
-  .equipment__card {
+  .equipment__slider {
     border-radius: 1.25rem;
   }
 

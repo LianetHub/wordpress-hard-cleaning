@@ -222,6 +222,33 @@ $(function () {
 
             return;
         }
+
+        // equipment tabs
+        const $equipmentTab = $target.closest('.equipment__tab');
+        if ($equipmentTab.length && !$equipmentTab.hasClass('active')) {
+            const filter = $equipmentTab.data('filter');
+            const $slider = $('.equipment__slider');
+            const swiper = $slider[0].swiper;
+
+            $('.equipment__tab').removeClass('active');
+            $equipmentTab.addClass('active');
+
+            $('.equipment__card').each(function () {
+                const itemCategory = $(this).data('category');
+                if (itemCategory === filter) {
+                    $(this).show().addClass('swiper-slide');
+                } else {
+                    $(this).hide().removeClass('swiper-slide');
+                }
+            });
+
+            if (swiper) {
+                swiper.update();
+                swiper.slideTo(0);
+            }
+
+            return;
+        }
     });
 
 

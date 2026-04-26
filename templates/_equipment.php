@@ -53,20 +53,27 @@ $active_category = $equipment_data['equipment'];
         </div>
         <div class="equipment__slider swiper">
             <ul class="swiper-wrapper">
-                <?php foreach ($active_category as $item): ?>
-                    <li class="equipment__card swiper-slide">
-                        <div class="equipment__card-image">
-                            <img src="<?php echo esc_url($item['image']); ?>"
-                                alt="<?php echo esc_attr($item['title']); ?>"
-                                loading="lazy"
-                                decoding="async"
-                                draggable="false">
-                        </div>
-                        <div class="equipment__card-content">
-                            <h4 class="equipment__card-caption"><?php echo esc_html($item['title']); ?></h4>
-                            <p class="equipment__card-description"><?php echo esc_html($item['descr']); ?></p>
-                        </div>
-                    </li>
+                <?php foreach ($equipment_data as $category => $items): ?>
+                    <?php foreach ($items as $item): ?>
+                        <?php
+                        $is_active = ($category === 'equipment');
+                        ?>
+                        <li class="equipment__card swiper-slide"
+                            data-category="<?php echo esc_attr($category); ?>"
+                            style="<?php echo $is_active ? '' : 'display: none;'; ?>">
+                            <div class="equipment__card-image">
+                                <img src="<?php echo esc_url($item['image']); ?>"
+                                    alt="<?php echo esc_attr($item['title']); ?>"
+                                    loading="lazy"
+                                    decoding="async"
+                                    draggable="false">
+                            </div>
+                            <div class="equipment__card-content">
+                                <h4 class="equipment__card-caption"><?php echo esc_html($item['title']); ?></h4>
+                                <p class="equipment__card-description"><?php echo esc_html($item['descr']); ?></p>
+                            </div>
+                        </li>
+                    <?php endforeach; ?>
                 <?php endforeach; ?>
             </ul>
             <div class="equipment__slider-pagination swiper-pagination"></div>

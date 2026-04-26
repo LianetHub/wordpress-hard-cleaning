@@ -1650,22 +1650,27 @@
 
     // .equipment__slider
     &__slider {
-        overflow: visible;
+        border-radius: 0.625rem;
+        background: #fff;
+
+        overflow: hidden;
+
+        @media (min-width:$md4) {
+            border-radius: 1.25rem;
+        }
     }
 
     // .equipment__card
     &__card {
-        background: #fff;
+
         height: auto;
-        border-radius: 0.625rem;
+
         display: flex;
         flex-direction: column;
         height: auto;
         padding-bottom: 1.5rem;
 
-        @media (min-width:$md4) {
-            border-radius: 1.25rem;
-        }
+
     }
 
     // .equipment__card-image
