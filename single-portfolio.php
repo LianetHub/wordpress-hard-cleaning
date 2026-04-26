@@ -4,10 +4,12 @@
 $phone = get_field('phone', 'option');
 $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 
+$is_slider = get_field('case_display_mode');
+$single_img = get_field('case_single_img');
 $before = get_field('case_before_img');
 $after = get_field('case_after_img');
-$service = get_field('case_service_link');
 
+$service = get_field('case_service_link');
 $area = get_field('case_area');
 $duration = get_field('case_duration');
 $staff = get_field('case_staff');
@@ -59,21 +61,24 @@ $wrapper_tag = $title ? 'section' : 'div';
                 <a href="" class="heading__btn btn btn-outline">Оставить заявку</a>
             </div>
         </div>
-        <div class="heading__images heading__images--grid">
-            <div class="heading__images-block heading__images-block--before">
-                <img src="<?php echo esc_url($before['url']); ?>"
-                    class="cover-image"
-                    alt="До">
-                <span class="before-slider__label before-slider__label--before">До</span>
-
+        <?php if ($is_slider && $before && $after): ?>
+            <div class="heading__images">
+                <div class="heading__images-block heading__images-block--before">
+                    <img src="<?php echo esc_url($before['url']); ?>" class="cover-image" alt="До">
+                    <span class="before-slider__label before-slider__label--before">До</span>
+                </div>
+                <div class="heading__images-block heading__images-block--after">
+                    <img src="<?php echo esc_url($after['url']); ?>" class="cover-image" alt="После">
+                    <span class="before-slider__label before-slider__label--after">После</span>
+                </div>
             </div>
-            <div class="heading__images-block heading__images-block--after">
-                <img src="<?php echo esc_url($after['url']); ?>"
+        <?php elseif ($single_img): ?>
+            <div class="heading__image">
+                <img src="<?php echo esc_url($single_img['url']); ?>"
                     class="cover-image"
-                    alt="После">
-                <span class="before-slider__label before-slider__label--after">После</span>
+                    alt="<?php echo esc_attr($single_img['alt']); ?>">
             </div>
-        </div>
+        <?php endif; ?>
     </div>
 </section>
 

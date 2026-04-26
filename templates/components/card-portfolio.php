@@ -1,7 +1,10 @@
 <?php
-$services = get_field('case_service_link');
+$is_slider = get_field('case_display_mode');
+$single_img = get_field('case_single_img');
 $before = get_field('case_before_img');
 $after = get_field('case_after_img');
+
+$services = get_field('case_service_link');
 $case_area = get_field('case_area');
 $case_duration = get_field('case_duration');
 $case_staff = get_field('case_staff');
@@ -15,7 +18,18 @@ $term = $primary_term_id ? get_term($primary_term_id, 'service_cat') : null;
 ?>
 
 <div class="case-card">
-    <?php if ($before && $after): ?>
+    <?php if (!$is_slider && $single_img): ?>
+        <div class="case-card__image">
+            <a href="<?php echo esc_url($case_link); ?>">
+                <img src="<?php echo esc_url($single_img['url']); ?>"
+                    alt="<?php echo esc_attr($single_img['alt'] ?: $case_title); ?>"
+                    class="cover-image"
+                    loading="lazy"
+                    decoding="async">
+            </a>
+        </div>
+    <?php elseif ($before && $after): ?>
+
         <div class="case-card__slider before-slider">
             <div class="before-slider__layer before-slider__layer--after">
                 <img class="before-slider__image"
