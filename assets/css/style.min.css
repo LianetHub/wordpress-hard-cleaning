@@ -6020,6 +6020,48 @@ body {
     flex-shrink: 0
 }
 
+.sitemap {
+    padding: 3.75rem 0
+}
+
+.sitemap__grid {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: 1fr;
+    grid-template-columns: 1fr;
+    gap: 2.5rem
+}
+
+.sitemap__type-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
+    border-bottom: .0625rem solid #eee;
+    padding-bottom: .625rem
+}
+
+.sitemap__list {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.sitemap__item {
+    margin-bottom: .5rem
+}
+
+.sitemap__link {
+    font-size: .9375rem;
+    color: inherit;
+    text-decoration: none;
+    -webkit-transition: color .3s ease;
+    transition: color .3s ease
+}
+
+.sitemap__link:hover {
+    color: var(--primary-color, #007cba)
+}
+
 :root {
     --color-dark: #272727;
     --color-bg-light: #F8FAFB;
@@ -7321,6 +7363,11 @@ body {
     .price-list {
         padding: 6.25rem 0
     }
+
+    .sitemap__grid {
+        -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr)
+    }
 }
 
 @media (min-width:991.98px) {
@@ -7919,6 +7966,11 @@ body {
 
     .price-formation__list {
         margin-top: 4.625rem;
+        -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr)
+    }
+
+    .sitemap__grid {
         -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr)
     }
