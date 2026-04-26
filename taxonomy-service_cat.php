@@ -45,6 +45,32 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 $term = get_queried_object();
 $prices_group = get_field('all_services_prices_list', 'option');
 
+$is_regional_cat = (isset($term->slug) && $term->slug === 'uborka-v-gorodah');
+
+$meta_query_args = [];
+if ($is_regional_cat) {
+    $meta_query_args = [
+        'relation' => 'OR',
+        [
+            'key'     => 'current_city',
+            'value'   => 'Санкт-Петербург',
+            'compare' => '!=',
+        ],
+        [
+            'key'     => 'current_city',
+            'compare' => 'NOT EXISTS',
+        ],
+    ];
+} else {
+    $meta_query_args = [
+        [
+            'key'     => 'current_city',
+            'value'   => 'Санкт-Петербург',
+            'compare' => '=',
+        ]
+    ];
+}
+
 $services_query = new WP_Query([
     'post_type'      => 'services',
     'posts_per_page' => -1,
@@ -55,8 +81,9 @@ $services_query = new WP_Query([
             'terms'    => $term->term_id,
         ],
     ],
-    'orderby' => 'title',
-    'order'   => 'ASC',
+    'meta_query'     => $meta_query_args,
+    'orderby'        => 'title',
+    'order'          => 'ASC',
 ]);
 
 if ($services_query->have_posts()) : ?>

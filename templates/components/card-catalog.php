@@ -3,9 +3,7 @@ $sid = get_the_ID();
 $title = get_the_title();
 $link = get_permalink();
 $image = get_field('service_card_image') ?: ['url' => get_the_post_thumbnail_url($sid, 'full'), 'alt' => $title];
-$description = get_the_excerpt();
 
-// Получаем глобальный массив цен (лучше вынести получение переменной $prices_group выше цикла, если это возможно)
 $prices_group = get_field('all_services_prices_list', 'option');
 $service_data = $prices_group['service_data_' . $sid] ?? null;
 $display_price = !empty($service_data['service_price']) ? $service_data['service_price'] : '';
@@ -36,30 +34,19 @@ if ($post_terms && !is_wp_error($post_terms)) {
             </div>
         <?php endif; ?>
     </a>
-
     <div class="catalog__card-content">
-        <h3 class="catalog__card-title">
-            <a href="<?php echo esc_url($link); ?>">
+        <a href="<?php echo esc_url($link); ?>" class="catalog__card-link">
+            <div class="catalog__card-title">
                 <?php echo esc_html($title); ?>
-            </a>
-        </h3>
-
-        <?php if ($description): ?>
-            <div class="catalog__card-description">
-                <?php echo wp_trim_words($description, 20, '...'); ?>
             </div>
-        <?php endif; ?>
-
-        <div class="catalog__card-footer">
             <?php if ($display_price): ?>
                 <div class="catalog__card-price">
                     от <?php echo format_service_price($display_price); ?> ₽
                 </div>
             <?php endif; ?>
-
-            <a href="<?php echo esc_url($link); ?>" class="catalog__card-btn btn btn-primary">
-                Подробнее
-            </a>
-        </div>
+        </a>
+        <a href="<?php echo esc_url($link); ?>" class="catalog__card-btn btn btn-primary">
+            Подробнее
+        </a>
     </div>
 </div>

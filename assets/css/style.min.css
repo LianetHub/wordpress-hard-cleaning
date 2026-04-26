@@ -3,14 +3,14 @@
 @font-face {
     font-family: icons;
     font-display: swap;
-    src: url(../fonts/icons.woff2?v=1777132778272) format("woff2"), url(../fonts/icons.woff?v=1777132778272) format("woff");
+    src: url(../fonts/icons.woff2?v=1777203005930) format("woff2"), url(../fonts/icons.woff?v=1777203005930) format("woff");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: Rubik;
-    src: url(../fonts/Rubik-VariableFont_wght.woff2?v=1777132778272) format("woff2 supports variations"), url(../fonts/Rubik-VariableFont_wght.woff2?v=1777132778272) format("woff2-variations"), url(../fonts/Rubik-VariableFont_wght.woff?v=1777132778272) format("woff");
+    src: url(../fonts/Rubik-VariableFont_wght.woff2?v=1777203005930) format("woff2 supports variations"), url(../fonts/Rubik-VariableFont_wght.woff2?v=1777203005930) format("woff2-variations"), url(../fonts/Rubik-VariableFont_wght.woff?v=1777203005930) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -1062,10 +1062,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .custom-table tbody td, .typography-block .wp-block-table tbody td {
-    padding: 1.25rem;
     vertical-align: middle;
     border: 0;
-    font-size: 1rem
+    padding: .625rem;
+    font-size: .875rem
 }
 
 @-webkit-keyframes shimmer {
@@ -4460,23 +4460,44 @@ body {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    border-radius: 1.25rem;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    -webkit-box-flex: 1;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    gap: 1rem;
     background: #fff;
-    -webkit-box-shadow: 0 .375rem 1.5rem 0 rgba(0, 0, 0, .06);
-    box-shadow: 0 .375rem 1.5rem 0 rgba(0, 0, 0, .06)
+    border-radius: 1.25rem;
+    -webkit-box-shadow: 0 .375rem 1.5rem rgba(0, 0, 0, .1);
+    box-shadow: 0 .375rem 1.5rem rgba(0, 0, 0, .1);
+    overflow: hidden;
+    padding: 1rem
 }
 
 .catalog__card-image {
-    border-radius: 1.25rem 1.25rem 0 0;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
     overflow: hidden;
-    height: 0;
+    -webkit-box-ordinal-group: 0;
+    -ms-flex-order: -1;
+    order: -1;
+    width: 5.625rem;
+    min-height: 7.5rem;
+    border-radius: .5rem
+}
+
+.catalog__card-image img {
     width: 100%;
-    position: relative;
-    padding-bottom: 61.5212527964%;
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    -o-object-position: center;
+    object-position: center
+}
+
+.catalog__card-image {
     background: -webkit-gradient(linear, left top, right top, color-stop(25%, rgba(70, 126, 158, .1)), color-stop(50%, rgba(70, 126, 158, .2)), color-stop(75%, rgba(70, 126, 158, .1)));
     background: linear-gradient(90deg, rgba(70, 126, 158, .1) 25%, rgba(70, 126, 158, .2) 50%, rgba(70, 126, 158, .1) 75%);
     background-size: 200% 100%;
@@ -4490,16 +4511,10 @@ body {
     background: #eaf3f8
 }
 
-.catalog__card-image img {
-    position: absolute;
-    top: 0;
-    left: 0
-}
-
 .catalog__card-content {
-    -webkit-box-flex: 1;
-    -ms-flex: 1 1 auto;
-    flex: 1 1 auto;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 calc(100% - 6.625rem);
+    flex: 0 0 calc(100% - 6.625rem);
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -4507,23 +4522,22 @@ body {
     -webkit-box-direction: normal;
     -ms-flex-direction: column;
     flex-direction: column;
-    gap: .625rem;
-    padding: 1.5rem 1rem
+    gap: 2rem
+}
+
+.catalog__card-link {
+    display: inline;
+    font-weight: 700;
+    line-height: 1.4;
+    font-size: 1.125rem
 }
 
 .catalog__card-title {
-    font-size: 1.25rem;
-    font-weight: 600;
-    letter-spacing: .0375rem;
-    -webkit-transition: color .3s ease;
-    transition: color .3s ease
+    color: #272727
 }
 
-.catalog__card-description {
-    color: #4b5d68;
-    font-size: 1rem;
-    letter-spacing: .03rem;
-    padding-bottom: .5rem
+.catalog__card-price {
+    color: #2da05a
 }
 
 .catalog__empty {
@@ -4579,15 +4593,17 @@ body {
     transition: background-color .3s ease
 }
 
-.catalog__card-price {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #467e9e
-}
-
 .catalog__card-btn {
-    -ms-flex-negative: 0;
-    flex-shrink: 0
+    padding: .5rem;
+    font-size: .875rem;
+    min-height: 2.75rem;
+    line-height: 1.4285714286;
+    text-transform: uppercase;
+    width: 100%;
+    font-weight: 600;
+    margin-top: auto;
+    width: 100%;
+    max-width: 13.75rem
 }
 
 .work {
@@ -4664,7 +4680,7 @@ body {
 
 .price__value {
     font-weight: 700;
-    color: #2a7f8a;
+    color: #2da05a;
     min-width: 12.5rem
 }
 
@@ -6449,6 +6465,11 @@ body {
         padding: .375rem .8125rem
     }
 
+    .custom-table tbody td, .typography-block .wp-block-table tbody td {
+        padding: 1.25rem;
+        font-size: 1rem
+    }
+
     .container {
         -webkit-box-sizing: content-box;
         box-sizing: content-box;
@@ -6579,7 +6600,9 @@ body {
         -webkit-box-orient: horizontal;
         -webkit-box-direction: normal;
         -ms-flex-direction: row;
-        flex-direction: row
+        flex-direction: row;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap
     }
 
     .case-card__details {
@@ -7154,8 +7177,17 @@ body {
         flex-direction: row
     }
 
-    .catalog__card-content {
-        padding: 1.875rem
+    .catalog__card-link {
+        font-size: 1.5rem
+    }
+
+    .catalog__card-title {
+        display: inline
+    }
+
+    .catalog__card-price {
+        white-space: nowrap;
+        display: inline
     }
 
     .catalog__empty {
@@ -7830,6 +7862,10 @@ body {
         margin-top: 4.94rem
     }
 
+    .catalog__card-link {
+        font-size: 1.375rem
+    }
+
     .portfolio__grid {
         -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr)
@@ -8430,6 +8466,21 @@ body {
         padding: 1.55rem 0 0
     }
 
+    .catalog__card-link {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
+        align-items: flex-start;
+        gap: .25rem;
+        margin-bottom: 1.25rem
+    }
+
     .works__grid .cases-info-side .faq__cta {
         display: none
     }
@@ -9007,10 +9058,6 @@ body {
 
     .footer__contacts-link:hover {
         color: #fff
-    }
-
-    .catalog__card-title:hover {
-        color: #467e9e
     }
 
     .catalog__card-service:hover {

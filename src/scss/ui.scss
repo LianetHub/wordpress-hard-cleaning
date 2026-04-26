@@ -534,10 +534,15 @@ h6 {
 		}
 
 		td {
-			padding: rem(20);
 			vertical-align: middle;
 			border: 0;
-			font-size: 1rem;
+			padding: rem(10);
+			font-size: 0.875rem;
+
+			@media (min-width:$md5) {
+				padding: rem(20);
+				font-size: 1rem;
+			}
 
 			@media (min-width:$md4) {
 				font-size: 1.25rem;
