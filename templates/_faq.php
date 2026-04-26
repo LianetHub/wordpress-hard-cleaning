@@ -17,7 +17,7 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
                 <h3 class="faq__cta-title">Не нашли вопрос?</h3>
                 <p class="faq__cta-subtitle">Отправьте фото — подскажем план работ.</p>
                 <div class="faq__cta-btns">
-                    <a href="#callback" data-fancybox class="faq__cta-btn btn btn-white">Отправить фото</a>
+                    <a href="#callback" data-fancybox class="faq__cta-btn btn btn-white">Задать вопрос</a>
                     <?php if ($phone): ?>
                         <a href="tel:<?php echo $phone_clean; ?>"
                             class="faq__cta-btn btn btn-secondary">

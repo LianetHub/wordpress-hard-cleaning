@@ -165,6 +165,8 @@ if ($services_query->have_posts()) : ?>
     </section>
 <?php endif; ?>
 <?php require_once(TEMPLATE_PATH . '_trust.php'); ?>
+<?php require_once(TEMPLATE_PATH . '_guarantees.php'); ?>
+<?php require_once(TEMPLATE_PATH . '_reviews.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_equipment.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_coverage.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_faq.php'); ?>
