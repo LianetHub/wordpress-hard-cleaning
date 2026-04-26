@@ -17,7 +17,7 @@ if ($terms && !is_wp_error($terms)) :
         $args['meta_query'][] = [
             'key'     => 'case_service_link',
             'value'   => $term_id,
-            'compare' => 'LIKE',
+            'compare' => '=',
         ];
     }
 
