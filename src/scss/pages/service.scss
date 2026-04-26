@@ -230,7 +230,7 @@
         display: grid;
 
         @media (min-width:$md3) {
-            grid-template-columns: repeat(2, 1fr);
+            // grid-template-columns: repeat(2, 1fr);
 
         }
     }
@@ -283,9 +283,9 @@
     // .catalog__support-btns
     &__support-btns {
         display: flex;
-        flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: rem(10);
+        flex-wrap: wrap;
     }
 
     // .catalog__support-btn

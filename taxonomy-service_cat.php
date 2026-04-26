@@ -137,6 +137,30 @@ if ($services_query->have_posts()) : ?>
                     </div>
                 <?php endif; ?>
             </div>
+            <?php
+            $phone = get_field('phone', 'option');
+            $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
+            ?>
+
+            <div class="catalog__support">
+                <div class="catalog__support-card catalog__support-card--blue">
+                    <div class="catalog__support-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24">
+                            <path fill="#ffffff" d="M12 2c5.523 0 10 4.478 10 10s-4.477 10-10 10S2 17.522 2 12S6.477 2 12 2m0 13.5a1 1 0 1 0 0 2a1 1 0 0 0 0-2m0-8.75A2.75 2.75 0 0 0 9.25 9.5a.75.75 0 0 0 1.493.102l.007-.102a1.25 1.25 0 1 1 2.5 0c0 .539-.135.805-.645 1.332l-.135.138c-.878.878-1.22 1.447-1.22 2.53a.75.75 0 0 0 1.5 0c0-.539.135-.805.645-1.332l.135-.138c.878-.878 1.22-1.447 1.22-2.53A2.75 2.75 0 0 0 12 6.75" />
+                        </svg>
+                    </div>
+                    <div class="catalog__support-main">
+                        <div class="catalog__support-caption">Хотите узнать точную стоимость?</div>
+                        <div class="catalog__support-desc">Все цены в одном месте — таблица по каждой услуге с комментариями</div>
+                    </div>
+                    <div class="catalog__support-btns">
+                        <a href="<?php echo get_permalink(83); ?>" class="catalog__support-btn btn btn-white">Смотреть прайс</a>
+                        <?php if ($phone): ?>
+                            <a href="tel:<?php echo $phone_clean; ?>" class="catalog__support-btn btn btn-secondary">Позвонить</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 <?php endif; ?>
