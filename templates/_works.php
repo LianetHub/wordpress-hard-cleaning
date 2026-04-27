@@ -16,8 +16,8 @@ if ($terms && !is_wp_error($terms)) :
     foreach ($term_ids as $term_id) {
         $args['meta_query'][] = [
             'key'     => 'case_service_link',
-            'value'   => $term_id,
-            'compare' => '=',
+            'value'   => '"' . $term_id . '"',
+            'compare' => 'LIKE',
         ];
     }
 

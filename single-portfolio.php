@@ -62,7 +62,7 @@ $wrapper_tag = $title ? 'section' : 'div';
             </div>
         </div>
         <?php if ($is_slider && $before && $after): ?>
-            <div class="heading__images">
+            <div class="heading__images heading__images--grid">
                 <div class="heading__images-block heading__images-block--before">
                     <img src="<?php echo esc_url($before['url']); ?>" class="cover-image" alt="До">
                     <span class="before-slider__label before-slider__label--before">До</span>
