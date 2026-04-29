@@ -655,6 +655,12 @@
         flex-shrink: 0;
         overflow: hidden;
         order: -1;
+        background: linear-gradient(90deg,
+                rgba(70, 126, 158, 0.1) 25%,
+                rgba(70, 126, 158, 0.2) 50%,
+                rgba(70, 126, 158, 0.1) 75%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite linear;
 
         @media (max-width:$md4) {
             width: rem(90);

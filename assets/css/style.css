@@ -3,14 +3,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1777454671472") format("woff2"), url("../fonts/icons.woff?v=1777454671472") format("woff");
+  src: url("../fonts/icons.woff2?v=1777476923491") format("woff2"), url("../fonts/icons.woff?v=1777476923491") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Rubik";
-  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1777454671472") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1777454671472") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1777454671472") format("woff");
+  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1777476923491") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1777476923491") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1777476923491") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -3434,6 +3434,11 @@ body {
   -webkit-box-ordinal-group: 0;
       -ms-flex-order: -1;
           order: -1;
+  background: -webkit-gradient(linear, left top, right top, color-stop(25%, rgba(70, 126, 158, 0.1)), color-stop(50%, rgba(70, 126, 158, 0.2)), color-stop(75%, rgba(70, 126, 158, 0.1)));
+  background: linear-gradient(90deg, rgba(70, 126, 158, 0.1) 25%, rgba(70, 126, 158, 0.2) 50%, rgba(70, 126, 158, 0.1) 75%);
+  background-size: 200% 100%;
+  -webkit-animation: shimmer 2s infinite linear;
+          animation: shimmer 2s infinite linear;
 }
 
 .services__item-image img {

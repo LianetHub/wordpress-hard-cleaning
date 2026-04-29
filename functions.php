@@ -78,12 +78,11 @@ add_action('wp_enqueue_scripts', function () {
 
     wp_deregister_script('jquery');
     wp_enqueue_script('jquery', $theme_uri . '/assets/js/libs/jquery-4.0.0.min.js', array(), '4.0.0', true);
-    wp_enqueue_script('yandex-maps', 'https://api-maps.yandex.ru/2.1/?apikey=496cd84c-0a7a-4b7e-a9d5-bd9261e5f0a6&lang=ru_RU', array(), null, true);
     wp_enqueue_script('swiper-js', $theme_uri . '/assets/js/libs/swiper-bundle.min.js', array(), null, true);
     wp_enqueue_script('fancybox-js', $theme_uri . '/assets/js/libs/fancybox.umd.js', array(), null, true);
 
     $app_js_ver = filemtime($theme_dir . '/assets/js/app.min.js');
-    wp_enqueue_script('app-js', $theme_uri . '/assets/js/app.min.js', array('jquery', 'yandex-maps', 'swiper-js', 'fancybox-js'), $app_js_ver, true);
+    wp_enqueue_script('app-js', $theme_uri . '/assets/js/app.min.js', array('jquery', 'swiper-js', 'fancybox-js'), $app_js_ver, true);
 
     wp_localize_script('app-js', 'admin_ajax', [
         'url' => admin_url('admin-ajax.php')
@@ -106,18 +105,41 @@ add_action('wp_enqueue_scripts', function () {
 // =========================================================================
 
 add_filter('style_loader_tag', function ($tag, $handle) {
-    if (in_array($handle, ['swiper', 'fancybox'])) {
+    if (in_array($handle, ['swiper', 'fancybox', 'contact-form-7'])) {
         return str_replace(" media='all'", " media='print' onload=\"this.media='all'; this.onload=null;\"", $tag);
     }
     return $tag;
 }, 10, 2);
 
 add_filter('script_loader_tag', function ($tag, $handle) {
-    $defer = ['swiper-js', 'fancybox-js', 'app-js'];
-    if (in_array($handle, $defer)) return str_replace(' src', ' defer src', $tag);
-    if ($handle === 'yandex-maps') return str_replace(' src', ' async defer src', $tag);
+    if (is_admin()) return $tag;
+
+    $defer = [
+        'jquery',
+        'current-template-js-js',
+        'swiper-js',
+        'fancybox-js',
+        'app-js',
+        'post-scripts'
+    ];
+
+    if (in_array($handle, $defer)) {
+        return str_replace(' src', ' defer src', $tag);
+    }
+
+    if ($handle === 'yandex-maps') {
+        return str_replace(' src', ' async defer src', $tag);
+    }
+
     return $tag;
 }, 10, 2);
+
+add_action('wp_enqueue_scripts', function () {
+    global $wp_scripts;
+    if (isset($wp_scripts->registered['current-template-js-js'])) {
+        $wp_scripts->registered['current-template-js-js']->deps[] = 'jquery';
+    }
+}, 20);
 
 
 // =========================================================================

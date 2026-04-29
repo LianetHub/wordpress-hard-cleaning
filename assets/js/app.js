@@ -739,16 +739,30 @@ $(function () {
             });
         };
 
-        if (typeof ymaps !== 'undefined' && ymaps.ready) {
-            ymaps.ready(init);
-        } else {
-            const checkYmaps = setInterval(() => {
-                if (typeof ymaps !== 'undefined' && ymaps.ready) {
-                    ymaps.ready(init);
-                    clearInterval(checkYmaps);
+        const loadScript = () => {
+            if (typeof ymaps !== 'undefined') return;
+
+            const script = document.createElement('script');
+            script.src = 'https://api-maps.yandex.ru/2.1/?apikey=496cd84c-0a7a-4b7e-a9d5-bd9261e5f0a6&lang=ru_RU';
+            script.type = 'text/javascript';
+            script.onload = () => {
+                ymaps.ready(init);
+            };
+            document.head.appendChild(script);
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    loadScript();
+                    observer.unobserve(entry.target);
                 }
-            }, 100);
-        }
+            });
+        }, {
+            rootMargin: '200px'
+        });
+
+        observer.observe($mapContainer[0]);
     }
 
     initYandexMap();

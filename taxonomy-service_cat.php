@@ -31,9 +31,11 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
         </div>
         <?php if ($image): ?>
             <div class="heading__image">
-                <img src="<?php echo esc_url($image['url']); ?>"
+                <img
+                    src="<?php echo esc_url($image['url']); ?>"
                     alt="<?php echo esc_attr($image['alt'] ?: $title); ?>"
-                    class="cover-image">
+                    class="cover-image"
+                    fetchpriority="high">
             </div>
         <?php endif; ?>
     </div>
