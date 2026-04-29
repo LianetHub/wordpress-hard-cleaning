@@ -3,14 +3,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1777292025040") format("woff2"), url("../fonts/icons.woff?v=1777292025040") format("woff");
+  src: url("../fonts/icons.woff2?v=1777375877900") format("woff2"), url("../fonts/icons.woff?v=1777375877900") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Rubik";
-  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1777292025040") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1777292025040") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1777292025040") format("woff");
+  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1777375877900") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1777375877900") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1777375877900") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -2673,6 +2673,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   gap: 1rem;
+  font-weight: 500;
 }
 
 .menu__list a {
