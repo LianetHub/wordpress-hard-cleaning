@@ -45,6 +45,7 @@ $is_collage = !empty($image_left) || !empty($image_right);
                     <div class="heading__images-block heading__images-left">
                         <img src="<?php echo esc_url($image_left['url']); ?>"
                             alt="<?php echo esc_attr($image_left['alt'] ?: $title); ?>"
+                            fetchpriority="high"
                             class="cover-image">
                     </div>
                 <?php endif; ?>
@@ -53,6 +54,7 @@ $is_collage = !empty($image_left) || !empty($image_right);
                     <div class="heading__images-block heading__images-center">
                         <img src="<?php echo esc_url($image_main['url']); ?>"
                             alt="<?php echo esc_attr($image_main['alt'] ?: $title); ?>"
+                            fetchpriority="high"
                             class="cover-image">
                     </div>
                 <?php endif; ?>
@@ -61,6 +63,7 @@ $is_collage = !empty($image_left) || !empty($image_right);
                     <div class="heading__images-block heading__images-right">
                         <img src="<?php echo esc_url($image_right['url']); ?>"
                             alt="<?php echo esc_attr($image_right['alt'] ?: $title); ?>"
+                            fetchpriority="high"
                             class="cover-image">
                     </div>
                 <?php endif; ?>
@@ -70,6 +73,7 @@ $is_collage = !empty($image_left) || !empty($image_right);
                 <?php if (!empty($image_main['url'])): ?>
                     <img src="<?php echo esc_url($image_main['url']); ?>"
                         alt="<?php echo esc_attr($image_main['alt'] ?: $title); ?>"
+                        fetchpriority="high"
                         class="cover-image">
                 <?php endif; ?>
             </div>

@@ -74,9 +74,11 @@ $wrapper_tag = $title ? 'section' : 'div';
             </div>
         <?php elseif ($single_img): ?>
             <div class="heading__image">
-                <img src="<?php echo esc_url($single_img['url']); ?>"
+                <img
+                    src="<?php echo esc_url($single_img['url']); ?>"
                     class="cover-image"
-                    alt="<?php echo esc_attr($single_img['alt']); ?>">
+                    alt="<?php echo esc_attr($single_img['alt']); ?>"
+                    fetchpriority="high">
             </div>
         <?php endif; ?>
     </div>

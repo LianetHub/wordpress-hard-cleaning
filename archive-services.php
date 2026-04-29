@@ -30,26 +30,34 @@ $has_custom_images = ($img_left || $img_center || $img_right);
         <?php if ($has_custom_images): ?>
             <div class="heading__images">
                 <div class="heading__images-block heading__images-left">
-                    <img src="<?php echo $img_left ? esc_url($img_left['url']) : $default_url; ?>"
+                    <img
+                        src="<?php echo $img_left ? esc_url($img_left['url']) : $default_url; ?>"
                         class="cover-image"
-                        alt="<?php echo esc_attr($img_left['alt'] ?? 'Баннер'); ?>">
+                        alt="<?php echo esc_attr($img_left['alt'] ?? 'Баннер'); ?>"
+                        fetchpriority="high">
                 </div>
                 <div class="heading__images-block heading__images-center">
-                    <img src="<?php echo $img_center ? esc_url($img_center['url']) : $default_url; ?>"
+                    <img
+                        src="<?php echo $img_center ? esc_url($img_center['url']) : $default_url; ?>"
                         class="cover-image"
-                        alt="<?php echo esc_attr($img_center['alt'] ?? 'Баннер'); ?>">
+                        alt="<?php echo esc_attr($img_center['alt'] ?? 'Баннер'); ?>"
+                        fetchpriority="high">
                 </div>
                 <div class="heading__images-block heading__images-right">
-                    <img src="<?php echo $img_right ? esc_url($img_right['url']) : $default_url; ?>"
+                    <img
+                        src="<?php echo $img_right ? esc_url($img_right['url']) : $default_url; ?>"
                         class="cover-image"
-                        alt="<?php echo esc_attr($img_right['alt'] ?? 'Баннер'); ?>">
+                        alt="<?php echo esc_attr($img_right['alt'] ?? 'Баннер'); ?>"
+                        fetchpriority="high">
                 </div>
             </div>
         <?php else: ?>
             <div class="heading__image">
-                <img src="<?php echo esc_url($default_url); ?>"
+                <img
+                    src="<?php echo esc_url($default_url); ?>"
                     class="cover-image"
-                    alt="Спецуборка">
+                    alt="Спецуборка"
+                    fetchpriority="high">
             </div>
         <?php endif; ?>
 

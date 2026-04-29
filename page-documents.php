@@ -13,7 +13,7 @@ $docs_query = new WP_Query([
     'post_status'    => 'publish'
 ]);
 
-$found_any = false; // Флаг для проверки видимых элементов на уровне PHP
+$found_any = false;
 ?>
 
 <?php require_once(TEMPLATE_PATH . '/components/breadcrumbs.php'); ?>
