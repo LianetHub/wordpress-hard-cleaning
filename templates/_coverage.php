@@ -134,7 +134,7 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
                     <div class="info-region-box">
                         <h4>Ленинградская область</h4>
                         <p>Выезжаем по предварительному звонку — стоимость уточняется индивидуально.</p>
-                        <span class="region-cities">Гатчина · Всеволожск · Выборг · Тосно · Кириши · Сосновый Бор</span>
+                        <span class="region-cities">Гатчина · Всеволожск · Тосно </span>
                     </div>
                 </div>
 

@@ -108,6 +108,10 @@ if (empty($grid_categories)) {
     }
     $services_query = new WP_Query($query_args);
 }
+
+$extra_service_id = 821;
+$extra_service = get_post($extra_service_id);
+$show_extra = ($current_term_id === 11 && $extra_service && $extra_service->post_status === 'publish');
 ?>
 
 <section class="catalog">
@@ -133,8 +137,15 @@ if (empty($grid_categories)) {
             <div class="catalog__grid">
                 <?php while ($services_query->have_posts()): $services_query->the_post(); ?>
                     <?php get_template_part('templates/components/card-catalog'); ?>
-                <?php endwhile;
-                wp_reset_postdata(); ?>
+                <?php endwhile; ?>
+
+                <?php if ($show_extra): ?>
+                    <?php get_template_part('templates/components/card', 'service-item', [
+                        'post' => $extra_service
+                    ]); ?>
+                <?php endif; ?>
+
+                <?php wp_reset_postdata(); ?>
             </div>
 
             <?php if (!empty($regional_cities)): ?>
