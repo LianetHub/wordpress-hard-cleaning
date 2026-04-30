@@ -1,39 +1,39 @@
 <?php
-$equip_assets = get_template_directory_uri() . '/assets/';
+$equip_assets = get_template_directory_uri() . '/assets/img/';
 
 $equipment_data = [
     'equipment' => [
         [
             'title' => 'Осушители воздуха',
             'descr' => 'Просушка помещений и конструкций после залива',
-            'image' => $equip_assets . 'equip_1.png',
+            'image' => $equip_assets . 'equip_1.webp',
         ],
         [
             'title' => 'Озонаторы',
             'descr' => 'Работа со стойкими запахами (гарь, сырость)',
-            'image' => $equip_assets . 'equip_2.png',
+            'image' => $equip_assets . 'equip_2.webp',
         ],
         [
             'title' => 'Пылеводососы',
             'descr' => 'Удаление воды и глубокой грязи',
-            'image' => $equip_assets . 'equip_3.png',
+            'image' => $equip_assets . 'equip_3.webp',
         ],
         [
             'title' => 'Распылители',
             'descr' => 'Обработка труднодоступных зон',
-            'image' => $equip_assets . 'equip_4.png',
+            'image' => $equip_assets . 'equip_4.webp',
         ],
     ],
     'supplies' => [
         [
             'title' => 'Защитные костюмы',
             'descr' => 'Полная изоляция кожи и одежды при хим. обработке',
-            'image' => $equip_assets . 'safety_1.png',
+            'image' => $equip_assets . 'safety_1.webp',
         ],
         [
             'title' => 'Проф. химия',
             'descr' => 'Средства для удаления биозагрязнений и копоти',
-            'image' => $equip_assets . 'safety_2.png',
+            'image' => $equip_assets . 'safety_2.webp',
         ],
     ]
 ];

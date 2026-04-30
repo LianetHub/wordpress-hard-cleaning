@@ -2,7 +2,7 @@
 $terms = get_terms([
     'taxonomy'   => 'service_cat',
     'hide_empty' => false,
-    'include'    => [4, 5, 6, 8],
+    'include'    => [8, 6, 4, 5,],
     'orderby'    => 'include'
 ]);
 ?>
