@@ -131,6 +131,11 @@ $show_extra = ($current_term_id === 11 && $extra_service && $extra_service->post
                     ]);
                     ?>
                 <?php endforeach; ?>
+                <?php if ($show_extra): ?>
+                    <?php get_template_part('templates/components/card', 'service-item', [
+                        'post' => $extra_service
+                    ]); ?>
+                <?php endif; ?>
             </ul>
 
         <?php elseif ($services_query && $services_query->have_posts()): ?>
@@ -138,12 +143,6 @@ $show_extra = ($current_term_id === 11 && $extra_service && $extra_service->post
                 <?php while ($services_query->have_posts()): $services_query->the_post(); ?>
                     <?php get_template_part('templates/components/card-catalog'); ?>
                 <?php endwhile; ?>
-
-                <?php if ($show_extra): ?>
-                    <?php get_template_part('templates/components/card', 'service-item', [
-                        'post' => $extra_service
-                    ]); ?>
-                <?php endif; ?>
 
                 <?php wp_reset_postdata(); ?>
             </div>

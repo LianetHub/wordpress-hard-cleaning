@@ -345,6 +345,12 @@
         display: grid;
         gap: 2.25rem;
 
+        .term-kompaniyam & {
+            @media (min-width:$md2) {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
 
         @media (max-width: 1024px) {
             gap: 2rem;

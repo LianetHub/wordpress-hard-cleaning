@@ -3,6 +3,9 @@ $current_object = get_queried_object();
 $is_archive = is_post_type_archive('services');
 $current_term_id = (isset($current_object->term_id)) ? $current_object->term_id : 0;
 
+$extra_service_id = 821;
+$extra_service = get_post($extra_service_id);
+
 $first_btn_text = 'Все услуги';
 $first_btn_link = get_post_type_archive_link('services');
 $is_first_btn_active = $is_archive;
@@ -14,11 +17,15 @@ if ($is_archive) {
         'taxonomy'   => 'service_cat',
         'hide_empty' => true,
         'parent'     => 0,
+        'orderby'    => 'term_order',
+        'order'      => 'ASC',
     ]);
 
     $all_terms = get_terms([
         'taxonomy'   => 'service_cat',
         'hide_empty' => true,
+        'orderby'    => 'term_order',
+        'order'      => 'ASC',
     ]);
 
     $grid_terms = array_filter($all_terms, function ($term) {
@@ -36,6 +43,8 @@ if ($is_archive) {
             'taxonomy'   => 'service_cat',
             'hide_empty' => true,
             'parent'     => $current_term_id,
+            'orderby'    => 'term_order',
+            'order'      => 'ASC',
         ]);
     } else {
         $parent_term = get_term($parent_term_id, 'service_cat');
@@ -47,6 +56,8 @@ if ($is_archive) {
             'taxonomy'   => 'service_cat',
             'hide_empty' => true,
             'parent'     => $parent_term_id,
+            'orderby'    => 'term_order',
+            'order'      => 'ASC',
         ]);
     }
 }
@@ -101,7 +112,6 @@ if (!$is_archive) {
             </div>
         </div>
 
-
         <?php if ($is_archive): ?>
             <?php if (!empty($grid_terms) && !is_wp_error($grid_terms)): ?>
                 <ul class="services__list">
@@ -112,10 +122,15 @@ if (!$is_archive) {
                         ]);
                         ?>
                     <?php endforeach; ?>
+
+                    <?php if ($extra_service && $extra_service->post_status === 'publish'): ?>
+                        <?php get_template_part('templates/components/card', 'service-item', [
+                            'post' => $extra_service
+                        ]); ?>
+                    <?php endif; ?>
                 </ul>
             <?php endif; ?>
         <?php endif; ?>
-
 
         <?php get_template_part('templates/components/catalog-support-block'); ?>
     </div>
