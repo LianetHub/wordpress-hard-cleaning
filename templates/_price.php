@@ -36,6 +36,9 @@ if ($service_data && !empty($service_data['additional_services'])) :
                     </tbody>
                 </table>
             </div>
+            <div class="price__table-hint info-highlight-box">
+                <strong>Окончательная стоимость</strong> рассчитывается после осмотра объекта
+            </div>
         </div>
     </section>
 <?php endif; ?>

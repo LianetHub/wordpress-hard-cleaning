@@ -142,6 +142,9 @@ foreach ($target_cat_ids as $cat_id) {
                                 </tbody>
                             </table>
                         </div>
+                        <div class="price__table-hint info-highlight-box">
+                            <strong>Окончательная стоимость</strong> рассчитывается после осмотра объекта
+                        </div>
                     </div>
                 <?php endforeach; ?>
             </div>

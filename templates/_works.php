@@ -22,9 +22,7 @@ if ($show_portfolio !== false) :
     ];
 
     $works_query = new WP_Query($args_direct);
-    $debug_mode = 'DIRECT_MATCH';
 
-    
     if (!$works_query->have_posts()) {
         $terms = get_the_terms($current_service_id, 'service_cat');
 
@@ -47,24 +45,15 @@ if ($show_portfolio !== false) :
                     'relation' => 'AND',
                     [
                         'relation' => 'OR',
-                        [
-                            'key'     => 'portfolio_service_link',
-                            'value'   => '',
-                            'compare' => '=',
-                        ],
-                        [
-                            'key'     => 'portfolio_service_link',
-                            'compare' => 'NOT EXISTS',
-                        ],
+                        ['key' => 'portfolio_service_link', 'value' => '', 'compare' => '='],
+                        ['key' => 'portfolio_service_link', 'compare' => 'NOT EXISTS'],
                     ],
                     $category_conditions
                 ]
             ];
             $works_query = new WP_Query($args_category);
-            $debug_mode = 'CATEGORY_FALLBACK';
         }
     }
-
 
     if ($works_query->have_posts()) : ?>
         <section class="works">

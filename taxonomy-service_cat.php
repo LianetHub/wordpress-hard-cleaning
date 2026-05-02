@@ -139,6 +139,9 @@ if ($services_query->have_posts()) : ?>
                     </div>
                 <?php endif; ?>
             </div>
+            <div class="price__table-hint info-highlight-box" >
+                <strong>Окончательная стоимость</strong> рассчитывается после осмотра объекта
+            </div>
             <?php
             $phone = get_field('phone', 'option');
             $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
