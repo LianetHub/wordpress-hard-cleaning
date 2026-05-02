@@ -15,9 +15,10 @@ $case_excerpt = has_excerpt() ? get_the_excerpt() : get_the_content();
 
 $primary_term_id = (!empty($services) && is_array($services)) ? $services[0] : $services;
 $term = $primary_term_id ? get_term($primary_term_id, 'service_cat') : null;
+$term_id_attr = ($term && !is_wp_error($term)) ? $term->term_id : 'uncategorized';
 ?>
 
-<div class="case-card">
+<div class="case-card" data-category="<?php echo esc_attr($term_id_attr); ?>">
     <?php if (!$is_slider && $single_img): ?>
         <div class="case-card__image">
             <a href="<?php echo esc_url($case_link); ?>">
@@ -29,7 +30,6 @@ $term = $primary_term_id ? get_term($primary_term_id, 'service_cat') : null;
             </a>
         </div>
     <?php elseif ($before && $after): ?>
-
         <div class="case-card__slider before-slider">
             <div class="before-slider__layer before-slider__layer--after">
                 <img class="before-slider__image"

@@ -101,7 +101,7 @@ if (!empty($final_ids)) {
                             <a href="#callback" data-fancybox class="faq__cta-btn btn btn-white">Задать вопрос</a>
                             <?php if ($phone): ?>
                                 <a href="tel:<?php echo $phone_clean; ?>"
-                                    class="faq__cta-btn btn btn-outline-white">
+                                    class="faq__cta-btn btn btn-secondary">
                                     Позвонить
                                 </a>
                             <?php endif; ?>

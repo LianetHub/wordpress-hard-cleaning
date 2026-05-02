@@ -17,6 +17,11 @@
     // .portfolio__title
     &__title {}
 
+    // .portfolio__filters 
+    &__filters {
+        margin-top: 1rem;
+    }
+
     // .portfolio__grid
     &__grid {
         display: grid;
