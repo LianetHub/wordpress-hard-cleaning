@@ -43,6 +43,7 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 <?php require_once(TEMPLATE_PATH . '_trust.php'); ?>
 
 <?php require_once(TEMPLATE_PATH . '_catalog.php'); ?>
+<?php require_once(TEMPLATE_PATH . '_works.php'); ?>
 <?php
 $term = get_queried_object();
 $prices_group = get_field('all_services_prices_list', 'option');
@@ -139,7 +140,7 @@ if ($services_query->have_posts()) : ?>
                     </div>
                 <?php endif; ?>
             </div>
-            <div class="price__table-hint info-highlight-box" >
+            <div class="price__table-hint info-highlight-box">
                 <strong>Окончательная стоимость</strong> рассчитывается после осмотра объекта
             </div>
             <?php

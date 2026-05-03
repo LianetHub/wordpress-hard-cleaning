@@ -3,14 +3,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1777816967558") format("woff2"), url("../fonts/icons.woff?v=1777816967558") format("woff");
+  src: url("../fonts/icons.woff2?v=1777827236543") format("woff2"), url("../fonts/icons.woff?v=1777827236543") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Rubik";
-  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1777816967558") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1777816967558") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1777816967558") format("woff");
+  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1777827236543") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1777827236543") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1777827236543") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -2724,6 +2724,11 @@ body {
 
 .menu__item.current-menu-item .menu__link {
   color: #467E9E;
+}
+
+.menu__link {
+  -webkit-transition: color 0.3s ease;
+  transition: color 0.3s ease;
 }
 
 .menu__arrow {
@@ -8040,14 +8045,6 @@ body {
     gap: 1.5rem;
   }
 
-  .menu__item:has(.menu__arrow) .menu__link {
-    padding-right: 2.625rem;
-  }
-
-  .menu__arrow {
-    right: 0.875rem;
-  }
-
   .hero {
     padding: 3.2rem 0 3.125rem;
   }
@@ -9313,6 +9310,10 @@ body {
   }
 
   .header__phone:hover {
+    color: #467E9E;
+  }
+
+  .menu__link:hover {
     color: #467E9E;
   }
 

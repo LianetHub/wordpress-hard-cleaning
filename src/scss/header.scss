@@ -478,10 +478,16 @@
 
                 }
 
-                @media (min-width:$md2) {
-                    padding-right: rem(42);
+            }
+        }
+    }
 
-                }
+    &__link {
+        transition: color 0.3s ease;
+
+        @media (any-hover: hover) {
+            &:hover {
+                color: $accent;
             }
         }
     }
@@ -503,10 +509,6 @@
             right: rem(0);
         }
 
-        @media (min-width:$md2) {
-            right: rem(14);
-
-        }
 
         &::before {
             transition: transform 0.3s ease;
