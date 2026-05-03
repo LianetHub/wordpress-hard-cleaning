@@ -50,6 +50,71 @@ function cleaning_theme_setup()
 }
 add_action('after_setup_theme', 'cleaning_theme_setup');
 
+class Menu_Nav_Walker extends Walker_Nav_Menu
+{
+    function start_el(&$output, $item, $depth = 0, $args = [], $id = 0)
+    {
+        $classes = empty($item->classes) ? [] : (array) $item->classes;
+
+        if ($depth === 0) {
+            $classes[] = 'menu__item';
+        } elseif ($depth === 1) {
+            $classes[] = 'sub-menu__item';
+        }
+
+        $class_names = join(' ', apply_filters('nav_menu_css_class', array_filter($classes), $item, $args));
+        $class_names = $class_names ? ' class="' . esc_attr($class_names) . '"' : '';
+
+        $output .= '<li' . $class_names . '>';
+
+        $atts = [];
+        $atts['title']  = !empty($item->attr_title) ? $item->attr_title : '';
+        $atts['target'] = !empty($item->target)     ? $item->target     : '';
+        $atts['rel']    = !empty($item->xfn)        ? $item->xfn        : '';
+        $atts['href']   = !empty($item->url)        ? $item->url        : '';
+
+        if ($depth === 0) {
+            $atts['class'] = 'menu__link';
+        } elseif ($depth === 1) {
+            $atts['class'] = 'sub-menu__link';
+        }
+
+        $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args);
+
+        $attributes = '';
+        foreach ($atts as $attr => $value) {
+            if (!empty($value)) {
+                $value = ('href' === $attr) ? esc_url($value) : esc_attr($value);
+                $attributes .= ' ' . $attr . '="' . $value . '"';
+            }
+        }
+
+        $item_output = $args->before;
+        $item_output .= '<a' . $attributes . '>';
+        $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
+        $item_output .= '</a>';
+
+        if (in_array('menu-item-has-children', $classes)) {
+            $item_output .= '<button type="button" class="menu__arrow icon-chevron-down" aria-label="Открыть подменю"></button>';
+        }
+
+        $item_output .= $args->after;
+        $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
+    }
+
+    function start_lvl(&$output, $depth = 0, $args = [])
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "\n$indent<div class=\"sub-menu\">\n$indent\t<ul class=\"sub-menu__list\">\n";
+    }
+
+    function end_lvl(&$output, $depth = 0, $args = [])
+    {
+        $indent = str_repeat("\t", $depth);
+        $output .= "$indent\t</ul>\n$indent</div>\n";
+    }
+}
+
 add_action('init', function () {
     unregister_taxonomy_for_object_type('category', 'post');
     unregister_taxonomy_for_object_type('post_tag', 'post');

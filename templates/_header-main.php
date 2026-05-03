@@ -79,6 +79,7 @@ $address = get_field('address', 'option');
                     'container'      => false,
                     'menu_class'     => 'menu__list',
                     'items_wrap'     => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                    'walker'         => new Menu_Nav_Walker(),
                 ]);
                 ?>
             </nav>

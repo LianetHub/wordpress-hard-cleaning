@@ -67,40 +67,7 @@ $(function () {
         const $target = $(e.target);
         const $menu = $('.menu');
         const $toggler = $('.header__menu-toggler');
-
-        // docs filters
-        const $filterBtn = $target.closest('.docs-filter');
-        if ($filterBtn.length) {
-            const filter = $filterBtn.data('filter');
-            const $gridItems = $('.certs__item');
-            const $emptyMsg = $('.certs__empty');
-            let visibleCount = 0;
-
-            $('.filters__item').removeClass('active');
-            $filterBtn.addClass('active');
-
-            $gridItems.each(function () {
-                const itemType = $(this).data('type');
-                if (filter === 'all' || itemType === filter) {
-                    $(this).css('display', 'flex').hide().fadeIn(300);
-                    visibleCount++;
-                } else {
-                    $(this).hide();
-                }
-            });
-
-            // Показываем/скрываем сообщение о пустоте
-            if (visibleCount === 0) {
-                $emptyMsg.fadeIn(300);
-            } else {
-                $emptyMsg.hide();
-            }
-
-            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + (filter === 'all' ? '' : '?type=' + filter);
-            window.history.pushState({ path: newUrl }, '', newUrl);
-
-            return;
-        }
+        const isTouch = $('body').hasClass('_touch');
 
         // Fancybox Gallery
         const $fancyTrigger = $target.closest('[data-fancybox-gallery]');
@@ -136,12 +103,48 @@ $(function () {
             $('body').removeClass('menu-lock');
         }
 
-        // Close menu on link click
-        if ($menu.hasClass('menu--open') && $target.closest('.menu-item a').length) {
-            $toggler.removeClass("active");
-            $menu.removeClass("menu--open");
-            $('body').removeClass('menu-lock');
+        // Handle Links & Submenus logic
+        const $menuLink = $target.closest('.menu-item a');
+        if ($menuLink.length) {
+            const $parentItem = $menuLink.closest('.menu-item');
+            const hasSubmenu = $parentItem.find('.sub-menu').length > 0 || $parentItem.hasClass('has-children');
+
+            // Если это тач-устройство и есть подменю
+            if (isTouch && hasSubmenu) {
+                if (!$parentItem.hasClass('active')) {
+                    e.preventDefault();
+                    // Закрываем другие открытые подменю того же уровня
+                    $parentItem.siblings('.menu-item.active').removeClass('active');
+                    $parentItem.addClass('active');
+                    return;
+                }
+            }
+
+            // Закрытие меню при клике на обычную ссылку (или второе нажатие на таче)
+            if ($menu.hasClass('menu--open')) {
+                $toggler.removeClass("active");
+                $menu.removeClass("menu--open");
+                $('body').removeClass('menu-lock');
+            }
         }
+
+        // Handle arrows logic (отдельно, если есть стрелочки)
+        if ($target.closest('.menu__arrow').length) {
+            const $parentItem = $target.closest('.menu__arrow').parent();
+            if ($parentItem.hasClass('active')) {
+                $parentItem.removeClass('active');
+            } else {
+                $parentItem.siblings('.menu-item.active').removeClass('active');
+                $parentItem.addClass('active');
+            }
+            return;
+        }
+
+        // Close all submenus when clicking outside the menu
+        if (!$target.closest('.menu-item').length) {
+            $('.menu-item.active').removeClass('active');
+        }
+
 
         // FAQ accordion
         if ($target.closest('.faq__question').length) {
@@ -163,11 +166,9 @@ $(function () {
             const $panes = $('.price-list__pane');
             const $currentPane = $('#pane-' + targetId);
 
-            // 1. Меняем активный класс у кнопок
             $('.price-list__tab').removeClass('is-active');
             $priceTab.addClass('is-active');
 
-            // 2. Переключаем видимость панелей с легким эффектом
             $panes.hide().removeClass('is-active');
             $currentPane.fadeIn(400).addClass('is-active');
 
@@ -191,7 +192,6 @@ $(function () {
                 $btn.text($btn.data('text-less')).addClass('is-active');
                 $btn.parent().addClass('is-active');
             } else {
-
                 $hiddenRows.hide();
                 $btn.text($btn.data('text-more')).removeClass('is-active');
                 $btn.parent().removeClass('is-active');
@@ -249,6 +249,40 @@ $(function () {
 
             return;
         }
+
+        // docs filters
+        const $filterBtn = $target.closest('.docs-filter');
+        if ($filterBtn.length) {
+            const filter = $filterBtn.data('filter');
+            const $gridItems = $('.certs__item');
+            const $emptyMsg = $('.certs__empty');
+            let visibleCount = 0;
+
+            $('.filters__item').removeClass('active');
+            $filterBtn.addClass('active');
+
+            $gridItems.each(function () {
+                const itemType = $(this).data('type');
+                if (filter === 'all' || itemType === filter) {
+                    $(this).css('display', 'flex').hide().fadeIn(300);
+                    visibleCount++;
+                } else {
+                    $(this).hide();
+                }
+            });
+
+            if (visibleCount === 0) {
+                $emptyMsg.fadeIn(300);
+            } else {
+                $emptyMsg.hide();
+            }
+
+            const newUrl = window.location.protocol + "//" + window.location.host + window.location.pathname + (filter === 'all' ? '' : '?type=' + filter);
+            window.history.pushState({ path: newUrl }, '', newUrl);
+
+            return;
+        }
+
     });
 
 
