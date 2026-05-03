@@ -3,7 +3,6 @@
     $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 
     $image = get_field('hero_image');
-    $tags = get_field('hero_tags');
     $title = get_field('hero_title') ?: 'Комплексная спецуборка в Санкт-Петербурге и области';
     $subtitle = get_field('hero_subtitle') ?: 'После смерти, пожара, потопа и сильного загрязнения. Оценка в день обращения. Выезд по СПб и Ленобласти.';
     ?>
@@ -23,22 +22,6 @@
                      class="hero__image-main"
                      fetchpriority="high"
                      loading="eager">
-             <?php endif; ?>
-
-             <?php if ($tags): ?>
-                 <ul class="hero__tags">
-                     <?php foreach ($tags as $tag): ?>
-                         <li class="hero__tag">
-                             <?php if ($tag['icon']): ?>
-                                 <div class="hero__tag-icon">
-                                     <img src="<?php echo esc_url($tag['icon']['url']); ?>"
-                                         alt="<?php echo esc_attr($tag['icon']['alt']); ?>">
-                                 </div>
-                             <?php endif; ?>
-                             <div class="hero__tag-text"><?php echo esc_html($tag['text']); ?></div>
-                         </li>
-                     <?php endforeach; ?>
-                 </ul>
              <?php endif; ?>
          </div>
 
