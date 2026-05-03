@@ -349,8 +349,10 @@
         flex-direction: column;
         align-items: stretch;
         width: 100%;
+        padding-top: 1.5rem;
 
         @media (min-width:$md3) {
+            padding-top: 0;
             flex-direction: row;
             justify-content: center;
             gap: 1.25rem;
@@ -519,14 +521,16 @@
 
 .sub-menu {
     display: none;
+    margin-top: 1rem;
 
     @media (min-width: $md3) {
+        margin-top: 0;
         position: absolute;
         display: block !important;
         z-index: 2;
         top: 100%;
         left: 0;
-        padding-top: 0.25rem;
+        padding-top: 1.25rem;
         opacity: 0;
         visibility: hidden;
         transform: translate3d(0, -0.5rem, 1px);
@@ -535,56 +539,82 @@
 
     // .sub-menu__list
     &__list {
+
+        display: grid;
+        row-gap: 1rem;
+
         @media (min-width: $md3) {
             border-radius: 0.5rem;
             color: #272727;
             border-radius: 0.5rem;
             box-shadow: 0 0.5rem rem(30) -0.25rem rgba(0, 0, 0, 0.1);
-            padding: rem(6);
+            padding: rem(16);
             background: #fff;
             white-space: nowrap;
             width: fit-content;
+            grid-template-columns: repeat(2, 1fr);
         }
     }
 
     // .submenu__item
-    &__item {
-        @media (max-width: $md3) {
-            border-bottom: 0.0625rem solid #eaeaea;
-        }
+    &__item {}
+
+    &__category {
+        text-transform: uppercase;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+        display: block;
+        color: #20b2aa;
     }
 
-    // .submenu__link
-    &__link {
-        line-height: 150%;
+
+
+    &__sublist {
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 0.5rem;
-        transition:
-            background-color 0.3s ease,
-            color 0.3s ease;
-        font-size: 1rem;
-        font-weight: 500;
-        padding: 0.5rem 0 0.5rem 0.5rem;
+        flex-direction: column;
 
-        @media (min-width: $md3) {
-            padding: 0.75rem;
-            font-weight: 400;
-            border-radius: 0.375rem;
+        li {
+            @media (max-width: $md3) {
+                &:not(:last-child) {
+                    border-bottom: 0.0625rem solid #eaeaea;
+                }
+            }
+
         }
 
+        & a {
+            line-height: 150%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 0.5rem;
+            transition:
+                background-color 0.3s ease,
+                color 0.3s ease;
+            font-size: 1rem;
+            font-weight: 500;
+            padding: 0.5rem 0 0.5rem 0.5rem;
 
-        &.active {
-            color: $accent;
-        }
+            @media (min-width: $md3) {
+                padding: 0.5rem 0.75rem;
+                font-weight: 400;
+                border-radius: 0.375rem;
+            }
 
-        @media (any-hover: hover) {
-            &:hover {
+
+            &.active {
                 color: $accent;
+            }
+
+            @media (any-hover: hover) {
+                &:hover {
+                    color: $accent;
+                }
             }
         }
     }
+
+
 }
 
 

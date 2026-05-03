@@ -52,6 +52,26 @@ add_action('after_setup_theme', 'cleaning_theme_setup');
 
 class Menu_Nav_Walker extends Walker_Nav_Menu
 {
+    function start_lvl(&$output, $depth = 0, $args = [])
+    {
+        $indent = str_repeat("\t", $depth);
+        if ($depth === 0) {
+            $output .= "\n$indent<div class=\"sub-menu\">\n$indent\t<ul class=\"sub-menu__list\">\n";
+        } else {
+            $output .= "\n$indent<ul class=\"sub-menu__sublist\">\n";
+        }
+    }
+
+    function end_lvl(&$output, $depth = 0, $args = [])
+    {
+        $indent = str_repeat("\t", $depth);
+        if ($depth === 0) {
+            $output .= "$indent\t</ul>\n$indent</div>\n";
+        } else {
+            $output .= "$indent</ul>\n";
+        }
+    }
+
     function start_el(&$output, $item, $depth = 0, $args = [], $id = 0)
     {
         $classes = empty($item->classes) ? [] : (array) $item->classes;
@@ -76,7 +96,7 @@ class Menu_Nav_Walker extends Walker_Nav_Menu
         if ($depth === 0) {
             $atts['class'] = 'menu__link';
         } elseif ($depth === 1) {
-            $atts['class'] = 'sub-menu__link';
+            $atts['class'] = 'sub-menu__category';
         }
 
         $atts = apply_filters('nav_menu_link_attributes', $atts, $item, $args);
@@ -94,24 +114,12 @@ class Menu_Nav_Walker extends Walker_Nav_Menu
         $item_output .= $args->link_before . apply_filters('the_title', $item->title, $item->ID) . $args->link_after;
         $item_output .= '</a>';
 
-        if (in_array('menu-item-has-children', $classes)) {
+        if ($depth === 0 && in_array('menu-item-has-children', $classes)) {
             $item_output .= '<button type="button" class="menu__arrow icon-chevron-down" aria-label="Открыть подменю"></button>';
         }
 
         $item_output .= $args->after;
         $output .= apply_filters('walker_nav_menu_start_el', $item_output, $item, $depth, $args);
-    }
-
-    function start_lvl(&$output, $depth = 0, $args = [])
-    {
-        $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<div class=\"sub-menu\">\n$indent\t<ul class=\"sub-menu__list\">\n";
-    }
-
-    function end_lvl(&$output, $depth = 0, $args = [])
-    {
-        $indent = str_repeat("\t", $depth);
-        $output .= "$indent\t</ul>\n$indent</div>\n";
     }
 }
 

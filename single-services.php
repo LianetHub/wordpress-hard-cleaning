@@ -82,7 +82,13 @@ $is_collage = !empty($image_left) || !empty($image_right);
 </section>
 <?php require_once(TEMPLATE_PATH . '_trust.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_work.php'); ?>
-<?php require_once(TEMPLATE_PATH . '_works.php'); ?>
+<?php
+if (mb_stripos(get_the_title(), 'Спецуборка') !== false) {
+    require_once(TEMPLATE_PATH . '_works-specialized.php');
+} else {
+    require_once(TEMPLATE_PATH . '_works.php');
+}
+?>
 <?php require_once(TEMPLATE_PATH . '_price.php'); ?>
 <?php require_once(TEMPLATE_PATH . '_guarantees.php'); ?>
 
