@@ -28,7 +28,7 @@ $success_icon = get_field('success_icon', 'option');
             <h3 class="popup__title title-md"> <?php echo esc_html($callback_form_title) ?></h3>
         <?php endif; ?>
         <?php if ($callback_form_subtitle): ?>
-            <p class="popup__subtitle subtitle"><?php echo esc_html($callback_form_subtitle) ?></p>
+            <p class="popup__subtitle subtitle" style="margin-top: 0.5rem;"><?php echo esc_html($callback_form_subtitle) ?></p>
         <?php endif; ?>
         <div class="popup__form">
             <?php echo do_shortcode('[contact-form-7 id="b41fe87" title="Контактная форма Задать вопрос"]') ?>
@@ -49,7 +49,7 @@ $success_icon = get_field('success_icon', 'option');
         </h3>
     <?php endif; ?>
     <?php if ($error_subtitle): ?>
-        <p class="popup__subtitle">
+        <p class="popup__subtitle" style="margin-top: 0.5rem;">
             <?php echo esc_html($error_subtitle) ?>
         </p>
     <?php endif; ?>

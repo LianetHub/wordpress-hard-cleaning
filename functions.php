@@ -178,7 +178,7 @@ add_action('wp_enqueue_scripts', function () {
 // =========================================================================
 
 add_filter('style_loader_tag', function ($tag, $handle) {
-    if (in_array($handle, ['swiper', 'fancybox', 'contact-form-7'])) {
+    if (in_array($handle, ['swiper', 'fancybox', 'contact-form-7', 'wpa-css-css'])) {
         return str_replace(" media='all'", " media='print' onload=\"this.media='all'; this.onload=null;\"", $tag);
     }
     return $tag;
@@ -188,11 +188,11 @@ add_filter('script_loader_tag', function ($tag, $handle) {
     if (is_admin()) return $tag;
 
     $defer = [
-        'jquery',
         'current-template-js-js',
         'swiper-js',
         'fancybox-js',
         'app-js',
+        'wpascript-js',
         'post-scripts'
     ];
 
@@ -234,6 +234,15 @@ add_filter('upload_mimes', function ($mimes) {
     $mimes['svg'] = 'image/svg+xml';
     return $mimes;
 });
+
+add_filter('wp_check_filetype_and_ext', function ($data, $file, $filename, $mimes) {
+    $filetype = wp_check_filetype($filename, $mimes);
+    return [
+        'ext'             => $filetype['ext'],
+        'type'            => $filetype['type'],
+        'proper_filename' => $data['proper_filename']
+    ];
+}, 10, 4);
 
 
 // =========================================================================

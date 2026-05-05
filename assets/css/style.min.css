@@ -3,14 +3,14 @@
 @font-face {
     font-family: icons;
     font-display: swap;
-    src: url(../fonts/icons.woff2?v=1777827236543) format("woff2"), url(../fonts/icons.woff?v=1777827236543) format("woff");
+    src: url(../fonts/icons.woff2?v=1777969491912) format("woff2"), url(../fonts/icons.woff?v=1777969491912) format("woff");
     font-weight: 400;
     font-style: normal
 }
 
 @font-face {
     font-family: Rubik;
-    src: url(../fonts/Rubik-VariableFont_wght.woff2?v=1777827236543) format("woff2 supports variations"), url(../fonts/Rubik-VariableFont_wght.woff2?v=1777827236543) format("woff2-variations"), url(../fonts/Rubik-VariableFont_wght.woff?v=1777827236543) format("woff");
+    src: url(../fonts/Rubik-VariableFont_wght.woff2?v=1777969491912) format("woff2 supports variations"), url(../fonts/Rubik-VariableFont_wght.woff2?v=1777969491912) format("woff2-variations"), url(../fonts/Rubik-VariableFont_wght.woff?v=1777969491912) format("woff");
     font-weight: 100 900;
     font-stretch: 75% 125%;
     font-style: normal;
@@ -297,10 +297,6 @@
 .popup__btn[data-fancybox-close] {
     margin-top: 1rem;
     width: 100%
-}
-
-.popup__btn[data-fancybox-close].btn-secondary {
-    background: #fff
 }
 
 .popup__form {
@@ -2269,52 +2265,66 @@ body {
     display: block
 }
 
-.wpcf7-list-item {
-    margin: 0
+.form__checkbox {
+    display: block
 }
 
-.checkbox, .wpcf7-list-item label {
-    display: -webkit-inline-box;
-    display: -ms-inline-flexbox;
-    display: inline-flex;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content
+.form__checkbox * {
+    display: block
 }
 
-.checkbox.has-error .checkbox__text::before, .checkbox.has-error .wpcf7-list-item label .wpcf7-list-item-label::before, .wpcf7-list-item label .checkbox.has-error .wpcf7-list-item-label::before, .wpcf7-list-item label.has-error .checkbox__text::before, .wpcf7-list-item label.has-error .wpcf7-list-item-label::before {
-    border-color: #f04438
+.form__checkbox .wpcf7-list-item {
+    margin-left: 0
 }
 
-.checkbox__input._error+.checkbox__text::before, .wpcf7-list-item label .checkbox__input._error+.wpcf7-list-item-label::before {
-    border-color: #f04438
+.form__checkbox .form__checkbox-input:checked+.wpcf7-list-item-label::before, .form__checkbox-input:checked+.form__checkbox-content::before {
+    background-color: #467e9e;
+    border-color: #467e9e;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z'/%3E%3C/svg%3E")
 }
 
-.checkbox__text, .wpcf7-list-item label .wpcf7-list-item-label {
-    position: relative;
-    display: block;
-    width: -webkit-fit-content;
-    width: -moz-fit-content;
-    width: fit-content;
-    padding: 0 0 0 1.3125rem;
-    line-height: 100%;
-    cursor: pointer;
+.form__checkbox-input:checked+.wpcf7-list-item-label::before {
+    background-color: #467e9e;
+    border-color: #467e9e;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M9 16.17L4.83 12l-1.42 1.41L9 19L21 7l-1.41-1.41z'/%3E%3C/svg%3E")
+}
+
+.form__checkbox .form__checkbox-input._error+.wpcf7-list-item-label::before, .form__checkbox .form__checkbox-input[aria-invalid=true]+.wpcf7-list-item-label::before, .form__checkbox-input._error+.form__checkbox-content::before, .form__checkbox-input[aria-invalid=true]+.form__checkbox-content::before {
+    border-color: #ff3f3f
+}
+
+.form__checkbox-input._error+.wpcf7-list-item-label::before, .form__checkbox-input[aria-invalid=true]+.wpcf7-list-item-label::before {
+    border-color: #ff3f3f
+}
+
+.form__checkbox .wpcf7-list-item-label, .form__checkbox-content {
+    line-height: 1.5625;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 1em;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
-    color: #262624;
-    font-size: .75rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    min-height: 1.25rem
+    cursor: pointer;
+    font-size: .75rem
 }
 
-.checkbox__text::before, .wpcf7-list-item label .wpcf7-list-item-label::before {
+.form__checkbox .wpcf7-list-item-label::before, .form__checkbox-content::before {
     content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
+    border-radius: .25rem;
+    border: .0625rem solid #e8e8e8;
+    background: #fff;
+    width: 1.5625rem;
+    height: 1.5625rem;
+    -ms-flex-negative: 0;
+    flex-shrink: 0;
+    -ms-flex-item-align: start;
+    align-self: flex-start;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -2323,18 +2333,23 @@ body {
     justify-content: center;
     -webkit-box-align: center;
     -ms-flex-align: center;
-    align-items: center;
-    border: .0625rem solid #262624;
-    width: .625rem;
-    height: .625rem;
-    font-size: .625rem;
-    display: flex;
-    justify-content: center;
     align-items: center
 }
 
-.checkbox__text a, .wpcf7-list-item label .wpcf7-list-item-label a {
-    color: #1570ef;
+.form__checkbox .wpcf7-list-item-label:has(.form__checkbox-text)::before, .form__checkbox-content:has(.form__checkbox-text)::before {
+    -ms-flex-item-align: center;
+    -ms-grid-row-align: center;
+    align-self: center
+}
+
+.form__checkbox-text {
+    text-align: left;
+    font-size: .75rem
+}
+
+.form__checkbox-text a {
+    display: inline-block;
+    color: #467e9e;
     text-decoration: underline
 }
 
@@ -7515,6 +7530,10 @@ body {
         flex: 0 0 10rem
     }
 
+    .form__checkbox .wpcf7-list-item-label, .form__checkbox-content {
+        font-size: 1rem
+    }
+
     .header {
         top: -3.75rem
     }
@@ -9136,7 +9155,7 @@ body {
         text-decoration: underline
     }
 
-    .checkbox__text a:hover, .wpcf7-list-item label .wpcf7-list-item-label a:hover {
+    .form__checkbox-text a:hover {
         text-decoration: none
     }
 
