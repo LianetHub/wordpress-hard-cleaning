@@ -79,6 +79,16 @@ $districts = [
 ];
 
 
+$region_cities_for_coverage = get_posts([
+    'post_type'      => 'gorod',
+    'post_status'    => 'publish',
+    'posts_per_page' => -1,
+    'orderby'        => 'title',
+    'order'          => 'ASC',
+    'no_found_rows'  => true,
+]);
+
+
 $phone = get_field('phone', 'option');
 $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 
@@ -134,7 +144,27 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
                     <div class="info-region-box">
                         <h4>Ленинградская область</h4>
                         <p>Выезжаем по предварительному звонку — стоимость уточняется индивидуально.</p>
-                        <span class="region-cities">Гатчина · Всеволожск · Тосно </span>
+                        <span class="region-cities">
+                            <?php
+                            if (!empty($region_cities_for_coverage)) :
+                                $region_city_sep = '';
+                                foreach ($region_cities_for_coverage as $region_city_post) :
+                                    if (!$region_city_post instanceof WP_Post) {
+                                        continue;
+                                    }
+                                    $region_city_link = get_permalink($region_city_post);
+                                    if (!$region_city_link) {
+                                        continue;
+                                    }
+                                    echo $region_city_sep;
+                                    $region_city_sep = ' · ';
+                                    ?>
+                                    <a href="<?php echo esc_url($region_city_link); ?>" class="region-cities__link"><?php echo esc_html(get_the_title($region_city_post)); ?></a>
+                                    <?php
+                                endforeach;
+                            endif;
+                            ?>
+                        </span>
                     </div>
                 </div>
 

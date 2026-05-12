@@ -238,7 +238,6 @@ while (have_posts()) :
     <?php require_once(TEMPLATE_PATH . '_guarantees.php'); ?>
     <?php require_once(TEMPLATE_PATH . '_reviews.php'); ?>
     <?php require_once(TEMPLATE_PATH . '_equipment.php'); ?>
-    <?php require_once(TEMPLATE_PATH . '_coverage.php'); ?>
     <?php require_once(TEMPLATE_PATH . '_faq.php'); ?>
     <?php require_once(TEMPLATE_PATH . '_cta.php'); ?>
 

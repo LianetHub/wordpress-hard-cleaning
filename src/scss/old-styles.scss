@@ -426,6 +426,17 @@
 
     font-size: 16px;
     color: #467E9E;
+
+    &__link {
+        color: inherit;
+       
+
+        @media (any-hover: hover) {
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
 }
 
 .btn-check-region {

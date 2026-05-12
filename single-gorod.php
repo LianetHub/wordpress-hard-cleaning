@@ -23,12 +23,8 @@ while (have_posts()) :
 
     $gorod_name = get_the_title($city_id);
     $gorod_name_declined = function_exists('theme_gorod_decline_in_prepositional') ? theme_gorod_decline_in_prepositional($gorod_name) : $gorod_name;
- 
-    $heading_title = sprintf('Сложная уборка в %s', $gorod_name_declined);
-    $min_price = function_exists('theme_gorod_display_min_price') ? theme_gorod_display_min_price($city_id) : 0;
-    if ($min_price > 0) {
-        $heading_title .= ' <span class="color-accent">от&nbsp;' . format_service_price($min_price) . '&nbsp;₽</span>';
-    }
+
+    $heading_title = sprintf('Сложная уборка - %s', $gorod_name);
     $heading_descr = get_the_excerpt($city_id);
 
     $distance_label = function_exists('theme_gorod_distance_label') ? theme_gorod_distance_label($city_id) : '';
@@ -51,7 +47,7 @@ while (have_posts()) :
                 <?php if ($distance_label !== '') : ?>
                     <div class="heading__hint hint"><?php echo esc_html($distance_label); ?></div>
                 <?php endif; ?>
-                <h1 class="heading__title title-lg"><?php echo $heading_title; ?></h1>
+                <h1 class="heading__title title-lg"><?php echo esc_html($heading_title); ?></h1>
                 <?php if ($heading_descr) : ?>
                     <p class="heading__subtitle subtitle"><?php echo esc_html(fix_widows_after_prepositions(wp_strip_all_tags($heading_descr))); ?></p>
                 <?php endif; ?>
