@@ -1,20 +1,20 @@
 @charset "UTF-8";
 
 @font-face {
+  font-family: "icons";
+  font-display: swap;
+  src: url("../fonts/icons.woff2?v=1778595757001") format("woff2"), url("../fonts/icons.woff?v=1778595757001") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
   font-family: "Rubik";
-  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1778593837711") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1778593837711") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1778593837711") format("woff");
+  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1778595757001") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1778595757001") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1778595757001") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
-}
-
-@font-face {
-  font-family: "icons";
-  font-display: swap;
-  src: url("../fonts/icons.woff2?v=1778593837711") format("woff2"), url("../fonts/icons.woff?v=1778593837711") format("woff");
-  font-weight: 400;
-  font-style: normal;
 }
 
 .breadcrumbs__item:not(:last-child)::before,
@@ -6186,8 +6186,6 @@ body {
   color: var(--primary-color, #007cba);
 }
 
-/* Города: CPT gorod — page-gorod.php (хаб), single-gorod.php (город) */
-
 .heading--city-archive {
   padding-bottom: 1rem;
 }
@@ -6369,8 +6367,8 @@ body {
 
 .city-dir-card__price {
   font-size: 1.0625rem;
-  font-weight: 600;
-  color: #20a19b;
+  font-weight: 700;
+  color: #2da05a;
   -ms-grid-column-align: end;
       justify-self: end;
   -ms-grid-column: 2;

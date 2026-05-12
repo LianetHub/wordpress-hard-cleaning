@@ -2,7 +2,6 @@
 @use "mixins" as *;
 @use "variables" as *;
 
-/* Города: CPT gorod — page-gorod.php (хаб), single-gorod.php (город) */
 
 .heading--city-archive {
     padding-bottom: rem(16);
@@ -173,8 +172,8 @@
 
     &__price {
         font-size: rem(17);
-        font-weight: 600;
-        color: #20a19b;
+        font-weight: 700;
+        color: #2da05a;
         justify-self: end;
         grid-column: 2;
         align-self: center;

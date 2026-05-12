@@ -19,7 +19,7 @@ while (have_posts()) :
     $phone = get_field('phone', 'option');
     $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 
-    $distance = get_post_meta($city_id, 'gorod_distance', true);
+    $distance = function_exists('theme_gorod_distance_label') ? theme_gorod_distance_label($city_id) : '';
     $kicker_custom = get_post_meta($city_id, 'gorod_kicker', true);
     $stats_suffix = get_post_meta($city_id, 'gorod_stats_suffix', true);
 

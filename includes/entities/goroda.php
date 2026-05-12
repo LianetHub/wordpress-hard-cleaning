@@ -9,17 +9,26 @@
  * - Запись города: /uborka-v-gorodah/{slug}/ — шаблон single-gorod.php.
  * - Архив типа записей отключён (has_archive false), чтобы не пересекаться с страницей-хабом по URL.
  *
- * Мета записи города (register_post_meta):
- * - gorod_distance, gorod_price_from, gorod_kicker, gorod_stats_suffix
+ * Мета записи города (register_post_meta + ACF):
+ * - gorod_distance_km (number) — километры до СПб; вёрстка: «{N} км от Санкт-Петербурга».
+ * - gorod_price_from (number) — цена «от …» в карточке и шапке; иначе расчёт по услугам gorod_city.
+ * - gorod_kicker, gorod_stats_suffix
  *
  * Связь услуг/портфолио: мета gorod_city (ID записи города).
  *
  * Опционально ACF на странице-хабе (шаблон «Города — хаб»):
  * - goroda_hub_subtitle — подзаголовок в hero (если пусто — цитата / дефолт).
  * - goroda_directory_hint, goroda_directory_title (HTML), goroda_directory_subtitle — блок каталога городов.
+ *
+ * После смены ЧПУ: Настройки → Постоянные ссылки → Сохранить.
  */
 
 defined('ABSPATH') || exit;
+
+/** Увеличивать при смене ЧПУ у CPT gorod, чтобы один раз сбросить rewrite_rules в БД. */
+if (!defined('HC_THEME_GOROD_REWRITE_VER')) {
+    define('HC_THEME_GOROD_REWRITE_VER', 4);
+}
 
 function theme_register_goroda()
 {
@@ -54,13 +63,13 @@ function theme_register_goroda()
     ]);
 
     $city_meta = [
-        'gorod_distance'     => [
-            'description' => 'Подпись расстояния (напр. «45 км от СПб»)',
-            'type'        => 'string',
+        'gorod_distance_km'  => [
+            'description' => 'Расстояние до Санкт-Петербурга, км (число)',
+            'type'        => 'number',
         ],
         'gorod_price_from'   => [
-            'description' => 'Цена «от …» для карточки и шапки',
-            'type'        => 'string',
+            'description' => 'Минимальная цена «от …», ₽ (число)',
+            'type'        => 'number',
         ],
         'gorod_kicker'       => [
             'description' => 'Верхняя строка шапки города (если пусто — генерируется)',
@@ -166,11 +175,73 @@ function theme_gorod_min_price_from_services($city_post_id)
 }
 
 /**
- * Число для блока «от N ₽»: мета записи города или расчёт по услугам с gorod_city.
+ * Строка вида «45 км от Санкт-Петербурга» из числа километров.
+ */
+function theme_gorod_format_km_label($km)
+{
+    $km = (float) $km;
+    if ($km <= 0) {
+        return '';
+    }
+    $display = (floor($km) == $km)
+        ? (string) (int) $km
+        : rtrim(rtrim(number_format($km, 1, '.', ''), '0'), '.');
+
+    return $display . ' км от Санкт-Петербурга';
+}
+
+/**
+ * Километры до СПб из ACF/мета (get_field('gorod_distance_km', ...) и post_meta).
+ */
+function theme_gorod_get_distance_km($post_id)
+{
+    $post_id = (int) $post_id;
+    if ($post_id <= 0) {
+        return null;
+    }
+    if (function_exists('get_field')) {
+        $v = get_field('gorod_distance_km', $post_id);
+        if ($v !== null && $v !== '' && is_numeric($v)) {
+            $f = (float) $v;
+            return $f > 0 ? $f : null;
+        }
+    }
+    $v = get_post_meta($post_id, 'gorod_distance_km', true);
+    if ($v !== '' && $v !== null && is_numeric($v)) {
+        $f = (float) $v;
+        return $f > 0 ? $f : null;
+    }
+
+    return null;
+}
+
+/**
+ * Подпись расстояния для карточки и шапки: из gorod_distance_km. Если не задан, возвращает пустую строку.
+ */
+function theme_gorod_distance_label($post_id)
+{
+    $post_id = (int) $post_id;
+    $km = theme_gorod_get_distance_km($post_id);
+    if ($km !== null) {
+        return theme_gorod_format_km_label($km);
+    }
+
+    return '';
+}
+
+/**
+ * Число для блока «от N ₽»: ACF/мета gorod_price_from или расчёт по услугам с gorod_city.
  */
 function theme_gorod_display_min_price($city_post_id)
 {
-    $raw = get_post_meta((int) $city_post_id, 'gorod_price_from', true);
+    $city_post_id = (int) $city_post_id;
+    $raw = null;
+    if (function_exists('get_field')) {
+        $raw = get_field('gorod_price_from', $city_post_id);
+    }
+    if ($raw === null || $raw === '') {
+        $raw = get_post_meta($city_post_id, 'gorod_price_from', true);
+    }
     if ($raw !== '' && $raw !== null) {
         $n = (int) preg_replace('/[^\d]/', '', (string) $raw);
         if ($n > 0) {
@@ -230,20 +301,4 @@ function theme_get_gorod_hub_page_id()
     }
 
     return 0;
-}
-
-/**
- * Жёстко задаёт ЧПУ записей города: /uborka-v-gorodah/{slug}/
- */
-add_filter('post_type_link', 'theme_gorod_permalink', 10, 2);
-function theme_gorod_permalink($post_link, $post)
-{
-    if (!($post instanceof WP_Post) || $post->post_type !== 'gorod') {
-        return $post_link;
-    }
-    if ($post->post_status !== 'publish' || $post->post_name === '') {
-        return $post_link;
-    }
-
-    return home_url(user_trailingslashit('uborka-v-gorodah/' . $post->post_name));
 }
