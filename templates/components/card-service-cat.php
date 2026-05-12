@@ -18,13 +18,6 @@ $services_query = new WP_Query([
         'terms'    => $term->term_id,
         'include_children' => false
     ]],
-    'meta_query'     => [
-        [
-            'key'     => 'current_city',
-            'value'   => 'Санкт-Петербург',
-            'compare' => '='
-        ]
-    ]
 ]);
 
 $total_services = $services_query->found_posts;

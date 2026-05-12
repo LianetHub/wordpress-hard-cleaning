@@ -5,10 +5,15 @@ $term = get_queried_object();
 $title = get_field('term_title', $term) ?: $term->name;
 $descr = get_field('term_descr', $term) ?: $term->description;
 
-$image = get_field('category_heading_image', $term) ?: get_field('category_image', $term);
+$image_main = get_field('category_heading_image', $term) ?: get_field('category_image', $term);
+
+$image_left = get_field('category_extra_image_1', $term);
+$image_right = get_field('category_extra_image_2', $term);
 
 $phone = get_field('phone', 'option');
 $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
+
+$is_collage = !empty($image_left) || !empty($image_right);
 ?>
 
 <?php require_once(TEMPLATE_PATH . '/components/breadcrumbs.php'); ?>
@@ -29,14 +34,45 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
                 <a href="#callback" data-fancybox class="heading__btn btn btn-outline">Оставить заявку</a>
             </div>
         </div>
-        <?php if ($image): ?>
-            <div class="heading__image">
-                <img
-                    src="<?php echo esc_url($image['url']); ?>"
-                    alt="<?php echo esc_attr($image['alt'] ?: $title); ?>"
-                    class="cover-image"
-                    fetchpriority="high">
+
+        <?php if ($is_collage): ?>
+            <div class="heading__images">
+                <?php if (!empty($image_left)): ?>
+                    <div class="heading__images-block heading__images-left">
+                        <img src="<?php echo esc_url($image_left['url']); ?>"
+                            alt="<?php echo esc_attr($image_left['alt'] ?: $title); ?>"
+                            fetchpriority="high"
+                            class="cover-image">
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($image_main['url'])): ?>
+                    <div class="heading__images-block heading__images-center">
+                        <img src="<?php echo esc_url($image_main['url']); ?>"
+                            alt="<?php echo esc_attr($image_main['alt'] ?: $title); ?>"
+                            fetchpriority="high"
+                            class="cover-image">
+                    </div>
+                <?php endif; ?>
+
+                <?php if (!empty($image_right)): ?>
+                    <div class="heading__images-block heading__images-right">
+                        <img src="<?php echo esc_url($image_right['url']); ?>"
+                            alt="<?php echo esc_attr($image_right['alt'] ?: $title); ?>"
+                            fetchpriority="high"
+                            class="cover-image">
+                    </div>
+                <?php endif; ?>
             </div>
+        <?php else: ?>
+            <?php if ($image_main): ?>
+                <div class="heading__image">
+                    <img src="<?php echo esc_url($image_main['url']); ?>"
+                        alt="<?php echo esc_attr($image_main['alt'] ?: $title); ?>"
+                        class="cover-image"
+                        fetchpriority="high">
+                </div>
+            <?php endif; ?>
         <?php endif; ?>
     </div>
 </section>
@@ -48,32 +84,6 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 $term = get_queried_object();
 $prices_group = get_field('all_services_prices_list', 'option');
 
-$is_regional_cat = (isset($term->slug) && $term->slug === 'uborka-v-gorodah');
-
-$meta_query_args = [];
-if ($is_regional_cat) {
-    $meta_query_args = [
-        'relation' => 'OR',
-        [
-            'key'     => 'current_city',
-            'value'   => 'Санкт-Петербург',
-            'compare' => '!=',
-        ],
-        [
-            'key'     => 'current_city',
-            'compare' => 'NOT EXISTS',
-        ],
-    ];
-} else {
-    $meta_query_args = [
-        [
-            'key'     => 'current_city',
-            'value'   => 'Санкт-Петербург',
-            'compare' => '=',
-        ]
-    ];
-}
-
 $services_query = new WP_Query([
     'post_type'      => 'services',
     'posts_per_page' => -1,
@@ -84,7 +94,6 @@ $services_query = new WP_Query([
             'terms'    => $term->term_id,
         ],
     ],
-    'meta_query'     => $meta_query_args,
     'orderby'        => 'title',
     'order'          => 'ASC',
 ]);

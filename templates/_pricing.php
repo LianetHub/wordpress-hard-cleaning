@@ -3,19 +3,12 @@ $target_cat_ids = [10, 12, 5, 6, 4];
 $ordered_pricing_plans = [];
 $global_min_price = PHP_INT_MAX;
 
-$all_services_in_spb = get_posts([
+$all_services = get_posts([
     'post_type'      => 'services',
     'posts_per_page' => -1,
     'post_status'    => 'publish',
-    'meta_query'     => [
-        [
-            'key'     => 'current_city',
-            'value'   => 'Санкт-Петербург',
-            'compare' => '='
-        ]
-    ]
 ]);
-$all_spb_services_count = count($all_services_in_spb);
+$all_services_count = count($all_services);
 
 foreach ($target_cat_ids as $cat_id) {
     $category = get_term($cat_id, 'service_cat');
@@ -35,13 +28,6 @@ foreach ($target_cat_ids as $cat_id) {
                 'terms'    => $cat_id,
             ]
         ],
-        'meta_query'     => [
-            [
-                'key'     => 'current_city',
-                'value'   => 'Санкт-Петербург',
-                'compare' => '='
-            ]
-        ]
     ]);
 
     $cat_min_price = PHP_INT_MAX;
@@ -76,7 +62,7 @@ $prices_page_obj = get_page_by_path('czeny');
 $prices_page_url = $prices_page_obj ? get_permalink($prices_page_obj->ID) : home_url('/czeny/');
 
 $special_card = [
-    'count'     => $all_spb_services_count,
+    'count'     => $all_services_count,
     'min_price' => $global_min_price,
     'link'      => $prices_page_url
 ];

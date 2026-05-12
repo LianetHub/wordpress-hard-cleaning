@@ -34,13 +34,6 @@ foreach ($target_cat_ids as $cat_id) {
                 'terms'    => $cat_id,
             ]
         ],
-        'meta_query'     => [
-            [
-                'key'     => 'current_city',
-                'value'   => 'Санкт-Петербург',
-                'compare' => '='
-            ]
-        ]
     ]);
 
     $table_data = [];
@@ -136,7 +129,7 @@ foreach ($target_cat_ids as $cat_id) {
                                         <?php endforeach; ?>
                                     <?php else: ?>
                                         <tr>
-                                            <td colspan="3" style="text-align: center;">Услуги для данного города не найдены</td>
+                                            <td colspan="3" style="text-align: center;">Услуги не найдены</td>
                                         </tr>
                                     <?php endif; ?>
                                 </tbody>
