@@ -12,6 +12,7 @@
  * Мета записи города (register_post_meta + ACF):
  * - gorod_distance_km (number) — километры до СПб; вёрстка: «{N} км от Санкт-Петербурга».
  * - gorod_price_from (number) — цена «от …» в карточке и шапке; иначе расчёт по услугам gorod_city.
+ * - gorod_page_h1 (string) — заголовок H1 в шапке; если пусто — «Сложная уборка - {название записи}».
  * - gorod_kicker, gorod_stats_suffix
  *
  * Связь услуг/портфолио: мета gorod_city (ID записи города).
@@ -70,6 +71,10 @@ function theme_register_goroda()
         'gorod_price_from'   => [
             'description' => 'Минимальная цена «от …», ₽ (число)',
             'type'        => 'number',
+        ],
+        'gorod_page_h1'      => [
+            'description' => 'Заголовок H1 на странице города (если пусто — дефолт из шаблона)',
+            'type'        => 'string',
         ],
         'gorod_kicker'       => [
             'description' => 'Верхняя строка шапки города (если пусто — генерируется)',

@@ -25,6 +25,15 @@ while (have_posts()) :
     $gorod_name_declined = function_exists('theme_gorod_decline_in_prepositional') ? theme_gorod_decline_in_prepositional($gorod_name) : $gorod_name;
 
     $heading_title = sprintf('Сложная уборка - %s', $gorod_name);
+    $gorod_page_h1 = function_exists('get_field') ? get_field('gorod_page_h1', $city_id) : '';
+    if (is_string($gorod_page_h1)) {
+        $gorod_page_h1 = trim(wp_strip_all_tags($gorod_page_h1));
+    } else {
+        $gorod_page_h1 = '';
+    }
+    if ($gorod_page_h1 !== '') {
+        $heading_title = $gorod_page_h1;
+    }
     $heading_descr = get_the_excerpt($city_id);
 
     $distance_label = function_exists('theme_gorod_distance_label') ? theme_gorod_distance_label($city_id) : '';

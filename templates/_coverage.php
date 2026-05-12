@@ -162,6 +162,10 @@ $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
                                     <a href="<?php echo esc_url($region_city_link); ?>" class="region-cities__link"><?php echo esc_html(get_the_title($region_city_post)); ?></a>
                                     <?php
                                 endforeach;
+                                ?>
+                                ·
+                                <a href="<?php echo esc_url(function_exists('theme_get_goroda_catalog_url') ? theme_get_goroda_catalog_url() : home_url('/')); ?>" class="region-cities__link">Все города</a>
+                                <?php
                             endif;
                             ?>
                         </span>
