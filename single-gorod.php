@@ -149,6 +149,46 @@ while (have_posts()) :
     require_once TEMPLATE_PATH . '_faq.php';
     require_once TEMPLATE_PATH . '_cta.php';
 
+    $regional_cities = [];
+    $gorod_posts = get_posts([
+        'post_type'      => 'gorod',
+        'post_status'    => 'publish',
+        'posts_per_page' => -1,
+        'orderby'        => 'title',
+        'order'          => 'ASC',
+        'post__not_in'   => [$city_id],
+        'no_found_rows'  => true,
+    ]);
+    foreach ($gorod_posts as $city_post) {
+        if (!$city_post instanceof WP_Post) {
+            continue;
+        }
+        $link = get_permalink($city_post);
+        if (!$link) {
+            continue;
+        }
+        $regional_cities[get_the_title($city_post)] = $link;
+    }
+    if (!empty($regional_cities)) :
+        ?>
+        <section class="city-regions-cloud catalog__regions-cloud">
+            <div class="container">
+                <div style="margin-top: 40px; padding-bottom: 40px;">
+                    <h3 class="catalog__regions-title title-sm" style="margin-bottom: 20px;">Услуги в других городах:</h3>
+                    <div class="tags-cloud" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                        <?php foreach ($regional_cities as $city_name => $city_link) : ?>
+                            <a href="<?php echo esc_url($city_link); ?>" class="btn btn-outline btn-sm">
+                                <?php echo esc_html($city_name); ?>
+                            </a>
+                        <?php endforeach; ?>
+                        <a href="<?php echo esc_url(function_exists('theme_get_goroda_catalog_url') ? theme_get_goroda_catalog_url() : home_url('/')); ?>" class="btn btn-primary btn-sm">Все города</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <?php
+    endif;
+
 endwhile;
 
 get_footer();

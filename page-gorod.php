@@ -152,10 +152,7 @@ while (have_posts()) :
             <?php endif; ?>
         </div>
     </section>
-    <?php require_once TEMPLATE_PATH . '_trust.php'; ?>
-
-
-
+   
     <section class="goroda-directory">
         <div class="container">
             <div class="goroda-directory__hint hint"><?php echo esc_html($dir_hint); ?></div>
