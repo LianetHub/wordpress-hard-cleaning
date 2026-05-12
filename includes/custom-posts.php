@@ -5,6 +5,7 @@ require_once __DIR__ . '/entities/services.php';
 require_once __DIR__ . '/entities/portfolio.php';
 require_once __DIR__ . '/entities/certificates.php';
 require_once __DIR__ . '/entities/staff.php';
+require_once __DIR__ . '/entities/goroda.php';
 
 add_action('init', 'register_theme_entities');
 
@@ -15,4 +16,5 @@ function register_theme_entities()
     theme_register_portfolio();
     theme_register_certificates();
     theme_register_staff();
+    theme_register_goroda();
 }

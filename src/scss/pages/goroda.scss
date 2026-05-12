@@ -1,0 +1,191 @@
+@use "sass:color";
+@use "mixins" as *;
+@use "variables" as *;
+
+/* Города: CPT gorod — page-gorod.php (хаб), single-gorod.php (город) */
+
+.heading--city-archive {
+    padding-bottom: rem(16);
+}
+
+.heading--city .heading__hint {
+    margin-bottom: rem(12);
+}
+
+.heading__stats--city {
+    margin-bottom: 0;
+}
+
+.heading__stat--text::before {
+    display: none;
+}
+
+.catalog--city-services {
+    padding-top: rem(32);
+}
+
+.city-page__services-grid {
+    display: grid;
+    gap: rem(20);
+    margin-top: rem(32);
+    grid-template-columns: 1fr;
+
+    @media (min-width: $md4) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.city-page__empty {
+    margin-top: rem(32);
+}
+
+.city-service-card {
+    border: rem(1) solid #e4eaee;
+    border-radius: rem(20);
+    padding: rem(20) rem(24);
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
+    height: 100%;
+
+    &__head {
+        display: flex;
+        gap: rem(14);
+        align-items: flex-start;
+    }
+
+    &__icon {
+        width: rem(44);
+        height: rem(44);
+        flex-shrink: 0;
+        color: $accent;
+
+        svg {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    }
+
+    &__title {
+        font-size: rem(18);
+        font-weight: 600;
+        margin: 0;
+        color: #1f4b62;
+    }
+
+    &__price {
+        margin-top: rem(6);
+        font-size: rem(18);
+        font-weight: 600;
+        color: #20a19b;
+    }
+
+    &__text {
+        margin: 0;
+        font-size: rem(15);
+        line-height: 1.5;
+        color: #4b5d68;
+        flex: 1 1 auto;
+    }
+
+    &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(10);
+    }
+}
+
+.goroda-directory {
+    padding: rem(32) 0 rem(80);
+    background: #fff;
+
+    &__chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(10);
+    }
+
+    &__chip.is-active {
+        border-color: $accent;
+        background: rgba(70, 126, 158, 0.08);
+        color: #1f4b62;
+    }
+
+    &__grid {
+        display: grid;
+        gap: rem(16);
+        margin-top: rem(32);
+        grid-template-columns: 1fr;
+
+        @media (min-width: $md4) {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+
+    &__empty {
+        margin-top: rem(32);
+        text-align: center;
+    }
+}
+
+.city-dir-card {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: rem(8) rem(16);
+    padding: rem(20) rem(24);
+    border: rem(1) solid #e4eaee;
+    border-radius: rem(20);
+    background: #fff;
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &__name {
+        font-size: rem(20);
+        font-weight: 600;
+        color: #1f4b62;
+        grid-column: 1 / -1;
+
+        @media (min-width: 480px) {
+            grid-column: 1;
+        }
+    }
+
+    &__distance {
+        font-size: rem(15);
+        color: #7a8a96;
+        grid-column: 1;
+    }
+
+    &__price {
+        font-size: rem(17);
+        font-weight: 600;
+        color: #20a19b;
+        justify-self: end;
+        grid-column: 2;
+        align-self: center;
+
+        @media (max-width: 479.98px) {
+            grid-column: 1;
+            justify-self: start;
+        }
+    }
+}
+
+.article--goroda-intro {
+    padding: rem(32) 0 0;
+}
+
+.works--city .works__title {
+    margin-bottom: rem(32);
+}
+
+@media (any-hover: hover) {
+    .city-dir-card:hover {
+        border-color: $accent;
+        box-shadow: 0 rem(6) rem(16) rgba(49, 112, 142, 0.15);
+    }
+}
