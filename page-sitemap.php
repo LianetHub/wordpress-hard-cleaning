@@ -35,7 +35,8 @@ get_header(); ?>
                 'page'      => 'Страницы',
                 'services'  => 'Услуги',
                 'portfolio' => 'Портфолио',
-                'post'      => 'Статьи'
+                'gorod'     => 'Города',
+                'post'      => 'Статьи',
             ];
 
             foreach ($post_types as $type => $label) :
