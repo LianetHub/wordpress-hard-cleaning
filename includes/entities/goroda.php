@@ -79,6 +79,12 @@ function theme_register_goroda()
             'description' => 'Фрагмент подзаголовка после числа услуг',
             'type'        => 'string',
         ],
+        'gorod_first_letter' => [
+            'description' => 'Первая буква названия города (для фильтров)',
+            'type'        => 'string',
+            'single'      => true,
+            'show_in_rest' => true,
+        ],
     ];
 
     foreach ($city_meta as $key => $cfg) {
@@ -301,6 +307,54 @@ function theme_get_gorod_hub_page_id()
     }
 
     return 0;
+}
+
+/**
+ * При сохранении поста CPT gorod, сохраняет его первую букву в мета-поле gorod_first_letter.
+ */
+add_action('save_post_gorod', function ($post_id, $post, $update) {
+    if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) {
+        return;
+    }
+
+    if ($post->post_status === 'publish' && !empty($post->post_title)) {
+        $first_letter = mb_strtoupper(mb_substr($post->post_title, 0, 1, 'UTF-8'), 'UTF-8');
+        update_post_meta($post_id, 'gorod_first_letter', $first_letter);
+    }
+}, 10, 3);
+
+/**
+ * Возвращает массив уникальных первых букв названий городов (CPT gorod), отсортированных по алфавиту.
+ */
+function theme_get_unique_city_first_letters(): array
+{
+    $letters = [];
+    $cities = get_posts([
+        'post_type'        => 'gorod',
+        'post_status'      => 'publish',
+        'posts_per_page'   => -1,
+        'orderby'          => 'title',
+        'order'            => 'ASC',
+        'suppress_filters' => true,
+    ]);
+
+    foreach ($cities as $city_post) {
+        if (!$city_post instanceof WP_Post) {
+            continue;
+        }
+        $title = (string) $city_post->post_title;
+        if ($title === '') {
+            continue;
+        }
+        $first_letter = mb_strtoupper(mb_substr($title, 0, 1, 'UTF-8'), 'UTF-8');
+        if ($first_letter !== '' && preg_match('/^[А-ЯЁ]$/u', $first_letter)) {
+            $letters[$first_letter] = $first_letter;
+        }
+    }
+
+    ksort($letters, SORT_STRING);
+
+    return array_values($letters);
 }
 
 /**

@@ -3,14 +3,14 @@
 @font-face {
   font-family: "icons";
   font-display: swap;
-  src: url("../fonts/icons.woff2?v=1778595757001") format("woff2"), url("../fonts/icons.woff?v=1778595757001") format("woff");
+  src: url("../fonts/icons.woff2?v=1778599464696") format("woff2"), url("../fonts/icons.woff?v=1778599464696") format("woff");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Rubik";
-  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1778595757001") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1778595757001") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1778595757001") format("woff");
+  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1778599464696") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1778599464696") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1778599464696") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
@@ -6310,12 +6310,6 @@ body {
   margin-top: 2.375rem;
 }
 
-.goroda-directory__filters.filters .filters__item.active {
-  border-color: #467E9E;
-  background: rgba(70, 126, 158, 0.08);
-  color: #1f4b62;
-}
-
 .goroda-directory__grid {
   display: -ms-grid;
   display: grid;
@@ -6326,6 +6320,11 @@ body {
 }
 
 .goroda-directory__empty {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.goroda-directory__letter-empty {
   margin-top: 2rem;
   text-align: center;
 }

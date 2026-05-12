@@ -115,12 +115,6 @@
 
     &__filters {
         margin-top: rem(38);
-
-        &.filters .filters__item.active {
-            border-color: $accent;
-            background: rgba(70, 126, 158, 0.08);
-            color: #1f4b62;
-        }
     }
 
     &__grid {
@@ -135,6 +129,11 @@
     }
 
     &__empty {
+        margin-top: rem(32);
+        text-align: center;
+    }
+
+    &__letter-empty {
         margin-top: rem(32);
         text-align: center;
     }

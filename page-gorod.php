@@ -11,7 +11,6 @@ while (have_posts()) :
     the_post();
 
     $page_id = get_the_ID();
-    $catalog_url = get_permalink();
 
     $filter_slug = isset($_GET['usluga']) ? sanitize_title(wp_unslash($_GET['usluga'])) : '';
 
@@ -23,17 +22,9 @@ while (have_posts()) :
         }
     }
 
-    $filter_parent = get_term_by('slug', 'uborka-v-gorodah', 'service_cat');
-    $scenario_terms = [];
-    if ($filter_parent && !is_wp_error($filter_parent)) {
-        $scenario_terms = get_terms([
-            'taxonomy'   => 'service_cat',
-            'parent'     => $filter_parent->term_id,
-            'hide_empty' => false,
-        ]);
-    }
-    if (is_wp_error($scenario_terms)) {
-        $scenario_terms = [];
+    $filter_letter = isset($_GET['letter']) ? sanitize_text_field(wp_unslash($_GET['letter'])) : '';
+    if ($filter_letter !== '' && !preg_match('/^[А-ЯЁ]$/u', $filter_letter)) {
+        $filter_letter = '';
     }
 
     $cities_query = new WP_Query([
@@ -43,6 +34,10 @@ while (have_posts()) :
         'orderby'        => 'title',
         'order'          => 'ASC',
     ]);
+
+    $unique_first_letters = function_exists('theme_get_unique_city_first_letters')
+        ? theme_get_unique_city_first_letters()
+        : [];
 
     $cities_in_archive = (int) $cities_query->found_posts;
 
@@ -168,20 +163,24 @@ while (have_posts()) :
 
             <div class="goroda-directory__filters filters swiper">
                 <div class="swiper-wrapper">
-                    <?php $all_active = ($filter_slug === '') ? 'active' : ''; ?>
-                    <a href="<?php echo esc_url($catalog_url); ?>"
-                        class="filters__item goroda-directory-filter swiper-slide btn btn-sm btn-outline <?php echo esc_attr($all_active); ?>">
-                        <?php echo esc_html('Все города'); ?>
-                    </a>
-                    <?php foreach ($scenario_terms as $st) : ?>
-                        <?php $item_active = ($filter_term && (int) $filter_term->term_id === (int) $st->term_id) ? 'active' : ''; ?>
-                        <a href="<?php echo esc_url(add_query_arg('usluga', $st->slug, $catalog_url)); ?>"
-                            class="filters__item goroda-directory-filter swiper-slide btn btn-sm btn-outline <?php echo esc_attr($item_active); ?>">
-                            <?php echo esc_html($st->name); ?>
-                        </a>
+                    <?php $all_active = ($filter_letter === '') ? 'active' : ''; ?>
+                    <button type="button"
+                        data-letter="all"
+                        class="filters__item goroda-letter-filter swiper-slide btn btn-sm btn-outline <?php echo esc_attr($all_active); ?>">
+                        <?php echo esc_html('Все'); ?>
+                    </button>
+                    <?php foreach ($unique_first_letters as $letter) : ?>
+                        <?php $item_active = ($filter_letter === $letter) ? 'active' : ''; ?>
+                        <button type="button"
+                            data-letter="<?php echo esc_attr($letter); ?>"
+                            class="filters__item goroda-letter-filter swiper-slide btn btn-sm btn-outline <?php echo esc_attr($item_active); ?>">
+                            <?php echo esc_html($letter); ?>
+                        </button>
                     <?php endforeach; ?>
                 </div>
             </div>
+
+            <p class="goroda-directory__letter-empty subtitle" hidden><?php echo esc_html('Нет городов на выбранную букву — выберите другую.'); ?></p>
 
             <div class="goroda-directory__grid">
                 <?php
@@ -218,7 +217,10 @@ while (have_posts()) :
                             }
                         }
                         $shown_cities++;
-                        get_template_part('templates/components/card', 'city-directory', ['city_post' => $gorod_post]);
+                        get_template_part('templates/components/card', 'city-directory', [
+                            'city_post'     => $gorod_post,
+                            'letter_filter' => $filter_letter,
+                        ]);
                     endforeach;
                 endif;
                 ?>
