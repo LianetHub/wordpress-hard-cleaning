@@ -50,6 +50,58 @@ if (empty($grid_categories)) {
 $extra_service_id = 821;
 $extra_service = get_post($extra_service_id);
 $show_extra = ($current_term_id === 11 && $extra_service && $extra_service->post_status === 'publish');
+
+$regional_cities = [];
+if (!$is_archive && $current_term_id && isset($current_object->taxonomy) && $current_object->taxonomy === 'service_cat') {
+    $svc_for_cities = new WP_Query([
+        'post_type'              => 'services',
+        'post_status'            => 'publish',
+        'posts_per_page'         => -1,
+        'fields'                 => 'ids',
+        'no_found_rows'          => true,
+        'update_post_meta_cache' => true,
+        'tax_query'              => [
+            [
+                'taxonomy'         => 'service_cat',
+                'field'            => 'term_id',
+                'terms'            => $current_term_id,
+                'include_children' => true,
+            ],
+        ],
+        'meta_query'             => [
+            'relation' => 'AND',
+            [
+                'key'     => 'gorod_city',
+                'compare' => 'EXISTS',
+            ],
+            [
+                'key'     => 'gorod_city',
+                'value'   => 0,
+                'compare' => '>',
+                'type'    => 'NUMERIC',
+            ],
+        ],
+    ]);
+
+    $city_ids = [];
+    foreach ($svc_for_cities->posts as $sid) {
+        $gid = (int) get_post_meta((int) $sid, 'gorod_city', true);
+        if ($gid > 0 && !isset($city_ids[$gid])) {
+            $city_ids[$gid] = true;
+        }
+    }
+
+    foreach (array_keys($city_ids) as $gorod_id) {
+        $city_post = get_post($gorod_id);
+        if (!$city_post || $city_post->post_type !== 'gorod' || $city_post->post_status !== 'publish') {
+            continue;
+        }
+        $regional_cities[get_the_title($city_post)] = get_permalink($gorod_id);
+    }
+    if (!empty($regional_cities)) {
+        ksort($regional_cities, SORT_NATURAL | SORT_FLAG_CASE);
+    }
+}
 ?>
 
 <section class="catalog">
@@ -91,6 +143,19 @@ $show_extra = ($current_term_id === 11 && $extra_service && $extra_service->post
                     <h3 class="catalog__empty-title title-sm">В этой категории пока нет услуг</h3>
                     <p class="catalog__empty-text subtitle">Мы скоро добавим описание работ для этого раздела. А пока вы можете уточнить детали у менеджера.</p>
                     <a href="<?php echo get_post_type_archive_link('services'); ?>" class="btn btn-secondary btn-sm">Показать все услуги</a>
+                </div>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($regional_cities)) : ?>
+            <div class="catalog__regions-cloud" style="margin-top: 40px;">
+                <h3 class="catalog__regions-title title-sm" style="margin-bottom: 20px;">Выберите ваш город — откроем страницу с вашими условиями и ценами</h3>
+                <div class="tags-cloud" style="display: flex; flex-wrap: wrap; gap: 10px;">
+                    <?php foreach ($regional_cities as $city_name => $city_link) : ?>
+                        <a href="<?php echo esc_url($city_link); ?>" class="btn btn-outline btn-sm">
+                            <?php echo esc_html($city_name); ?>
+                        </a>
+                    <?php endforeach; ?>
                 </div>
             </div>
         <?php endif; ?>
