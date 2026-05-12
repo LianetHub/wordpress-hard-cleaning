@@ -26,47 +26,52 @@ document.addEventListener('DOMContentLoaded', () => {
 
 $(function () {
 
+    function normalizeGorodaLetter(letter) {
+        if (!letter || letter === "all") {
+            return "all";
+        }
+        const s = String(letter).trim().slice(0, 1);
+        if (!s) {
+            return "all";
+        }
+        if (!/^[А-ЯЁа-яё]$/u.test(s)) {
+            return "all";
+        }
+        return s.toLocaleUpperCase("ru-RU");
+    }
+
     function getGorodaLetterFromUrl() {
         const params = new URLSearchParams(window.location.search);
-        const letter = params.get('letter');
-        if (letter && /^[А-ЯЁ]$/u.test(letter)) {
-            return letter;
-        }
-        return 'all';
+        return normalizeGorodaLetter(params.get("letter"));
     }
 
     function applyGorodaLetterFilter(letter) {
-        const $grid = $('.goroda-directory__grid');
+        const $grid = $(".goroda-directory__grid");
         if (!$grid.length) {
             return;
         }
-        const showAll = letter === 'all';
-        const $cards = $grid.find('.city-dir-card');
-        const $empty = $('.goroda-directory__letter-empty');
-        let visible = 0;
+        const showAll = letter === "all";
+        const filterLetter = showAll ? "" : normalizeGorodaLetter(letter);
+        const $cards = $grid.find(".city-dir-card");
 
         $cards.each(function () {
             const $c = $(this);
-            const cardLetter = String($c.attr('data-letter') || '');
-            const show = showAll || cardLetter === letter;
-            $c.prop('hidden', !show);
-            if (show) {
-                visible++;
-            }
+            const cardLetter = normalizeGorodaLetter($c.attr("data-letter") || "");
+            const show = showAll || cardLetter === filterLetter;
+            $c.toggleClass("hidden", !show);
         });
 
-        if ($empty.length) {
-            $empty.prop('hidden', visible !== 0);
-        }
+        const $wrap = $(".goroda-directory__filters");
+        $wrap.find(".goroda-letter-filter").removeClass("active");
+        $wrap.find(".goroda-letter-filter").filter(function () {
+            const d = $(this).attr("data-letter");
+            if (showAll) {
+                return d === "all";
+            }
+            return normalizeGorodaLetter(d) === filterLetter;
+        }).addClass("active");
 
-        const $wrap = $('.goroda-directory__filters');
-        $wrap.find('.goroda-letter-filter').removeClass('active');
-        $wrap.find('.goroda-letter-filter').filter(function () {
-            const d = $(this).attr('data-letter');
-            return showAll ? d === 'all' : d === letter;
-        }).addClass('active');
-
-        const $dirSwiper = $('.goroda-directory__filters.filters');
+        const $dirSwiper = $(".goroda-directory__filters.filters");
         if ($dirSwiper.length && $dirSwiper[0].swiper) {
             $dirSwiper[0].swiper.update();
         }
@@ -310,7 +315,7 @@ $(function () {
         if ($gorodaLetterBtn.length && $gorodaLetterBtn.closest('.goroda-directory__filters').length) {
             e.preventDefault();
             const letterRaw = $gorodaLetterBtn.attr('data-letter') || 'all';
-            const letter = letterRaw === 'all' ? 'all' : letterRaw;
+            const letter = letterRaw === 'all' ? 'all' : normalizeGorodaLetter(letterRaw);
             applyGorodaLetterFilter(letter);
             const url = new URL(window.location.href);
             if (letter === 'all') {

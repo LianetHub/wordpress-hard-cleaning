@@ -132,11 +132,10 @@
         margin-top: rem(32);
         text-align: center;
     }
+}
 
-    &__letter-empty {
-        margin-top: rem(32);
-        text-align: center;
-    }
+.goroda-directory__grid .city-dir-card.hidden {
+    display: none !important;
 }
 
 .city-dir-card {

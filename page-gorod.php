@@ -23,6 +23,9 @@ while (have_posts()) :
     }
 
     $filter_letter = isset($_GET['letter']) ? sanitize_text_field(wp_unslash($_GET['letter'])) : '';
+    if ($filter_letter !== '') {
+        $filter_letter = mb_strtoupper(mb_substr(trim($filter_letter), 0, 1, 'UTF-8'), 'UTF-8');
+    }
     if ($filter_letter !== '' && !preg_match('/^[А-ЯЁ]$/u', $filter_letter)) {
         $filter_letter = '';
     }
@@ -179,8 +182,6 @@ while (have_posts()) :
                     <?php endforeach; ?>
                 </div>
             </div>
-
-            <p class="goroda-directory__letter-empty subtitle" hidden><?php echo esc_html('Нет городов на выбранную букву — выберите другую.'); ?></p>
 
             <div class="goroda-directory__grid">
                 <?php
