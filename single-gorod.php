@@ -4,6 +4,8 @@
  * Лендинг одного города (тип записей gorod). Шаблон: single-{post_type}.php → single-gorod.php.
  */
 
+use HardClean\Theme;
+
 get_header();
 
 if (!have_posts()) {
@@ -19,78 +21,135 @@ while (have_posts()) :
     $phone = get_field('phone', 'option');
     $phone_clean = $phone ? preg_replace('/[^\d+]/', '', $phone) : '';
 
-    $distance = function_exists('theme_gorod_distance_label') ? theme_gorod_distance_label($city_id) : '';
-    $kicker_custom = get_post_meta($city_id, 'gorod_kicker', true);
-    $stats_suffix = get_post_meta($city_id, 'gorod_stats_suffix', true);
-
-    if ($stats_suffix === '' || $stats_suffix === null) {
-        $stats_suffix = 'выезд в день обращения';
-    }
-
-    if ($kicker_custom !== '' && $kicker_custom !== null) {
-        $kicker = $kicker_custom;
-    } else {
-        $parts = ['Уборка в ' . get_the_title()];
-        if ($distance) {
-            $parts[] = function_exists('mb_strtoupper') ? mb_strtoupper($distance, 'UTF-8') : strtoupper($distance);
-        }
-        $kicker = implode(' • ', $parts);
-    }
-
+    $gorod_name = get_the_title($city_id);
+    $gorod_name_declined = function_exists('theme_gorod_decline_in_prepositional') ? theme_gorod_decline_in_prepositional($gorod_name) : $gorod_name;
+ 
+    $heading_title = sprintf('Сложная уборка в %s', $gorod_name_declined);
     $min_price = function_exists('theme_gorod_display_min_price') ? theme_gorod_display_min_price($city_id) : 0;
+    if ($min_price > 0) {
+        $heading_title .= ' <span class="color-accent">от&nbsp;' . format_service_price($min_price) . '&nbsp;₽</span>';
+    }
+    $heading_descr = get_the_excerpt($city_id);
 
-    $services_count_query = new WP_Query([
-        'post_type'              => 'services',
-        'post_status'            => 'publish',
-        'posts_per_page'         => -1,
-        'fields'                 => 'ids',
-        'no_found_rows'          => false,
-        'update_post_meta_cache' => false,
-        'meta_query'             => [
-            [
-                'key'     => 'gorod_city',
-                'value'   => $city_id,
-                'compare' => '=',
-                'type'    => 'NUMERIC',
-            ],
-        ],
-    ]);
-    $services_count = (int) $services_count_query->found_posts;
+    $distance_label = function_exists('theme_gorod_distance_label') ? theme_gorod_distance_label($city_id) : '';
 
-    $h1 = sprintf('Сложная уборка в %s', get_the_title());
+    $image_main = get_field('service_main_image', $city_id);
+    if (empty($image_main)) {
+        $thumb = get_the_post_thumbnail_url($city_id, 'full');
+        $image_main = $thumb ? ['url' => $thumb, 'alt' => get_the_title($city_id)] : [];
+    }
+    $image_left = get_field('service_extr-image_1', $city_id);
+    $image_right = get_field('service_extr-image_2', $city_id);
+    $is_collage = !empty($image_left) || !empty($image_right);
 
     require_once TEMPLATE_PATH . '/components/breadcrumbs.php';
 ?>
 
-    <section class="heading heading--city">
+    <section class="heading">
         <div class="heading__container container">
             <div class="heading__offer">
-                <?php if ($kicker) : ?>
-                    <div class="heading__hint hint"><?php echo esc_html(function_exists('mb_strtoupper') ? mb_strtoupper($kicker, 'UTF-8') : strtoupper($kicker)); ?></div>
+                <?php if ($distance_label !== '') : ?>
+                    <div class="heading__hint hint"><?php echo esc_html($distance_label); ?></div>
                 <?php endif; ?>
-                <h1 class="heading__title title-lg"><?php echo esc_html($h1); ?></h1>
-                <div class="heading__stats heading__stats--city">
-                    <?php if ($services_count > 0) : ?>
-                        <span class="heading__stat heading__stat--text"><?php echo esc_html($services_count . ' ' . russian_plural($services_count, ['услуга', 'услуги', 'услуг'])); ?></span>
-                    <?php endif; ?>
-                    <span class="heading__stat heading__stat--text"><?php echo esc_html($stats_suffix); ?></span>
-                    <?php if ($min_price > 0) : ?>
-                        <span class="heading__stat heading__stat--text">от&nbsp;<?php echo esc_html(format_service_price($min_price)); ?>&nbsp;₽</span>
-                    <?php endif; ?>
-                </div>
+                <h1 class="heading__title title-lg"><?php echo $heading_title; ?></h1>
+                <?php if ($heading_descr) : ?>
+                    <p class="heading__subtitle subtitle"><?php echo esc_html(fix_widows_after_prepositions(wp_strip_all_tags($heading_descr))); ?></p>
+                <?php endif; ?>
                 <div class="heading__btns">
                     <?php if ($phone) : ?>
-                        <a href="tel:<?php echo esc_attr($phone_clean); ?>" class="heading__btn btn btn-secondary icon-phone">Вызвать бригаду</a>
+                        <a href="tel:<?php echo esc_attr($phone_clean); ?>" class="heading__btn btn btn-secondary">Срочный вызов</a>
                     <?php endif; ?>
-                    <a href="#callback" data-fancybox class="heading__btn btn btn-outline">Рассчитать стоимость</a>
+                    <a href="#callback" data-fancybox class="heading__btn btn btn-outline">Оставить заявку</a>
                 </div>
             </div>
+
+            <?php if ($is_collage) : ?>
+                <div class="heading__images">
+                    <?php if (!empty($image_left)) : ?>
+                        <div class="heading__images-block heading__images-left">
+                            <img src="<?php echo esc_url($image_left['url']); ?>"
+                                alt="<?php echo esc_attr($image_left['alt'] ?: $heading_title); ?>"
+                                fetchpriority="high"
+                                class="cover-image">
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($image_main['url'])) : ?>
+                        <div class="heading__images-block heading__images-center">
+                            <img src="<?php echo esc_url($image_main['url']); ?>"
+                                alt="<?php echo esc_attr(($image_main['alt'] ?? '') ?: $heading_title); ?>"
+                                fetchpriority="high"
+                                class="cover-image">
+                        </div>
+                    <?php endif; ?>
+
+                    <?php if (!empty($image_right)) : ?>
+                        <div class="heading__images-block heading__images-right">
+                            <img src="<?php echo esc_url($image_right['url']); ?>"
+                                alt="<?php echo esc_attr($image_right['alt'] ?: $heading_title); ?>"
+                                fetchpriority="high"
+                                class="cover-image">
+                        </div>
+                    <?php endif; ?>
+                </div>
+            <?php else : ?>
+                <div class="heading__image">
+                    <?php if (!empty($image_main['url'])) : ?>
+                        <img src="<?php echo esc_url($image_main['url']); ?>"
+                            alt="<?php echo esc_attr(($image_main['alt'] ?? '') ?: $heading_title); ?>"
+                            fetchpriority="high"
+                            class="cover-image">
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
+        </div>
+    </section>
+    <?php require_once(TEMPLATE_PATH . '_trust.php'); ?>
+    <section class="city-services-catalog services">
+        <div class="services__container container">
+            <div class="services__hint hint">Спецуборка</div>
+            <h2 class="services__title title">Наши услуги в <?php echo esc_html($gorod_name_declined); ?></h2>
+            <p class="services__subtitle subtitle">Нажмите на услугу — расскажем подробно что входит и&nbsp;сколько стоит</p>
+            <ul class="services__list">
+                <?php
+                $terms = get_terms([
+                    'taxonomy'   => 'service_cat',
+                    'hide_empty' => false,
+                    'include'    => [8, 6, 4, 5, 41],
+                    'orderby'    => 'include'
+                ]);
+
+                $extra_service_id = 821;
+                $extra_service = get_post($extra_service_id);
+
+                if (!empty($terms) && !is_wp_error($terms)) :
+                    foreach ($terms as $term):
+                        get_template_part('templates/components/card', 'service-gorod', ['item' => $term]);
+                    endforeach;
+                endif;
+
+                if ($extra_service && $extra_service->post_status === 'publish') :
+                    get_template_part('templates/components/card', 'service-gorod', ['item' => $extra_service]);
+                endif;
+                ?>
+            </ul>
         </div>
     </section>
 
 <?php
-    require_once TEMPLATE_PATH . '_city-services.php';
-    require_once TEMPLATE_PATH . '_works-gorod.php';
+    require_once TEMPLATE_PATH . '_works-specialized.php';
+    require_once(TEMPLATE_PATH . '_price.php');
+    require_once(TEMPLATE_PATH . '_guarantees.php');
+    if (!empty(get_the_content())): ?>
+        <article class="article">
+            <div class="container">
+                <div class="article__content typography-block">
+                    <?php the_content(); ?>
+                </div>
+            </div>
+        </article>
+   <?php endif;
+    require_once(TEMPLATE_PATH . '_reviews.php');
     require_once TEMPLATE_PATH . '_faq.php';
     require_once TEMPLATE_PATH . '_cta.php';
 
