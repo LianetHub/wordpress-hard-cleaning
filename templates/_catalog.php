@@ -52,55 +52,23 @@ $extra_service = get_post($extra_service_id);
 $show_extra = ($current_term_id === 11 && $extra_service && $extra_service->post_status === 'publish');
 
 $regional_cities = [];
-if (!$is_archive && $current_term_id && isset($current_object->taxonomy) && $current_object->taxonomy === 'service_cat') {
-    $svc_for_cities = new WP_Query([
-        'post_type'              => 'services',
-        'post_status'            => 'publish',
-        'posts_per_page'         => -1,
-        'fields'                 => 'ids',
-        'no_found_rows'          => true,
-        'update_post_meta_cache' => true,
-        'tax_query'              => [
-            [
-                'taxonomy'         => 'service_cat',
-                'field'            => 'term_id',
-                'terms'            => $current_term_id,
-                'include_children' => true,
-            ],
-        ],
-        'meta_query'             => [
-            'relation' => 'AND',
-            [
-                'key'     => 'gorod_city',
-                'compare' => 'EXISTS',
-            ],
-            [
-                'key'     => 'gorod_city',
-                'value'   => 0,
-                'compare' => '>',
-                'type'    => 'NUMERIC',
-            ],
-        ],
-    ]);
-
-    $city_ids = [];
-    foreach ($svc_for_cities->posts as $sid) {
-        $gid = (int) get_post_meta((int) $sid, 'gorod_city', true);
-        if ($gid > 0 && !isset($city_ids[$gid])) {
-            $city_ids[$gid] = true;
-        }
+$gorod_posts = get_posts([
+    'post_type'      => 'gorod',
+    'post_status'    => 'publish',
+    'posts_per_page' => -1,
+    'orderby'        => 'title',
+    'order'          => 'ASC',
+    'no_found_rows'  => true,
+]);
+foreach ($gorod_posts as $city_post) {
+    if (!$city_post instanceof WP_Post) {
+        continue;
     }
-
-    foreach (array_keys($city_ids) as $gorod_id) {
-        $city_post = get_post($gorod_id);
-        if (!$city_post || $city_post->post_type !== 'gorod' || $city_post->post_status !== 'publish') {
-            continue;
-        }
-        $regional_cities[get_the_title($city_post)] = get_permalink($gorod_id);
+    $link = get_permalink($city_post);
+    if (!$link) {
+        continue;
     }
-    if (!empty($regional_cities)) {
-        ksort($regional_cities, SORT_NATURAL | SORT_FLAG_CASE);
-    }
+    $regional_cities[get_the_title($city_post)] = $link;
 }
 ?>
 
@@ -149,7 +117,7 @@ if (!$is_archive && $current_term_id && isset($current_object->taxonomy) && $cur
 
         <?php if (!empty($regional_cities)) : ?>
             <div class="catalog__regions-cloud" style="margin-top: 40px;">
-                <h3 class="catalog__regions-title title-sm" style="margin-bottom: 20px;">Выберите ваш город — откроем страницу с вашими условиями и ценами</h3>
+                <h3 class="catalog__regions-title title-sm" style="margin-bottom: 20px;">Услуги в других городах:</h3>
                 <div class="tags-cloud" style="display: flex; flex-wrap: wrap; gap: 10px;">
                     <?php foreach ($regional_cities as $city_name => $city_link) : ?>
                         <a href="<?php echo esc_url($city_link); ?>" class="btn btn-outline btn-sm">
