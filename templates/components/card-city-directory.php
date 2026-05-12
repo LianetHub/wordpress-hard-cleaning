@@ -2,10 +2,11 @@
 
 /**
  * Карточка города в каталоге (page-gorod.php).
- * Аргумент: city_post (WP_Post) — extract из get_template_part.
+ * Аргументы: get_template_part(..., ['city_post' => WP_Post]) — в шаблоне доступны как $args (WP 5.5+).
  */
 
-if (!isset($city_post) || !$city_post instanceof WP_Post) {
+$city_post = isset($args['city_post']) ? $args['city_post'] : null;
+if (!$city_post instanceof WP_Post) {
     return;
 }
 

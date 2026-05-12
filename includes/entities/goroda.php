@@ -15,7 +15,8 @@
  * Связь услуг/портфолио: мета gorod_city (ID записи города).
  *
  * Опционально ACF на странице-хабе (шаблон «Города — хаб»):
- * - goroda_hub_subtitle — текст под заголовком (если пусто — краткое описание записи или строка по умолчанию).
+ * - goroda_hub_subtitle — подзаголовок в hero (если пусто — цитата / дефолт).
+ * - goroda_directory_hint, goroda_directory_title (HTML), goroda_directory_subtitle — блок каталога городов.
  */
 
 defined('ABSPATH') || exit;

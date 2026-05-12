@@ -2,7 +2,7 @@
 
 /**
  * Template Name: Города — хаб
- * Description: Ярлык страницы uborka-v-gorodah → /uborka-v-gorodah/. Шапка как у услуги: опционально те же ACF, что у single-services — service_title, service_subtitle, service_main_image, service_extra_image_1/2; иначе заголовок страницы, goroda_hub_subtitle/цитата/дефолт, обложка записи.
+ * Description: Ярлык uborka-v-gorodah. Шапка: как single-services (service_*). Секция каталога: goroda_directory_hint, goroda_directory_title (HTML, span.color-accent), goroda_directory_subtitle; фильтры — разметка как page-documents (swiper + filters__item).
  */
 
 get_header();
@@ -77,6 +77,24 @@ while (have_posts()) :
 
     $is_collage = !empty($image_left) || !empty($image_right);
 
+    $dir_hint = 'Каталог';
+    $dir_title_html = 'Города — <span class="color-accent">выберите направление</span>';
+    $dir_subtitle = 'Выберите, что случилось — и увидите все города';
+    if (function_exists('get_field')) {
+        $h = get_field('goroda_directory_hint', $page_id);
+        if (is_string($h) && $h !== '') {
+            $dir_hint = $h;
+        }
+        $t = get_field('goroda_directory_title', $page_id);
+        if (is_string($t) && $t !== '') {
+            $dir_title_html = $t;
+        }
+        $s = get_field('goroda_directory_subtitle', $page_id);
+        if (is_string($s) && $s !== '') {
+            $dir_subtitle = $s;
+        }
+    }
+
     require_once TEMPLATE_PATH . '/components/breadcrumbs.php';
 ?>
 
@@ -142,15 +160,23 @@ while (have_posts()) :
 
     <section class="goroda-directory">
         <div class="container">
-            <div class="goroda-directory__filters catalog__filters">
-                <div class="goroda-directory__chips">
+            <div class="goroda-directory__hint hint"><?php echo esc_html($dir_hint); ?></div>
+            <h2 class="goroda-directory__title title">
+                <?php echo wp_kses($dir_title_html, ['span' => ['class' => []], 'br' => []]); ?>
+            </h2>
+            <p class="goroda-directory__subtitle subtitle"><?php echo esc_html(fix_widows_after_prepositions($dir_subtitle)); ?></p>
+
+            <div class="goroda-directory__filters filters swiper">
+                <div class="swiper-wrapper">
+                    <?php $all_active = ($filter_slug === '') ? 'active' : ''; ?>
                     <a href="<?php echo esc_url($catalog_url); ?>"
-                        class="goroda-directory__chip btn btn-outline btn-sm <?php echo $filter_slug === '' ? 'is-active' : ''; ?>">
-                        Все города
+                        class="filters__item goroda-directory-filter swiper-slide btn btn-sm btn-outline <?php echo esc_attr($all_active); ?>">
+                        <?php echo esc_html('Все города'); ?>
                     </a>
                     <?php foreach ($scenario_terms as $st) : ?>
+                        <?php $item_active = ($filter_term && (int) $filter_term->term_id === (int) $st->term_id) ? 'active' : ''; ?>
                         <a href="<?php echo esc_url(add_query_arg('usluga', $st->slug, $catalog_url)); ?>"
-                            class="goroda-directory__chip btn btn-outline btn-sm <?php echo ($filter_term && (int) $filter_term->term_id === (int) $st->term_id) ? 'is-active' : ''; ?>">
+                            class="filters__item goroda-directory-filter swiper-slide btn btn-sm btn-outline <?php echo esc_attr($item_active); ?>">
                             <?php echo esc_html($st->name); ?>
                         </a>
                     <?php endforeach; ?>

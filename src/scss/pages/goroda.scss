@@ -101,16 +101,27 @@
     padding: rem(32) 0 rem(80);
     background: #fff;
 
-    &__chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: rem(10);
+    &__hint {}
+
+    &__title {
+        margin-top: rem(8);
     }
 
-    &__chip.is-active {
-        border-color: $accent;
-        background: rgba(70, 126, 158, 0.08);
-        color: #1f4b62;
+    &__subtitle {
+        &.subtitle {
+            max-width: rem(420);
+            margin-top: rem(12);
+        }
+    }
+
+    &__filters {
+        margin-top: rem(38);
+
+        &.filters .filters__item.active {
+            border-color: $accent;
+            background: rgba(70, 126, 158, 0.08);
+            color: #1f4b62;
+        }
     }
 
     &__grid {

@@ -1,20 +1,20 @@
 @charset "UTF-8";
 
 @font-face {
-  font-family: "icons";
-  font-display: swap;
-  src: url("../fonts/icons.woff2?v=1778586107010") format("woff2"), url("../fonts/icons.woff?v=1778586107010") format("woff");
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
   font-family: "Rubik";
-  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1778586107010") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1778586107010") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1778586107010") format("woff");
+  src: url("../fonts/Rubik-VariableFont_wght.woff2?v=1778593837711") format("woff2 supports variations"), url("../fonts/Rubik-VariableFont_wght.woff2?v=1778593837711") format("woff2-variations"), url("../fonts/Rubik-VariableFont_wght.woff?v=1778593837711") format("woff");
   font-weight: 100 900;
   font-stretch: 75% 125%;
   font-style: normal;
   font-display: swap;
+}
+
+@font-face {
+  font-family: "icons";
+  font-display: swap;
+  src: url("../fonts/icons.woff2?v=1778593837711") format("woff2"), url("../fonts/icons.woff?v=1778593837711") format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
 
 .breadcrumbs__item:not(:last-child)::before,
@@ -6186,7 +6186,7 @@ body {
   color: var(--primary-color, #007cba);
 }
 
-/* Города: архив термина gorod и страница-каталог */
+/* Города: CPT gorod — page-gorod.php (хаб), single-gorod.php (город) */
 
 .heading--city-archive {
   padding-bottom: 1rem;
@@ -6299,16 +6299,20 @@ body {
   background: #fff;
 }
 
-.goroda-directory__chips {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  gap: 0.625rem;
+.goroda-directory__title {
+  margin-top: 0.5rem;
 }
 
-.goroda-directory__chip.is-active {
+.goroda-directory__subtitle.subtitle {
+  max-width: 26.25rem;
+  margin-top: 0.75rem;
+}
+
+.goroda-directory__filters {
+  margin-top: 2.375rem;
+}
+
+.goroda-directory__filters.filters .filters__item.active {
   border-color: #467E9E;
   background: rgba(70, 126, 158, 0.08);
   color: #1f4b62;
